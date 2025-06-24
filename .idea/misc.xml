@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="FormatOnSaveOptions">
-    <option name="myRunOnSave" value="false" />
-  </component>
   <component name="JsBowerSettings">
     <bower-package value="" />
     <bower.json value="" />
-  </component>
-  <component name="OptimizeOnSaveOptions">
-    <option name="myRunOnSave" value="true" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">

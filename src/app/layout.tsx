@@ -2,11 +2,15 @@ import type { Metadata } from 'next'
 import { Manrope } from 'next/font/google'
 import type { ReactNode } from 'react'
 
+import { Layout } from '@/components/layout/Layout'
+
+import { Providers } from '@/providers/Providers'
+
 import './globals.css'
 import { SITE_NAME } from '@/constants'
 
 const manrope = Manrope({
-	variable: '--font-manrope-sans',
+	variable: '--font-sans',
 	subsets: ['latin']
 })
 
@@ -29,8 +33,15 @@ export default function RootLayout({
 	children: ReactNode
 }>) {
 	return (
-		<html lang='en'>
-			<body className={`${manrope.className} antialiased`}>{children}</body>
+		<html
+			lang='en'
+			suppressHydrationWarning
+		>
+			<body className={`${manrope.className} antialiased`}>
+				<Layout>
+					<Providers>{children}</Providers>
+				</Layout>
+			</body>
 		</html>
 	)
 }

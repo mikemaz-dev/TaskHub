@@ -1,1 +1,16 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@theme {
+	--color-primary: #725cee;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+body {
+	@apply text-[#272727] dark:text-white dark:bg-black;
+	color: #272727;
+	background-color: #f6f4ff;
+	min-width: 320px;
+	min-height: 100vh;
+	overflow-y: hidden;
+}
