@@ -1,6 +1,6 @@
 import { ChevronDown } from 'lucide-react'
 
-import { PROFILE } from '@/components/layout/sidebar/data/profile.data'
+import { PROFILE } from '@/data/sidebar/profile.data'
 
 export function ProfileCard() {
 	return (

@@ -1,6 +1,7 @@
 import { ProfileCard, ProjectItem, SidebarItem, SidebarTopic } from '@/components/layout/sidebar'
-import { MAIN_MENU_DATA } from '@/components/layout/sidebar/data/main-menu.data'
-import { PROJECTS } from '@/components/layout/sidebar/data/projects.data'
+
+import { MAIN_MENU_DATA } from '@/data/sidebar/main-menu.data'
+import { PROJECTS } from '@/data/sidebar/projects.data'
 
 export function Sidebar() {
 	return (
