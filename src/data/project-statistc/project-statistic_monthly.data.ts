@@ -1,4 +1,4 @@
-export const PROJECT_STATISTIC_DATA: IProjectStatistic[] = [
+export const PROJECT_STATISTIC_MONTHLY_DATA: IProjectStatistic[] = [
 	{
 		name: 'Jan',
 		projectCount: 15

@@ -1,4 +1,4 @@
-import type { IProjectStats } from '@/types/project-stats.types'
+import type { IProjectStats } from '@/types/project/project-stats.types'
 
 export const PROJECT_STATS_DATA: IProjectStats[] = [
 	{
