@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic'
 import { useState } from 'react'
 
 import { DropdownButton } from '@/components/ui/DropdownButton'
+import { SectionHeading } from '@/components/ui/SectionHeading'
 import { SkeletonLoader } from '@/components/ui/SkeletonLoader'
 
 import type { IDropdownItem } from '@/types/dropdown/dropdown-item.types'
@@ -13,7 +14,7 @@ const DynamicProjectStatisticChart = dynamic(
 	() => import('./ProjectStatisticChart').then(mod => mod.ProjectStatisticChart),
 	{
 		ssr: false,
-		loading: () => <SkeletonLoader className='h-88 w-199' />
+		loading: () => <SkeletonLoader className='h-88 w-190' />
 	}
 )
 
@@ -32,7 +33,7 @@ export function ProjectStatistic() {
 	return (
 		<div className='p-5 flex flex-col gap-4 rounded-3xl bg-white dark:bg-neutral-800 shadow-sm'>
 			<div className='flex items-center justify-between'>
-				<span className='text-2xl font-bold transition-colors duration-300'>Project Statistic</span>
+				<SectionHeading title='Project Statistic' />
 				<DropdownButton
 					items={dropdownItems}
 					placeholder='Select mode'
