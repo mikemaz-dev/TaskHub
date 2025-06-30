@@ -1,5 +1,6 @@
 import { Check } from 'lucide-react'
 import { m } from 'motion/react'
+import { useMemo } from 'react'
 
 import { cn } from '@/utils/cn.util'
 
@@ -11,8 +12,26 @@ export function TaskItemProgress({ task }: { task: ITask }) {
 	const progressPercentage =
 		totalSubtasks > 0 ? Math.round((completedSubtasks / totalSubtasks) * 100) : 0
 
+	const progressText = useMemo(() => {
+		if (progressPercentage === 100) {
+			return (
+				<div className='flex items-center gap-1.5'>
+					<div className='w-4 h-4 flex items-center justify-center rounded-full bg-white text-white select-none'>
+						<Check
+							size={10}
+							absoluteStrokeWidth
+							className='text-teal-500'
+						/>
+					</div>
+					<span className='text-sm font-semibold select-none'>Done</span>
+				</div>
+			)
+		}
+		return <span className='text-sm font-semibold select-none'>{progressPercentage}%</span>
+	}, [progressPercentage])
+
 	return (
-		<div className='w-full h-12 dark:bg-neutral-200/20 bg-gray-400/18 rounded-full'>
+		<div className='w-full h-12 dark:bg-neutral-200/20 bg-gray-400/18 rounded-full '>
 			<m.div
 				className={cn(
 					'h-12 flex items-center justify-center text-neutral-100 rounded-full relative overflow-hidden',
@@ -59,20 +78,7 @@ export function TaskItemProgress({ task }: { task: ITask }) {
 					}}
 					className='relative z-20'
 				>
-					{progressPercentage === 100 ? (
-						<div className='flex items-center gap-1.5'>
-							<div className='w-4 h-4 flex items-center justify-center rounded-full bg-white text-white'>
-								<Check
-									size={10}
-									absoluteStrokeWidth
-									className='text-teal-500'
-								/>
-							</div>
-							<span className='text-sm font-semibold'>Done</span>
-						</div>
-					) : (
-						<span className='text-sm font-semibold'>{progressPercentage}%</span>
-					)}
+					{progressText}
 				</m.div>
 			</m.div>
 		</div>

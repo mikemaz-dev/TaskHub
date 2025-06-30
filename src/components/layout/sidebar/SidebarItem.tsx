@@ -1,23 +1,33 @@
 import Link from 'next/link'
-import type { ReactNode } from 'react'
+
+import type { IMenu } from '@/components/layout/sidebar/menu/menu.type'
 
 import { cn } from '@/utils/cn.util'
 
-export function SidebarItem({ icon, name, href }: { icon: ReactNode; name: string; href: string }) {
+export function SidebarItem({ item, isActive }: { item: IMenu; isActive: boolean }) {
 	return (
 		<li>
 			<Link
-				href={href}
+				href={item.href}
 				className={cn(
-					'flex items-center rounded-2xl p-2.5 cursor-pointer select-none text-gray-500 dark:text-gray-200 hover:bg-primary dark:hover:bg-blue-600 hover:text-white transition-colors duration-200',
-					name === 'Messages' && 'flex justify-between'
+					'flex items-center rounded-2xl p-2.5 text-gray-500 dark:text-neutral-100 cursor-pointer select-none group  transition-colors duration-200',
+					{
+						'flex justify-between': item.name === 'Messages',
+						'bg-primary text-white pointer-events-none': isActive
+					}
 				)}
 			>
 				<div className='flex items-center gap-2'>
-					{icon}
-					<span className='font-medium'>{name}</span>
+					<item.icon
+						size={21}
+						absoluteStrokeWidth={true}
+						className='group-hover:text-primary opacity-90 transition-colors'
+					/>
+					<span className='font-medium  group-hover:text-primary transition-colors'>
+						{item.name}
+					</span>
 				</div>
-				{name === 'Messages' && (
+				{item.name === 'Messages' && (
 					<span className='bg-purple-300 text-purple-600 text-sm font-medium px-2.5 rounded-full'>
 						4
 					</span>

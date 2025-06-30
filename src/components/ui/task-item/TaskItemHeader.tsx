@@ -6,7 +6,7 @@ import type { ITask } from '@/types/tasks/task.types'
 
 export function TaskItemHeader({ task }: { task: ITask }) {
 	return (
-		<div className='flex items-start justify-between gap-2'>
+		<div className='flex items-start justify-between 2xl:flex-col md:flex gap-2'>
 			<div className='flex items-start gap-2.5'>
 				<div className='p-4 rounded-full bg-blue-50 dark:bg-neutral-700 dark:text-blue-300 text-blue-500'>
 					<task.icon
@@ -15,7 +15,7 @@ export function TaskItemHeader({ task }: { task: ITask }) {
 					/>
 				</div>
 				<div className='flex flex-col gap-0.5'>
-					<h3 className='font-bold'>{task.title}</h3>
+					<h3 className='font-bold 2xl:text-sm'>{task.title}</h3>
 					<p className='text-sm mt-1 font-semibold opacity-80'>{formatDueDate(task.dueDate)}</p>
 				</div>
 			</div>

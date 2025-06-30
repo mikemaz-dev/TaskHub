@@ -14,7 +14,7 @@ export function SearchField({
 	value
 }: ISearchField) {
 	return (
-		<div className='flex items-center justify-center gap-2 max-w-md p-2.5 rounded-full shadow-sm bg-white dark:bg-neutral-800'>
+		<div className='flex items-center justify-center gap-2 max-w-md md:w-full md:justify-start p-2.5 rounded-full shadow-sm bg-white dark:bg-neutral-800'>
 			<Search
 				size={22}
 				className='text-gray-500 dark:text-neutral-500'

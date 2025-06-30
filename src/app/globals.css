@@ -12,7 +12,20 @@ body {
 	background-color: #f6f4ff;
 	min-width: 320px;
 	min-height: 100vh;
+	box-sizing: border-box;
 }
+
+@theme {
+	--breakpoint-*: initial;
+}
+
+@custom-variant 2xl (@media (max-width: 1650px));
+@custom-variant xl (@media (max-width: 1399px));
+@custom-variant lg (@media (max-width: 1200px));
+@custom-variant md (@media (max-width: 992px));
+@custom-variant sm (@media (max-width: 768px));
+@custom-variant xs (@media (max-width: 480px));
+@custom-variant xxs (@media (max-width: 360px));
 
 .hide-scrollbar {
 	scrollbar-width: none;

@@ -12,7 +12,7 @@ export function LastTasks() {
 				<SectionHeading title='Last Tasks' />
 				<span className='opacity-50 text-xl'>({lastTasks.length})</span>
 			</div>
-			<div className='grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
+			<div className='grid gap-4 grid-cols-3 md:grid-cols-1 xl:grid-cols-3'>
 				{lastTasks.map(task => {
 					return (
 						<TaskItem

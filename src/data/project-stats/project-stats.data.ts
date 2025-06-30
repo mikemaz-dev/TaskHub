@@ -5,7 +5,7 @@ export const PROJECT_STATS_DATA: IProjectStats[] = [
 		id: 1,
 		number: 92,
 		label: 'Active Projects',
-		bgColor: 'bg-sky-200 dark:bg-cyan-500',
+		bgColor: 'bg-sky-200 dark:bg-cyan-400',
 		icon: '/images/icon/project-stats/active-projects.svg'
 	},
 	{
@@ -19,7 +19,7 @@ export const PROJECT_STATS_DATA: IProjectStats[] = [
 		id: 3,
 		number: 1149,
 		label: 'Working Hours',
-		bgColor: 'bg-slate-300 dark:bg-indigo-200',
+		bgColor: 'bg-slate-300 dark:bg-indigo-300',
 		icon: '/images/icon/project-stats/working-hours.svg'
 	}
 ]

@@ -18,7 +18,7 @@ export function TaskItem({ task }: ILastTasksItem) {
 				<TaskItemProgress task={task} />
 			</div>
 
-			<div className='flex items-center justify-between'>
+			<div className='flex items-center justify-between 2xl:flex-col 2xl:items-start 2xl:gap-2'>
 				<div className='flex items-center justify-between'>
 					<TaskItemStats task={task} />
 				</div>

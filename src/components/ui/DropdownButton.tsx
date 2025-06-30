@@ -51,7 +51,9 @@ export function DropdownButton({ placeholder, items, onSelect }: IDropdownButton
 				aria-haspopup={true}
 				aria-expanded={isOpen}
 			>
-				<span className='font-medium text-lg transition-colors duration-300'>{displayText}</span>
+				<span className='font-medium text-lg md:text-sm transition-colors duration-300'>
+					{displayText}
+				</span>
 				<ChevronDown
 					size={20}
 					className={cn(
@@ -66,7 +68,7 @@ export function DropdownButton({ placeholder, items, onSelect }: IDropdownButton
 						<button
 							key={index}
 							onClick={() => handleItemClick(item)}
-							className='w-full text-left text-lg px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-neutral-700 transition-colors duration-150 first:rounded-t-lg last:rounded-b-lg'
+							className='w-full text-left text-lg md:normal-case px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-neutral-700 transition-colors duration-150 first:rounded-t-lg last:rounded-b-lg'
 						>
 							{item.label}
 						</button>
