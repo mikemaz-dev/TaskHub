@@ -8,9 +8,10 @@ import {
 	YAxis
 } from 'recharts'
 
+import { ProjectStatisticChartTooltip } from '@/components/sections/project-statistic/ProjectStatisticChartTooltip'
+
 import { getProjectStatisticData } from '@/utils/getProjectStatisticData'
 
-import { ProjectStatisticChartTooltip } from '@/app/dashboard/project-statistics/ProjectStatisticChartTooltip'
 import type { ProjectStatisticPeriod } from '@/types/project/project-statistics/project-statistic-period.types'
 
 interface IProjectStatisticChart {
@@ -29,7 +30,7 @@ export function ProjectStatisticChart({ period }: IProjectStatisticChart) {
 				height={366}
 				data={statisticData}
 				className='select-none'
-				margin={{ top: 0, left: -5, bottom: 5 }}
+				margin={{ top: 0, left: -8, bottom: 4 }}
 			>
 				<defs>
 					<linearGradient

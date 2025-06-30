@@ -12,5 +12,13 @@ body {
 	background-color: #f6f4ff;
 	min-width: 320px;
 	min-height: 100vh;
-	overflow-y: hidden;
+}
+
+.hide-scrollbar {
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+	display: none;
 }

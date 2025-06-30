@@ -1,4 +1,5 @@
-import { ProjectStatCard } from '@/app/dashboard/project-stats/ProjectStatCard'
+import { ProjectStatCard } from '@/components/sections/project-stats/ProjectStatCard'
+
 import { PROJECT_STATS_DATA } from '@/data/project-stats/project-stats.data'
 
 export function ProjectStats() {

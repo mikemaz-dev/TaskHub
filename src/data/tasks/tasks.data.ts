@@ -357,7 +357,7 @@ export const TASKS_DATA: ITask[] = [
 			{
 				id: 1,
 				title: 'Set up documentation framework',
-				isCompleted: false
+				isCompleted: true
 			},
 			{
 				id: 2,
@@ -372,7 +372,7 @@ export const TASKS_DATA: ITask[] = [
 			{
 				id: 4,
 				title: 'Add interactive examples',
-				isCompleted: false
+				isCompleted: true
 			},
 			{
 				id: 5,
@@ -399,12 +399,12 @@ export const TASKS_DATA: ITask[] = [
 			{
 				id: 2,
 				title: 'Implement form validation',
-				isCompleted: false
+				isCompleted: true
 			},
 			{
 				id: 3,
 				title: 'Add configuration persistence',
-				isCompleted: false
+				isCompleted: true
 			}
 		]
 	}

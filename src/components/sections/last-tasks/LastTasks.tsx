@@ -1,5 +1,5 @@
 import { SectionHeading } from '@/components/ui/SectionHeading'
-import { TaskItem } from '@/components/ui/TaskItem'
+import { TaskItem } from '@/components/ui/task-item/TaskItem'
 
 import { TASKS_DATA } from '@/data/tasks/tasks.data'
 
@@ -18,12 +18,6 @@ export function LastTasks() {
 						<TaskItem
 							key={task.id}
 							task={task}
-							icon={
-								<task.icon
-									size={20}
-									absoluteStrokeWidth
-								/>
-							}
 						/>
 					)
 				})}

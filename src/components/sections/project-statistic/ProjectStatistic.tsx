@@ -14,7 +14,7 @@ const DynamicProjectStatisticChart = dynamic(
 	() => import('./ProjectStatisticChart').then(mod => mod.ProjectStatisticChart),
 	{
 		ssr: false,
-		loading: () => <SkeletonLoader className='h-88 w-190' />
+		loading: () => <SkeletonLoader className='h-88 w-185' />
 	}
 )
 
@@ -40,9 +40,7 @@ export function ProjectStatistic() {
 					onSelect={handlePeriodChange}
 				/>
 			</div>
-			<div>
-				<DynamicProjectStatisticChart period={selectedPeriod} />
-			</div>
+			<DynamicProjectStatisticChart period={selectedPeriod} />
 		</div>
 	)
 }
