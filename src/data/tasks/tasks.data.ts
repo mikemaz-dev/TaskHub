@@ -30,7 +30,7 @@ export const TASKS_DATA: ITask[] = [
 			{
 				id: 1,
 				title: 'Create theme toggle functionality',
-				isCompleted: false
+				isCompleted: true
 			}
 		]
 	},
@@ -120,7 +120,7 @@ export const TASKS_DATA: ITask[] = [
 			{
 				id: 3,
 				title: 'Deploy to staging',
-				isCompleted: false
+				isCompleted: true
 			}
 		]
 	},
@@ -146,7 +146,7 @@ export const TASKS_DATA: ITask[] = [
 			{
 				id: 2,
 				title: 'Create typography scale',
-				isCompleted: true
+				isCompleted: false
 			},
 			{
 				id: 3,
@@ -213,7 +213,7 @@ export const TASKS_DATA: ITask[] = [
 			{
 				id: 2,
 				title: 'Optimize images and assets',
-				isCompleted: false
+				isCompleted: true
 			},
 			{
 				id: 3,
@@ -254,7 +254,7 @@ export const TASKS_DATA: ITask[] = [
 			{
 				id: 3,
 				title: 'Implement message persistence',
-				isCompleted: false
+				isCompleted: true
 			},
 			{
 				id: 4,
@@ -272,7 +272,7 @@ export const TASKS_DATA: ITask[] = [
 		id: 9,
 		icon: Calendar,
 		title: 'Event Management System',
-		dueDate: new Date(new Date().getTime() + 16 * 24 * 60 * 60 * 1000),
+		dueDate: new Date(new Date().getTime() + 6 * 24 * 60 * 60 * 1000),
 		comments: [
 			'Include calendar integration',
 			'Add reminder notifications',
@@ -362,7 +362,7 @@ export const TASKS_DATA: ITask[] = [
 			{
 				id: 2,
 				title: 'Write API documentation',
-				isCompleted: false
+				isCompleted: true
 			},
 			{
 				id: 3,

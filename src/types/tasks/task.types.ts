@@ -12,3 +12,5 @@ export interface ITask extends Omit<ISubTask, 'isCompleted'> {
 	links: string[]
 	subTasks: ISubTask[]
 }
+
+export type TFilterTasks = 'all' | 'done' | 'in-progress' | 'upcoming'

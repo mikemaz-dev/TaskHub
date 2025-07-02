@@ -41,7 +41,7 @@ export function TaskItemProgress({ task }: { task: ITask }) {
 						'bg-teal-500': progressPercentage === 100
 					}
 				)}
-				initial={{ width: 20, opacity: 0 }}
+				initial={{ width: 0, opacity: 0 }}
 				animate={{ width: `${progressPercentage}%`, opacity: 1 }}
 				transition={{
 					duration: 1.5,
