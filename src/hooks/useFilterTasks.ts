@@ -1,33 +1,55 @@
 import { useMemo, useState } from 'react'
 
 import { TASKS_DATA } from '@/data/tasks/tasks.data'
-import type { TFilterTasks } from '@/types/tasks/task.types'
+import type { TFilterTasks, TSortingTasks } from '@/types/tasks/task.types'
+
+type SortOrder = TSortingTasks
 
 export const useFilterTasks = () => {
 	const [activeFilter, setActiveFilter] = useState<TFilterTasks>('all')
+	const [sortOrder, setSortOrder] = useState<SortOrder>('none')
 
 	const lastTasks = TASKS_DATA.slice(-3)
 
 	const filteredTasks = useMemo(() => {
-		if (activeFilter === 'all') return lastTasks
+		let filtered = lastTasks
 
-		return lastTasks.filter(task => {
-			const completedSubtasks = task.subTasks.filter(subTask => subTask.isCompleted).length
-			const totalSubTasks = task.subTasks.length
+		if (activeFilter !== 'all') {
 			const today = new Date()
 			const sevenDaysFromNow = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000)
 
-			if (activeFilter === 'done') {
-				return totalSubTasks && completedSubtasks === totalSubTasks
-			} else if (activeFilter === 'in-progress') {
-				return completedSubtasks < totalSubTasks
-			} else if (activeFilter === 'upcoming') {
-				return task.dueDate >= today && task.dueDate <= sevenDaysFromNow
-			}
+			filtered = lastTasks.filter(task => {
+				switch (activeFilter) {
+					case 'done':
+						return task.subTasks.length > 0 && task.subTasks.every(subTask => subTask.isCompleted)
 
-			return false
-		})
-	}, [lastTasks, activeFilter])
+					case 'in-progress':
+						return task.subTasks.length > 0 && task.subTasks.some(subTask => !subTask.isCompleted)
+
+					case 'upcoming':
+						return task.dueDate >= today && task.dueDate <= sevenDaysFromNow
+
+					default:
+						return false
+				}
+			})
+		}
+
+		if (sortOrder !== 'none') {
+			filtered = [...filtered].sort((a, b) => {
+				const dateA = new Date(a.dueDate).getTime()
+				const dateB = new Date(b.dueDate).getTime()
+
+				if (sortOrder === 'asc') {
+					return dateA - dateB
+				} else {
+					return dateB - dateA
+				}
+			})
+		}
+
+		return filtered
+	}, [lastTasks, activeFilter, sortOrder])
 
 	const getFilterButtonClass = (filterType: TFilterTasks) => {
 		const baseClass =
@@ -38,10 +60,24 @@ export const useFilterTasks = () => {
 		return `${baseClass} ${activeFilter === filterType ? activeClass : inactiveClass}`
 	}
 
+	const getSortLabel = () => {
+		switch (sortOrder) {
+			case 'asc':
+				return 'Earliest First'
+			case 'desc':
+				return 'Latest First'
+			default:
+				return 'Sort by Deadline'
+		}
+	}
+
 	return {
 		activeFilter,
 		filteredTasks,
+		sortOrder,
 		setActiveFilter,
-		getFilterButtonClass
+		getFilterButtonClass,
+		setSortOrder,
+		getSortLabel
 	}
 }

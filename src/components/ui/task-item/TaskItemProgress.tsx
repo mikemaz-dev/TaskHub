@@ -1,3 +1,5 @@
+'use client'
+
 import { Check } from 'lucide-react'
 import { m } from 'motion/react'
 import { useMemo } from 'react'
@@ -30,26 +32,29 @@ export function TaskItemProgress({ task }: { task: ITask }) {
 		return <span className='text-sm font-semibold select-none'>{progressPercentage}%</span>
 	}, [progressPercentage])
 
+	const displayWidth = progressPercentage === 0 ? 18 : progressPercentage
+
 	return (
-		<div className='w-full h-12 dark:bg-neutral-200/20 bg-gray-400/18 rounded-full '>
+		<div className='w-full h-12 dark:bg-neutral-200/20 bg-gray-400/18 rounded-full relative'>
 			<m.div
 				className={cn(
 					'h-12 flex items-center justify-center text-neutral-100 rounded-full relative overflow-hidden',
 					{
-						'bg-indigo-500': progressPercentage <= 50,
-						'bg-amber-500': progressPercentage >= 70,
+						'bg-gray-400 dark:bg-neutral-400': progressPercentage === 0,
+						'bg-indigo-500': progressPercentage > 0 && progressPercentage <= 50,
+						'bg-amber-500': progressPercentage > 50 && progressPercentage < 100,
 						'bg-teal-500': progressPercentage === 100
 					}
 				)}
 				initial={{ width: 0, opacity: 0 }}
-				animate={{ width: `${progressPercentage}%`, opacity: 1 }}
+				animate={{ width: `${displayWidth}%`, opacity: 1 }}
 				transition={{
 					duration: 1.5,
 					ease: 'easeInOut'
 				}}
-				style={{ width: `${progressPercentage}%` }}
+				style={{ width: `${displayWidth}%` }}
 			>
-				{progressPercentage && (
+				{progressPercentage > 0 && (
 					<m.div
 						className='absolute inset-0 opacity-15'
 						initial={{ scale: 1.5, x: '-10%' }}

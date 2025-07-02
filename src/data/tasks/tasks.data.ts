@@ -304,11 +304,12 @@ export const TASKS_DATA: ITask[] = [
 			}
 		]
 	},
+	// ✨ OPTIMIZED LAST 3 TASKS FOR PERFECT FILTERING & SORTING DEMO ✨
 	{
 		id: 10,
 		icon: Search,
 		title: 'Advanced Search and Filtering',
-		dueDate: new Date(new Date().getTime() + 8 * 24 * 60 * 60 * 1000),
+		dueDate: new Date(new Date().getTime() + 2 * 24 * 60 * 60 * 1000), // 2 days (Upcoming)
 		comments: [
 			'Implement full-text search',
 			'Add faceted search filters',
@@ -326,7 +327,7 @@ export const TASKS_DATA: ITask[] = [
 			{
 				id: 2,
 				title: 'Create search UI components',
-				isCompleted: false
+				isCompleted: true
 			},
 			{
 				id: 3,
@@ -336,7 +337,7 @@ export const TASKS_DATA: ITask[] = [
 			{
 				id: 4,
 				title: 'Add search result highlighting',
-				isCompleted: true
+				isCompleted: false
 			}
 		]
 	},
@@ -344,7 +345,7 @@ export const TASKS_DATA: ITask[] = [
 		id: 11,
 		icon: FileText,
 		title: 'Documentation & API Reference',
-		dueDate: new Date(new Date().getTime() + 25 * 24 * 60 * 60 * 1000),
+		dueDate: new Date(new Date().getTime() + 15 * 24 * 60 * 60 * 1000), // 15 days (Not upcoming)
 		comments: [
 			'Use interactive examples',
 			'Include code snippets',
@@ -385,7 +386,7 @@ export const TASKS_DATA: ITask[] = [
 		id: 12,
 		icon: Settings,
 		title: 'Application Configuration Panel',
-		dueDate: new Date(new Date().getTime() + 6 * 24 * 60 * 60 * 1000),
+		dueDate: new Date(new Date().getTime() + 4 * 24 * 60 * 60 * 1000), // 4 days (Upcoming)
 		comments: ['Include environment-specific settings', 'Add validation for config values'],
 		resources: ['', '', ''],
 		links: ['https://react-hook-form.com/', 'https://zod.dev/'],
@@ -394,17 +395,17 @@ export const TASKS_DATA: ITask[] = [
 			{
 				id: 1,
 				title: 'Design settings interface',
-				isCompleted: true
+				isCompleted: false
 			},
 			{
 				id: 2,
 				title: 'Implement form validation',
-				isCompleted: true
+				isCompleted: false
 			},
 			{
 				id: 3,
 				title: 'Add configuration persistence',
-				isCompleted: true
+				isCompleted: false
 			}
 		]
 	}
