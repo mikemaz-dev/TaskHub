@@ -9,7 +9,7 @@ interface ILastTasksFiltering {
 
 export function LastTasksFilters({ getFilterButtonClass, setActiveFilter }: ILastTasksFiltering) {
 	return (
-		<div className='px-1.5 py-1 flex items-center xs:grid xs:grid-cols-2 gap-1.5 bg-white rounded-2xl shadow-sm dark:bg-neutral-800'>
+		<div className='px-1.5 py-1 flex items-center xs:grid xs:grid-cols-2 gap-1.5 select-none bg-white rounded-2xl shadow-sm dark:bg-neutral-800'>
 			<button
 				className={getFilterButtonClass('all')}
 				onClick={() => setActiveFilter('all')}
