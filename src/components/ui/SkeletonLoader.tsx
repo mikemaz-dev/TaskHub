@@ -15,7 +15,7 @@ export function SkeletonLoader({ count = 1, className = '', style }: Props) {
 				<div
 					key={index}
 					className={cn(
-						'bg-neutral-400 opacity-15 rounded-2xl h-10 mb-2.5 animate-pulse',
+						'mb-2.5 h-10 animate-pulse rounded-2xl bg-neutral-400 opacity-15',
 						className
 					)}
 					style={style}

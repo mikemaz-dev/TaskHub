@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 
-import { TASKS_DATA } from '@/data/tasks/tasks.data'
+import { TASKS_DATA } from '@/data/tasks'
 import type { TFilterTasks, TSortingTasks } from '@/types/tasks/task.types'
 
 type SortOrder = TSortingTasks

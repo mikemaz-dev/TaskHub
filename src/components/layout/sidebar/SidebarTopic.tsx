@@ -11,7 +11,7 @@ interface SidebarTopicProps {
 export function SidebarTopic({ title, children, className }: SidebarTopicProps) {
 	return (
 		<div className={cn('flex flex-col gap-2.5', className)}>
-			<span className='opacity-60 font-medium dark:tex-white'>{title}</span>
+			<span className='dark:tex-white font-medium opacity-60'>{title}</span>
 			{children}
 		</div>
 	)

@@ -1,13 +1,12 @@
 import { AnimatePresence, m } from 'motion/react'
 
-import { LastTasksFilters } from '@/components/sections/last-tasks/LastTasksFilters'
-import { DropdownButton } from '@/components/ui/DropdownButton'
-import { SectionHeading } from '@/components/ui/SectionHeading'
-import { TaskItem } from '@/components/ui/task-item/TaskItem'
+import { LastTasksFilters } from '@/components/sections/last-tasks'
+import { DropdownButton, SectionHeading } from '@/components/ui'
+import { TaskCard } from '@/components/ui/task-card'
 
 import { useFilterTasks } from '@/hooks/useFilterTasks'
 
-import { TaskSortingOptions } from '@/data/tasks/task-sorting-options.data'
+import { TaskSortingOptions } from '@/data/tasks'
 
 export function LastTasks() {
 	const {
@@ -25,7 +24,7 @@ export function LastTasks() {
 			<div className='flex items-center justify-between md:flex-col md:items-start md:gap-3'>
 				<div className='flex items-end gap-1'>
 					<SectionHeading title='Last Tasks' />
-					<span className='opacity-50 text-xl'>({filteredTasks.length})</span>
+					<span className='text-xl opacity-50'>({filteredTasks.length})</span>
 				</div>
 				<div className='flex items-center gap-4 sm:flex-col sm:items-start'>
 					<LastTasksFilters
@@ -38,7 +37,7 @@ export function LastTasks() {
 					/>
 				</div>
 			</div>
-			<div className='grid gap-4 grid-cols-3 md:grid-cols-1 xl:grid-cols-3'>
+			<div className='grid grid-cols-3 gap-4 md:grid-cols-1 xl:grid-cols-3'>
 				<AnimatePresence mode='wait'>
 					{filteredTasks.length > 0 ? (
 						filteredTasks.map((task, index) => (
@@ -54,7 +53,7 @@ export function LastTasks() {
 								}}
 								layout
 							>
-								<TaskItem task={task} />
+								<TaskCard task={task} />
 							</m.div>
 						))
 					) : (
@@ -64,7 +63,7 @@ export function LastTasks() {
 							animate={{ opacity: 1, y: 0 }}
 							exit={{ opacity: 0, y: -20 }}
 							transition={{ duration: 0.3 }}
-							className='col-span-full text-center py-8 text-neutral-500 dark:text-neutral-400'
+							className='col-span-full py-8 text-center text-neutral-500 dark:text-neutral-400'
 						>
 							No tasks found for the selected filter.
 						</m.div>

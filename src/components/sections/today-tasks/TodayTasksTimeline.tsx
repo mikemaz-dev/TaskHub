@@ -8,8 +8,8 @@ export function TodayTasksTimeline() {
 					key={slot.hour}
 					className='flex flex-col items-center gap-2'
 				>
-					<span className='opacity-60 text-sm font-semibold'>{slot.time}</span>
-					<div className='w-px h-80 bg-blue-400' />
+					<span className='text-sm font-semibold opacity-60'>{slot.time}</span>
+					<div className='h-80 w-px bg-blue-400' />
 				</div>
 			))}
 		</div>

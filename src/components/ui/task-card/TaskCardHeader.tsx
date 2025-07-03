@@ -4,11 +4,11 @@ import { formatDueDate } from '@/utils/date.utl'
 
 import type { ITask } from '@/types/tasks/task.types'
 
-export function TaskItemHeader({ task }: { task: ITask }) {
+export function TaskCardHeader({ task }: { task: ITask }) {
 	return (
-		<div className='flex items-start justify-between 2xl:flex-col md:flex gap-2'>
+		<div className='flex items-start justify-between gap-2 md:flex 2xl:flex-col'>
 			<div className='flex items-start gap-2.5'>
-				<div className='p-4 rounded-full bg-blue-50 dark:bg-neutral-700 dark:text-blue-300 text-blue-500'>
+				<div className='rounded-full bg-blue-50 p-4 text-blue-500 dark:bg-neutral-700 dark:text-blue-300'>
 					<task.icon
 						size={20}
 						absoluteStrokeWidth
@@ -16,7 +16,7 @@ export function TaskItemHeader({ task }: { task: ITask }) {
 				</div>
 				<div className='flex flex-col gap-0.5'>
 					<h3 className='font-bold 2xl:text-sm'>{task.title}</h3>
-					<p className='text-sm mt-1 font-semibold opacity-80'>{formatDueDate(task.dueDate)}</p>
+					<p className='mt-1 text-sm font-semibold opacity-80'>{formatDueDate(task.dueDate)}</p>
 				</div>
 			</div>
 
@@ -28,12 +28,12 @@ export function TaskItemHeader({ task }: { task: ITask }) {
 						src={user.avatar ? user.avatar : '/images/default-avatar.png'}
 						width={32}
 						height={32}
-						className='rounded-full border border-white dark:border-neutral-600 shadow-sm'
+						className='rounded-full border border-white shadow-sm dark:border-neutral-600'
 						style={{ zIndex: 10 - index }}
 					/>
 				))}
 				{task.users.length > 3 && (
-					<div className='w-8 h-8 rounded-full bg-gray-200 border-2 border-white flex items-center justify-center text-xs font-medium text-gray-600'>
+					<div className='flex h-8 w-8 items-center justify-center rounded-full border-2 border-white bg-gray-200 text-xs font-medium text-gray-600'>
 						+{task.users.length - 3}
 					</div>
 				)}

@@ -17,7 +17,7 @@ export function Sidebar() {
 	}
 
 	return (
-		<aside className='bg-white/80 dark:bg-neutral-800 py-6 px-4 shadow-sm md:hidden lg:hidden xl:hidden whitespace-nowrap overflow-hidden'>
+		<aside className='overflow-hidden bg-white/80 px-4 py-6 whitespace-nowrap shadow-sm md:hidden lg:hidden xl:hidden dark:bg-neutral-800'>
 			<div className='flex flex-col gap-5'>
 				<SidebarTopic title='Account'>
 					<ProfileCard />

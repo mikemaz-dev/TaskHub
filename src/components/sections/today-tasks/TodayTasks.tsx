@@ -3,7 +3,7 @@ import { TodayTasksTimeline } from '@/components/sections/today-tasks/TodayTasks
 
 export function TodayTasks() {
 	return (
-		<div className='p-5 flex flex-col gap-6 bg-white dark:bg-neutral-800 rounded-3xl shadow-sm'>
+		<div className='flex flex-col gap-6 rounded-3xl bg-white p-5 shadow-sm dark:bg-neutral-800'>
 			<TodayTasksHeader />
 			<TodayTasksTimeline />
 		</div>

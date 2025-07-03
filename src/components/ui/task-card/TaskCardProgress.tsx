@@ -8,7 +8,7 @@ import { cn } from '@/utils/cn.util'
 
 import type { ITask } from '@/types/tasks/task.types'
 
-export function TaskItemProgress({ task }: { task: ITask }) {
+export function TaskCardProgress({ task }: { task: ITask }) {
 	const completedSubtasks = task.subTasks.filter(subtask => subtask.isCompleted).length
 	const totalSubtasks = task.subTasks.length
 	const progressPercentage =
@@ -18,7 +18,7 @@ export function TaskItemProgress({ task }: { task: ITask }) {
 		if (progressPercentage === 100) {
 			return (
 				<div className='flex items-center gap-1.5'>
-					<div className='w-4 h-4 flex items-center justify-center rounded-full bg-white text-white select-none'>
+					<div className='flex h-4 w-4 items-center justify-center rounded-full bg-white text-white select-none'>
 						<Check
 							size={10}
 							absoluteStrokeWidth
@@ -35,10 +35,10 @@ export function TaskItemProgress({ task }: { task: ITask }) {
 	const displayWidth = progressPercentage === 0 ? 18 : progressPercentage
 
 	return (
-		<div className='w-full h-12 dark:bg-neutral-200/20 bg-gray-400/18 rounded-full relative'>
+		<div className='relative h-12 w-full rounded-full bg-gray-400/18 dark:bg-neutral-200/20'>
 			<m.div
 				className={cn(
-					'h-12 flex items-center justify-center text-neutral-100 rounded-full relative overflow-hidden',
+					'relative flex h-12 items-center justify-center overflow-hidden rounded-full text-neutral-100',
 					{
 						'bg-gray-400 dark:bg-neutral-400': progressPercentage === 0,
 						'bg-indigo-500': progressPercentage > 0 && progressPercentage <= 50,
@@ -65,7 +65,7 @@ export function TaskItemProgress({ task }: { task: ITask }) {
 						}}
 					>
 						<div
-							className='w-full h-full rounded-full'
+							className='h-full w-full rounded-full'
 							style={{
 								backgroundImage:
 									'repeating-linear-gradient(-45deg, transparent, transparent 8px, white 8px, white 16px)'

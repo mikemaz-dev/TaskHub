@@ -16,31 +16,31 @@ const DynamicThemeToggle = dynamic(
 
 export function Header() {
 	return (
-		<div className='flex items-center justify-between mt-6 md:flex-col md:gap-4 md:items-start'>
-			<div className='flex items-center justify-between w-full'>
+		<div className='mt-6 flex items-center justify-between md:flex-col md:items-start md:gap-4'>
+			<div className='flex w-full items-center justify-between'>
 				<div className='flex items-center gap-2.5'>
 					<button>
 						<PanelLeftOpen
-							className='hidden md:block lg:block xl:block opacity-60  transition-opacity'
+							className='hidden opacity-60 transition-opacity md:block lg:block xl:block'
 							absoluteStrokeWidth
 						/>
 					</button>
 					<Heading>Dashboard</Heading>
 				</div>
-				<div className='hidden md:flex items-center gap-3'>
-					<button className='p-2 xl:block rounded-full bg-white shadow-sm cursor-pointer dark:bg-neutral-800 hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-colors duration-200'>
+				<div className='hidden items-center gap-3 md:flex'>
+					<button className='cursor-pointer rounded-full bg-white p-2 shadow-sm transition-colors duration-200 hover:bg-neutral-300 xl:block dark:bg-neutral-800 dark:hover:bg-neutral-700'>
 						<MessageCircleMore size={20} />
 					</button>
 					<DynamicThemeToggle />
 				</div>
 			</div>
-			<div className='flex items-center justify-center md:justify-between md:w-full gap-2'>
+			<div className='flex items-center justify-center gap-2 md:w-full md:justify-between'>
 				<SearchField
 					value=''
 					onChange={() => {}}
 				/>
-				<div className='md:hidden flex items-center justify-center gap-2'>
-					<button className='p-2 rounded-full hidden xl:block bg-white shadow-sm cursor-pointer dark:bg-neutral-800 hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-colors duration-200'>
+				<div className='flex items-center justify-center gap-2 md:hidden'>
+					<button className='hidden cursor-pointer rounded-full bg-white p-2 shadow-sm transition-colors duration-200 hover:bg-neutral-300 xl:block dark:bg-neutral-800 dark:hover:bg-neutral-700'>
 						<MessageCircleMore size={20} />
 					</button>
 					<DynamicThemeToggle />

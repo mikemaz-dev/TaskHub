@@ -6,7 +6,7 @@ import { Content } from './content/Content'
 
 export function Layout({ children }: PropsWithChildren) {
 	return (
-		<main className='grid grid-cols-[275px_1fr] xl:grid-cols-none overflow-y-hidden h-screen'>
+		<main className='grid h-screen grid-cols-[275px_1fr] overflow-y-hidden xl:grid-cols-none'>
 			<Sidebar />
 			<Content>{children}</Content>
 		</main>

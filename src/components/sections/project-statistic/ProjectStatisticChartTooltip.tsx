@@ -15,7 +15,7 @@ export function ProjectStatisticChartTooltip({ active, payload }: CustomTooltipP
 		const data = payload[0]
 
 		return (
-			<div className='bg-purple-500 text-white px-3.5 py-1.5 rounded-3xl shadow-lg border-0 relative'>
+			<div className='relative rounded-3xl border-0 bg-purple-500 px-3.5 py-1.5 text-white shadow-lg'>
 				<div className='text-sm font-medium'>
 					{data.value} {data.dataKey === 'projectCount' ? 'Projects' : data.name || 'Items'}
 				</div>

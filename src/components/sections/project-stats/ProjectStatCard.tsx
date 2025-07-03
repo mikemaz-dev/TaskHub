@@ -11,10 +11,10 @@ interface IProjectStatCard {
 
 export function ProjectStatCard({ projectStat }: IProjectStatCard) {
 	return (
-		<div className={cn(projectStat.bgColor, 'rounded-3xl p-6 overflow-hidden')}>
+		<div className={cn(projectStat.bgColor, 'overflow-hidden rounded-3xl p-6')}>
 			<div className='flex items-center justify-between'>
 				<div className='flex flex-col'>
-					<span className='text-5xl font-semibold mb-1'>
+					<span className='mb-1 text-5xl font-semibold'>
 						{projectStat.id === 3 ? FormatMinutes(projectStat.number) : projectStat.number}
 					</span>
 					<span className='font-medium'>{projectStat.label}</span>

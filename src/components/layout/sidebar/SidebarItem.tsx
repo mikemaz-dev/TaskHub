@@ -10,10 +10,10 @@ export function SidebarItem({ item, isActive }: { item: IMenu; isActive: boolean
 			<Link
 				href={item.href}
 				className={cn(
-					'flex items-center rounded-2xl p-2.5 text-gray-500 dark:text-neutral-100 cursor-pointer select-none group  transition-colors duration-200',
+					'group flex cursor-pointer items-center rounded-2xl p-2.5 text-gray-500 transition-colors duration-200 select-none dark:text-neutral-100',
 					{
 						'flex justify-between': item.name === 'Messages',
-						'bg-primary text-white pointer-events-none': isActive
+						'bg-primary pointer-events-none text-white': isActive
 					}
 				)}
 			>
@@ -23,12 +23,12 @@ export function SidebarItem({ item, isActive }: { item: IMenu; isActive: boolean
 						absoluteStrokeWidth={true}
 						className='group-hover:text-primary opacity-90 transition-colors'
 					/>
-					<span className='font-medium  group-hover:text-primary transition-colors'>
+					<span className='group-hover:text-primary font-medium transition-colors'>
 						{item.name}
 					</span>
 				</div>
 				{item.name === 'Messages' && (
-					<span className='bg-purple-300 text-purple-600 text-sm font-medium px-2.5 rounded-full'>
+					<span className='rounded-full bg-purple-300 px-2.5 text-sm font-medium text-purple-600'>
 						4
 					</span>
 				)}

@@ -8,7 +8,7 @@ export function TodayTasksHeader() {
 	const remainingUsers = Math.max(0, USERS_DATA.length - 4)
 
 	return (
-		<div className='flex items-center justify-between w-full'>
+		<div className='flex w-full items-center justify-between'>
 			<SectionHeading title='Today Tasks' />
 			<div className='flex items-center -space-x-3.5'>
 				{USERS_DATA.slice(0, 4).map((user, index) => (
@@ -18,12 +18,12 @@ export function TodayTasksHeader() {
 						alt={user.name}
 						width={50}
 						height={50}
-						className='rounded-full border-2 border-white dark:border-neutral-800 shadow-sm'
+						className='rounded-full border-2 border-white shadow-sm dark:border-neutral-800'
 						style={{ zIndex: 10 - index }}
 					/>
 				))}
 				{remainingUsers && (
-					<div className='size-12 z-10 bg-violet-400 rounded-full border-2 border-neutral-100 dark:border-transparent flex items-center justify-center text-white text-lg shadow-sm'>
+					<div className='z-10 flex size-12 items-center justify-center rounded-full border-2 border-neutral-100 bg-violet-400 text-lg text-white shadow-sm dark:border-transparent'>
 						+ {remainingUsers}
 					</div>
 				)}

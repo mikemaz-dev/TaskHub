@@ -8,7 +8,7 @@ import {
 	YAxis
 } from 'recharts'
 
-import { ProjectStatisticChartTooltip } from '@/components/sections/project-statistic/ProjectStatisticChartTooltip'
+import { ProjectStatisticChartTooltip } from '@/components/sections/project-statistic'
 
 import { getProjectStatisticData } from '@/utils/getProjectStatisticData'
 

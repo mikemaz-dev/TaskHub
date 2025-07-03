@@ -50,8 +50,8 @@ export function DropdownButton({ placeholder, items, onSelect }: IDropdownButton
 			<button
 				onClick={() => setIsOpen(!isOpen)}
 				className={cn(
-					'flex items-center gap-2 border-2 border-primary/45 bg-white dark:bg-neutral-800 px-3 py-1 cursor-pointer hover:border-transparent hover:bg-primary hover:text-white hover:shadow-sm dark:hover:bg-primary transition-all duration-300 rounded-full',
-					isOpen && 'bg-white dark:bg-primary dark:border-transparent shadow-sm border-transparent'
+					'border-primary/45 hover:bg-primary dark:hover:bg-primary flex cursor-pointer items-center gap-2 rounded-full border-2 bg-white px-3 py-1 transition-all duration-300 hover:border-transparent hover:text-white hover:shadow-sm dark:bg-neutral-800',
+					isOpen && 'dark:bg-primary border-transparent bg-white shadow-sm dark:border-transparent'
 				)}
 				aria-haspopup={true}
 				aria-expanded={isOpen}
@@ -72,7 +72,7 @@ export function DropdownButton({ placeholder, items, onSelect }: IDropdownButton
 			<AnimatePresence>
 				{isOpen && (
 					<m.div
-						className='absolute top-full right-0 sm:left-0 mt-2 w-full min-w-[200px] sm:min-w-[150px] bg-white dark:bg-neutral-800 border border-gray-200 dark:border-neutral-700 rounded-2xl shadow-lg z-50'
+						className='absolute top-full right-0 z-50 mt-2 w-full min-w-[200px] rounded-2xl border border-gray-200 bg-white shadow-lg sm:left-0 sm:min-w-[150px] dark:border-neutral-700 dark:bg-neutral-800'
 						initial={dropdownAnimations.initial}
 						animate={dropdownAnimations.animate}
 						exit={dropdownAnimations.exit}
@@ -83,7 +83,7 @@ export function DropdownButton({ placeholder, items, onSelect }: IDropdownButton
 							<button
 								key={index}
 								onClick={() => handleItemClick(item)}
-								className='w-full text-left text-lg font-medium md:text-base px-4 py-1.5 cursor-pointer rounded-2xl border-2 border-transparent hover:border-primary/85 hover:bg-primary/16 transition-colors duration-300'
+								className='hover:border-primary/85 hover:bg-primary/16 w-full cursor-pointer rounded-2xl border-2 border-transparent px-4 py-1.5 text-left text-lg font-medium transition-colors duration-300 md:text-base'
 							>
 								{item.label}
 							</button>

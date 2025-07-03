@@ -2,7 +2,7 @@ import { Link2, Image as LucideImage, MessageSquareText } from 'lucide-react'
 
 import type { ITask } from '@/types/tasks/task.types'
 
-export function TaskItemStats({ task }: { task: ITask }) {
+export function TaskCardStats({ task }: { task: ITask }) {
 	return (
 		<div className='flex items-center gap-4'>
 			<div className='flex items-center justify-center gap-1'>
