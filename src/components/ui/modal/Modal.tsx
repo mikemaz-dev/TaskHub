@@ -70,7 +70,7 @@ export function Modal({ children, onClose, isOpen = true }: IModal) {
 					onClick={handleClose}
 				>
 					<m.div
-						className='relative w-[90%] max-w-2xl rounded-3xl border border-neutral-200 bg-white p-6 shadow-lg dark:border-neutral-600 dark:bg-neutral-800'
+						className='relative w-[90%] max-w-md rounded-3xl border border-neutral-200 bg-white p-6 shadow-lg dark:border-neutral-600 dark:bg-neutral-800'
 						initial={{ opacity: 0, scale: 0.95, y: -20 }}
 						animate={{ opacity: 1, scale: 1, y: 0 }}
 						exit={{ opacity: 0, scale: 0.95, y: -20 }}

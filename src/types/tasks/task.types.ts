@@ -15,3 +15,5 @@ export interface ITask extends Omit<ISubTask, 'isCompleted'> {
 
 export type TFilterTasks = 'all' | 'done' | 'in-progress' | 'upcoming'
 export type TSortingTasks = 'none' | 'asc' | 'desc'
+
+export type TTaskFormData = Pick<ITask, 'title' | 'icon' | 'dueDate'>

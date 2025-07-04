@@ -42,7 +42,7 @@ export function IconSelector({ selectedIcon, onSelect, placeholder }: IIconSelec
 	return (
 		<div className='relative'>
 			<Button
-				variant='secondary'
+				variant='outline'
 				type='button'
 				onClick={() => setIsOpen(!isOpen)}
 				className='w-full'

@@ -20,8 +20,8 @@ export function TaskCardActions({ task }: { task: ITask }) {
 				/>
 			)}
 			<Button
-				variant='primary'
-				className='rounded-full p-2'
+				variant='default'
+				className='rounded-full'
 			>
 				<Plus size={18} />
 			</Button>
