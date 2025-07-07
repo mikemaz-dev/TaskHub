@@ -20,7 +20,7 @@ export function LastTasks() {
 	} = useFilterTasks()
 
 	return (
-		<div className='flex flex-col gap-4'>
+		<div className='flex flex-col gap-5.5'>
 			<div className='flex items-center justify-between md:flex-col md:items-start md:gap-3'>
 				<div className='flex items-end gap-1'>
 					<SectionHeading title='Last Tasks' />

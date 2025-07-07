@@ -3,6 +3,7 @@
 import { Pencil, Plus } from 'lucide-react'
 import { useState } from 'react'
 
+import { AddSubtaskModal } from '@/components/modals/subtask/AddSubtaskModal'
 import { Button } from '@/components/ui'
 import { EditTaskModal } from '@/components/ui/task-card'
 
@@ -10,6 +11,7 @@ import type { ITask } from '@/types/tasks/task.types'
 
 export function TaskCardActions({ task }: { task: ITask }) {
 	const [isEditTaskModalOpen, setIsEditTaskModalOpen] = useState(false)
+	const [isAddSubtaskModalOpen, setIsAddSubtaskModalOpen] = useState(false)
 
 	return (
 		<div className='relative flex items-center gap-2.5'>
@@ -19,9 +21,16 @@ export function TaskCardActions({ task }: { task: ITask }) {
 					setIsOpen={setIsEditTaskModalOpen}
 				/>
 			)}
+			{isAddSubtaskModalOpen && (
+				<AddSubtaskModal
+					setIsOpen={setIsAddSubtaskModalOpen}
+					taskId={task.id}
+				/>
+			)}
 			<Button
 				variant='default'
 				className='rounded-full'
+				onClick={() => setIsAddSubtaskModalOpen(true)}
 			>
 				<Plus size={18} />
 			</Button>

@@ -1,6 +1,9 @@
+'use client'
+
 import { useMemo, useState } from 'react'
 
-import { TASKS_DATA } from '@/data/tasks'
+import { useTaskStore } from '@/store/task-store.store'
+
 import type { TFilterTasks, TSortingTasks } from '@/types/tasks/task.types'
 
 type SortOrder = TSortingTasks
@@ -9,7 +12,8 @@ export const useFilterTasks = () => {
 	const [activeFilter, setActiveFilter] = useState<TFilterTasks>('all')
 	const [sortOrder, setSortOrder] = useState<SortOrder>('none')
 
-	const lastTasks = TASKS_DATA.slice(-3)
+	const { tasks } = useTaskStore()
+	const lastTasks = tasks.slice(-3)
 
 	const filteredTasks = useMemo(() => {
 		let filtered = lastTasks
@@ -22,13 +26,10 @@ export const useFilterTasks = () => {
 				switch (activeFilter) {
 					case 'done':
 						return task.subTasks.length > 0 && task.subTasks.every(subTask => subTask.isCompleted)
-
 					case 'in-progress':
 						return task.subTasks.length > 0 && task.subTasks.some(subTask => !subTask.isCompleted)
-
 					case 'upcoming':
 						return task.dueDate >= today && task.dueDate <= sevenDaysFromNow
-
 					default:
 						return false
 				}
@@ -39,7 +40,6 @@ export const useFilterTasks = () => {
 			filtered = [...filtered].sort((a, b) => {
 				const dateA = new Date(a.dueDate).getTime()
 				const dateB = new Date(b.dueDate).getTime()
-
 				if (sortOrder === 'asc') {
 					return dateA - dateB
 				} else {
@@ -53,10 +53,9 @@ export const useFilterTasks = () => {
 
 	const getFilterButtonClass = (filterType: TFilterTasks) => {
 		const baseClass =
-			'px-3.5 py-1 flex items-center justify-center xs:justify-start font-medium gap-1.5 rounded-xl cursor-pointer transition-colors duration-300'
+			'px-3.5 py-1 flex items-center justify-center xs:justify-start font-medium gap-1.5 rounded-lg cursor-pointer transition-colors duration-300'
 		const activeClass = 'pointer-events-none bg-primary text-white'
 		const inactiveClass = 'hover:bg-primary hover:text-white dark:hover:bg-neutral-750'
-
 		return `${baseClass} ${activeFilter === filterType ? activeClass : inactiveClass}`
 	}
 

@@ -6,8 +6,9 @@ import { Layout } from '@/components/layout/Layout'
 
 import { Providers } from '@/providers/Providers'
 
+import { SITE_NAME } from '@/constants/constants'
+
 import './globals.css'
-import { SITE_NAME } from '@/constants'
 
 const manrope = Manrope({
 	variable: '--font-sans',

@@ -8,7 +8,7 @@
 }
 
 body {
-	@apply text-[#272727] dark:bg-[#0a0a0f] dark:text-white;
+	@apply text-foreground dark:bg-background dark:text-white;
 	color: #272727;
 	background-color: #f8f7ff;
 	min-width: 320px;
@@ -79,8 +79,8 @@ body {
 	--radius: 0.75rem;
 
 	/* 🎨 Beautiful Purple Theme - Light Mode */
-	--background: #fafafa;
-	--foreground: #1a1a1a;
+	--background: #f6f6f6;
+	--foreground: #262626;
 
 	--card: #ffffff;
 	--card-foreground: #1a1a1a;
@@ -139,7 +139,7 @@ body {
 	--primary: #725cee;
 	--primary-foreground: #ffffff;
 
-	--secondary: #262626;
+	--secondary: #444444;
 	--secondary-foreground: #d4d4d8;
 
 	--muted: #171717;
@@ -152,7 +152,7 @@ body {
 	--destructive-foreground: #ffffff;
 
 	--border: #262626;
-	--input: #171717;
+	--input: #474747;
 	--ring: #725cee;
 
 	/* 📊 Chart Colors - Neutral with Purple */

@@ -17,7 +17,7 @@ export function ProjectItem({ name, color, className }: ProjectItemProps) {
 			)}
 		>
 			<div className='flex items-center gap-2'>
-				<div className={cn('h-4 w-4 rounded-sm', color, className)} />
+				<div className={cn('h-4 w-4 rounded-xs', color, className)} />
 				<span
 					className={cn(
 						'font-medium text-gray-500 dark:text-neutral-200',

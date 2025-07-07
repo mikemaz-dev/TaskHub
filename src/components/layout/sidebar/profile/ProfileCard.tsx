@@ -4,7 +4,7 @@ import { PROFILE } from '@/data/sidebar/profile.data'
 
 export function ProfileCard() {
 	return (
-		<div className='flex items-center justify-between rounded-2xl bg-gray-100 p-2 dark:bg-black/25'>
+		<div className='bg-background flex items-center justify-between rounded-3xl px-2.5 py-1.5'>
 			<div className='flex items-center gap-2'>
 				{PROFILE.avatar ? (
 					<img
@@ -17,15 +17,13 @@ export function ProfileCard() {
 				)}
 				<div className='flex flex-col'>
 					<p className='font-bold'>{PROFILE.name}</p>
-					<p className='truncate text-sm font-medium text-gray-500 dark:text-neutral-500'>
-						{PROFILE.email}
-					</p>
+					<p className='text-foreground truncate text-sm font-medium opacity-60'>{PROFILE.email}</p>
 				</div>
 			</div>
 			<button className='cursor-pointer'>
 				<ChevronDown
 					size={20}
-					className='text-gray-500 transition-colors duration-200 hover:text-gray-700 dark:hover:text-neutral-300'
+					className='text-foreground opacity-60 transition-opacity duration-300 hover:opacity-100'
 				/>
 			</button>
 		</div>

@@ -17,15 +17,11 @@ import {
 	PopoverTrigger
 } from '@/components/ui'
 
-import type { TTaskFormData } from '@/types/tasks/task.types'
+import type { TTaskFormData } from '@/zod-schemes/task.zod'
 
-export function EditTaskModalContent({
-	form
-}: {
-	form: UseFormReturn<TTaskFormData, any, undefined>
-}) {
+export function EditTaskModalContent({ form }: { form: UseFormReturn<TTaskFormData> }) {
 	return (
-		<div className='flex flex-col gap-7'>
+		<div className='flex flex-col gap-6'>
 			<FormField
 				control={form.control}
 				name='title'
