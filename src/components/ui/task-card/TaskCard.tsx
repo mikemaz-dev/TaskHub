@@ -9,11 +9,12 @@ import type { ITask } from '@/types/tasks/task.types'
 
 interface ILastTasksItem {
 	task: ITask
+	isTimeline?: boolean
 }
 
-export function TaskCard({ task }: ILastTasksItem) {
+export function TaskCard({ task, isTimeline }: ILastTasksItem) {
 	return (
-		<div className='flex flex-col justify-between gap-3.5 overflow-hidden rounded-3xl bg-white p-4 pb-4 shadow-sm dark:bg-neutral-800'>
+		<div className='bg-card flex flex-col justify-between gap-3.5 overflow-hidden rounded-3xl p-4 pb-4 shadow-sm dark:bg-neutral-800'>
 			<div className='flex h-full flex-col justify-around gap-3.5'>
 				<TaskCardHeader task={task} />
 

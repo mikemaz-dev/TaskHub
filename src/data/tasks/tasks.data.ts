@@ -1,3 +1,4 @@
+import { setHours, setMinutes } from 'date-fns'
 import {
 	Calendar,
 	Code,
@@ -21,7 +22,11 @@ export const TASKS_DATA: ITask[] = [
 		id: 1,
 		icon: Plane,
 		title: 'Create Dashboard',
-		dueDate: new Date(new Date().getTime() + 5 * 24 * 60 * 60 * 1000),
+		dueDate: {
+			date: new Date(new Date().getTime() + 5 * 24 * 60 * 60 * 1000),
+			startTime: setMinutes(setHours(new Date(), 9), 0),
+			endTime: setMinutes(setHours(new Date(), 12), 30)
+		},
 		comments: ['First Comment', 'Second Comment', 'Third Comment'],
 		resources: ['', '', '', '', '', ''],
 		links: ['https://example.org', 'https://2example.com'],
@@ -38,7 +43,11 @@ export const TASKS_DATA: ITask[] = [
 		id: 2,
 		icon: Code,
 		title: 'Implement Authentication System',
-		dueDate: new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000),
+		dueDate: {
+			date: new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000),
+			startTime: setMinutes(setHours(new Date(), 10), 0),
+			endTime: setMinutes(setHours(new Date(), 16), 0)
+		},
 		comments: [
 			'Need to integrate OAuth',
 			'Consider using NextAuth.js',
@@ -69,7 +78,11 @@ export const TASKS_DATA: ITask[] = [
 		id: 3,
 		icon: Users,
 		title: 'User Management Interface',
-		dueDate: new Date(new Date().getTime() + 10 * 24 * 60 * 60 * 1000),
+		dueDate: {
+			date: new Date(new Date().getTime() + 10 * 24 * 60 * 60 * 1000),
+			startTime: setMinutes(setHours(new Date(), 8), 30),
+			endTime: setMinutes(setHours(new Date(), 11), 45)
+		},
 		comments: ['Include role-based permissions', 'Add user search functionality'],
 		resources: ['', '', '', ''],
 		links: ['https://ui.shadcn.com/docs/components/data-table'],
@@ -101,7 +114,11 @@ export const TASKS_DATA: ITask[] = [
 		id: 4,
 		icon: Database,
 		title: 'Database Schema Migration',
-		dueDate: new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000),
+		dueDate: {
+			date: new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000),
+			startTime: setMinutes(setHours(new Date(), 13), 0),
+			endTime: setMinutes(setHours(new Date(), 15), 30)
+		},
 		comments: ['Backup existing data first', 'Test migration on staging'],
 		resources: ['', ''],
 		links: ['https://prisma.io/docs/concepts/components/prisma-migrate'],
@@ -128,7 +145,11 @@ export const TASKS_DATA: ITask[] = [
 		id: 5,
 		icon: Palette,
 		title: 'UI/UX Design System',
-		dueDate: new Date(new Date().getTime() + 14 * 24 * 60 * 60 * 1000),
+		dueDate: {
+			date: new Date(new Date().getTime() + 14 * 24 * 60 * 60 * 1000),
+			startTime: setMinutes(setHours(new Date(), 9), 15),
+			endTime: setMinutes(setHours(new Date(), 17), 0)
+		},
 		comments: [
 			'Focus on accessibility',
 			'Create component library',
@@ -164,7 +185,11 @@ export const TASKS_DATA: ITask[] = [
 		id: 6,
 		icon: Shield,
 		title: 'Security Audit & Implementation',
-		dueDate: new Date(new Date().getTime() + 21 * 24 * 60 * 60 * 1000),
+		dueDate: {
+			date: new Date(new Date().getTime() + 21 * 24 * 60 * 60 * 1000),
+			startTime: setMinutes(setHours(new Date(), 11), 0),
+			endTime: setMinutes(setHours(new Date(), 14), 45)
+		},
 		comments: ['Run penetration testing', 'Implement rate limiting', 'Add CSRF protection'],
 		resources: ['', '', '', '', '', '', ''],
 		links: ['https://owasp.org/www-project-top-ten/', 'https://cheatsheetseries.owasp.org'],
@@ -196,7 +221,11 @@ export const TASKS_DATA: ITask[] = [
 		id: 7,
 		icon: Zap,
 		title: 'Performance Optimization',
-		dueDate: new Date(new Date().getTime() + 12 * 24 * 60 * 60 * 1000),
+		dueDate: {
+			date: new Date(new Date().getTime() + 12 * 24 * 60 * 60 * 1000),
+			startTime: setMinutes(setHours(new Date(), 14), 0),
+			endTime: setMinutes(setHours(new Date(), 17), 30)
+		},
 		comments: ['Focus on Core Web Vitals', 'Optimize bundle size', 'Implement caching strategies'],
 		resources: ['', '', ''],
 		links: [
@@ -231,7 +260,11 @@ export const TASKS_DATA: ITask[] = [
 		id: 8,
 		icon: MessageSquare,
 		title: 'Real-time Chat Feature',
-		dueDate: new Date(new Date().getTime() + 18 * 24 * 60 * 60 * 1000),
+		dueDate: {
+			date: new Date(new Date().getTime() + 18 * 24 * 60 * 60 * 1000),
+			startTime: setMinutes(setHours(new Date(), 10), 30),
+			endTime: setMinutes(setHours(new Date(), 13), 15)
+		},
 		comments: [
 			'Use WebSocket for real-time communication',
 			'Add emoji support',
@@ -272,7 +305,11 @@ export const TASKS_DATA: ITask[] = [
 		id: 9,
 		icon: Calendar,
 		title: 'Event Management System',
-		dueDate: new Date(new Date().getTime() + 6 * 24 * 60 * 60 * 1000),
+		dueDate: {
+			date: new Date(new Date().getTime() + 6 * 24 * 60 * 60 * 1000),
+			startTime: setMinutes(setHours(new Date(), 8), 0),
+			endTime: setMinutes(setHours(new Date(), 12), 0)
+		},
 		comments: [
 			'Include calendar integration',
 			'Add reminder notifications',
@@ -304,12 +341,15 @@ export const TASKS_DATA: ITask[] = [
 			}
 		]
 	},
-	// ✨ OPTIMIZED LAST 3 TASKS FOR PERFECT FILTERING & SORTING DEMO ✨
 	{
 		id: 10,
 		icon: Search,
 		title: 'Advanced Search and Filtering',
-		dueDate: new Date(new Date().getTime() + 2 * 24 * 60 * 60 * 1000), // 2 days (Upcoming)
+		dueDate: {
+			date: new Date(new Date().getTime() + 2 * 24 * 60 * 60 * 1000),
+			startTime: setMinutes(setHours(new Date(), 15), 0),
+			endTime: setMinutes(setHours(new Date(), 17), 30)
+		},
 		comments: [
 			'Implement full-text search',
 			'Add faceted search filters',
@@ -345,7 +385,11 @@ export const TASKS_DATA: ITask[] = [
 		id: 11,
 		icon: FileText,
 		title: 'Documentation & API Reference',
-		dueDate: new Date(new Date().getTime() + 15 * 24 * 60 * 60 * 1000), // 15 days (Not upcoming)
+		dueDate: {
+			date: new Date(new Date().getTime() + 15 * 24 * 60 * 60 * 1000),
+			startTime: setMinutes(setHours(new Date(), 12), 40),
+			endTime: setMinutes(setHours(new Date(), 15), 40)
+		},
 		comments: [
 			'Use interactive examples',
 			'Include code snippets',
@@ -386,7 +430,11 @@ export const TASKS_DATA: ITask[] = [
 		id: 12,
 		icon: Settings,
 		title: 'Application Configuration Panel',
-		dueDate: new Date(new Date().getTime() + 4 * 24 * 60 * 60 * 1000), // 4 days (Upcoming)
+		dueDate: {
+			date: new Date(new Date().getTime() + 4 * 24 * 60 * 60 * 1000),
+			startTime: setMinutes(setHours(new Date(), 10), 10),
+			endTime: setMinutes(setHours(new Date(), 12), 50)
+		},
 		comments: ['Include environment-specific settings', 'Add validation for config values'],
 		resources: ['', '', ''],
 		links: ['https://react-hook-form.com/', 'https://zod.dev/'],

@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react'
 
-import { useTaskStore } from '@/store/task-store.store'
+import { useTaskStore } from '@/store/task.store'
 
 import type { TFilterTasks, TSortingTasks } from '@/types/tasks/task.types'
 
@@ -29,7 +29,7 @@ export const useFilterTasks = () => {
 					case 'in-progress':
 						return task.subTasks.length > 0 && task.subTasks.some(subTask => !subTask.isCompleted)
 					case 'upcoming':
-						return task.dueDate >= today && task.dueDate <= sevenDaysFromNow
+						return task.dueDate.date >= today && task.dueDate.date <= sevenDaysFromNow
 					default:
 						return false
 				}
@@ -38,8 +38,8 @@ export const useFilterTasks = () => {
 
 		if (sortOrder !== 'none') {
 			filtered = [...filtered].sort((a, b) => {
-				const dateA = new Date(a.dueDate).getTime()
-				const dateB = new Date(b.dueDate).getTime()
+				const dateA = new Date(a.dueDate.date).getTime()
+				const dateB = new Date(b.dueDate.date).getTime()
 				if (sortOrder === 'asc') {
 					return dateA - dateB
 				} else {

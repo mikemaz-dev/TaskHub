@@ -16,7 +16,9 @@ export function TaskCardHeader({ task }: { task: ITask }) {
 				</div>
 				<div className='flex flex-col gap-0.5'>
 					<h3 className='font-bold 2xl:text-sm'>{task.title}</h3>
-					<p className='mt-1 text-sm font-semibold opacity-80'>{formatDueDate(task.dueDate)}</p>
+					<p className='mt-1 text-sm font-semibold opacity-80'>
+						{formatDueDate(task.dueDate.date)}
+					</p>
 				</div>
 			</div>
 

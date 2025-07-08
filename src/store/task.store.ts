@@ -1,3 +1,4 @@
+import isToday from 'dayjs'
 import { create } from 'zustand/react'
 
 import type { ITaskStore } from '@/store/interfaces/task-store.interface'
@@ -50,6 +51,12 @@ export const useTaskStore = create<ITaskStore>()(set => ({
 				return task
 			})
 			return { tasks: updatedTasks }
+		})
+	},
+
+	getTodayTask: tasks => {
+		return tasks.filter(task => {
+			return isToday(task.dueDate.date)
 		})
 	}
 }))

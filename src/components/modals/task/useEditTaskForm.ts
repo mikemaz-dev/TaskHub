@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
-import { useTaskStore } from '@/store/task-store.store'
+import { useTaskStore } from '@/store/task.store'
 
 import type { ITask } from '@/types/tasks/task.types'
 import { type TTaskFormData, TaskSchema } from '@/zod-schemes/task.zod'
@@ -20,6 +20,15 @@ export const useEditTaskForm = ({ task }: { task: ITask }) => {
 	const editTask = useTaskStore(state => state.editTask)
 
 	const onSubmit = (data: TTaskFormData) => {
+		if (data === task) {
+			toast.error('Please fill some data to task', {
+				id: 'empty-task-datas',
+				position: 'bottom-left',
+				duration: 3500
+			})
+			return null
+		}
+
 		editTask(task.id, {
 			title: data.title,
 			dueDate: data.dueDate,
