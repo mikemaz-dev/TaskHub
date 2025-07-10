@@ -3,8 +3,7 @@ import { Manrope } from 'next/font/google'
 import type { ReactNode } from 'react'
 
 import { Layout } from '@/components/layout/Layout'
-
-import { Providers } from '@/providers/Providers'
+import { Providers } from '@/components/layout/Providers'
 
 import { SITE_NAME } from '@/constants/constants'
 
@@ -39,9 +38,7 @@ export default function RootLayout({
 			suppressHydrationWarning
 		>
 			<body className={`${manrope.className} antialiased`}>
-				<Layout>
-					<Providers>{children}</Providers>
-				</Layout>
+				<Layout>{children}</Layout>
 			</body>
 		</html>
 	)

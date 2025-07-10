@@ -64,7 +64,7 @@ export const TASKS_DATA: ITask[] = [
 			},
 			{
 				id: 2,
-				title: 'Create login/register forms',
+				title: 'Create login/signup forms',
 				isCompleted: false
 			},
 			{

@@ -1,29 +1,50 @@
 'use client'
 
-import { usePathname } from 'next/navigation'
+import { LogOut } from 'lucide-react'
+import { usePathname, useRouter } from 'next/navigation'
 import { match } from 'path-to-regexp'
 
 import { ProfileCard, ProjectItem, SidebarItem, SidebarTopic } from '@/components/layout/sidebar'
 import type { IMenu } from '@/components/layout/sidebar/menu/menu.type'
+import { Button } from '@/components/ui'
 
 import { Pages } from '@/config/public-page.config'
+
+import { useAuthStore } from '@/store/auth.store'
 
 import { MAIN_MENU_DATA } from '@/data/sidebar/main-menu.data'
 import { PROJECTS } from '@/data/sidebar/projects.data'
 
 export function Sidebar() {
 	const pathName = usePathname()
+	const router = useRouter()
+
+	const logout = useAuthStore(state => state.logout)
 
 	const isActive = (sidebarItem: IMenu) => {
 		return !!match(sidebarItem.href)(pathName)
 	}
 
-	if (pathName === Pages.AUTH) return null
+	if (pathName === Pages.LOGIN || pathName === Pages.SIGNUP) return null
 
 	return (
 		<aside className='overflow-hidden bg-white/80 px-4 py-6 whitespace-nowrap shadow-sm md:hidden lg:hidden xl:hidden dark:bg-neutral-800'>
 			<div className='flex flex-col gap-5'>
-				<SidebarTopic title='Account'>
+				<SidebarTopic
+					title='Account'
+					rightSide={
+						<Button
+							variant='ghost'
+							size='sm'
+							onClick={() => {
+								logout()
+								router.push(Pages.DASHBOARD)
+							}}
+						>
+							<LogOut />
+						</Button>
+					}
+				>
 					<ProfileCard />
 				</SidebarTopic>
 

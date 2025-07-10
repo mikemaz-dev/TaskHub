@@ -4,9 +4,10 @@ import { ChevronDown } from 'lucide-react'
 import { AnimatePresence, m } from 'motion/react'
 import { useEffect, useRef, useState } from 'react'
 
+import { arrowAnimations, dropdownAnimations } from '@/components/animations/DropdownAnimations'
+
 import { cn } from '@/utils/cn.util'
 
-import { arrowAnimations, dropdownAnimations } from '@/animations/DropdownAnimations'
 import type { IDropdownItem } from '@/types/dropdown/dropdown-item.types'
 
 interface IDropdownButton {

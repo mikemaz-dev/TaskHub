@@ -1,10 +1,9 @@
 import { AnimatePresence, m } from 'motion/react'
 
 import { LastTasksFilters } from '@/components/sections/last-tasks'
+import { useFilterTasks } from '@/components/sections/last-tasks/useFilterTasks'
 import { DropdownButton, SectionHeading } from '@/components/ui'
 import { TaskCard } from '@/components/ui/task-card'
-
-import { useFilterTasks } from '@/hooks/useFilterTasks'
 
 import { TaskSortingOptions } from '@/data/tasks'
 

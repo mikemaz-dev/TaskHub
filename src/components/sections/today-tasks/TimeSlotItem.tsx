@@ -29,7 +29,7 @@ export function TimeSlotItem({ tasks, time }: ITimelineSlotsProps) {
 
 			<div
 				className={cn(
-					'h-80 w-0.5 bg-neutral-100 transition-colors duration-300',
+					'h-80 w-0.5 bg-neutral-100 transition-colors duration-300 dark:bg-neutral-700',
 					nowTime === time && 'bg-blue-500/40'
 				)}
 			/>
@@ -43,18 +43,18 @@ export function TimeSlotItem({ tasks, time }: ITimelineSlotsProps) {
 				.map(task => (
 					<div
 						key={task.id}
-						className='absolute left-1/12 z-50 flex transform flex-col gap-6 rounded-2xl bg-blue-300 p-4.5'
+						className='absolute left-1/12 z-50 flex transform flex-col gap-6 rounded-2xl bg-blue-300 p-4.5 dark:bg-blue-500'
 						style={{
 							top: `${getMinutes(task.dueDate.startTime)}%`,
 							width: `${calculateTaskPosition(task).width}dvh`
 						}}
 					>
-						<div className='flex gap-2'>
+						<div className='flex gap-2.5'>
 							<div className='h-max rounded-full bg-violet-50 p-3 text-blue-500 dark:bg-neutral-700 dark:text-blue-300'>
 								<task.icon size={22} />
 							</div>
-							<div className='flex flex-col gap-2'>
-								<span className='truncate font-semibold whitespace-break-spaces text-white'>
+							<div className='flex flex-col gap-0.5'>
+								<span className='truncate font-bold whitespace-break-spaces text-white'>
 									{task.title}
 								</span>
 								<p className='text-sm text-white'>
