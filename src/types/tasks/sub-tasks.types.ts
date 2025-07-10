@@ -7,5 +7,3 @@ export interface ISubTask {
 	title: string
 	isCompleted: boolean
 }
-
-export type TSubtaskFormData = z.infer<typeof SubtaskSchema>

@@ -6,6 +6,8 @@ import { match } from 'path-to-regexp'
 import { ProfileCard, ProjectItem, SidebarItem, SidebarTopic } from '@/components/layout/sidebar'
 import type { IMenu } from '@/components/layout/sidebar/menu/menu.type'
 
+import { Pages } from '@/config/public-page.config'
+
 import { MAIN_MENU_DATA } from '@/data/sidebar/main-menu.data'
 import { PROJECTS } from '@/data/sidebar/projects.data'
 
@@ -15,6 +17,8 @@ export function Sidebar() {
 	const isActive = (sidebarItem: IMenu) => {
 		return !!match(sidebarItem.href)(pathName)
 	}
+
+	if (pathName === Pages.AUTH) return null
 
 	return (
 		<aside className='overflow-hidden bg-white/80 px-4 py-6 whitespace-nowrap shadow-sm md:hidden lg:hidden xl:hidden dark:bg-neutral-800'>

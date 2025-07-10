@@ -387,8 +387,8 @@ export const TASKS_DATA: ITask[] = [
 		title: 'Documentation & API Reference',
 		dueDate: {
 			date: new Date(new Date().getTime() + 15 * 24 * 60 * 60 * 1000),
-			startTime: setMinutes(setHours(new Date(), 12), 40),
-			endTime: setMinutes(setHours(new Date(), 15), 40)
+			startTime: setMinutes(setHours(new Date(), 12), 55),
+			endTime: setMinutes(setHours(new Date(), 16), 50)
 		},
 		comments: [
 			'Use interactive examples',

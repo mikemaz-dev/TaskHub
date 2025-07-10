@@ -1,3 +1,5 @@
+import type { Dispatch, SetStateAction } from 'react'
+
 import { useAddSubtask } from '@/components/modals/subtask/useAddSubtask'
 import {
 	Button,
@@ -13,7 +15,7 @@ import {
 } from '@/components/ui'
 
 interface IAddSubtaskModal {
-	setIsOpen: boolean
+	setIsOpen: Dispatch<SetStateAction<boolean>>
 	taskId: number
 }
 

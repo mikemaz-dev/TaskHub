@@ -16,7 +16,7 @@ interface IEditTaskModal {
 
 export function EditTaskModal({ setIsOpen, task }: IEditTaskModal) {
 	const [selectedIcon, setSelectedIcon] = useState<string>(task.icon.name || '')
-	const { form, isSubmit, onSubmit } = useEditTaskForm({ task })
+	const { form, onSubmit } = useEditTaskForm({ task })
 
 	const handleSubmit = (data: TTaskFormData) => {
 		const formDataWithIcon = {
@@ -54,7 +54,6 @@ export function EditTaskModal({ setIsOpen, task }: IEditTaskModal) {
 							variant='default'
 							type='submit'
 							className='w-max'
-							disabled={isSubmit === false}
 						>
 							{form.formState.isSubmitting ? 'Saving...' : 'Save'}
 						</Button>

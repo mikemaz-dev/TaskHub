@@ -52,13 +52,13 @@ export function EditTaskModalContent({ form }: { form: UseFormReturn<TTaskFormDa
 									className='data-[empty=true]:text-muted-foreground w-full justify-start text-left font-normal'
 								>
 									<CalendarIcon />
-									{value ? format(value, 'PPP') : <p>Pick a due date</p>}
+									{value ? format(value.date, 'PPP') : <p>Pick a due date</p>}
 								</Button>
 							</PopoverTrigger>
 							<PopoverContent className='w-auto p-0'>
 								<Calendar
 									mode='single'
-									selected={value}
+									selected={value.date}
 									onSelect={onChange}
 								/>
 							</PopoverContent>

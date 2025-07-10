@@ -6,5 +6,4 @@ export interface ITaskStore {
 	// Actions
 	addSubTask: (taskId: number, title: string) => void
 	editTask: (id: number, taskData: Partial<ITask>) => void
-	getTodayTask: (tasks: ITask[]) => void
 }

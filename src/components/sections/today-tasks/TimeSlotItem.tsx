@@ -14,7 +14,7 @@ interface ITimelineSlotsProps {
 export function TimeSlotItem({ tasks, time }: ITimelineSlotsProps) {
 	const hour = parseInt(time.replace(/[^0-9]/g, ''))
 
-	const nowTime = format(new Date(), 'ha')
+	const nowTime = format(new Date(), 'h aaa')
 
 	return (
 		<div className='group relative flex flex-col items-center gap-2'>
@@ -43,10 +43,10 @@ export function TimeSlotItem({ tasks, time }: ITimelineSlotsProps) {
 				.map(task => (
 					<div
 						key={task.id}
-						className={`absolute left-1/12 z-50 flex transform flex-col gap-6 rounded-2xl bg-blue-300 p-4.5`}
+						className='absolute left-1/12 z-50 flex transform flex-col gap-6 rounded-2xl bg-blue-300 p-4.5'
 						style={{
-							top: `${(getMinutes(task.dueDate.startTime) / 60) * 100}%`,
-							width: `${calculateTaskPosition(task).width}vh`
+							top: `${getMinutes(task.dueDate.startTime)}%`,
+							width: `${calculateTaskPosition(task).width}dvh`
 						}}
 					>
 						<div className='flex gap-2'>

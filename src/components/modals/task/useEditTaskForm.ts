@@ -31,11 +31,11 @@ export const useEditTaskForm = ({ task }: { task: ITask }) => {
 
 		editTask(task.id, {
 			title: data.title,
-			dueDate: data.dueDate,
+			dueDate: data.dueDate.date,
 			icon: data.icon
 		})
 
-		form.reset({ title: task.title, dueDate: data.dueDate, icon: data.icon })
+		form.reset({ title: task.title, dueDate: data.dueDate.date, icon: data.icon })
 
 		toast.success('Task updated successfully!', {
 			description: `"${data.title}" task has been updated`,

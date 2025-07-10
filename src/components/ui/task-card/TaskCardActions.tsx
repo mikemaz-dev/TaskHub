@@ -4,8 +4,8 @@ import { Pencil, Plus } from 'lucide-react'
 import { useState } from 'react'
 
 import { AddSubtaskModal } from '@/components/modals/subtask/AddSubtaskModal'
+import { EditTaskModal } from '@/components/modals/task/EditTaskModal'
 import { Button } from '@/components/ui'
-import { EditTaskModal } from '@/components/ui/task-card'
 
 import type { ITask } from '@/types/tasks/task.types'
 

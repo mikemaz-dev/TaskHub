@@ -1,6 +1,6 @@
 export { TaskCard } from './TaskCard'
-export { TaskCardHeader } from './TaskCardHeader'
+
 export { TaskCardActions } from './TaskCardActions'
 export { TaskCardProgress } from './TaskCardProgress'
 export { TaskCardStats } from './TaskCardStats'
-export { EditTaskModal } from '@/components/modals/task/EditTaskModal'
+export { TaskCardHeader } from './TaskCardHeader'

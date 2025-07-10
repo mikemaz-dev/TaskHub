@@ -8,6 +8,7 @@ export const calculateTaskPosition = (
 	endTime: number = 17
 ): { left: number; width: number; right: number } => {
 	const startHour = getHours(task.dueDate.startTime)
+	console.log(startHour)
 	const startMinute = getMinutes(task.dueDate.startTime)
 	const endHour = getHours(task.dueDate.endTime)
 	const endMinute = getMinutes(task.dueDate.endTime)

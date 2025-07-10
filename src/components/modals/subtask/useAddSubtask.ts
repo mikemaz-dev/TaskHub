@@ -4,8 +4,7 @@ import { toast } from 'sonner'
 
 import { useTaskStore } from '@/store/task.store'
 
-import { type TSubtaskFormData } from '@/types/tasks/sub-tasks.types'
-import { SubtaskSchema } from '@/zod-schemes/sub-task.zod'
+import { SubtaskSchema, type TSubtaskFormData } from '@/zod-schemes/sub-task.zod'
 
 export const useAddSubtask = ({
 	taskId,

@@ -52,11 +52,5 @@ export const useTaskStore = create<ITaskStore>()(set => ({
 			})
 			return { tasks: updatedTasks }
 		})
-	},
-
-	getTodayTask: tasks => {
-		return tasks.filter(task => {
-			return isToday(task.dueDate.date)
-		})
 	}
 }))
