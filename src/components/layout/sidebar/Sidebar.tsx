@@ -1,12 +1,13 @@
 'use client'
 
 import { LogOut } from 'lucide-react'
+import dynamic from 'next/dynamic'
 import { usePathname, useRouter } from 'next/navigation'
 import { match } from 'path-to-regexp'
 
-import { ProfileCard, ProjectItem, SidebarItem, SidebarTopic } from '@/components/layout/sidebar'
+import { ProjectItem, SidebarItem, SidebarTopic } from '@/components/layout/sidebar'
 import type { IMenu } from '@/components/layout/sidebar/menu/menu.type'
-import { Button } from '@/components/ui'
+import { Button, SkeletonLoader } from '@/components/ui'
 
 import { Pages } from '@/config/public-page.config'
 
@@ -14,6 +15,14 @@ import { useAuthStore } from '@/store/auth.store'
 
 import { MAIN_MENU_DATA } from '@/data/sidebar/main-menu.data'
 import { PROJECTS } from '@/data/sidebar/projects.data'
+
+const DynamicProfileCard = dynamic(
+	() => import('./profile/ProfileCard').then(mod => mod.ProfileCard),
+	{
+		ssr: false,
+		loading: () => <SkeletonLoader className='size-9' />
+	}
+)
 
 export function Sidebar() {
 	const pathName = usePathname()
@@ -45,7 +54,7 @@ export function Sidebar() {
 						</Button>
 					}
 				>
-					<ProfileCard />
+					<DynamicProfileCard />
 				</SidebarTopic>
 
 				<SidebarTopic title='Main Menu'>
