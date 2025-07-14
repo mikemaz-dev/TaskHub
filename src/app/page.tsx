@@ -1,3 +1,5 @@
-export default function Home() {
-	return <h1>Hello TaskHub!</h1>
+import { HomeSection } from '@/components/sections/home/HomeSection'
+
+export default function HomePage() {
+	return <HomeSection />
 }

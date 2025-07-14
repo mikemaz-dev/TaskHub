@@ -34,7 +34,7 @@ export function Sidebar() {
 		return !!match(sidebarItem.href)(pathName)
 	}
 
-	if (pathName === Pages.LOGIN || pathName === Pages.SIGNUP) return null
+	if (pathName === Pages.LOGIN || pathName === Pages.SIGNUP || pathName === Pages.HOME) return null
 
 	return (
 		<aside className='overflow-hidden bg-white/80 px-4 py-6 whitespace-nowrap shadow-sm md:hidden lg:hidden xl:hidden dark:bg-neutral-800'>
@@ -47,7 +47,7 @@ export function Sidebar() {
 							size='sm'
 							onClick={() => {
 								logout()
-								router.push(Pages.DASHBOARD)
+								router.push(Pages.HOME)
 							}}
 						>
 							<LogOut />

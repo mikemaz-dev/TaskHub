@@ -1,13 +1,7 @@
 'use client'
 
 import { Header } from '@/components/layout/header/Header'
-import {
-	LastTasks,
-	ProjectStatistic,
-	ProjectStats,
-	TodayTasks,
-	TodayTasksTimeline
-} from '@/components/sections'
+import { LastTasks, ProjectStatistic, ProjectStats, TodayTasks } from '@/components/sections'
 
 export function Dashboard() {
 	return (

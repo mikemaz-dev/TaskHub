@@ -1,4 +1,5 @@
 export class Pages {
+	static HOME = '/'
 	static BASE = '/dashboard'
 	static LOGIN = '/login'
 	static SIGNUP = '/signup'
