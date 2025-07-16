@@ -5,10 +5,9 @@ import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
-import { Pages } from '@/config/public-page.config'
-
 import { useAuthStore } from '@/store/auth.store'
 
+import { signInWithEmail } from '@/app/(auth)/actions'
 import type { IAuth } from '@/types/auth/auth.types'
 import { AuthSchema, type TAuthFormData } from '@/zod-schemes/auth.zod'
 
@@ -28,20 +27,15 @@ export const useAuthForm = ({ type }: IAuth) => {
 		mode: 'onChange'
 	})
 
-	const onSubmit = (data: TAuthFormData) => {
-		if (type !== 'login') return null
+	const onSubmit = async (data: TAuthFormData) => {
+		signInWithEmail({ email: data.email })
 
-		login()
+		form.reset()
 
-		if (isLoggedIn) {
-			router.push(Pages.DASHBOARD)
-			form.reset()
-
-			toast.success(`${isLogin ? 'Logged in' : 'Signed up'} successfully!`, {
-				position: 'bottom-left',
-				duration: 3500
-			})
-		}
+		toast.success('Please check your email for verify token', {
+			position: 'bottom-left',
+			duration: 3500
+		})
 	}
 
 	return {

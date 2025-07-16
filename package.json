@@ -13,6 +13,8 @@
     "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-popover": "^1.1.14",
     "@radix-ui/react-slot": "^1.2.3",
+    "@supabase/ssr": "^0.6.1",
+    "@supabase/supabase-js": "^2.51.0",
     "add": "^2.0.6",
     "axios": "^1.10.0",
     "class-variance-authority": "^0.7.1",

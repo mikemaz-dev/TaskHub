@@ -1,16 +1,8 @@
-'use client'
-
 import { ChevronDown } from 'lucide-react'
-
-import { useAuthStore } from '@/store/auth.store'
 
 import { PROFILE } from '@/data/sidebar/profile.data'
 
 export function ProfileCard() {
-	const isLoggedIn = useAuthStore(state => state.isLoggedIn)
-
-	if (!isLoggedIn) return null
-
 	return (
 		<div className='bg-background flex items-center justify-between rounded-3xl px-2.5 py-1.5'>
 			<div className='flex items-center gap-2'>

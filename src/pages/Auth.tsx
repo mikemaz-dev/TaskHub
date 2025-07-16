@@ -1,14 +1,11 @@
 'use client'
 
 import dynamic from 'next/dynamic'
-import Image from 'next/image'
 
 import { AuthForm } from '@/components/sections/auth-form/AuthForm'
-import { Heading, SkeletonLoader } from '@/components/ui'
+import { SkeletonLoader } from '@/components/ui'
 import { Logo } from '@/components/ui/Logo'
 import { AuroraBackground } from '@/components/ui/background/aurora-background'
-
-import { SITE_NAME } from '@/constants/constants'
 
 import type { IAuth } from '@/types/auth/auth.types'
 

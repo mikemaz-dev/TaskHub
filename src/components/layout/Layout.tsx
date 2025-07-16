@@ -3,9 +3,15 @@ import type { PropsWithChildren } from 'react'
 import { Providers } from '@/components/layout/Providers'
 import { Sidebar } from '@/components/layout/sidebar/Sidebar'
 
+import { getServerAuth } from '@/utils/supabase/get-server-auth'
+
 import { Content } from './content/Content'
 
-export function Layout({ children }: PropsWithChildren) {
+export async function Layout({ children }: PropsWithChildren) {
+	const user = await getServerAuth()
+
+	if (!user) return null
+
 	return (
 		<main className='grid h-screen grid-cols-[275px_1fr] overflow-y-hidden xl:grid-cols-none'>
 			<Sidebar />

@@ -52,23 +52,6 @@ export function AuthForm({ type }: IAuth) {
 							</FormItem>
 						)}
 					/>
-					<FormField
-						control={form.control}
-						name='password'
-						render={({ field }) => (
-							<FormItem>
-								<FormLabel>Password</FormLabel>
-								<FormControl>
-									<Input
-										type='password'
-										placeholder='Enter your password'
-										{...field}
-									/>
-								</FormControl>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
 					<Button type='submit'>{type === 'login' ? 'Log in' : 'Sign up'}</Button>
 					<div className='flex flex-col gap-2'>
 						<div className='flex items-center gap-2'>

@@ -1,34 +1,29 @@
 'use client'
 
 import { LogOut } from 'lucide-react'
-import dynamic from 'next/dynamic'
 import { usePathname, useRouter } from 'next/navigation'
 import { match } from 'path-to-regexp'
 
-import { ProjectItem, SidebarItem, SidebarTopic } from '@/components/layout/sidebar'
+import { ProfileCard, ProjectItem, SidebarItem, SidebarTopic } from '@/components/layout/sidebar'
 import type { IMenu } from '@/components/layout/sidebar/menu/menu.type'
-import { Button, SkeletonLoader } from '@/components/ui'
+import { Button } from '@/components/ui'
 
 import { Pages } from '@/config/public-page.config'
 
-import { useAuthStore } from '@/store/auth.store'
+import { createClient } from '@/utils/supabase/client'
 
 import { MAIN_MENU_DATA } from '@/data/sidebar/main-menu.data'
 import { PROJECTS } from '@/data/sidebar/projects.data'
-
-const DynamicProfileCard = dynamic(
-	() => import('./profile/ProfileCard').then(mod => mod.ProfileCard),
-	{
-		ssr: false,
-		loading: () => <SkeletonLoader className='size-9' />
-	}
-)
 
 export function Sidebar() {
 	const pathName = usePathname()
 	const router = useRouter()
 
-	const logout = useAuthStore(state => state.logout)
+	const signOut = async () => {
+		const { error } = await createClient().auth.signOut()
+
+		if (!error) router.push(Pages.HOME)
+	}
 
 	const isActive = (sidebarItem: IMenu) => {
 		return !!match(sidebarItem.href)(pathName)
@@ -45,16 +40,13 @@ export function Sidebar() {
 						<Button
 							variant='ghost'
 							size='sm'
-							onClick={() => {
-								logout()
-								router.push(Pages.HOME)
-							}}
+							onClick={signOut}
 						>
 							<LogOut />
 						</Button>
 					}
 				>
-					<DynamicProfileCard />
+					<ProfileCard />
 				</SidebarTopic>
 
 				<SidebarTopic title='Main Menu'>
