@@ -37,7 +37,7 @@ export function TimeSlotItem({ tasks, time }: ITimelineSlotsProps) {
 			{tasks
 				.slice(-3)
 				.filter(task => {
-					const taskHour = getHours(task.dueDate.startTime)
+					const taskHour = getHours(task.start_time)
 					return taskHour === hour
 				})
 				.map(task => (
@@ -45,7 +45,7 @@ export function TimeSlotItem({ tasks, time }: ITimelineSlotsProps) {
 						key={task.id}
 						className='absolute left-1/12 z-50 flex transform flex-col gap-6 rounded-2xl bg-blue-300 p-4.5 dark:bg-blue-500'
 						style={{
-							top: `${getMinutes(task.dueDate.startTime)}%`,
+							top: `${getMinutes(task.start_time)}%`,
 							width: `${calculateTaskPosition(task).width}dvh`
 						}}
 					>
@@ -58,8 +58,7 @@ export function TimeSlotItem({ tasks, time }: ITimelineSlotsProps) {
 									{task.title}
 								</span>
 								<p className='text-sm text-white'>
-									{format(task.dueDate.startTime, 'H aaa')} -{' '}
-									{format(task.dueDate.endTime, 'H aaa')}
+									{format(task.start_time, 'H aaa')} - {format(task.end_time, 'H aaa')}
 								</p>
 							</div>
 						</div>

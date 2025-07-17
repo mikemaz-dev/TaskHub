@@ -18,12 +18,17 @@ export function LastTasks() {
 		getSortLabel
 	} = useFilterTasks()
 
+	// Безопасное получение длины
+	const tasksCount = filteredTasks?.length ?? 0
+
+	console.log(filteredTasks)
+
 	return (
 		<div className='flex flex-col gap-5.5'>
 			<div className='flex items-center justify-between md:flex-col md:items-start md:gap-3'>
 				<div className='flex items-end gap-1'>
 					<SectionHeading title='Last Tasks' />
-					<span className='text-xl opacity-50'>({filteredTasks.length})</span>
+					<span className='text-xl opacity-50'>({tasksCount})</span>
 				</div>
 				<div className='flex items-center gap-4 sm:flex-col sm:items-start'>
 					<LastTasksFilters

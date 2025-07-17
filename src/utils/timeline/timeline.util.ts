@@ -7,15 +7,13 @@ export const calculateTaskPosition = (
 	startTime: number = 9,
 	endTime: number = 17
 ): { left: number; width: number; right: number } => {
-	const startHour = getHours(task.dueDate.startTime)
-	const startMinute = getMinutes(task.dueDate.startTime)
-	const endHour = getHours(task.dueDate.endTime)
-	const endMinute = getMinutes(task.dueDate.endTime)
+	const startHour = getHours(task.start_time)
+	const startMinute = getMinutes(task.start_time)
+	const endHour = getHours(task.end_time)
+	const endMinute = getMinutes(task.end_time)
 
 	const startDecimal = startHour + startMinute / 60
 	const endDecimal = endHour + endMinute / 60
-
-	console.log(endDecimal)
 
 	const hoursInDay = endTime - startTime
 

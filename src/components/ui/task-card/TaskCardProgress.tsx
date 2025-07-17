@@ -9,8 +9,8 @@ import { cn } from '@/utils/cn.util'
 import type { ITask } from '@/types/tasks/task.types'
 
 export function TaskCardProgress({ task }: { task: ITask }) {
-	const completedSubtasks = task.subTasks.filter(subtask => subtask.isCompleted).length
-	const totalSubtasks = task.subTasks.length
+	const completedSubtasks = task.subTasks?.filter(subtask => subtask.isCompleted).length
+	const totalSubtasks = task.subTasks?.length
 	const progressPercentage =
 		totalSubtasks > 0 ? Math.round((completedSubtasks / totalSubtasks) * 100) : 0
 

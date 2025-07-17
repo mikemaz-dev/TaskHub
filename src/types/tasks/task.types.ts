@@ -6,12 +6,9 @@ import type { ISubTask } from '@/types/tasks/sub-tasks.types'
 export interface ITask extends Omit<ISubTask, 'isCompleted'> {
 	users: IProfile[]
 	icon: LucideIcon
-	dueDate: {
-		date: Date
-		startTime: Date
-		endTime: Date
-	}
-	timeRange?: string
+	due_date: Date
+	start_time: Date
+	end_time: Date
 	comments: string[]
 	resources: string[]
 	links: string[]

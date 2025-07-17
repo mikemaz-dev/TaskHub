@@ -1,5 +1,7 @@
 import { Link2, Image as LucideImage, MessageSquareText } from 'lucide-react'
 
+import { formatCount } from '@/utils/formatCount'
+
 import type { ITask } from '@/types/tasks/task.types'
 
 export function TaskCardStats({ task }: { task: ITask }) {
@@ -10,21 +12,21 @@ export function TaskCardStats({ task }: { task: ITask }) {
 					size={16}
 					className='opacity-40'
 				/>
-				<span className='text-sm font-semibold'>{task.comments.length}</span>
+				<span className='text-sm font-semibold'>{formatCount(task.comments?.length)}</span>
 			</div>
 			<div className='flex items-center justify-center gap-1'>
 				<LucideImage
 					size={16}
 					className='opacity-40'
 				/>
-				<span className='text-sm font-semibold'>{task.resources.length}</span>
+				<span className='text-sm font-semibold'>{formatCount(task.resources?.length)}</span>
 			</div>
 			<div className='flex items-center gap-1'>
 				<Link2
 					size={16}
 					className='opacity-40'
 				/>
-				<span className='text-sm font-semibold'>{task.links.length}</span>
+				<span className='text-sm font-semibold'>{formatCount(task.links?.length)}</span>
 			</div>
 		</div>
 	)

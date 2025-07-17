@@ -66,6 +66,46 @@ export function EditTaskModalContent({ form }: { form: UseFormReturn<TTaskFormDa
 					</div>
 				)}
 			/>
+			<div className='flex items-center justify-between gap-5'>
+				<FormField
+					control={form.control}
+					name='dueDate.startTime'
+					render={({ field }) => (
+						<FormItem className='w-full'>
+							<FormLabel htmlFor='dueDate.startTime'>Start Time</FormLabel>
+							<FormControl>
+								<Input
+									id='time-from'
+									type='time'
+									step='1'
+									{...field}
+									className='bg-background appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none'
+								/>
+							</FormControl>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='dueDate.endTime'
+					render={({ field }) => (
+						<FormItem className='w-full'>
+							<FormLabel htmlFor='dueDate.endTime'>End Time</FormLabel>
+							<FormControl>
+								<Input
+									type='time'
+									id='time-picker'
+									step='1'
+									className='bg-background appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none'
+									{...field}
+								/>
+							</FormControl>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+			</div>
 		</div>
 	)
 }
