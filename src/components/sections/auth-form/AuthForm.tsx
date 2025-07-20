@@ -1,8 +1,5 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
-import type { FormEvent } from 'react'
-
 import { useAuthForm } from '@/components/sections/auth-form/useAuthForm'
 import {
 	Button,
@@ -15,18 +12,8 @@ import {
 	Input
 } from '@/components/ui'
 
-import { Pages } from '@/config/public-page.config'
-
-import type { IAuth } from '@/types/auth/auth.types'
-
-export function AuthForm({ type }: IAuth) {
-	const { form, isLoggedIn, onSubmit } = useAuthForm({ type })
-
-	const router = useRouter()
-
-	if (isLoggedIn) {
-		router.push(Pages.DASHBOARD)
-	}
+export function AuthForm() {
+	const { form, onSubmit } = useAuthForm()
 
 	return (
 		<div className='flex flex-col gap-8'>
@@ -52,20 +39,14 @@ export function AuthForm({ type }: IAuth) {
 							</FormItem>
 						)}
 					/>
-					<Button type='submit'>{type === 'login' ? 'Log in' : 'Sign up'}</Button>
-					<div className='flex flex-col gap-2'>
-						<div className='flex items-center gap-2'>
-							<p className='font-medium opacity-70'>
-								{type === 'login' ? `Don't have an account?` : 'Already have an account?'}
-							</p>
-							<Button
-								variant='link'
-								className='p-0'
-								onClick={() => router.push(type === 'login' ? '/signup' : '/login')}
-							>
-								{type === 'login' ? 'Sign up' : 'Log in'}
-							</Button>
-						</div>
+					<div className='flex w-full flex-col gap-3'>
+						<Button
+							type='submit'
+							className='w-full'
+						>
+							Send link
+						</Button>
+						<p className='ml-1.5 opacity-65'>Then, check your email for verify token.</p>
 					</div>
 				</form>
 			</Form>

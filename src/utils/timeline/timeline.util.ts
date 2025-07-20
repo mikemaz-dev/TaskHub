@@ -1,29 +1,32 @@
 import { getHours, getMinutes } from 'date-fns'
 
-import type { ITask } from '@/types/tasks/task.types'
+import type { TTask } from '@/types/tasks/task.types'
 
-export const calculateTaskPosition = (
-	task: ITask,
-	startTime: number = 9,
-	endTime: number = 17
-): { left: number; width: number; right: number } => {
-	const startHour = getHours(task.start_time)
-	const startMinute = getMinutes(task.start_time)
-	const endHour = getHours(task.end_time)
-	const endMinute = getMinutes(task.end_time)
+export function calculateTaskPosition(task: TTask): { left: number; width: number; right: number } {
+	const startTime = `${task.due_date}T${task.start_time}`
+	const endTime = `${task.due_date}T${task.end_time}`
+
+	const startHour = getHours(new Date(startTime))
+	const startMinute = getMinutes(new Date(endTime))
+	const endHour = getHours(new Date(endTime))
+	const endMinute = getMinutes(new Date(endTime))
 
 	const startDecimal = startHour + startMinute / 60
 	const endDecimal = endHour + endMinute / 60
 
-	const hoursInDay = endTime - startTime
+	const hoursInDay = 17 - 9 // 8 часов рабочего дня
 
-	if (startDecimal < startTime || endDecimal > endTime) {
+	if (startDecimal < 9 || endDecimal > 17) {
 		return { left: 0, width: 0, right: 100 }
 	}
 
-	const left = Math.round(((startDecimal - startTime) / hoursInDay) * 100)
+	const left = Math.round(((startDecimal - 9) / hoursInDay) * 100)
 	const width = Math.round(((endDecimal - startDecimal) / hoursInDay) * 100)
-	const right = Math.round(100 - ((endDecimal - startTime) / hoursInDay) * 100)
+	const right = Math.round(100 - ((endDecimal - 9) / hoursInDay) * 100)
 
-	return { left, width, right }
+	return {
+		left: Math.max(0, Math.min(left, 100)),
+		width: Math.max(0, Math.min(width, 100)),
+		right: Math.max(0, Math.min(right, 100))
+	}
 }

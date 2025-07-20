@@ -1,9 +1,9 @@
 import type { LucideIcon } from 'lucide-react'
 import * as LucideIcons from 'lucide-react'
 
-import type { ISubTask } from '@/types/tasks/sub-tasks.types'
+import type { TSubTask } from '@/types/tasks/task.types'
 
-export const getNextSubTaskId = (subTasks: ISubTask[]) =>
+export const getNextSubTaskId = (subTasks: TSubTask) =>
 	Math.max(...subTasks.map(st => st.id), 0) + 1
 
 export const getIconByName = (iconName: string): LucideIcon => {

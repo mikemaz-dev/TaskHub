@@ -16,5 +16,5 @@ export default async function Page() {
 
 	if (user) return redirect(Pages.DASHBOARD)
 
-	return <Auth type='login' />
+	return <Auth />
 }

@@ -2,19 +2,14 @@
 
 import { useMemo, useState } from 'react'
 
-import { useGetTasks } from '@/hooks/useGetTasks'
-
-import type { ITask, TFilterTasks, TSortingTasks } from '@/types/tasks/task.types'
+import type { TFilterTasks, TSortingTasks, TTask } from '@/types/tasks/task.types'
 
 type SortOrder = TSortingTasks
 
-export const useFilterTasks = () => {
+export const useFilterTasks = ({ tasks }: { tasks: TTask[] }) => {
 	const [activeFilter, setActiveFilter] = useState<TFilterTasks>('all')
 	const [sortOrder, setSortOrder] = useState<SortOrder>('none')
-
-	const tasks = useGetTasks()
-
-	const lastTasks = (tasks.data as ITask[]) || []
+	const lastTasks = tasks
 
 	const filteredTasks = useMemo(() => {
 		let filtered = lastTasks
@@ -26,9 +21,13 @@ export const useFilterTasks = () => {
 			filtered = lastTasks.filter(task => {
 				switch (activeFilter) {
 					case 'done':
-						return task.subTasks?.length > 0 && task.subTasks?.every(subTask => subTask.isCompleted)
+						return (
+							task.sub_task?.length > 0 && task.sub_task?.every(subTask => subTask.is_completed)
+						)
 					case 'in-progress':
-						return task.subTasks?.length > 0 && task.subTasks?.some(subTask => !subTask.isCompleted)
+						return (
+							task.sub_task?.length > 0 && task.sub_task?.some(subTask => !subTask.is_completed)
+						)
 					case 'upcoming':
 						return task.due_date >= today && task.due_date <= sevenDaysFromNow
 					default:

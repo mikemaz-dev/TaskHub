@@ -53,6 +53,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.3.4",
     "prettier": "^3.6.0",
+    "supabase": "^2.31.4",
     "tailwindcss": "^4",
     "tw-animate-css": "^1.3.5",
     "typescript": "^5"

@@ -6,16 +6,16 @@ import { Button, Form, IconSelector, Modal, SectionHeading } from '@/components/
 
 import { EditTaskModalContent } from './EditTaskModalContent'
 import { useEditTaskForm } from './useEditTaskForm'
-import { type ITask } from '@/types/tasks/task.types'
+import { type TTask } from '@/types/tasks/task.types'
 import { type TTaskFormData } from '@/zod-schemes/task.zod'
 
 interface IEditTaskModal {
 	setIsOpen: (isOpen: boolean) => void
-	task: ITask
+	task: TTask
 }
 
 export function EditTaskModal({ setIsOpen, task }: IEditTaskModal) {
-	const [selectedIcon, setSelectedIcon] = useState<string>(task.icon.name || '')
+	const [selectedIcon, setSelectedIcon] = useState<string>(task.icon || '')
 	const { form, onSubmit } = useEditTaskForm({ task })
 
 	const handleSubmit = (data: TTaskFormData) => {
@@ -31,7 +31,7 @@ export function EditTaskModal({ setIsOpen, task }: IEditTaskModal) {
 	return (
 		<Modal onClose={() => setIsOpen(false)}>
 			<div className='flex flex-col gap-5'>
-				<SectionHeading title={`Edit task #${task.id}`} />
+				<SectionHeading title={`Edit task: '${task.title}'`} />
 				<Form {...form}>
 					<form
 						onSubmit={form.handleSubmit(handleSubmit)}

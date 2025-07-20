@@ -22,11 +22,11 @@ export function TodayTasksHeader() {
 						style={{ zIndex: 10 - index }}
 					/>
 				))}
-				{remainingUsers && (
+				{remainingUsers ? (
 					<div className='z-10 flex size-12 items-center justify-center rounded-full border-2 border-neutral-100 bg-violet-400 text-lg text-white shadow-sm dark:border-transparent'>
 						+ {remainingUsers}
 					</div>
-				)}
+				) : null}
 			</div>
 		</div>
 	)

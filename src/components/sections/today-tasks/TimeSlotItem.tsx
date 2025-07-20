@@ -1,19 +1,19 @@
-import { format, getHours, getMinutes } from 'date-fns'
-import Image from 'next/image'
+import { format, getMinutes } from 'date-fns'
+import type { IconName } from 'lucide-react/dynamic'
+
+import { DynamicIcon } from '@/components/ui/task-card/DynamicIcon'
 
 import { cn } from '@/utils/cn.util'
 import { calculateTaskPosition } from '@/utils/timeline/timeline.util'
 
-import type { ITask } from '@/types/tasks/task.types'
+import type { TTask } from '@/types/tasks/task.types'
 
 interface ITimelineSlotsProps {
-	tasks: ITask[]
+	tasks: TTask[]
 	time: string
 }
 
 export function TimeSlotItem({ tasks, time }: ITimelineSlotsProps) {
-	const hour = parseInt(time.replace(/[^0-9]/g, ''))
-
 	const nowTime = format(new Date(), 'h aaa')
 
 	return (
@@ -34,54 +34,35 @@ export function TimeSlotItem({ tasks, time }: ITimelineSlotsProps) {
 				)}
 			/>
 
-			{tasks
-				.slice(-3)
-				.filter(task => {
-					const taskHour = getHours(task.start_time)
-					return taskHour === hour
-				})
-				.map(task => (
+			{tasks.map(task => {
+				const startTime = `${task.due_date}T${task.start_time}`
+				const endTime = `${task.due_date}T${task.end_time}`
+
+				return (
 					<div
 						key={task.id}
 						className='absolute left-1/12 z-50 flex transform flex-col gap-6 rounded-2xl bg-blue-300 p-4.5 dark:bg-blue-500'
 						style={{
-							top: `${getMinutes(task.start_time)}%`,
+							top: `${getMinutes(startTime)}%`,
 							width: `${calculateTaskPosition(task).width}dvh`
 						}}
 					>
 						<div className='flex gap-2.5'>
 							<div className='h-max rounded-full bg-violet-50 p-3 text-blue-500 dark:bg-neutral-700 dark:text-blue-300'>
-								<task.icon size={22} />
+								<DynamicIcon name={task.icon as IconName} />
 							</div>
 							<div className='flex flex-col gap-0.5'>
 								<span className='truncate font-bold whitespace-break-spaces text-white'>
 									{task.title}
 								</span>
 								<p className='text-sm text-white'>
-									{format(task.start_time, 'H aaa')} - {format(task.end_time, 'H aaa')}
+									{format(startTime, 'H aaa')} - {format(endTime, 'H aaa')}
 								</p>
 							</div>
 						</div>
-						<div className='flex -space-x-2'>
-							{task.users.slice(0, 3).map((user, index) => (
-								<Image
-									key={user.id}
-									alt={user.name}
-									src={user.avatar ? user.avatar : '/images/default-avatar.png'}
-									width={32}
-									height={32}
-									className='rounded-full border border-white shadow-sm dark:border-neutral-600'
-									style={{ zIndex: 10 - index }}
-								/>
-							))}
-							{task.users.length > 3 && (
-								<div className='flex h-8 w-8 items-center justify-center rounded-full border-2 border-white bg-gray-200 text-xs font-medium text-gray-600'>
-									+{task.users.length - 3}
-								</div>
-							)}
-						</div>
 					</div>
-				))}
+				)
+			})}
 		</div>
 	)
 }

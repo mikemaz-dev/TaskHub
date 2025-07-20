@@ -1,18 +1,8 @@
-import type { LucideIcon } from 'lucide-react'
+import type { Database } from '@/types/db.types'
 
-import type { IProfile } from '@/types/profile.types'
-import type { ISubTask } from '@/types/tasks/sub-tasks.types'
-
-export interface ITask extends Omit<ISubTask, 'isCompleted'> {
-	users: IProfile[]
-	icon: LucideIcon
-	due_date: Date
-	start_time: Date
-	end_time: Date
-	comments: string[]
-	resources: string[]
-	links: string[]
-	subTasks: ISubTask[]
+export type TSubTask = Database['public']['Tables']['sub_task']['Row'][]
+export type TTask = Database['public']['Tables']['task']['Row'] & {
+	sub_task: TSubTask
 }
 
 export type TFilterTasks = 'all' | 'done' | 'in-progress' | 'upcoming'

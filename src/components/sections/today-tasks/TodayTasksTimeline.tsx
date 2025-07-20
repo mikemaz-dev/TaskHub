@@ -1,14 +1,14 @@
+import { addDays, isSameDay } from 'date-fns'
+
 import { TimeSlotItem } from '@/components/sections/today-tasks/TimeSlotItem'
 
-import { useGetTasks } from '@/hooks/useGetTasks'
-
 import { TIMELINE_SLOTS } from '@/data/timeline/timeline-slots.data'
-import type { ITask } from '@/types/tasks/task.types'
+import type { TTask } from '@/types/tasks/task.types'
 
-export function TodayTasksTimeline() {
-	const tasks = useGetTasks()
+export function TodayTasksTimeline({ tasks }: { tasks: TTask[] }) {
+	const today = new Date()
 
-	const todayTasks = (tasks.data as ITask[]) || []
+	const todayTasks = tasks.filter(task => isSameDay(task.due_date, today))
 
 	return (
 		<div className='flex h-full justify-between px-8 pb-5'>

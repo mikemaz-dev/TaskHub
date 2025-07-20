@@ -2,20 +2,20 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
-import type { ITask } from '@/types/tasks/task.types'
+import type { TTask } from '@/types/tasks/task.types'
 import { type TTaskFormData, TaskSchema } from '@/zod-schemes/task.zod'
 
-export const useEditTaskForm = ({ task }: { task: ITask }) => {
+export const useEditTaskForm = ({ task }: { task: TTask }) => {
 	const form = useForm<TTaskFormData>({
 		resolver: zodResolver(TaskSchema),
 		defaultValues: {
 			title: task.title,
 			dueDate: {
-				date: task.dueDate.date,
-				startTime: task.dueDate.startTime,
-				endTime: task.dueDate.endTime
+				date: task.due_date,
+				startTime: task.start_time,
+				endTime: task.end_time
 			},
-			icon: task.icon.name || 'Plane'
+			icon: task.icon || 'Plane'
 		}
 	})
 

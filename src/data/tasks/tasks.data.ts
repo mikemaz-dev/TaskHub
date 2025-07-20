@@ -15,9 +15,9 @@ import {
 } from 'lucide-react'
 
 import { USERS_DATA } from '@/data/users/users.data'
-import type { ITask } from '@/types/tasks/task.types'
+import type { TTask } from '@/types/tasks/task.types'
 
-export const TASKS_DATA: ITask[] = [
+export const TASKS_DATA: TTask[] = [
 	{
 		id: 1,
 		icon: Plane,
@@ -64,7 +64,7 @@ export const TASKS_DATA: ITask[] = [
 			},
 			{
 				id: 2,
-				title: 'Create login/signup forms',
+				title: 'Create sign-in/signup forms',
 				isCompleted: false
 			},
 			{

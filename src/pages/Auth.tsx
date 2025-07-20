@@ -1,31 +1,28 @@
 'use client'
 
-import dynamic from 'next/dynamic'
+import { Info } from 'lucide-react'
 
 import { AuthForm } from '@/components/sections/auth-form/AuthForm'
-import { SkeletonLoader } from '@/components/ui'
 import { Logo } from '@/components/ui/Logo'
 import { AuroraBackground } from '@/components/ui/background/aurora-background'
 
-import type { IAuth } from '@/types/auth/auth.types'
-
-const DynamicThemeToggle = dynamic(
-	() => import('@/components/ui/ThemeToggle').then(mod => mod.ThemeToggle),
-	{
-		ssr: false,
-		loading: () => <SkeletonLoader className='size-9' />
-	}
-)
-
-export function Auth({ type }: IAuth) {
+export function Auth() {
 	return (
 		<AuroraBackground className='h-screen w-screen'>
-			<div className='bg-card/80 text-foreground relative flex min-w-sm flex-col gap-7 rounded-2xl p-6 shadow-sm backdrop-blur-md'>
-				<div className='flex items-center justify-between'>
-					<Logo />
-					<DynamicThemeToggle />
+			<div className='bg-card/80 text-foreground relative flex min-w-sm flex-col gap-6 rounded-2xl p-6 shadow-sm backdrop-blur-md'>
+				<div className='flex flex-col gap-5'>
+					<div className='flex items-center justify-between'>
+						<Logo />
+					</div>
+					<div className='ml-1.5 flex items-center gap-1.5 opacity-65'>
+						<Info
+							size={18}
+							absoluteStrokeWidth
+						/>
+						<p className='font-medium'>Sign in with magic link</p>
+					</div>
 				</div>
-				<AuthForm type={type} />
+				<AuthForm />
 			</div>
 		</AuroraBackground>
 	)

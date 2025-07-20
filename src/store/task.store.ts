@@ -8,16 +8,17 @@ import { TASKS_DATA } from '@/data/tasks'
 
 export const useTaskStore = create<ITaskStore>()(set => ({
 	tasks: TASKS_DATA,
-	filters: 'all',
-	sorting: 'none',
-	searchQuery: '',
+
+	loadFromServer: tasks => {
+		return tasks
+	},
 
 	addSubTask: (taskId, title) => {
 		set(state => {
 			const updatedTasks = state.tasks.map(task => {
 				if (task.id === taskId) {
 					const newSubTask = {
-						id: getNextSubTaskId(task.subTasks),
+						id: getNextSubTaskId(task.sub_task),
 						title,
 						isCompleted: false
 					}

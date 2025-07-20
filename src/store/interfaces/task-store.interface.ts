@@ -1,9 +1,10 @@
-import type { ITask } from '@/types/tasks/task.types'
+import type { TTask } from '@/types/tasks/task.types'
 
 export interface ITaskStore {
-	tasks: ITask[]
+	tasks: TTask[]
 
 	// Actions
+	loadFromServer: (tasks: TTask[]) => void
 	addSubTask: (taskId: number, title: string) => void
-	editTask: (id: number, taskData: Partial<ITask>) => void
+	editTask: (id: number, taskData: Partial<TTask>) => void
 }

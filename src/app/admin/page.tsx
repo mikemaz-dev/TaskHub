@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 
-import { Auth } from '@/pages/Auth'
+import { Seed } from '@/app/admin/Seed'
 
 export const metadata: Metadata = {
-	title: 'Auth'
+	title: 'Admin'
 }
 
 export default function Page() {
-	return <Auth type='signup' />
+	return <Seed />
 }

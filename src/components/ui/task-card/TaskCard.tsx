@@ -5,10 +5,10 @@ import {
 	TaskCardStats
 } from '@/components/ui/task-card'
 
-import type { ITask } from '@/types/tasks/task.types'
+import type { TTask } from '@/types/tasks/task.types'
 
 interface ILastTasksItem {
-	task: ITask
+	task: TTask
 }
 
 export function TaskCard({ task }: ILastTasksItem) {

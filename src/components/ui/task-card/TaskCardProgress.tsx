@@ -6,11 +6,12 @@ import { useMemo } from 'react'
 
 import { cn } from '@/utils/cn.util'
 
-import type { ITask } from '@/types/tasks/task.types'
+import type { TTask } from '@/types/tasks/task.types'
 
-export function TaskCardProgress({ task }: { task: ITask }) {
-	const completedSubtasks = task.subTasks?.filter(subtask => subtask.isCompleted).length
-	const totalSubtasks = task.subTasks?.length
+export function TaskCardProgress({ task }: { task: TTask }) {
+	const completedSubtasks = task.sub_task?.filter(subtask => subtask.is_completed).length
+	const totalSubtasks = task.sub_task?.length
+
 	const progressPercentage =
 		totalSubtasks > 0 ? Math.round((completedSubtasks / totalSubtasks) * 100) : 0
 

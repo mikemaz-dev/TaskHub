@@ -1,7 +1,7 @@
 export class Pages {
 	static HOME = '/'
 	static BASE = '/dashboard'
-	static LOGIN = '/login'
+	static LOGIN = '/sign-in'
 	static SIGNUP = '/signup'
 
 	static DASHBOARD = Pages.BASE

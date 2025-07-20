@@ -8,10 +8,7 @@ import { getServerAuth } from '@/utils/supabase/get-server-auth'
 import { Content } from './content/Content'
 
 export async function Layout({ children }: PropsWithChildren) {
-	const user = await getServerAuth()
-
-	if (!user) return null
-
+	await getServerAuth()
 	return (
 		<main className='grid h-screen grid-cols-[275px_1fr] overflow-y-hidden xl:grid-cols-none'>
 			<Sidebar />

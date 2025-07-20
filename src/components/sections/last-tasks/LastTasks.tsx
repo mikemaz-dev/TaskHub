@@ -5,9 +5,12 @@ import { useFilterTasks } from '@/components/sections/last-tasks/useFilterTasks'
 import { DropdownButton, SectionHeading } from '@/components/ui'
 import { TaskCard } from '@/components/ui/task-card'
 
-import { TaskSortingOptions } from '@/data/tasks'
+import { formatCount } from '@/utils/formatCount'
 
-export function LastTasks() {
+import { TaskSortingOptions } from '@/data/tasks'
+import type { TTask } from '@/types/tasks/task.types'
+
+export function LastTasks({ tasks }: { tasks: TTask[] }) {
 	const {
 		filteredTasks,
 		activeFilter,
@@ -16,19 +19,14 @@ export function LastTasks() {
 		setSortOrder,
 		getFilterButtonClass,
 		getSortLabel
-	} = useFilterTasks()
-
-	// Безопасное получение длины
-	const tasksCount = filteredTasks?.length ?? 0
-
-	console.log(filteredTasks)
+	} = useFilterTasks({ tasks })
 
 	return (
 		<div className='flex flex-col gap-5.5'>
 			<div className='flex items-center justify-between md:flex-col md:items-start md:gap-3'>
 				<div className='flex items-end gap-1'>
 					<SectionHeading title='Last Tasks' />
-					<span className='text-xl opacity-50'>({tasksCount})</span>
+					<span className='text-xl opacity-50'>({formatCount(filteredTasks.length)})</span>
 				</div>
 				<div className='flex items-center gap-4 sm:flex-col sm:items-start'>
 					<LastTasksFilters
