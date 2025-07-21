@@ -1,7 +1,6 @@
 import { format, getMinutes } from 'date-fns'
 import type { IconName } from 'lucide-react/dynamic'
-
-import { DynamicIcon } from '@/components/ui/task-card/DynamicIcon'
+import { DynamicIcon } from 'lucide-react/dynamic'
 
 import { cn } from '@/utils/cn.util'
 import { calculateTaskPosition } from '@/utils/timeline/timeline.util'

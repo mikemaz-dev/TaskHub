@@ -41,7 +41,7 @@ export function LastTasks({ tasks }: { tasks: TTask[] }) {
 			</div>
 			<div className='grid grid-cols-3 gap-4 md:grid-cols-1 xl:grid-cols-3'>
 				<AnimatePresence mode='wait'>
-					{filteredTasks.length > 0 ? (
+					{filteredTasks.length > 1 ? (
 						filteredTasks.map((task, index) => (
 							<m.div
 								key={`${activeFilter}-${sortOrder}-${task.id}`}

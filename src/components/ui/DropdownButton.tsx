@@ -51,7 +51,7 @@ export function DropdownButton({ placeholder, items, onSelect }: IDropdownButton
 			<button
 				onClick={() => setIsOpen(!isOpen)}
 				className={cn(
-					'border-primary/45 hover:bg-primary dark:hover:bg-primary flex cursor-pointer items-center gap-2 rounded-full border-2 bg-white px-3 py-1 transition-all duration-300 hover:border-transparent hover:text-white hover:shadow-sm dark:bg-neutral-800',
+					'border-secondary hover:bg-primary dark:hover:bg-primary flex cursor-pointer items-center gap-2 rounded-full border-2 bg-white px-3 py-1 transition-all duration-300 hover:border-transparent hover:text-white hover:shadow-sm dark:bg-neutral-800',
 					isOpen && 'dark:bg-primary border-transparent bg-white shadow-sm dark:border-transparent'
 				)}
 				aria-haspopup={true}

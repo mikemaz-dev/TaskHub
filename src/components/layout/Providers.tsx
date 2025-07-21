@@ -4,8 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { LazyMotion, domAnimation } from 'framer-motion'
 import { ThemeProvider } from 'next-themes'
 import { type PropsWithChildren, useState } from 'react'
-
-import { Toaster } from '@/components/ui/sonner'
+import { Toaster } from 'sonner'
 
 export function Providers({ children }: PropsWithChildren) {
 	const [queryClient] = useState(
@@ -31,8 +30,10 @@ export function Providers({ children }: PropsWithChildren) {
 				defaultTheme='system'
 				enableSystem
 			>
-				<LazyMotion features={domAnimation}>{children}</LazyMotion>
-				<Toaster />
+				<LazyMotion features={domAnimation}>
+					{children}
+					<Toaster />
+				</LazyMotion>
 			</ThemeProvider>
 		</QueryClientProvider>
 	)

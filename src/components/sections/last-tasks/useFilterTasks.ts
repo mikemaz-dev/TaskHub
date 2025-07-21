@@ -9,25 +9,22 @@ type SortOrder = TSortingTasks
 export const useFilterTasks = ({ tasks }: { tasks: TTask[] }) => {
 	const [activeFilter, setActiveFilter] = useState<TFilterTasks>('all')
 	const [sortOrder, setSortOrder] = useState<SortOrder>('none')
-	const lastTasks = tasks
 
 	const filteredTasks = useMemo(() => {
-		let filtered = lastTasks
+		if (!tasks?.length) return []
+
+		let filtered = [...tasks]
 
 		if (activeFilter !== 'all') {
 			const today = new Date()
 			const sevenDaysFromNow = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000)
 
-			filtered = lastTasks.filter(task => {
+			filtered = filtered.filter(task => {
 				switch (activeFilter) {
 					case 'done':
-						return (
-							task.sub_task?.length > 0 && task.sub_task?.every(subTask => subTask.is_completed)
-						)
+						return task.sub_task?.length > 0 && task.sub_task.every(subTask => subTask.is_completed)
 					case 'in-progress':
-						return (
-							task.sub_task?.length > 0 && task.sub_task?.some(subTask => !subTask.is_completed)
-						)
+						return task.sub_task?.length > 0 && task.sub_task.some(subTask => !subTask.is_completed)
 					case 'upcoming':
 						return task.due_date >= today && task.due_date <= sevenDaysFromNow
 					default:
@@ -40,16 +37,12 @@ export const useFilterTasks = ({ tasks }: { tasks: TTask[] }) => {
 			filtered = [...filtered].sort((a, b) => {
 				const dateA = new Date(a.due_date).getTime()
 				const dateB = new Date(b.due_date).getTime()
-				if (sortOrder === 'asc') {
-					return dateA - dateB
-				} else {
-					return dateB - dateA
-				}
+				return sortOrder === 'asc' ? dateA - dateB : dateB - dateA
 			})
 		}
 
 		return filtered
-	}, [lastTasks, activeFilter, sortOrder])
+	}, [tasks, activeFilter, sortOrder])
 
 	const getFilterButtonClass = (filterType: TFilterTasks) => {
 		const baseClass =

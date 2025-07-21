@@ -2,20 +2,23 @@
 
 import { useState } from 'react'
 
-import { Button, Form, IconSelector, Modal, SectionHeading } from '@/components/ui'
+import {
+	EditTaskModalContent,
+	EditTaskModalIconSelector,
+	useEditTaskForm
+} from '@/components/modals/task'
+import { Button, Form, Modal, SectionHeading } from '@/components/ui'
 
-import { EditTaskModalContent } from './EditTaskModalContent'
-import { useEditTaskForm } from './useEditTaskForm'
 import { type TTask } from '@/types/tasks/task.types'
 import { type TTaskFormData } from '@/zod-schemes/task.zod'
 
-interface IEditTaskModal {
+interface Props {
 	setIsOpen: (isOpen: boolean) => void
 	task: TTask
 }
 
-export function EditTaskModal({ setIsOpen, task }: IEditTaskModal) {
-	const [selectedIcon, setSelectedIcon] = useState<string>(task.icon || '')
+export function EditTaskModal({ setIsOpen, task }: Props) {
+	const [selectedIcon] = useState<string>(task.icon || '')
 	const { form, onSubmit } = useEditTaskForm({ task })
 
 	const handleSubmit = (data: TTaskFormData) => {
@@ -34,22 +37,17 @@ export function EditTaskModal({ setIsOpen, task }: IEditTaskModal) {
 				<SectionHeading title={`Edit task: '${task.title}'`} />
 				<Form {...form}>
 					<form
-						onSubmit={form.handleSubmit(handleSubmit)}
+						onSubmit={form.handleSubmit(() => handleSubmit)}
 						className='flex flex-col gap-8'
 					>
 						<EditTaskModalContent form={form} />
 
-						<div className='flex flex-col gap-2'>
-							<label className='text-sm font-medium'>Icon</label>
-							<IconSelector
-								selectedIcon={selectedIcon}
-								onSelect={iconName => {
-									setSelectedIcon(iconName)
-									form.setValue('icon', iconName)
-								}}
-								placeholder={<task.icon size={24} />}
-							/>
-						</div>
+						<EditTaskModalIconSelector
+							task={task}
+							form={form}
+							selectedIcon={selectedIcon}
+						/>
+
 						<Button
 							variant='default'
 							type='submit'
