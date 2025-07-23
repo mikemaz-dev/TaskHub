@@ -3,7 +3,7 @@ import { cookies } from 'next/headers'
 
 import { type Database } from '@/types/db.types'
 
-export async function createClientFromServer() {
+export async function createClient() {
 	const cookieStore = await cookies()
 
 	return createServerClient<Database>(

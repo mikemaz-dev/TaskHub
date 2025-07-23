@@ -19,11 +19,10 @@ export function ChatTop({ user }: { user: IProfile }) {
 				</div>
 				<div className='flex flex-col items-center'>
 					<span className='text-xl font-semibold tracking-wider'>{user.name}</span>
-
 					<p className='text-sm opacity-85'>@{user.nick}</p>
 				</div>
 				<p className='w-80 text-center opacity-60 dark:opacity-40'>{user.description}</p>
-				<div className='rounded-md border-2 border-neutral-100 bg-neutral-50 px-4 py-1.5 shadow-sm dark:border-neutral-700 dark:bg-neutral-800/90'>
+				<div className='rounded-md border-2 border-neutral-100 bg-white px-4 py-1.5 shadow-sm dark:border-neutral-700 dark:bg-neutral-800/90'>
 					{user.profession}
 				</div>
 			</div>

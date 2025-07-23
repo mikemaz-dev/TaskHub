@@ -4,10 +4,8 @@ import type { ITaskStore } from '@/store/interfaces/task-store.interface'
 
 import { getIconByName, getNextSubTaskId } from '@/utils/store/tasks/tasks-store.util'
 
-import { TASKS_DATA } from '@/data/tasks'
-
 export const useTaskStore = create<ITaskStore>()(set => ({
-	tasks: TASKS_DATA,
+	tasks: [],
 
 	loadFromServer: tasks => {
 		return tasks

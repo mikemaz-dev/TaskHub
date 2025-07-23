@@ -2,10 +2,10 @@ import { redirect } from 'next/navigation'
 
 import { Pages } from '@/config/public-page.config'
 
-import { createClientFromServer } from '@/utils/supabase/server'
+import { createClient } from '@/utils/supabase/server'
 
 export async function getServerAuth(isNeedRedirect = false) {
-	const supabase = await createClientFromServer()
+	const supabase = await createClient()
 	const { data, error } = await supabase.auth.getUser()
 
 	if (error || !data?.user) {

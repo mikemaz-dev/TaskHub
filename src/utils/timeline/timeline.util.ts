@@ -1,8 +1,12 @@
 import { getHours, getMinutes } from 'date-fns'
 
-import type { TTask } from '@/types/tasks/task.types'
+import type { TGetTaskResponse } from '@/types/tasks/task.types'
 
-export function calculateTaskPosition(task: TTask): { left: number; width: number; right: number } {
+export function calculateTaskPosition(task: TGetTaskResponse): {
+	left: number
+	width: number
+	right: number
+} {
 	const startTime = `${task.due_date}T${task.start_time}`
 	const endTime = `${task.due_date}T${task.end_time}`
 
@@ -14,7 +18,7 @@ export function calculateTaskPosition(task: TTask): { left: number; width: numbe
 	const startDecimal = startHour + startMinute / 60
 	const endDecimal = endHour + endMinute / 60
 
-	const hoursInDay = 17 - 9 // 8 часов рабочего дня
+	const hoursInDay = 17 - 9
 
 	if (startDecimal < 9 || endDecimal > 17) {
 		return { left: 0, width: 0, right: 100 }

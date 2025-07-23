@@ -7,9 +7,9 @@ import { AddSubtaskModal } from '@/components/modals/subtask/AddSubtaskModal'
 import { EditTaskModal } from '@/components/modals/task/EditTaskModal'
 import { Button } from '@/components/ui'
 
-import type { TTask } from '@/types/tasks/task.types'
+import type { TGetTaskResponse } from '@/types/tasks/task.types'
 
-export function TaskCardActions({ task }: { task: TTask }) {
+export function TaskCardActions({ task }: { task: TGetTaskResponse }) {
 	const [isEditTaskModalOpen, setIsEditTaskModalOpen] = useState(false)
 	const [isAddSubtaskModalOpen, setIsAddSubtaskModalOpen] = useState(false)
 
@@ -29,17 +29,19 @@ export function TaskCardActions({ task }: { task: TTask }) {
 			)}
 			<Button
 				variant='default'
+				size='icon'
 				className='rounded-full'
 				onClick={() => setIsAddSubtaskModalOpen(true)}
 			>
-				<Plus size={18} />
+				<Plus />
 			</Button>
 			<Button
-				variant='secondary'
+				variant='outline'
+				size='icon'
 				className='border-primary rounded-full p-2'
 				onClick={() => setIsEditTaskModalOpen(true)}
 			>
-				<Pencil size={16} />
+				<Pencil />
 			</Button>
 		</div>
 	)

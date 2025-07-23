@@ -1,21 +1,32 @@
-import { isSameDay } from 'date-fns'
+import { format } from 'date-fns'
 
 import { TimeSlotItem } from '@/components/sections/today-tasks/TimeSlotItem'
 
 import { TIMELINE_SLOTS } from '@/data/timeline/timeline-slots.data'
-import type { TTask } from '@/types/tasks/task.types'
+import type { TGetTasksResponse, TTask } from '@/types/tasks/task.types'
 
 export function TodayTasksTimeline({ tasks }: { tasks: TTask[] }) {
-	const today = new Date()
+	if (!tasks?.length) return null
 
-	const todayTasks = tasks.filter(task => isSameDay(task.due_date, today))
+	const tasksByTimeSlot =
+		tasks.reduce<Record<string, TGetTasksResponse>>((acc, task) => {
+			const startTime = `${task.due_date}T${task.start_time}`
+			const slotTime = format(new Date(startTime), 'h aaa')
+
+			if (!acc[slotTime]) {
+				acc[slotTime] = []
+			}
+			acc[slotTime].push(task)
+
+			return acc
+		}, {}) ?? {}
 
 	return (
 		<div className='flex h-full justify-between px-8 pb-5'>
 			{TIMELINE_SLOTS.map(slot => (
 				<TimeSlotItem
 					key={slot.hour}
-					tasks={todayTasks}
+					tasks={tasksByTimeSlot[slot.time] || []}
 					time={slot.time}
 				/>
 			))}

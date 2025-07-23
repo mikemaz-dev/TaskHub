@@ -10,11 +10,20 @@ import { useTaskStore } from '@/store/task.store'
 
 import type { TTask } from '@/types/tasks/task.types'
 
-export function Dashboard({ tasks }: { tasks: TTask[] }) {
-	const loadTaskFromServer = useTaskStore(state => state.loadFromServer)
+interface TaskResponse {
+	data: TTask[]
+}
+
+interface Props {
+	tasks: TaskResponse
+	todayTasks: TaskResponse
+}
+
+export function Dashboard({ tasks, todayTasks }: Props) {
+	const loadTasksFromServer = useTaskStore(state => state.loadFromServer)
 
 	useEffect(() => {
-		loadTaskFromServer(tasks)
+		loadTasksFromServer(tasks.data)
 	})
 
 	return (
@@ -27,8 +36,8 @@ export function Dashboard({ tasks }: { tasks: TTask[] }) {
 						<ProjectStatistic />
 					</div>
 					<div className='flex flex-col gap-8'>
-						<LastTasks tasks={tasks} />
-						<TodayTasks tasks={tasks} />
+						<LastTasks tasks={tasks.data} />
+						<TodayTasks tasks={todayTasks.data} />
 					</div>
 				</section>
 			</div>

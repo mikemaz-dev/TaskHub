@@ -1,50 +1,30 @@
-import { ChevronDown, Loader2 } from 'lucide-react'
-import { useEffect, useState } from 'react'
+'use client'
 
-import { createClient } from '@/utils/supabase/client'
+import { useQuery } from '@tanstack/react-query'
+import { ChevronDown, Loader2 } from 'lucide-react'
 
 import { PROFILE } from '@/data/sidebar/profile.data'
-import type { IUser } from '@/types/user/user.types'
+import { getProfile } from '@/services/profile/profile-client.service'
 
 export function ProfileCard() {
-	const supabase = createClient()
+	const { data, isPending } = useQuery({
+		queryKey: ['profile'],
+		queryFn: getProfile
+	})
 
-	const [user, setUser] = useState<IUser | null>(null)
-	const [loading, setLoading] = useState(true)
-	const [error, setError] = useState<string | null>(null)
-
-	useEffect(() => {
-		const fetchUser = async () => {
-			try {
-				const {
-					data: { user },
-					error
-				} = await supabase.auth.getUser()
-
-				if (error) {
-					throw error
-				}
-
-				setUser(user)
-			} catch (err) {
-				setError(err instanceof Error ? err.message : 'An error has occurred')
-			} finally {
-				setLoading(false)
-			}
-		}
-
-		fetchUser()
-	}, [])
-
-	if (error) {
-		return <div className='border-destructive text-destructive rounded-lg border p-4'>{error}</div>
-	}
-
-	if (loading) {
+	if (isPending) {
 		return (
 			<div className='bg-background flex items-center gap-2 rounded-3xl px-4 py-2.5'>
 				<Loader2 className='text-primary size-9 animate-spin' />
 				<span className='text-foreground text-lg font-bold'>Loading...</span>
+			</div>
+		)
+	}
+
+	if (!data) {
+		return (
+			<div className='border-destructive text-destructive rounded-lg border p-4'>
+				There are no data yet.
 			</div>
 		)
 	}
@@ -63,7 +43,7 @@ export function ProfileCard() {
 				)}
 				<div className='flex flex-col'>
 					<p className='font-bold'>Mike</p>
-					<p className='max-w-[150px] truncate text-sm font-medium opacity-60'>{user.email}</p>
+					<p className='max-w-[150px] truncate text-sm font-medium opacity-60'>{data.email}</p>
 				</div>
 			</div>
 			<button

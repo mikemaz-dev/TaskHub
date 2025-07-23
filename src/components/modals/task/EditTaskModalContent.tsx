@@ -1,4 +1,4 @@
-import { format } from 'date-fns'
+import { format, parse } from 'date-fns'
 import { Calendar as CalendarIcon } from 'lucide-react'
 import { Controller, type UseFormReturn } from 'react-hook-form'
 
@@ -41,7 +41,7 @@ export function EditTaskModalContent({ form }: { form: UseFormReturn<TTaskFormDa
 			<div className='flex flex-col gap-6'>
 				<Controller
 					control={form.control}
-					name='dueDate'
+					name='due_date'
 					render={({ field: { onChange, value } }) => (
 						<div className='flex flex-col gap-2'>
 							<Label htmlFor='dueDate'>Due Date</Label>
@@ -53,14 +53,14 @@ export function EditTaskModalContent({ form }: { form: UseFormReturn<TTaskFormDa
 										className='data-[empty=true]:text-muted-foreground w-full justify-start text-left font-normal'
 									>
 										<CalendarIcon />
-										{value ? format(value.date, 'PPP') : <p>Pick a due date</p>}
+										{value ? format(value, 'PPP') : <p>Pick a due date</p>}
 									</Button>
 								</PopoverTrigger>
 								<PopoverContent className='w-auto p-0'>
 									<Calendar
 										mode='single'
-										selected={value.date}
-										onSelect={onChange}
+										selected={value}
+										onSelect={date => onChange(date)}
 									/>
 								</PopoverContent>
 							</Popover>
@@ -70,17 +70,17 @@ export function EditTaskModalContent({ form }: { form: UseFormReturn<TTaskFormDa
 				<div className='flex items-center justify-between gap-5'>
 					<FormField
 						control={form.control}
-						name='dueDate.startTime'
+						name='start_time'
 						render={({ field: { onChange, value } }) => (
 							<FormItem className='w-full'>
-								<FormLabel htmlFor='dueDate.startTime'>Start Time</FormLabel>
+								<FormLabel htmlFor='start_time'>Start Time</FormLabel>
 								<FormControl>
 									<Input
 										id='time-from'
 										type='time'
 										step='1'
-										value={value}
-										onChange={() => onChange()}
+										value={value || ''}
+										onChange={event => onChange(event.target.value)}
 										className='bg-background appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none'
 									/>
 								</FormControl>
@@ -88,19 +88,21 @@ export function EditTaskModalContent({ form }: { form: UseFormReturn<TTaskFormDa
 							</FormItem>
 						)}
 					/>
+
 					<FormField
 						control={form.control}
-						name='dueDate.endTime'
+						name='end_time'
 						render={({ field }) => (
 							<FormItem className='w-full'>
-								<FormLabel htmlFor='dueDate.endTime'>End Time</FormLabel>
+								<FormLabel htmlFor='end_time'>End Time</FormLabel>
 								<FormControl>
 									<Input
 										type='time'
 										id='time-picker'
 										step='1'
+										value={field.value || ''}
+										onChange={field.onChange}
 										className='bg-background appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none'
-										{...field}
 									/>
 								</FormControl>
 								<FormMessage />

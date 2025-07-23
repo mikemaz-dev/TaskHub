@@ -24,7 +24,7 @@ export function TaskCardStats({ task }: { task: TTask }) {
 			<div className='flex items-center gap-1'>
 				<Link2
 					size={16}
-					className='opacity-40'
+					className='-rotate-45 opacity-40'
 				/>
 				<span className='text-sm font-semibold'>{formatCount(task.links?.length)}</span>
 			</div>

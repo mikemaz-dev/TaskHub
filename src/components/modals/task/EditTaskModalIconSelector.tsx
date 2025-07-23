@@ -4,11 +4,11 @@ import { Controller, type UseFormReturn } from 'react-hook-form'
 import { Button } from '@/components/ui'
 
 import { AVAILABLE_ICONS } from '@/data/available-icons.data'
-import type { TTask } from '@/types/tasks/task.types'
+import type { TGetTaskResponse } from '@/types/tasks/task.types'
 import type { TTaskFormData } from '@/zod-schemes/task.zod'
 
 interface Props {
-	task: TTask
+	task: TGetTaskResponse
 	form: UseFormReturn<TTaskFormData>
 	selectedIcon: string
 }
@@ -42,7 +42,7 @@ export function EditTaskModalIconSelector({ task, selectedIcon, form }: Props) {
 									<DynamicIcon
 										name={iconName}
 										size={40}
-										className='text-primary'
+										className='text-foreground'
 									/>
 								</Button>
 							))}

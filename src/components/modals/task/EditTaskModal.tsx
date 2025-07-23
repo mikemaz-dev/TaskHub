@@ -2,11 +2,8 @@
 
 import { useState } from 'react'
 
-import {
-	EditTaskModalContent,
-	EditTaskModalIconSelector,
-	useEditTaskForm
-} from '@/components/modals/task'
+import { EditTaskModalContent, EditTaskModalIconSelector } from '@/components/modals/task'
+import { useEditTaskForm } from '@/components/modals/task/useEditTaskForm'
 import { Button, Form, Modal, SectionHeading } from '@/components/ui'
 
 import { type TTask } from '@/types/tasks/task.types'
@@ -19,16 +16,23 @@ interface Props {
 
 export function EditTaskModal({ setIsOpen, task }: Props) {
 	const [selectedIcon] = useState<string>(task.icon || '')
-	const { form, onSubmit } = useEditTaskForm({ task })
+	const { form, isPending, onSubmit } = useEditTaskForm({
+		taskId: task.id,
+		onClose: () => setIsOpen(false)
+	})
 
-	const handleSubmit = (data: TTaskFormData) => {
+	const handleSubmit = async (data: TTaskFormData) => {
 		const formDataWithIcon = {
 			...data,
 			icon: selectedIcon
 		}
 
-		onSubmit(formDataWithIcon)
-		setIsOpen(false)
+		try {
+			await onSubmit(formDataWithIcon)
+			setIsOpen(false)
+		} catch (error) {
+			console.error('Error updating task:', error)
+		}
 	}
 
 	return (
@@ -37,7 +41,7 @@ export function EditTaskModal({ setIsOpen, task }: Props) {
 				<SectionHeading title={`Edit task: '${task.title}'`} />
 				<Form {...form}>
 					<form
-						onSubmit={form.handleSubmit(() => handleSubmit)}
+						onSubmit={form.handleSubmit(handleSubmit)}
 						className='flex flex-col gap-8'
 					>
 						<EditTaskModalContent form={form} />
@@ -51,6 +55,7 @@ export function EditTaskModal({ setIsOpen, task }: Props) {
 						<Button
 							variant='default'
 							type='submit'
+							disabled={isPending}
 							className='w-max'
 						>
 							{form.formState.isSubmitting ? 'Saving...' : 'Save'}

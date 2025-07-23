@@ -19,7 +19,6 @@ export const useAuthForm = () => {
 	const onSubmit = (data: TAuthFormData) => {
 		signInWithEmail({ email: data.email })
 			.then(() => {
-				form.reset()
 				toast.success('Please check your email for verify token', {
 					position: 'bottom-left',
 					duration: 3500
