@@ -8,10 +8,12 @@ type SortOrder = TSortingTasks
 
 export const useFilterTasks = ({ tasks }: { tasks: TTask[] }) => {
 	const [activeFilter, setActiveFilter] = useState<TFilterTasks>('all')
-	const [sortOrder, setSortOrder] = useState<SortOrder>('none')
+	const [sortOrder, setSortOrder] = useState<SortOrder | null>(null)
 
 	const filteredTasks = useMemo(() => {
-		if (!tasks?.length) return []
+		if (!tasks?.length) {
+			return []
+		}
 
 		let filtered = [...tasks]
 
@@ -22,18 +24,20 @@ export const useFilterTasks = ({ tasks }: { tasks: TTask[] }) => {
 			filtered = filtered.filter(task => {
 				switch (activeFilter) {
 					case 'done':
-						return task.sub_task?.length > 0 && task.sub_task.every(subTask => subTask.is_completed)
+						return task.sub_task.every(subTask => subTask.is_completed)
 					case 'in-progress':
 						return task.sub_task?.length > 0 && task.sub_task.some(subTask => !subTask.is_completed)
-					case 'upcoming':
-						return task.due_date >= today && task.due_date <= sevenDaysFromNow
+					case 'upcoming': {
+						const date = new Date(task.due_date)
+						return !isNaN(date.getTime()) && date >= today && date <= sevenDaysFromNow
+					}
 					default:
 						return false
 				}
 			})
 		}
 
-		if (sortOrder !== 'none') {
+		if (sortOrder !== null) {
 			filtered = [...filtered].sort((a, b) => {
 				const dateA = new Date(a.due_date).getTime()
 				const dateB = new Date(b.due_date).getTime()
@@ -41,6 +45,8 @@ export const useFilterTasks = ({ tasks }: { tasks: TTask[] }) => {
 			})
 		}
 
+		console.log('=== Конец фильтрации ===')
+		console.log('Возвращаем:', filtered)
 		return filtered
 	}, [tasks, activeFilter, sortOrder])
 

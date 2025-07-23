@@ -1,7 +1,9 @@
-import { createClient } from '@/utils/supabase/client'
+'use server'
+
+import { createClientFromServer } from '@/utils/supabase/server'
 
 export async function getProfile() {
-	const client = createClient()
+	const client = await createClientFromServer()
 
 	const {
 		data: { user },

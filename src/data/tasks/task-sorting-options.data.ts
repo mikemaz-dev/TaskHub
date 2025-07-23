@@ -2,11 +2,11 @@ import type { IDropdownItem } from '@/types/dropdown/dropdown-item.types'
 import type { TSortingTasks } from '@/types/tasks/task.types'
 
 export const TaskSortingOptions = (
-	setSortOrder: (order: TSortingTasks) => void
+	setSortOrder: (order: TSortingTasks | null) => void
 ): IDropdownItem[] => [
 	{
 		label: 'No Sorting',
-		onClick: () => setSortOrder('none')
+		onClick: () => setSortOrder(null)
 	},
 	{
 		label: 'Earliest First',

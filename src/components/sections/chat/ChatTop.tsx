@@ -2,15 +2,17 @@ import Image from 'next/image'
 
 import { Button } from '@/components/ui'
 
-import type { IProfile } from '@/types/profile.types'
+import type { Database } from '@/types/db.types'
 
-export function ChatTop({ user }: { user: IProfile }) {
+type TProfile = Database['public']['Tables']['profile']['Row']
+
+export function ChatTop({ user }: { user: TProfile }) {
 	return (
 		<div className='flex flex-col items-center gap-7 self-center'>
 			<div className='flex flex-col items-center gap-3.5 self-center'>
 				<div>
 					<Image
-						src={user.avatar}
+						src={user?.avatar_path || '/images/default-avatar.png'}
 						alt='User avatar'
 						width={110}
 						height={110}
@@ -18,12 +20,12 @@ export function ChatTop({ user }: { user: IProfile }) {
 					/>
 				</div>
 				<div className='flex flex-col items-center'>
-					<span className='text-xl font-semibold tracking-wider'>{user.name}</span>
-					<p className='text-sm opacity-85'>@{user.nick}</p>
+					<span className='text-xl font-semibold tracking-wider'>{user?.name}</span>
+					<p className='text-sm opacity-85'>@{user?.nick}</p>
 				</div>
-				<p className='w-80 text-center opacity-60 dark:opacity-40'>{user.description}</p>
+				<p className='w-80 text-center opacity-60 dark:opacity-40'>{user?.description}</p>
 				<div className='rounded-md border-2 border-neutral-100 bg-white px-4 py-1.5 shadow-sm dark:border-neutral-700 dark:bg-neutral-800/90'>
-					{user.profession}
+					{user?.profession}
 				</div>
 			</div>
 			<Button

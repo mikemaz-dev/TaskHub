@@ -4,11 +4,11 @@ import { Controller, type UseFormReturn } from 'react-hook-form'
 import { Button } from '@/components/ui'
 
 import { AVAILABLE_ICONS } from '@/data/available-icons.data'
-import type { TGetTaskResponse } from '@/types/tasks/task.types'
+import type { TTask } from '@/types/tasks/task.types'
 import type { TTaskFormData } from '@/zod-schemes/task.zod'
 
 interface Props {
-	task: TGetTaskResponse
+	task: TTask
 	form: UseFormReturn<TTaskFormData>
 	selectedIcon: string
 }

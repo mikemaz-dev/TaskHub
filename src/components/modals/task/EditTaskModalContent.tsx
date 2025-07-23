@@ -1,4 +1,4 @@
-import { format, parse } from 'date-fns'
+import { format } from 'date-fns'
 import { Calendar as CalendarIcon } from 'lucide-react'
 import { Controller, type UseFormReturn } from 'react-hook-form'
 
@@ -20,6 +20,19 @@ import {
 import type { TTaskFormData } from '@/zod-schemes/task.zod'
 
 export function EditTaskModalContent({ form }: { form: UseFormReturn<TTaskFormData> }) {
+	const parseDate = (dateString: string): Date | undefined => {
+		if (!dateString) return undefined
+
+		const date = new Date(dateString)
+
+		if (isNaN(date.getTime())) {
+			console.error('Incorrect date format:', dateString)
+			return undefined
+		}
+
+		return date
+	}
+
 	return (
 		<div className='flex flex-col gap-6.5'>
 			<FormField
@@ -59,8 +72,11 @@ export function EditTaskModalContent({ form }: { form: UseFormReturn<TTaskFormDa
 								<PopoverContent className='w-auto p-0'>
 									<Calendar
 										mode='single'
-										selected={value}
-										onSelect={date => onChange(date)}
+										selected={parseDate(value)}
+										onSelect={date => {
+											onChange(format(date ?? '', 'y-MM-d'))
+											console.log('Selected date:', date)
+										}}
 									/>
 								</PopoverContent>
 							</Popover>

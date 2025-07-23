@@ -16,11 +16,11 @@ import {
 
 interface IAddSubtaskModal {
 	setIsOpen: Dispatch<SetStateAction<boolean>>
-	taskId: number
+	taskId: string
 }
 
 export function AddSubtaskModal({ setIsOpen, taskId }: IAddSubtaskModal) {
-	const { form, onSubmit } = useAddSubtask({ taskId, setIsOpen })
+	const { form, isPending, onSubmit } = useAddSubtask({ taskId, setIsOpen })
 
 	return (
 		<Modal onClose={() => setIsOpen(false)}>
@@ -53,8 +53,10 @@ export function AddSubtaskModal({ setIsOpen, taskId }: IAddSubtaskModal) {
 							<Button
 								variant='default'
 								type='submit'
+								disabled={isPending}
+								className='w-max'
 							>
-								Save
+								{form.formState.isSubmitting ? 'Adding subtask...' : 'Add subtask'}
 							</Button>
 						</div>
 					</form>

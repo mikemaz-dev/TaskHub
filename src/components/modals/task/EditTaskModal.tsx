@@ -7,7 +7,6 @@ import { useEditTaskForm } from '@/components/modals/task/useEditTaskForm'
 import { Button, Form, Modal, SectionHeading } from '@/components/ui'
 
 import { type TTask } from '@/types/tasks/task.types'
-import { type TTaskFormData } from '@/zod-schemes/task.zod'
 
 interface Props {
 	setIsOpen: (isOpen: boolean) => void
@@ -15,25 +14,12 @@ interface Props {
 }
 
 export function EditTaskModal({ setIsOpen, task }: Props) {
-	const [selectedIcon] = useState<string>(task.icon || '')
 	const { form, isPending, onSubmit } = useEditTaskForm({
 		taskId: task.id,
 		onClose: () => setIsOpen(false)
 	})
 
-	const handleSubmit = async (data: TTaskFormData) => {
-		const formDataWithIcon = {
-			...data,
-			icon: selectedIcon
-		}
-
-		try {
-			await onSubmit(formDataWithIcon)
-			setIsOpen(false)
-		} catch (error) {
-			console.error('Error updating task:', error)
-		}
-	}
+	const [selectedIcon] = useState<string>(task.icon || '')
 
 	return (
 		<Modal onClose={() => setIsOpen(false)}>
@@ -41,7 +27,7 @@ export function EditTaskModal({ setIsOpen, task }: Props) {
 				<SectionHeading title={`Edit task: '${task.title}'`} />
 				<Form {...form}>
 					<form
-						onSubmit={form.handleSubmit(handleSubmit)}
+						onSubmit={form.handleSubmit(onSubmit)}
 						className='flex flex-col gap-8'
 					>
 						<EditTaskModalContent form={form} />

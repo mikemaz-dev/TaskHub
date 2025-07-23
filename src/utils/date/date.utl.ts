@@ -36,3 +36,16 @@ export function formatDueDate(dueDate: Date): string {
 
 	return `Due: ${dueDateObj.format('MMM D')}`
 }
+
+export const formatDateToString = (date: Date | string | null | undefined): string => {
+	if (!date) return ''
+
+	const dateObject = date instanceof Date ? date : new Date(date)
+
+	if (isNaN(dateObject.getTime())) {
+		console.error('Неверный формат даты:', date)
+		return ''
+	}
+
+	return dateObject.toISOString().split('T')[0]
+}

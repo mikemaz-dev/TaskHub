@@ -1,16 +1,17 @@
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
-import { useTaskStore } from '@/store/task.store'
-
+import { clientCreateSubTask } from '@/services/tasks/task-client.service'
+import type { TSubTaskCreate } from '@/types/tasks/task.types'
 import { SubtaskSchema, type TSubtaskFormData } from '@/zod-schemes/sub-task.zod'
 
 export const useAddSubtask = ({
 	taskId,
 	setIsOpen
 }: {
-	taskId: number
+	taskId: string
 	setIsOpen: (isOpen: boolean) => void
 }) => {
 	const form = useForm<TSubtaskFormData>({
@@ -20,7 +21,25 @@ export const useAddSubtask = ({
 		}
 	})
 
-	const addSubTask = useTaskStore(state => state.addSubTask)
+	const queryClient = useQueryClient()
+
+	const { mutate, isPending, isError } = useMutation({
+		mutationKey: ['sub_task', 'create'],
+		mutationFn: (data: TSubTaskCreate) => clientCreateSubTask(taskId, data),
+		onSuccess: () => {
+			toast.success('Task updated successfully')
+			setIsOpen(false)
+			queryClient.invalidateQueries({ queryKey: ['sub_task'] })
+		},
+		onError: error => {
+			toast.error('Failed to create subtask')
+			console.error('Error creating subtask:', error)
+		}
+	})
+
+	if (isError) {
+		console.warn('Error updating task')
+	}
 
 	const onSubmit = (data: TSubtaskFormData) => {
 		if (!data.title.trim()) {
@@ -32,7 +51,7 @@ export const useAddSubtask = ({
 			return null
 		}
 
-		addSubTask(taskId, data.title)
+		mutate(data)
 		form.reset({ title: '' })
 		setIsOpen(false)
 
@@ -45,6 +64,7 @@ export const useAddSubtask = ({
 
 	return {
 		form,
+		isPending,
 		onSubmit
 	}
 }

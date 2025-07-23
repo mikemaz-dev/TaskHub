@@ -2,17 +2,19 @@ import Image from 'next/image'
 
 import { cn } from '@/utils/cn.util'
 
-import type { IMessage } from '@/types/message/message.interface'
+import type { Database } from '@/types/db.types'
 import type { IProfile } from '@/types/profile.types'
 
-export function MsgItem({ msg, user }: { msg: IMessage; user: IProfile }) {
+type TChatMessage = Database['public']['Tables']['chat_message']['Row']
+
+export function MsgItem({ msg, user }: { msg: TChatMessage; user: IProfile }) {
 	return (
 		<div className={cn('flex', (msg.sender && 'justify-end') || 'justify-start')}>
 			<div className='flex gap-2.5'>
 				{!msg.sender && (
 					<div className='bg-primary/10 flex h-10 w-10 items-center justify-center rounded-full'>
 						<Image
-							src={user.avatar}
+							src={user.avatar || '/src/images/default-avatar.png'}
 							alt='User avatar'
 							width={40}
 							height={40}

@@ -1,42 +1,75 @@
-import { useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
+import { useEffect, useRef, useState } from 'react'
 
-import { MESSAGES } from '@/data/messages/messages.data'
-import { USERS_DATA } from '@/data/users/users.data'
-import type { IMessage } from '@/types/message/message.interface'
+import { createClient } from '@/utils/supabase/client'
+
+import { getProfile } from '@/services/profile/profile-client.service'
+import type { Database } from '@/types/db.types'
+
+type TChatMessage = Database['public']['Tables']['chat_message']['Row']
 
 export const useChat = () => {
-	const user = USERS_DATA[0]
-	const [messages, setMessages] = useState<IMessage[]>(MESSAGES(user.nick))
-	const [message, setMessage] = useState('')
-	const [file, setFile] = useState<File | null>(null)
+	const { data } = useQuery({
+		queryKey: ['profile'],
+		queryFn: getProfile
+	})
+	const supabase = useRef(createClient())
 
-	const handleSend = () => {
-		if (message.trim() || file) {
-			setMessages([
-				...messages,
+	const [messages, setMessages] = useState([])
+	const [text, setText] = useState('')
+
+	useEffect(() => {
+		supabase.current
+			.from('chat_message')
+			.select('*')
+			.order('created_at', { ascending: true })
+			.then(({ data }) => {
+				if (!data) return
+				setMessages(data)
+			})
+
+		const channel = supabase.current
+			.channel('chat_message')
+			.on(
+				'postgres_changes',
 				{
-					id: Date.now(),
-					text: message.trim() || 'File send',
-					sender: true,
-					timestamp: new Date().toLocaleTimeString('en', {
-						hour: '2-digit',
-						minute: '2-digit'
-					}),
-					nickname: user.nick
+					event: 'INSERT',
+					schema: 'public',
+					table: 'chat_message'
+				},
+				payload => {
+					const msg = payload.new as TChatMessage
+					setMessages(prev => [...prev, msg])
 				}
-			])
-			setMessage('')
-			setFile(null)
+			)
+			.subscribe()
+
+		return () => {
+			supabase.current.removeChannel(channel)
 		}
+	}, [])
+
+	const sendMessage = async () => {
+		if (!text.trim()) return
+
+		await supabase.current.auth.getUser().then(({ data }) => {
+			if (!data.user) return
+
+			const userId = data.user.id
+
+			return supabase.current.from('chat_message').insert({
+				text,
+				user_id: userId
+			})
+		})
+
+		setText('')
 	}
 
 	return {
 		messages,
-		message,
 		setMessages,
-		file,
-		setFile,
-		handleSend,
-		user
+		data,
+		sendMessage
 	}
 }

@@ -7,9 +7,9 @@ import { AddSubtaskModal } from '@/components/modals/subtask/AddSubtaskModal'
 import { EditTaskModal } from '@/components/modals/task/EditTaskModal'
 import { Button } from '@/components/ui'
 
-import type { TGetTaskResponse } from '@/types/tasks/task.types'
+import type { TTask } from '@/types/tasks/task.types'
 
-export function TaskCardActions({ task }: { task: TGetTaskResponse }) {
+export function TaskCardActions({ task }: { task: TTask }) {
 	const [isEditTaskModalOpen, setIsEditTaskModalOpen] = useState(false)
 	const [isAddSubtaskModalOpen, setIsAddSubtaskModalOpen] = useState(false)
 

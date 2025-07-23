@@ -12,8 +12,8 @@ export default async function Page() {
 
 	return (
 		<Dashboard
-			tasks={tasks || []}
-			todayTasks={todayTasks || []}
+			tasks={tasks}
+			todayTasks={todayTasks}
 		/>
 	)
 }

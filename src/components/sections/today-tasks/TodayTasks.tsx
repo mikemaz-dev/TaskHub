@@ -1,7 +1,7 @@
 import { TodayTasksHeader } from '@/components/sections/today-tasks'
 import { TodayTasksTimeline } from '@/components/sections/today-tasks/TodayTasksTimeline'
 
-import type { TGetTasksResponse, TTask } from '@/types/tasks/task.types'
+import type { TTask } from '@/types/tasks/task.types'
 
 export function TodayTasks({ tasks }: { tasks: TTask[] }) {
 	return (
