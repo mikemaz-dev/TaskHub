@@ -13,9 +13,10 @@ import type { TTask } from '@/types/tasks/task.types'
 interface Props {
 	tasks: TTask[]
 	todayTasks: TTask[]
+	userId: string
 }
 
-export function Dashboard({ tasks, todayTasks }: Props) {
+export function Dashboard({ tasks, todayTasks, userId }: Props) {
 	const loadTasksFromServer = useTaskStore(state => state.loadFromServer)
 
 	useEffect(() => {
@@ -37,7 +38,7 @@ export function Dashboard({ tasks, todayTasks }: Props) {
 					</div>
 				</section>
 			</div>
-			<Chat />
+			<Chat userId={userId} />
 		</div>
 	)
 }

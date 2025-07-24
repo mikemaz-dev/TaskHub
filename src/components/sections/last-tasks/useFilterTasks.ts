@@ -44,9 +44,6 @@ export const useFilterTasks = ({ tasks }: { tasks: TTask[] }) => {
 				return sortOrder === 'asc' ? dateA - dateB : dateB - dateA
 			})
 		}
-
-		console.log('=== Конец фильтрации ===')
-		console.log('Возвращаем:', filtered)
 		return filtered
 	}, [tasks, activeFilter, sortOrder])
 

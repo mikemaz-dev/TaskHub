@@ -1,8 +1,8 @@
 import { getHours, getMinutes } from 'date-fns'
 
-import type { TGetTaskResponse } from '@/types/tasks/task.types'
+import type { TTask } from '@/types/tasks/task.types'
 
-export function calculateTaskPosition(task: TGetTaskResponse): {
+export function calculateTaskPosition(task: TTask): {
 	left: number
 	width: number
 	right: number

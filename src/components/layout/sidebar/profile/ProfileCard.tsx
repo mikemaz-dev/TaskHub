@@ -1,16 +1,10 @@
-'use client'
-
-import { useQuery } from '@tanstack/react-query'
 import { ChevronDown, Loader2 } from 'lucide-react'
+import Image from 'next/image'
 
-import { PROFILE } from '@/data/sidebar/profile.data'
-import { getProfile } from '@/services/profile/profile-client.service'
+import { useProfile } from '@/hooks/useProfile'
 
 export function ProfileCard() {
-	const { data, isPending } = useQuery({
-		queryKey: ['profile'],
-		queryFn: getProfile
-	})
+	const { data, isPending } = useProfile()
 
 	if (isPending) {
 		return (
@@ -32,24 +26,23 @@ export function ProfileCard() {
 	return (
 		<div className='bg-background flex items-center justify-center gap-1 rounded-3xl px-4 py-1.5'>
 			<div className='flex items-center gap-2'>
-				{PROFILE.avatar ? (
-					<img
-						src={PROFILE.avatar}
+				{data.avatar_path ? (
+					<Image
+						src={data.avatar_path || '/images/default-avatar.png'}
 						alt='avatar'
-						className='h-9 w-9 rounded-full'
+						width={36}
+						height={36}
+						className='rounded-full'
 					/>
 				) : (
 					<div className='size-9 rounded-full bg-blue-500' />
 				)}
 				<div className='flex flex-col'>
-					<p className='font-bold'>Mike</p>
+					<p className='font-bold'>{data.name}</p>
 					<p className='max-w-[150px] truncate text-sm font-medium opacity-60'>{data.email}</p>
 				</div>
 			</div>
-			<button
-				className='cursor-pointer transition-opacity duration-300 hover:opacity-100'
-				aria-label='Открыть профиль'
-			>
+			<button className='cursor-pointer transition-opacity duration-300 hover:opacity-100'>
 				<ChevronDown
 					size={20}
 					className='text-foreground opacity-60'

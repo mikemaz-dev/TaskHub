@@ -1,4 +1,4 @@
-import type { IProfile } from '@/types/profile.types'
+import type { IProfile } from '@/types/user/profile.types'
 
 export const USERS_DATA: IProfile[] = [
 	{

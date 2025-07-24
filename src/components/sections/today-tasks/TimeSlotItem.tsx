@@ -62,8 +62,8 @@ export function TimeSlotItem({ tasks, time }: ITimelineSlotsProps) {
 						key={task.id}
 						className='absolute z-50 flex transform flex-col gap-6 rounded-2xl bg-blue-300 p-4.5 dark:bg-blue-400'
 						style={{
-							top: `${getMinutes(startTime) + 15}%`,
-							left: `${calculateTaskPosition(task).left}px`,
+							left: `${calculateTaskPosition(task).left}%`,
+							top: `${getMinutes(startTime)}%`,
 							width: `${calculateTaskPosition(task).width}dvh`
 						}}
 					>

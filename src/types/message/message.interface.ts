@@ -1,7 +1,6 @@
-export interface IMessage {
-	id: number
-	text: string
-	timestamp: string
-	sender: boolean
-	nickname: string
+import type { Database } from '@/types/db.types'
+import type { TProfile } from '@/types/user/profile.types'
+
+export type TChatMessageWithProfile = Database['public']['Tables']['chat_message']['Row'] & {
+	profile: TProfile | null
 }
