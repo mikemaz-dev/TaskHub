@@ -55,7 +55,7 @@ export const useEditTaskForm = ({ taskId, onClose }: { taskId: string; onClose: 
 		onSuccess: () => {
 			toast.success('Task updated successfully')
 			onClose()
-			queryClient.invalidateQueries({ queryKey: ['task', taskId] })
+			queryClient.invalidateQueries({ queryKey: ['task'] })
 		},
 		onError: error => {
 			toast.error('Failed to update task')

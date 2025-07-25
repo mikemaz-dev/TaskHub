@@ -7,6 +7,7 @@ import { DropdownButton, SectionHeading, SkeletonLoader } from '@/components/ui/
 
 import type { IDropdownItem } from '@/types/dropdown/dropdown-item.types'
 import type { ProjectStatisticPeriod } from '@/types/project/project-statistics/project-statistic-period.types'
+import type { TGetProjectChartResponse } from '@/types/statistic/statistic.types'
 
 const DynamicProjectStatisticChart = dynamic(
 	() => import('./ProjectStatisticChart').then(mod => mod.ProjectStatisticChart),
@@ -16,8 +17,8 @@ const DynamicProjectStatisticChart = dynamic(
 	}
 )
 
-export function ProjectStatistic() {
-	const [selectedPeriod, setSelectedPeriod] = useState<ProjectStatisticPeriod>('monthly')
+export function ProjectStatistic({ chartData }: { chartData: TGetProjectChartResponse }) {
+	const [selectedPeriod, setSelectedPeriod] = useState<ProjectStatisticPeriod>('yearly')
 
 	const dropdownItems: IDropdownItem[] = [
 		{ label: 'Yearly', value: 'yearly' },
@@ -38,7 +39,10 @@ export function ProjectStatistic() {
 					onSelect={handlePeriodChange}
 				/>
 			</div>
-			<DynamicProjectStatisticChart period={selectedPeriod} />
+			<DynamicProjectStatisticChart
+				period={selectedPeriod}
+				data={chartData}
+			/>
 		</div>
 	)
 }

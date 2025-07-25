@@ -2,9 +2,8 @@ import type { PropsWithChildren } from 'react'
 
 import { Sidebar } from '@/components/layout/sidebar/Sidebar'
 
-import { getServerAuth } from '@/utils/supabase/get-server-auth'
-
 import { Content } from './content/Content'
+import { getServerAuth } from '@/services/get-server-auth'
 import { getServerProfile } from '@/services/profile/profile-server.service'
 
 export async function Layout({ children }: PropsWithChildren) {

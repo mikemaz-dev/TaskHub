@@ -1,14 +1,15 @@
 import { ProjectStatCard } from '@/components/sections/project-stats/ProjectStatCard'
 
-import { PROJECT_STATS_DATA } from '@/data/project-stats/project-stats.data'
+import type { TGetProjectStatsResponse } from '@/types/statistic/statistic.types'
 
-export function ProjectStats() {
+export function ProjectStats({ projectStats }: { projectStats: TGetProjectStatsResponse }) {
 	return (
 		<div className='flex flex-col gap-5'>
-			{PROJECT_STATS_DATA.map(projectStat => (
+			{projectStats?.map((projectStat, index) => (
 				<ProjectStatCard
 					key={projectStat.id}
 					projectStat={projectStat}
+					isLast={index === projectStats.length - 1}
 				/>
 			))}
 		</div>

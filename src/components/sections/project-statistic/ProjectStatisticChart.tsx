@@ -10,16 +10,28 @@ import {
 
 import { ProjectStatisticChartTooltip } from '@/components/sections/project-statistic'
 
-import { getProjectStatisticData } from '@/utils/getProjectStatisticData'
-
 import type { ProjectStatisticPeriod } from '@/types/project/project-statistics/project-statistic-period.types'
+import type { TGetProjectChartResponse } from '@/types/statistic/statistic.types'
 
 interface IProjectStatisticChart {
 	period: ProjectStatisticPeriod
+	data: TGetProjectChartResponse
 }
 
-export function ProjectStatisticChart({ period }: IProjectStatisticChart) {
-	const statisticData = getProjectStatisticData(period)
+const formatDataForRecharts = (
+	rawData: TGetProjectChartResponse,
+	period: ProjectStatisticPeriod
+): Array<{ name: string; projectCount: number }> => {
+	return rawData
+		.filter(item => item.range_type === period)
+		.map(item => ({
+			name: item.period,
+			projectCount: item.value
+		}))
+}
+
+export function ProjectStatisticChart({ period, data }: IProjectStatisticChart) {
+	const formattedData = formatDataForRecharts(data, period)
 
 	return (
 		<ResponsiveContainer
@@ -28,7 +40,7 @@ export function ProjectStatisticChart({ period }: IProjectStatisticChart) {
 		>
 			<AreaChart
 				height={366}
-				data={statisticData}
+				data={formattedData}
 				className='select-none'
 				margin={{ top: 0, left: -8, bottom: 4 }}
 			>

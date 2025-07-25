@@ -5,6 +5,4 @@ export interface ITaskStore {
 
 	// Actions
 	loadFromServer: (tasks: TTask[]) => void
-	addSubTask: (taskId: number, title: string) => void
-	editTask: (id: number, taskData: Partial<TGetTasksResponse>) => void
 }

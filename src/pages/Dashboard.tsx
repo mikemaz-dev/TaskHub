@@ -3,20 +3,25 @@
 import { useEffect } from 'react'
 
 import { Header } from '@/components/layout/header/Header'
-import { LastTasks, ProjectStatistic, ProjectStats, TodayTasks } from '@/components/sections'
-import { Chat } from '@/components/sections/chat/Chat'
+import { Chat, LastTasks, ProjectStatistic, ProjectStats, TodayTasks } from '@/components/sections'
 
 import { useTaskStore } from '@/store/task.store'
 
-import type { TTask } from '@/types/tasks/task.types'
+import type {
+	TGetProjectChartResponse,
+	TGetProjectStatsResponse
+} from '@/types/statistic/statistic.types'
+import type { TGetTasksResponse } from '@/types/tasks/task.types'
 
 interface Props {
-	tasks: TTask[]
-	todayTasks: TTask[]
+	tasks: TGetTasksResponse
+	todayTasks: TGetTasksResponse
+	projectStats: TGetProjectStatsResponse
+	projectChartData: TGetProjectChartResponse
 	userId: string
 }
 
-export function Dashboard({ tasks, todayTasks, userId }: Props) {
+export function Dashboard({ tasks, todayTasks, projectStats, projectChartData, userId }: Props) {
 	const loadTasksFromServer = useTaskStore(state => state.loadFromServer)
 
 	useEffect(() => {
@@ -29,8 +34,8 @@ export function Dashboard({ tasks, todayTasks, userId }: Props) {
 				<Header />
 				<section className='mb-6 flex flex-col gap-8.5'>
 					<div className='grid grid-cols-[1fr_2fr] gap-6 md:flex md:flex-col'>
-						<ProjectStats />
-						<ProjectStatistic />
+						<ProjectStats projectStats={projectStats} />
+						<ProjectStatistic chartData={projectChartData} />
 					</div>
 					<div className='flex flex-col gap-8'>
 						<LastTasks tasks={tasks} />

@@ -3,9 +3,8 @@ import { redirect } from 'next/navigation'
 
 import { Pages } from '@/config/public-page.config'
 
-import { getServerAuth } from '@/utils/supabase/get-server-auth'
-
 import { Auth } from '@/pages/Auth'
+import { getServerAuth } from '@/services/get-server-auth'
 
 export const metadata: Metadata = {
 	title: 'Auth'

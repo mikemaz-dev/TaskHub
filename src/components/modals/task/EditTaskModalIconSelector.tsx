@@ -34,9 +34,9 @@ export function EditTaskModalIconSelector({ task, selectedIcon, form }: Props) {
 									variant='outline'
 									size='lg'
 									key={iconName}
-									onClick={() => onChange(iconName)}
+									onClick={() => onChange((selectedIcon = iconName))}
 									className={`hover:bg-accent rounded-md transition-colors ${
-										selectedIcon === iconName ? 'bg-accent' : ''
+										selectedIcon === iconName && 'bg-accent'
 									}`}
 								>
 									<DynamicIcon

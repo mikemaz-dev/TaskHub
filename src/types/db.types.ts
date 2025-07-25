@@ -33,7 +33,15 @@ export type Database = {
           text?: string
           user_id?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "chat_message_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profile"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       profile: {
         Row: {
@@ -59,6 +67,51 @@ export type Database = {
           name?: string | null
           nick?: string | null
           profession?: string | null
+        }
+        Relationships: []
+      }
+      project_chart_point: {
+        Row: {
+          id: string
+          period: string
+          range_type: string
+          value: number
+        }
+        Insert: {
+          id?: string
+          period: string
+          range_type: string
+          value: number
+        }
+        Update: {
+          id?: string
+          period?: string
+          range_type?: string
+          value?: number
+        }
+        Relationships: []
+      }
+      project_stat: {
+        Row: {
+          bg_color: string | null
+          icon: string | null
+          id: string
+          label: string
+          number: number
+        }
+        Insert: {
+          bg_color?: string | null
+          icon?: string | null
+          id?: string
+          label: string
+          number: number
+        }
+        Update: {
+          bg_color?: string | null
+          icon?: string | null
+          id?: string
+          label?: string
+          number?: number
         }
         Relationships: []
       }
