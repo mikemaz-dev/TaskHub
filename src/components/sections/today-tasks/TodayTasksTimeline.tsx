@@ -6,7 +6,12 @@ import { TIMELINE_SLOTS } from '@/data/timeline/timeline-slots.data'
 import type { TGetTasksResponse, TTask } from '@/types/tasks/task.types'
 
 export function TodayTasksTimeline({ tasks }: { tasks: TTask[] }) {
-	if (!tasks?.length) return null
+	if (!tasks?.length)
+		return (
+			<div className='flex h-full w-full items-center justify-center'>
+				<span className='text-xl font-medium'>No tasks for today</span>
+			</div>
+		)
 
 	const tasksByTimeSlot =
 		tasks.reduce<Record<string, TGetTasksResponse>>((acc, task) => {

@@ -1,23 +1,21 @@
 'use client'
 
-import dynamic from 'next/dynamic'
+import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 
-import { DropdownButton, SectionHeading, SkeletonLoader } from '@/components/ui/'
+import { ProjectStatisticChart } from '@/components/sections/project-statistic/ProjectStatisticChart'
+import { DropdownButton, SectionHeading } from '@/components/ui/'
 
+import { getClientProjectChartData } from '@/services/statistics/chart/project-chart-client.service'
 import type { IDropdownItem } from '@/types/dropdown/dropdown-item.types'
 import type { ProjectStatisticPeriod } from '@/types/project/project-statistics/project-statistic-period.types'
-import type { TGetProjectChartResponse } from '@/types/statistic/statistic.types'
+import type { TGetClientProjectChartResponse } from '@/types/statistic/statistic.types'
 
-const DynamicProjectStatisticChart = dynamic(
-	() => import('./ProjectStatisticChart').then(mod => mod.ProjectStatisticChart),
-	{
-		ssr: false,
-		loading: () => <SkeletonLoader className='h-88 w-185' />
-	}
-)
+interface Props {
+	chartData: TGetClientProjectChartResponse
+}
 
-export function ProjectStatistic({ chartData }: { chartData: TGetProjectChartResponse }) {
+export function ProjectStatistic({ chartData }: Props) {
 	const [selectedPeriod, setSelectedPeriod] = useState<ProjectStatisticPeriod>('yearly')
 
 	const dropdownItems: IDropdownItem[] = [
@@ -29,19 +27,25 @@ export function ProjectStatistic({ chartData }: { chartData: TGetProjectChartRes
 		setSelectedPeriod(item.value as ProjectStatisticPeriod)
 	}
 
+	const { data } = useQuery({
+		queryKey: ['project-chart-data', selectedPeriod],
+		queryFn: () => getClientProjectChartData(selectedPeriod),
+		placeholderData: chartData
+	})
+
 	return (
 		<div className='flex flex-col gap-4 rounded-3xl bg-white p-5 shadow-sm dark:bg-neutral-800'>
 			<div className='flex items-center justify-between'>
 				<SectionHeading title='Project Statistic' />
 				<DropdownButton
 					items={dropdownItems}
-					placeholder='Select mode'
+					placeholder={selectedPeriod.charAt(0).toUpperCase() + selectedPeriod.slice(1)}
 					onSelect={handlePeriodChange}
 				/>
 			</div>
-			<DynamicProjectStatisticChart
+			<ProjectStatisticChart
 				period={selectedPeriod}
-				data={chartData}
+				data={data || []}
 			/>
 		</div>
 	)

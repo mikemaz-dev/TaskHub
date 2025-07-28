@@ -1,21 +1,37 @@
+'use client'
+
+import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 
 import { SectionHeading } from '@/components/ui'
 
-import { USERS_DATA } from '@/data/users/users.data'
+import { getClientUsers } from '@/services/users/get-users-client'
+import type { TGetClientUsersResponse } from '@/types/user/user.types'
 
-export function TodayTasksHeader() {
-	const remainingUsers = Math.max(0, USERS_DATA.length - 4)
+interface Props {
+	usersData: TGetClientUsersResponse
+}
+
+export function TodayTasksHeader({ usersData }: Props) {
+	const { data } = useQuery({
+		queryKey: ['users'],
+		queryFn: () => getClientUsers(),
+		placeholderData: usersData
+	})
+
+	if (!data) return null
+
+	const remainingUsers = Math.max(0, data.length - 5)
 
 	return (
 		<div className='flex w-full items-center justify-between'>
 			<SectionHeading title='Today Tasks' />
 			<div className='flex items-center -space-x-3.5'>
-				{USERS_DATA.slice(0, 4).map((user, index) => (
+				{data.slice(0, 4).map((user, index) => (
 					<Image
 						key={user.id}
-						src={user.avatar ? user.avatar : '/images/default-avatar.png'}
-						alt={user.name}
+						src={user.avatar_path ? user.avatar_path : '/images/default-avatar.png'}
+						alt={user.name || 'User avatar'}
 						width={50}
 						height={50}
 						className='rounded-full border-2 border-white shadow-sm dark:border-neutral-800'

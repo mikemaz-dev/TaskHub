@@ -7,7 +7,7 @@ import { TaskCard } from '@/components/ui/task-card'
 
 import { formatCount } from '@/utils/formatCount'
 
-import { TaskSortingOptions } from '@/data/tasks'
+import { TaskSortingOptions } from '@/data/tasks/task-sorting-options.data'
 import type { TTask } from '@/types/tasks/task.types'
 
 export function LastTasks({ tasks }: { tasks: TTask[] }) {

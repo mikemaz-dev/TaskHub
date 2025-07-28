@@ -1,12 +1,12 @@
 'use client'
 
-import { LogOut } from 'lucide-react'
 import { usePathname, useRouter } from 'next/navigation'
 import { match } from 'path-to-regexp'
 
 import { ProfileCard, ProjectItem, SidebarItem, SidebarTopic } from '@/components/layout/sidebar'
 import type { IMenu } from '@/components/layout/sidebar/menu/menu.type'
 import { Button } from '@/components/ui'
+import { LogoutIcon } from '@/components/ui/icons/logout'
 
 import { Pages } from '@/config/public-page.config'
 
@@ -42,7 +42,7 @@ export function Sidebar() {
 							size='sm'
 							onClick={signOut}
 						>
-							<LogOut />
+							<LogoutIcon />
 						</Button>
 					}
 				>

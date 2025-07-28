@@ -11,15 +11,15 @@ import {
 import { ProjectStatisticChartTooltip } from '@/components/sections/project-statistic'
 
 import type { ProjectStatisticPeriod } from '@/types/project/project-statistics/project-statistic-period.types'
-import type { TGetProjectChartResponse } from '@/types/statistic/statistic.types'
+import type { TGetClientProjectChartResponse } from '@/types/statistic/statistic.types'
 
 interface IProjectStatisticChart {
 	period: ProjectStatisticPeriod
-	data: TGetProjectChartResponse
+	data: TGetClientProjectChartResponse
 }
 
 const formatDataForRecharts = (
-	rawData: TGetProjectChartResponse,
+	rawData: TGetClientProjectChartResponse,
 	period: ProjectStatisticPeriod
 ): Array<{ name: string; projectCount: number }> => {
 	return rawData

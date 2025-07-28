@@ -3,6 +3,8 @@ import { Controller, type UseFormReturn } from 'react-hook-form'
 
 import { Button } from '@/components/ui'
 
+import { cn } from '@/utils/cn.util'
+
 import { AVAILABLE_ICONS } from '@/data/available-icons.data'
 import type { TTask } from '@/types/tasks/task.types'
 import type { TTaskFormData } from '@/zod-schemes/task.zod'
@@ -27,17 +29,18 @@ export function EditTaskModalIconSelector({ task, selectedIcon, form }: Props) {
 				<Controller
 					control={form.control}
 					name='icon'
-					render={({ field: { onChange } }) => (
+					render={({ field: { onChange, value } }) => (
 						<div className='flex items-center gap-2 sm:grid-cols-6'>
 							{AVAILABLE_ICONS.map(iconName => (
 								<Button
 									variant='outline'
 									size='lg'
 									key={iconName}
-									onClick={() => onChange((selectedIcon = iconName))}
-									className={`hover:bg-accent rounded-md transition-colors ${
+									onChange={() => onChange((selectedIcon = value))}
+									className={cn(
+										'hover:bg-accent rounded-md transition-colors',
 										selectedIcon === iconName && 'bg-accent'
-									}`}
+									)}
 								>
 									<DynamicIcon
 										name={iconName}

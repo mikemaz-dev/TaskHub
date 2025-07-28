@@ -1,11 +1,12 @@
 'use client'
 
-import { Pencil, Plus } from 'lucide-react'
+import { Pencil } from 'lucide-react'
 import { useState } from 'react'
 
 import { AddSubtaskModal } from '@/components/modals/subtask/AddSubtaskModal'
 import { EditTaskModal } from '@/components/modals/task/EditTaskModal'
 import { Button } from '@/components/ui'
+import { PlusIcon } from '@/components/ui/icons/plus'
 
 import type { TTask } from '@/types/tasks/task.types'
 
@@ -33,7 +34,7 @@ export function TaskCardActions({ task }: { task: TTask }) {
 				className='rounded-full'
 				onClick={() => setIsAddSubtaskModalOpen(true)}
 			>
-				<Plus />
+				<PlusIcon />
 			</Button>
 			<Button
 				variant='outline'

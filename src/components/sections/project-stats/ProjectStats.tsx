@@ -4,7 +4,7 @@ import type { TGetProjectStatsResponse } from '@/types/statistic/statistic.types
 
 export function ProjectStats({ projectStats }: { projectStats: TGetProjectStatsResponse }) {
 	return (
-		<div className='flex flex-col gap-5'>
+		<div className='flex flex-col justify-between gap-5'>
 			{projectStats?.map((projectStat, index) => (
 				<ProjectStatCard
 					key={projectStat.id}

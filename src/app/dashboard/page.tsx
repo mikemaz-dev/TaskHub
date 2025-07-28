@@ -8,17 +8,19 @@ import {
 	getServerTasks,
 	getServerTodayTasks
 } from '@/services'
+import { getServerUsers } from '@/services/users/get-users-server'
 
 export const metadata: Metadata = {
 	title: 'Dashboard'
 }
 
 export default async function Page() {
-	const [tasks, todayTasks, projectStats, projectChart] = await Promise.all([
+	const [tasks, todayTasks, projectStats, projectChartData, usersData] = await Promise.all([
 		getServerTasks(),
 		getServerTodayTasks(),
 		getServerProjectStatsData(),
-		getServerProjectChartData('yearly')
+		getServerProjectChartData('yearly'),
+		getServerUsers()
 	])
 
 	const userId = (await getServerProfile()).id
@@ -29,7 +31,8 @@ export default async function Page() {
 			todayTasks={todayTasks.data || []}
 			userId={userId}
 			projectStats={projectStats.data || []}
-			projectChartData={projectChart.data || []}
+			projectChartData={projectChartData.data || []}
+			usersData={usersData.data || []}
 		/>
 	)
 }

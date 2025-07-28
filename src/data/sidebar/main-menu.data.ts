@@ -1,14 +1,14 @@
-import {
-	Bolt,
-	CalendarRange,
-	ChartColumnDecreasing,
-	LayoutDashboard,
-	MessageCircleMore,
-	NotebookText,
-	Users
-} from 'lucide-react'
+import { LayoutDashboard } from 'lucide-react'
 
 import type { IMenu } from '@/components/layout/sidebar/menu/menu.type'
+import {
+	BookTextIcon,
+	CalendarDaysIcon,
+	ChartColumnDecreasingIcon,
+	MessageCircleMoreIcon,
+	SettingsGearIcon,
+	UsersIcon
+} from '@/components/ui/icons'
 
 import { Pages } from '@/config/public-page.config'
 
@@ -19,32 +19,32 @@ export const MAIN_MENU_DATA: IMenu[] = [
 		href: Pages.DASHBOARD
 	},
 	{
-		icon: MessageCircleMore,
+		icon: MessageCircleMoreIcon,
 		name: 'Messages',
 		href: Pages.MESSAGES
 	},
 	{
-		icon: ChartColumnDecreasing,
+		icon: ChartColumnDecreasingIcon,
 		name: 'Insight',
 		href: Pages.MESSAGES
 	},
 	{
-		icon: Users,
+		icon: UsersIcon,
 		name: 'Team',
 		href: Pages.TEAM
 	},
 	{
-		icon: CalendarRange,
+		icon: CalendarDaysIcon,
 		name: 'Schedule',
 		href: Pages.SCHEDULE
 	},
 	{
-		icon: NotebookText,
+		icon: BookTextIcon,
 		name: 'Report',
 		href: Pages.REPORT
 	},
 	{
-		icon: Bolt,
+		icon: SettingsGearIcon,
 		name: 'Settings',
 		href: Pages.REPORT
 	}

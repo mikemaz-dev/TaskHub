@@ -12,16 +12,25 @@ import type {
 	TGetProjectStatsResponse
 } from '@/types/statistic/statistic.types'
 import type { TGetTasksResponse } from '@/types/tasks/task.types'
+import type { TGetUsersResponse } from '@/types/user/user.types'
 
 interface Props {
 	tasks: TGetTasksResponse
 	todayTasks: TGetTasksResponse
 	projectStats: TGetProjectStatsResponse
 	projectChartData: TGetProjectChartResponse
+	usersData: TGetUsersResponse
 	userId: string
 }
 
-export function Dashboard({ tasks, todayTasks, projectStats, projectChartData, userId }: Props) {
+export function Dashboard({
+	tasks,
+	todayTasks,
+	projectStats,
+	projectChartData,
+	usersData,
+	userId
+}: Props) {
 	const loadTasksFromServer = useTaskStore(state => state.loadFromServer)
 
 	useEffect(() => {
@@ -33,13 +42,16 @@ export function Dashboard({ tasks, todayTasks, projectStats, projectChartData, u
 			<div className='hide-scrollbar flex h-screen flex-col gap-6 overflow-y-scroll'>
 				<Header />
 				<section className='mb-6 flex flex-col gap-8.5'>
-					<div className='grid grid-cols-[1fr_2fr] gap-6 md:flex md:flex-col'>
+					<div className='grid grid-cols-[0.5fr_1.2fr] gap-6 md:flex md:flex-col'>
 						<ProjectStats projectStats={projectStats} />
 						<ProjectStatistic chartData={projectChartData} />
 					</div>
 					<div className='flex flex-col gap-8'>
 						<LastTasks tasks={tasks} />
-						<TodayTasks tasks={todayTasks} />
+						<TodayTasks
+							tasks={todayTasks}
+							usersData={usersData}
+						/>
 					</div>
 				</section>
 			</div>

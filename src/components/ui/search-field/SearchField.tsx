@@ -1,5 +1,7 @@
 import { Search } from 'lucide-react'
 
+import { SearchIcon } from '@/components/ui/icons/search'
+
 interface ISearchField {
 	placeholder?: string
 	onChange: (value: string) => void
@@ -13,7 +15,7 @@ export function SearchField({
 }: ISearchField) {
 	return (
 		<div className='flex max-w-md items-center justify-center gap-2 rounded-full bg-white p-2.5 shadow-sm md:w-full md:justify-start dark:bg-neutral-800'>
-			<Search
+			<SearchIcon
 				size={22}
 				className='text-gray-500 dark:text-neutral-500'
 			/>

@@ -1,4 +1,4 @@
-import { Paperclip, Send } from 'lucide-react'
+import { Loader2, Paperclip, Send } from 'lucide-react'
 
 import { ChatHeader } from '@/components/sections/chat/ChatHeader'
 import { useChat } from '@/components/sections/chat/useChat'
@@ -9,7 +9,16 @@ import { MsgItem } from './MsgItem'
 import type { TChatMessageWithProfile } from '@/types/message/message.interface'
 
 export function Chat({ userId }: { userId: string }) {
-	const { messages, currentUser, setText, text, sendMessage } = useChat({ userId })
+	const { messages, currentUser, setText, text, isLoading, sendMessage } = useChat({ userId })
+
+	if (isLoading) {
+		return (
+			<div className='flex min-h-screen flex-col items-center justify-center bg-white shadow-sm dark:bg-neutral-800'>
+				<Loader2 className='text-primary h-12 w-12 animate-spin' />
+				<h2 className='text-2xl font-bold text-gray-800'>Loading chat...</h2>
+			</div>
+		)
+	}
 
 	return (
 		<div className='flex flex-col bg-white shadow-sm dark:bg-neutral-800'>

@@ -1,51 +1,37 @@
-import dayjs from 'dayjs'
-import isToday from 'dayjs/plugin/isToday'
-import isTomorrow from 'dayjs/plugin/isTomorrow'
-import relativeTime from 'dayjs/plugin/relativeTime'
-
-dayjs.extend(relativeTime)
-dayjs.extend(isToday)
-dayjs.extend(isTomorrow)
+import { differenceInDays, format, isToday, isTomorrow, startOfDay } from 'date-fns'
 
 export function getDaysUntilDue(dueDate: Date): number {
-	const today = dayjs().startOf('day')
-	const due = dayjs(dueDate).startOf('day')
-	return due.diff(today, 'day')
+	const today = startOfDay(new Date())
+	const due = startOfDay(dueDate)
+	return differenceInDays(due, today)
 }
 
 export function formatDueDate(dueDate: Date): string {
 	const daysUntil = getDaysUntilDue(dueDate)
-	const dueDateObj = dayjs(dueDate)
+	const dueDateObj = new Date(dueDate)
+	const overdueDays = Math.abs(daysUntil)
 
-	if (dueDateObj.isToday()) {
+	if (isToday(dueDateObj)) {
 		return 'Due: Today'
 	}
 
-	if (dueDateObj.isTomorrow()) {
+	if (isTomorrow(dueDateObj)) {
 		return 'Due: Tomorrow'
 	}
 
 	if (daysUntil < 0) {
-		const overdueDays = Math.abs(daysUntil)
 		return `Overdue: ${overdueDays} day${overdueDays === 1 ? '' : 's'}`
 	}
 
 	if (daysUntil <= 7) {
-		return `Due: ${daysUntil} day${daysUntil === 1 ? '' : 's'}`
+		return `Due: ${daysUntil} day${overdueDays === 1 ? '' : 's'}`
 	}
 
-	return `Due: ${dueDateObj.format('MMM D')}`
+	return `Due: ${format(dueDateObj, 'MMM d')}`
 }
 
-export const formatDateToString = (date: Date | string | null | undefined): string => {
-	if (!date) return ''
-
-	const dateObject = date instanceof Date ? date : new Date(date)
-
-	if (isNaN(dateObject.getTime())) {
-		console.error('Неверный формат даты:', date)
-		return ''
-	}
-
-	return dateObject.toISOString().split('T')[0]
+export const FormatMinutes = (totalMinutes: number): string => {
+	const hours = Math.floor(totalMinutes / 60)
+	const minutes = totalMinutes % 60
+	return `${hours}h ${minutes}m`
 }

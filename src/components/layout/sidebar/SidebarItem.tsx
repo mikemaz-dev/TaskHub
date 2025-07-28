@@ -10,7 +10,7 @@ export function SidebarItem({ item, isActive }: { item: IMenu; isActive: boolean
 			<Link
 				href={item.href}
 				className={cn(
-					'group flex cursor-pointer items-center rounded-2xl p-2.5 text-gray-500 transition-colors duration-200 select-none dark:text-neutral-100',
+					'group flex cursor-pointer items-center rounded-2xl p-2.5 text-neutral-500 transition-colors duration-200 select-none dark:text-neutral-100',
 					{
 						'flex justify-between': item.name === 'Messages',
 						'bg-primary pointer-events-none text-white': isActive
@@ -20,7 +20,6 @@ export function SidebarItem({ item, isActive }: { item: IMenu; isActive: boolean
 				<div className='flex items-center gap-2'>
 					<item.icon
 						size={21}
-						absoluteStrokeWidth={true}
 						className='group-hover:text-primary opacity-90 transition-colors'
 					/>
 					<span className='group-hover:text-primary font-medium transition-colors'>
