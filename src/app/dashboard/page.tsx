@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
-import { Dashboard } from '@/pages/Dashboard'
+import { Dashboard } from '@/components/pages/Dashboard'
+
 import {
 	getServerProfile,
 	getServerProjectChartData,

@@ -24,7 +24,7 @@ export function ProfileCard() {
 	}
 
 	return (
-		<div className='bg-background flex items-center gap-2 rounded-2xl px-4 py-1.5'>
+		<div className='bg-background text-foreground flex items-center gap-2 rounded-2xl px-4 py-1.5'>
 			{data.avatar_path ? (
 				<Image
 					src={data.avatar_path || '/images/default-avatar.png'}

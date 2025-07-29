@@ -18,8 +18,10 @@ export function TaskCardHeader({ task }: { task: TTask }) {
 					/>
 				</div>
 				<div className='flex flex-col gap-0.5'>
-					<h3 className='font-bold 2xl:text-sm'>{task.title}</h3>
-					<p className='mt-1 text-sm font-semibold opacity-80'>{formatDueDate(task.due_date)}</p>
+					<h3 className='text-foreground font-bold 2xl:text-sm'>{task.title}</h3>
+					<p className='text-foreground mt-1 text-sm font-semibold opacity-80'>
+						{formatDueDate(task.due_date)}
+					</p>
 				</div>
 			</div>
 			<TaskCardUsers task={task} />

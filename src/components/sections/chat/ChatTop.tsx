@@ -9,7 +9,7 @@ type TProfile = Database['public']['Tables']['profile']['Row']
 
 function ChatTop({ user }: { user?: TProfile }) {
 	return (
-		<div className='flex flex-col items-center gap-7 self-center'>
+		<div className='text-foreground flex flex-col items-center gap-7 self-center'>
 			<div className='flex flex-col items-center gap-3.5 self-center'>
 				<div>
 					<Image

@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 
+import { Auth } from '@/components/pages/Auth'
+
 import { Pages } from '@/config/public-page.config'
 
-import { Auth } from '@/pages/Auth'
 import { getServerAuth } from '@/services/get-server-auth'
 
 export const metadata: Metadata = {

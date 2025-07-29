@@ -46,7 +46,7 @@ function DropdownButton({ placeholder, items, onSelect }: IDropdownButton) {
 
 	return (
 		<div
-			className='relative select-none'
+			className='text-foreground relative select-none'
 			ref={dropdownRef}
 		>
 			<button

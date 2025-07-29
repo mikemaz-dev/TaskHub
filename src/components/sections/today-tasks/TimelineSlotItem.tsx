@@ -16,7 +16,7 @@ export function TimelineSlotItem({ tasks, time }: ITimelineSlotsProps) {
 		<div className='group relative flex flex-col items-center gap-2'>
 			<span
 				className={cn(
-					'text-sm font-semibold opacity-60',
+					'text-foreground text-sm font-semibold opacity-60',
 					nowTime === time && 'text-primary font-bold opacity-100'
 				)}
 			>

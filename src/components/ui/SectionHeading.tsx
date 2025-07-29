@@ -6,7 +6,9 @@ interface ISectionHeading {
 
 function SectionHeading({ title }: ISectionHeading) {
 	return (
-		<h2 className='text-2xl font-semibold transition-colors duration-300 md:text-xl'>{title}</h2>
+		<h2 className='text-foreground text-2xl font-semibold transition-colors duration-300 md:text-xl'>
+			{title}
+		</h2>
 	)
 }
 

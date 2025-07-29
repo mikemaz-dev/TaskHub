@@ -44,6 +44,7 @@ export function EditTaskModalContent({ form }: { form: UseFormReturn<TTaskFormDa
 						<FormControl>
 							<Input
 								placeholder='Enter task name'
+								className='text-foreground'
 								{...field}
 							/>
 						</FormControl>
@@ -63,7 +64,7 @@ export function EditTaskModalContent({ form }: { form: UseFormReturn<TTaskFormDa
 									<Button
 										variant='outline'
 										data-empty={!value}
-										className='data-[empty=true]:text-muted-foreground w-full justify-start text-left font-normal'
+										className='data-[empty=true]:text-muted-foreground text-foreground w-full justify-start text-left font-normal'
 									>
 										<CalendarIcon />
 										{value ? format(value, 'PPP') : <p>Pick a due date</p>}
@@ -73,10 +74,7 @@ export function EditTaskModalContent({ form }: { form: UseFormReturn<TTaskFormDa
 									<Calendar
 										mode='single'
 										selected={parseDate(value)}
-										onSelect={date => {
-											onChange(format(date ?? '', 'y-MM-d'))
-											console.log('Selected date:', date)
-										}}
+										onSelect={date => onChange(format(date ?? '', 'y-MM-d'))}
 									/>
 								</PopoverContent>
 							</Popover>
@@ -97,7 +95,7 @@ export function EditTaskModalContent({ form }: { form: UseFormReturn<TTaskFormDa
 										step='1'
 										value={value || ''}
 										onChange={event => onChange(event.target.value)}
-										className='bg-background appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none'
+										className='bg-background text-foreground appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none'
 									/>
 								</FormControl>
 								<FormMessage />
@@ -118,7 +116,7 @@ export function EditTaskModalContent({ form }: { form: UseFormReturn<TTaskFormDa
 										step='1'
 										value={field.value || ''}
 										onChange={field.onChange}
-										className='bg-background appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none'
+										className='bg-background text-foreground appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none'
 									/>
 								</FormControl>
 								<FormMessage />

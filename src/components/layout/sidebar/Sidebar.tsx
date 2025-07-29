@@ -44,6 +44,7 @@ export function Sidebar() {
 							size='sm'
 							onClick={signOut}
 							aria-label='Logout'
+							className='text-foreground'
 						>
 							<LogoutIcon />
 						</Button>

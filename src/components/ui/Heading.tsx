@@ -8,7 +8,7 @@ interface IHeading {
 }
 
 function Heading({ children, clasName }: IHeading) {
-	return <h1 className={cn('text-3xl font-bold', clasName)}>{children}</h1>
+	return <h1 className={cn('text-foreground text-3xl font-bold', clasName)}>{children}</h1>
 }
 
 export default memo(Heading)

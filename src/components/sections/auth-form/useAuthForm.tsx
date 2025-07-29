@@ -20,7 +20,7 @@ export const useAuthForm = () => {
 		signInWithEmail({ email: data.email })
 			.then(() => {
 				toast.success('Please check your email for verify token', {
-					position: 'bottom-left',
+					position: 'bottom-right',
 					duration: 3500
 				})
 			})

@@ -7,23 +7,23 @@ function TaskCardStats() {
 			<div className='flex items-center justify-center gap-1'>
 				<MessageSquareText
 					size={16}
-					className='opacity-40'
+					className='text-foreground opacity-40'
 				/>
-				<span className='text-sm font-semibold'>2</span>
+				<span className='text-foreground text-sm font-semibold'>2</span>
 			</div>
 			<div className='flex items-center justify-center gap-1'>
 				<LucideImage
 					size={16}
-					className='opacity-40'
+					className='text-foreground opacity-40'
 				/>
-				<span className='text-sm font-semibold'>4</span>
+				<span className='text-foreground text-sm font-semibold'>4</span>
 			</div>
 			<div className='flex items-center gap-1'>
 				<Link2
 					size={16}
-					className='-rotate-45 opacity-40'
+					className='text-foreground -rotate-45 opacity-40'
 				/>
-				<span className='text-sm font-semibold'>6</span>
+				<span className='text-foreground text-sm font-semibold'>6</span>
 			</div>
 		</div>
 	)

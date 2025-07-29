@@ -40,15 +40,12 @@ export function AuthForm() {
 							</FormItem>
 						)}
 					/>
-					<div className='flex w-full flex-col gap-3'>
-						<Button
-							type='submit'
-							className='w-full'
-						>
-							Send link
-						</Button>
-						<p className='ml-1.5 opacity-65'>Then, check your email for verify token.</p>
-					</div>
+					<Button
+						type='submit'
+						className='w-full'
+					>
+						Send link
+					</Button>
 				</form>
 			</Form>
 		</div>

@@ -5,7 +5,7 @@ import { Button } from '@/components/ui'
 
 function ChatHeader() {
 	return (
-		<div className='flex items-center justify-between'>
+		<div className='text-foreground flex items-center justify-between'>
 			<div className='flex items-center gap-2'>
 				<MessageCircleMore size={20} />
 				<span className='font-semibold'>Chat</span>

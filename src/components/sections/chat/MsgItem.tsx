@@ -10,7 +10,7 @@ function MsgItem({ msg, userId }: { msg: TChatMessageWithProfile; userId: string
 	const isOwnMessage = msg.user_id === userId
 
 	return (
-		<div className={cn('flex', (isOwnMessage && 'justify-end') || 'justify-start')}>
+		<div className={cn('text-foreground flex', (isOwnMessage && 'justify-end') || 'justify-start')}>
 			<div className='flex gap-2.5'>
 				{!isOwnMessage && (
 					<div className='bg-primary/10 flex h-10 w-10 items-center justify-center rounded-full'>

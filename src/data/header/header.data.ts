@@ -1,4 +1,4 @@
-import type { IHeader } from '@/types/home/home.types'
+import type { IHeader } from '@/types/home/header.types'
 
 export const HEADER_DATA: IHeader[] = [
 	{

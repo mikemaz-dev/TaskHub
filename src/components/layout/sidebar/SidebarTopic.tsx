@@ -13,7 +13,7 @@ export function SidebarTopic({ title, children, rightSide, className }: SidebarT
 	return (
 		<div className={cn('flex flex-col gap-2.5', className)}>
 			<div className='flex items-center justify-between'>
-				<span className='dark:tex-white font-medium opacity-60'>{title}</span>
+				<span className='text-foreground font-medium opacity-60'>{title}</span>
 				{rightSide}
 			</div>
 			{children}
