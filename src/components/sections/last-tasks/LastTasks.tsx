@@ -1,12 +1,13 @@
 import { AnimatePresence, m } from 'motion/react'
 
-import { LastTasksFilters } from '@/components/sections/last-tasks'
 import { useFilterTasks } from '@/components/sections/last-tasks/useFilterTasks'
-import { DropdownButton, SectionHeading } from '@/components/ui'
-import { TaskCard } from '@/components/ui/task-card'
+import DropdownButton from '@/components/ui/DropdownButton'
+import SectionHeading from '@/components/ui/SectionHeading'
+import TaskCard from '@/components/ui/task-card/TaskCard'
 
 import { formatCount } from '@/utils/formatCount'
 
+import LastTasksFilters from './LastTasksFilters'
 import { TaskSortingOptions } from '@/data/tasks/task-sorting-options.data'
 import type { TTask } from '@/types/tasks/task.types'
 

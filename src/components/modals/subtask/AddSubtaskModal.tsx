@@ -10,9 +10,9 @@ import {
 	FormLabel,
 	FormMessage,
 	Input,
-	Modal,
-	SectionHeading
+	Modal
 } from '@/components/ui'
+import SectionHeading from '@/components/ui/SectionHeading'
 
 interface IAddSubtaskModal {
 	setIsOpen: Dispatch<SetStateAction<boolean>>

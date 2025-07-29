@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { memo } from 'react'
 
 import { Button } from '@/components/ui'
 
@@ -6,7 +7,7 @@ import type { Database } from '@/types/db.types'
 
 type TProfile = Database['public']['Tables']['profile']['Row']
 
-export function ChatTop({ user }: { user?: TProfile }) {
+function ChatTop({ user }: { user?: TProfile }) {
 	return (
 		<div className='flex flex-col items-center gap-7 self-center'>
 			<div className='flex flex-col items-center gap-3.5 self-center'>
@@ -39,3 +40,5 @@ export function ChatTop({ user }: { user?: TProfile }) {
 		</div>
 	)
 }
+
+export default memo(ChatTop)

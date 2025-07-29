@@ -32,6 +32,7 @@ export function AuthForm() {
 									<Input
 										type='email'
 										placeholder='Enter your email'
+										aria-label='Enter your email'
 										{...field}
 									/>
 								</FormControl>

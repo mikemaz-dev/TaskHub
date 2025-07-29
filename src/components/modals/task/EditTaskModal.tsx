@@ -1,10 +1,10 @@
 'use client'
 
-import { useState } from 'react'
-
-import { EditTaskModalContent, EditTaskModalIconSelector } from '@/components/modals/task'
+import { EditTaskModalContent } from '@/components/modals/task/EditTaskModalContent'
+import { EditTaskModalIconSelector } from '@/components/modals/task/EditTaskModalIconSelector'
 import { useEditTaskForm } from '@/components/modals/task/useEditTaskForm'
-import { Button, Form, Modal, SectionHeading } from '@/components/ui'
+import { Button, Form, Modal } from '@/components/ui'
+import SectionHeading from '@/components/ui/SectionHeading'
 
 import { type TTask } from '@/types/tasks/task.types'
 
@@ -19,8 +19,6 @@ export function EditTaskModal({ setIsOpen, task }: Props) {
 		onClose: () => setIsOpen(false)
 	})
 
-	const [selectedIcon] = useState<string>(task.icon || '')
-
 	return (
 		<Modal onClose={() => setIsOpen(false)}>
 			<div className='flex flex-col gap-5'>
@@ -32,11 +30,7 @@ export function EditTaskModal({ setIsOpen, task }: Props) {
 					>
 						<EditTaskModalContent form={form} />
 
-						<EditTaskModalIconSelector
-							task={task}
-							form={form}
-							selectedIcon={selectedIcon}
-						/>
+						<EditTaskModalIconSelector control={form.control} />
 
 						<Button
 							variant='default'
@@ -44,7 +38,7 @@ export function EditTaskModal({ setIsOpen, task }: Props) {
 							disabled={isPending}
 							className='w-max'
 						>
-							{form.formState.isSubmitting ? 'Saving...' : 'Save'}
+							{form.formState.isSubmitting ? 'Updating...' : 'Update task'}
 						</Button>
 					</form>
 				</Form>

@@ -1,11 +1,12 @@
 import { format } from 'date-fns'
 import Image from 'next/image'
+import { memo } from 'react'
 
 import { cn } from '@/utils/cn.util'
 
 import type { TChatMessageWithProfile } from '@/types/message/message.interface'
 
-export function MsgItem({ msg, userId }: { msg: TChatMessageWithProfile; userId: string }) {
+function MsgItem({ msg, userId }: { msg: TChatMessageWithProfile; userId: string }) {
 	const isOwnMessage = msg.user_id === userId
 
 	return (
@@ -40,3 +41,5 @@ export function MsgItem({ msg, userId }: { msg: TChatMessageWithProfile; userId:
 		</div>
 	)
 }
+
+export default memo(MsgItem)

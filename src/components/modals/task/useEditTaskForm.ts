@@ -45,7 +45,7 @@ export const useEditTaskForm = ({ taskId, onClose }: { taskId: string; onClose: 
 				icon: data.icon ?? ''
 			})
 		}
-	}, [isSuccess, isLoading, data, error])
+	}, [isSuccess, isLoading, data, form, error])
 
 	const queryClient = useQueryClient()
 

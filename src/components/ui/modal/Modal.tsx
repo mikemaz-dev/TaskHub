@@ -2,7 +2,7 @@
 
 import { CircleX } from 'lucide-react'
 import { AnimatePresence, m } from 'motion/react'
-import { type ReactNode, useEffect, useState } from 'react'
+import { type ReactNode, useCallback, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 
 interface IModal {
@@ -14,43 +14,35 @@ interface IModal {
 export function Modal({ children, onClose, isOpen = true }: IModal) {
 	const [shouldRender, setShouldRender] = useState(isOpen)
 
-	const handleClose = () => {
+	const handleClose = useCallback(() => {
 		setShouldRender(false)
-		setTimeout(onClose, 300) // Match the animation duration
-	}
+		setTimeout(onClose, 300)
+	}, [onClose])
 
 	useEffect(() => {
-		if (!isOpen) return
-
 		const handleEscKey = (event: KeyboardEvent) => {
 			if (event.key === 'Escape') {
 				handleClose()
 			}
 		}
 
-		document.addEventListener('keydown', handleEscKey)
-		return () => document.removeEventListener('keydown', handleEscKey)
-	}, [isOpen])
-
-	useEffect(() => {
 		if (isOpen) {
 			setShouldRender(true)
 		} else {
 			setShouldRender(false)
 		}
-	}, [isOpen])
 
-	useEffect(() => {
-		if (shouldRender) {
-			document.body.style.overflow = 'hidden'
-		} else {
-			document.body.style.overflow = 'unset'
-		}
+		const originalOverflow = document.body.style.overflow
+		document.body.style.overflow = shouldRender ? 'hidden' : 'unset'
+
+		document.addEventListener('keydown', handleEscKey)
+		document.body.style.overflow = shouldRender ? 'hidden' : 'unset'
 
 		return () => {
-			document.body.style.overflow = 'unset'
+			document.removeEventListener('keydown', handleEscKey)
+			document.body.style.overflow = originalOverflow
 		}
-	}, [shouldRender])
+	}, [isOpen, shouldRender, handleClose])
 
 	if (!isOpen) return null
 

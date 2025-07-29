@@ -1,9 +1,7 @@
-import type { FC } from 'react'
-
-import type { IconProps } from '@/components/animate-ui/icons/icon'
+import type { ReactNode } from 'react'
 
 export interface IMenu {
-	icon: FC<IconProps<'default'>>
+	icon: (props: any) => ReactNode | Promise<ReactNode>
 	name: string
 	href: string
 }

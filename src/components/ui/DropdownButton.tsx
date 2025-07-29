@@ -3,6 +3,7 @@
 import { ChevronDown } from 'lucide-react'
 import { AnimatePresence, m } from 'motion/react'
 import { useEffect, useRef, useState } from 'react'
+import { memo } from 'react'
 
 import { arrowAnimations, dropdownAnimations } from '@/components/animations/DropdownAnimations'
 
@@ -16,7 +17,7 @@ interface IDropdownButton {
 	placeholder?: string
 }
 
-export function DropdownButton({ placeholder, items, onSelect }: IDropdownButton) {
+function DropdownButton({ placeholder, items, onSelect }: IDropdownButton) {
 	const [isOpen, setIsOpen] = useState(false)
 	const [selectedItem, setSelectedItem] = useState<IDropdownItem | null>(null)
 	const dropdownRef = useRef<HTMLDivElement>(null)
@@ -56,6 +57,7 @@ export function DropdownButton({ placeholder, items, onSelect }: IDropdownButton
 				)}
 				aria-haspopup={true}
 				aria-expanded={isOpen}
+				aria-label='Choose project chart display mode'
 			>
 				<span className='font-medium sm:text-sm'>{displayText}</span>
 
@@ -85,6 +87,7 @@ export function DropdownButton({ placeholder, items, onSelect }: IDropdownButton
 								key={index}
 								onClick={() => handleItemClick(item)}
 								className='hover:border-primary/85 hover:bg-primary/16 w-full cursor-pointer rounded-2xl border-2 border-transparent px-4 py-1.5 text-left text-lg font-medium transition-colors duration-300 md:text-base'
+								aria-label={`Choose ${item.label}`}
 							>
 								{item.label}
 							</button>
@@ -95,3 +98,5 @@ export function DropdownButton({ placeholder, items, onSelect }: IDropdownButton
 		</div>
 	)
 }
+
+export default memo(DropdownButton)

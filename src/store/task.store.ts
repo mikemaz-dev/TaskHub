@@ -2,7 +2,7 @@ import { create } from 'zustand/react'
 
 import type { ITaskStore } from '@/store/interfaces/task-store.interface'
 
-export const useTaskStore = create<ITaskStore>()(set => ({
+export const useTaskStore = create<ITaskStore>()(() => ({
 	tasks: [],
 
 	loadFromServer: tasks => {

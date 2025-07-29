@@ -4,7 +4,8 @@ import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 
 import { ProjectStatisticChart } from '@/components/sections/project-statistic/ProjectStatisticChart'
-import { DropdownButton, SectionHeading } from '@/components/ui/'
+import DropdownButton from '@/components/ui/DropdownButton'
+import SectionHeading from '@/components/ui/SectionHeading'
 
 import { getClientProjectChartData } from '@/services/statistics/chart/project-chart-client.service'
 import type { IDropdownItem } from '@/types/dropdown/dropdown-item.types'

@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Manrope } from 'next/font/google'
 import type { ReactNode } from 'react'
 
-import { Layout } from '@/components/layout/Layout'
 import { Providers } from '@/components/layout/Providers'
 
 import { SITE_NAME } from '@/constants/constants'

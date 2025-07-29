@@ -26,6 +26,8 @@ export function Sidebar() {
 	}
 
 	const isActive = (sidebarItem: IMenu) => {
+		if (!pathName) return null
+
 		return !!match(sidebarItem.href)(pathName)
 	}
 
@@ -41,6 +43,7 @@ export function Sidebar() {
 							variant='ghost'
 							size='sm'
 							onClick={signOut}
+							aria-label='Logout'
 						>
 							<LogoutIcon />
 						</Button>
@@ -55,7 +58,7 @@ export function Sidebar() {
 							<SidebarItem
 								key={item.name}
 								item={item}
-								isActive={isActive(item)}
+								isActive={isActive(item) as boolean}
 							/>
 						))}
 					</ul>

@@ -1,11 +1,10 @@
-import { Loader2, Paperclip, Send } from 'lucide-react'
+import { Loader2 } from 'lucide-react'
 
-import { ChatHeader } from '@/components/sections/chat/ChatHeader'
-import { useChat } from '@/components/sections/chat/useChat'
-import { Button, Input } from '@/components/ui'
-
-import { ChatTop } from './ChatTop'
-import { MsgItem } from './MsgItem'
+import ChatHeader from './ChatHeader'
+import ChatInput from './ChatInput'
+import ChatTop from './ChatTop'
+import MsgItem from './MsgItem'
+import { useChat } from './useChat'
 import type { TChatMessageWithProfile } from '@/types/message/message.interface'
 
 export function Chat({ userId }: { userId: string }) {
@@ -13,9 +12,11 @@ export function Chat({ userId }: { userId: string }) {
 
 	if (isLoading) {
 		return (
-			<div className='flex min-h-screen flex-col items-center justify-center bg-white shadow-sm dark:bg-neutral-800'>
+			<div className='flex min-h-screen flex-col items-center justify-center gap-2 bg-white shadow-sm dark:bg-neutral-800'>
 				<Loader2 className='text-primary h-12 w-12 animate-spin' />
-				<h2 className='text-2xl font-bold text-gray-800'>Loading chat...</h2>
+				<h2 className='text-2xl font-semibold text-gray-800 dark:text-neutral-100'>
+					Loading chat...
+				</h2>
 			</div>
 		)
 	}
@@ -36,29 +37,11 @@ export function Chat({ userId }: { userId: string }) {
 						/>
 					))}
 				</div>
-				<div className='mt-2 flex items-center gap-2'>
-					<div className='flex-1 items-center'>
-						<div className='flex items-center gap-2'>
-							<label
-								htmlFor='fileInput'
-								className='bg-primary/10 hover:bg-primary/20 flex h-10 cursor-pointer items-center justify-center rounded-lg px-3 transition-colors duration-300'
-							>
-								<Paperclip className='text-primary size-5' />
-							</label>
-							<Input
-								placeholder='Type message...'
-								value={text}
-								onChange={e => setText(e.target.value)}
-							/>
-						</div>
-					</div>
-					<Button
-						size='icon'
-						onClick={sendMessage}
-					>
-						<Send className='size-5 text-neutral-100' />
-					</Button>
-				</div>
+				<ChatInput
+					text={text}
+					setText={setText}
+					sendMessage={sendMessage}
+				/>
 			</div>
 		</div>
 	)

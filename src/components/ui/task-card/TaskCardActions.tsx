@@ -33,6 +33,7 @@ export function TaskCardActions({ task }: { task: TTask }) {
 				size='icon'
 				className='rounded-full'
 				onClick={() => setIsAddSubtaskModalOpen(true)}
+				aria-label={`Add subtask to ${task.title} task`}
 			>
 				<PlusIcon />
 			</Button>
@@ -41,6 +42,7 @@ export function TaskCardActions({ task }: { task: TTask }) {
 				size='icon'
 				className='border-primary rounded-full p-2'
 				onClick={() => setIsEditTaskModalOpen(true)}
+				aria-label={`Edit ${task.title} task`}
 			>
 				<Pencil />
 			</Button>

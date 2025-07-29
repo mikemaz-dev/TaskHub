@@ -3,7 +3,8 @@
 import { MessageCircleMore, PanelLeftOpen } from 'lucide-react'
 import dynamic from 'next/dynamic'
 
-import { Heading, SkeletonLoader } from '@/components/ui'
+import { SkeletonLoader } from '@/components/ui'
+import Heading from '@/components/ui/Heading'
 import { SearchField } from '@/components/ui/search-field/SearchField'
 
 const DynamicThemeToggle = dynamic(

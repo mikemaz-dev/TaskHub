@@ -40,7 +40,7 @@ export function ConfirmPage() {
 		}
 
 		verifyToken()
-	}, [])
+	}, [router, params])
 
 	return (
 		<div className='flex min-h-screen items-center justify-center bg-gradient-to-br from-blue-600 to-purple-600'>

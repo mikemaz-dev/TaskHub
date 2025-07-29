@@ -3,7 +3,7 @@
 import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 
-import { SectionHeading } from '@/components/ui'
+import SectionHeading from '@/components/ui/SectionHeading'
 
 import { getClientUsers } from '@/services/users/get-users-client'
 import type { TGetClientUsersResponse } from '@/types/user/user.types'
@@ -32,6 +32,7 @@ export function TodayTasksHeader({ usersData }: Props) {
 						key={user.id}
 						src={user.avatar_path ? user.avatar_path : '/images/default-avatar.png'}
 						alt={user.name || 'User avatar'}
+						title={user.name || 'User avatar'}
 						width={50}
 						height={50}
 						className='rounded-full border-2 border-white shadow-sm dark:border-neutral-800'

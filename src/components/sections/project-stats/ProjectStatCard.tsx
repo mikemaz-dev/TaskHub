@@ -26,6 +26,7 @@ export function ProjectStatCard({ projectStat, isLast }: IProjectStatCard) {
 			<Image
 				src={projectStat.icon || ''}
 				alt={projectStat.label}
+				title={projectStat.label}
 				width={80}
 				height={80}
 			/>

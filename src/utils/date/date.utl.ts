@@ -6,8 +6,8 @@ export function getDaysUntilDue(dueDate: Date): number {
 	return differenceInDays(due, today)
 }
 
-export function formatDueDate(dueDate: Date): string {
-	const daysUntil = getDaysUntilDue(dueDate)
+export function formatDueDate(dueDate: Date | string): string {
+	const daysUntil = getDaysUntilDue(dueDate as Date)
 	const dueDateObj = new Date(dueDate)
 	const overdueDays = Math.abs(daysUntil)
 
@@ -34,4 +34,26 @@ export const FormatMinutes = (totalMinutes: number): string => {
 	const hours = Math.floor(totalMinutes / 60)
 	const minutes = totalMinutes % 60
 	return `${hours}h ${minutes}m`
+}
+
+// For timeline
+
+const normalizeTime = (time: string): string => {
+	return time.replace(/\./g, ':')
+}
+
+export const formatTime = (time: string): string => {
+	const normalizedTime = normalizeTime(time)
+	const date = new Date(normalizedTime)
+
+	const hours = date.getHours()
+	const minutes = date.getMinutes()
+
+	const formattedHours = hours % 12 || 12
+
+	if (minutes === 0) {
+		return `${formattedHours} ${format(date, 'aaa')}`
+	}
+
+	return `${formattedHours}.${minutes} ${format(date, 'aaa')}`
 }

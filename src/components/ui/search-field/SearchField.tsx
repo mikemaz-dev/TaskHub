@@ -1,5 +1,3 @@
-import { Search } from 'lucide-react'
-
 import { SearchIcon } from '@/components/ui/icons/search'
 
 interface ISearchField {
@@ -25,6 +23,7 @@ export function SearchField({
 				value={value}
 				onChange={e => onChange(e.target.value)}
 				className='bg-transparent font-medium text-neutral-500 outline-none dark:placeholder:text-neutral-500'
+				aria-label={`Search ${value}`}
 			/>
 		</div>
 	)

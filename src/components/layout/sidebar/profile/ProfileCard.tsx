@@ -1,4 +1,4 @@
-import { ChevronDown, Loader2 } from 'lucide-react'
+import { Loader2 } from 'lucide-react'
 import Image from 'next/image'
 
 import { useProfile } from '@/hooks/useProfile'
@@ -28,13 +28,16 @@ export function ProfileCard() {
 			{data.avatar_path ? (
 				<Image
 					src={data.avatar_path || '/images/default-avatar.png'}
-					alt='avatar'
+					alt={`${data.name} || ''`}
 					width={36}
 					height={36}
 					className='rounded-full'
 				/>
 			) : (
-				<div className='size-9 rounded-full bg-blue-500' />
+				<div
+					className='size-9 rounded-full bg-blue-500'
+					aria-hidden='true'
+				/>
 			)}
 			<div className='flex flex-col'>
 				<p className='font-bold'>{data.name}</p>

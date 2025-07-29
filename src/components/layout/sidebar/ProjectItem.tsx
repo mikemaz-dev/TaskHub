@@ -33,6 +33,7 @@ export function ProjectItem({ name, color, className }: ProjectItemProps) {
 					'cursor-pointer opacity-0 group-hover:opacity-100',
 					'transition-opacity duration-200'
 				)}
+				aria-label={`Go to ${name} project`}
 			>
 				<SquareArrowOutUpRight
 					size={17}

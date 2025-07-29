@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import { Heading } from '@/components/ui/Heading'
+import Heading from '@/components/ui/Heading'
 
 import { SITE_NAME } from '@/constants/constants'
 

@@ -43,8 +43,11 @@ export const useChat = ({ userId }: { userId: string }) => {
 						table: 'chat_message'
 					},
 					async payload => {
-						const msg = payload.new as TChatMessageWithProfile
-						setMessages(prev => [...prev, msg])
+						const message = payload.new as TChatMessageWithProfile
+						setMessages(prev => {
+							if (prev.some(msg => msg.id === message.id)) return prev
+							return [...prev, message]
+						})
 					}
 				)
 				.subscribe()
