@@ -25,6 +25,7 @@ export function EditTaskModalIconSelector({ control }: Props) {
 								variant={value === iconName ? 'default' : 'outline'}
 								size='lg'
 								onClick={() => onChange(iconName)}
+								type='button'
 							>
 								<DynamicIcon
 									name={iconName}
