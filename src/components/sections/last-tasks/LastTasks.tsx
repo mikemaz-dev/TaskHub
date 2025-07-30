@@ -27,7 +27,7 @@ export function LastTasks({ tasks }: { tasks: TTask[] }) {
 			<div className='flex items-center justify-between md:flex-col md:items-start md:gap-3'>
 				<div className='flex items-end gap-1'>
 					<SectionHeading title='Last Tasks' />
-					<span className='text-xl opacity-50'>({formatCount(filteredTasks.length)})</span>
+					<span className='text-foreground text-xl'>({formatCount(filteredTasks.length)})</span>
 				</div>
 				<div className='flex items-center gap-4 sm:flex-col sm:items-start'>
 					<LastTasksFilters
