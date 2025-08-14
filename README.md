@@ -193,7 +193,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 If TaskHub has been helpful to you, please consider giving it a star! ⭐
 
-[![GitHub stars](https://img.shields.io/github/stars/yourusername/taskhub?style=social)](https://github.com/yourusername/taskhub)
+[![GitHub stars](https://img.shields.io/github/stars/mikemaz-dev/taskhub?style=social)](https://github.com/mikemaz-dev/taskhub)
 
 ---
 
