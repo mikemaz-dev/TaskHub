@@ -29,10 +29,6 @@
 | ---------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------- |
 | ![Dashboard Light](public/screenshots/dashboard_light.png) | ![Dashboard Dark](public/screenshots/dashboard_dark.png) | ![Timeline](public/screenshots/timeline.png) |
 
-| Task Management                                       | Project Statistics                                      | Mobile View                                                   |
-| ----------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------- |
-| ![Task Modal](public/screenshots/edit_task-modal.png) | ![Project Stats](public/screenshots/working-filter.png) | ![Mobile](public/screenshots/working-sorting-with-filter.png) |
-
 ---
 
 ## 🛠️ Tech Stack
