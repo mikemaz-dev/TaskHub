@@ -1,6 +1,11 @@
-import { AnimatePresence, m } from 'motion/react'
+'use client'
 
+import { AnimatePresence, m } from 'motion/react'
+import { useState } from 'react'
+
+import { TaskModal } from '@/components/modals/task'
 import { useFilterTasks } from '@/components/sections/last-tasks/useFilterTasks'
+import { Button } from '@/components/ui'
 import DropdownButton from '@/components/ui/DropdownButton'
 import SectionHeading from '@/components/ui/SectionHeading'
 import TaskCard from '@/components/ui/task-card/TaskCard'
@@ -22,12 +27,30 @@ export function LastTasks({ tasks }: { tasks: TTask[] }) {
 		getSortLabel
 	} = useFilterTasks({ tasks })
 
+	const [isCreateTaskModalOpen, setIsCreateTaskModalOpen] = useState(false)
+
 	return (
 		<div className='flex flex-col gap-5.5'>
+			{isCreateTaskModalOpen && (
+				<TaskModal
+					mode='create'
+					setIsOpen={setIsCreateTaskModalOpen}
+				/>
+			)}
 			<div className='flex items-center justify-between md:flex-col md:items-start md:gap-3'>
-				<div className='flex items-end gap-1'>
-					<SectionHeading title='Last Tasks' />
-					<span className='text-foreground text-xl'>({formatCount(filteredTasks.length)})</span>
+				<div className='flex items-center gap-4'>
+					<div className='flex items-end gap-1.5'>
+						<SectionHeading title='Last Tasks' />
+						<span className='text-foreground text-xl opacity-70'>
+							({formatCount(filteredTasks.length)})
+						</span>
+					</div>
+					<Button
+						size='sm'
+						onClick={() => setIsCreateTaskModalOpen(true)}
+					>
+						Create Task
+					</Button>
 				</div>
 				<div className='flex items-center gap-4 sm:flex-col sm:items-start'>
 					<LastTasksFilters

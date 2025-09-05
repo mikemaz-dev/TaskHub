@@ -10,7 +10,7 @@ interface ILastTasksFiltering {
 
 function LastTasksFilters({ getFilterButtonClass, setActiveFilter }: ILastTasksFiltering) {
 	return (
-		<div className='xs:grid xs:grid-cols-2 text-foreground flex items-center gap-1.5 rounded-2xl bg-white px-1.5 py-1 shadow-sm select-none dark:bg-neutral-800'>
+		<div className='xs:grid xs:grid-cols-2 text-foreground flex items-center gap-1 rounded-xl bg-white px-1.5 py-1 shadow-sm select-none dark:bg-neutral-800'>
 			<button
 				className={getFilterButtonClass('all')}
 				onClick={() => setActiveFilter('all')}
@@ -24,7 +24,7 @@ function LastTasksFilters({ getFilterButtonClass, setActiveFilter }: ILastTasksF
 				aria-label='View done tasks'
 			>
 				<CircleCheck
-					size={18}
+					size={17}
 					absoluteStrokeWidth
 				/>
 				Done
@@ -35,7 +35,7 @@ function LastTasksFilters({ getFilterButtonClass, setActiveFilter }: ILastTasksF
 				aria-label='View tasks in progress'
 			>
 				<ClockFading
-					size={18}
+					size={17}
 					absoluteStrokeWidth
 				/>
 				In progress
@@ -46,7 +46,7 @@ function LastTasksFilters({ getFilterButtonClass, setActiveFilter }: ILastTasksF
 				aria-label='View upcoming tasks'
 			>
 				<Calendar
-					size={18}
+					size={17}
 					absoluteStrokeWidth
 				/>
 				Upcoming

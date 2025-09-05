@@ -1,34 +1,50 @@
 'use client'
 
-import { EditTaskModalContent } from '@/components/modals/task/EditTaskModalContent'
 import { EditTaskModalIconSelector } from '@/components/modals/task/EditTaskModalIconSelector'
-import { useEditTaskForm } from '@/components/modals/task/useEditTaskForm'
+import { TaskModalContent } from '@/components/modals/task/TaskModalContent'
+import { useTaskForm } from '@/components/modals/task/useTaskForm'
 import { Button, Form, Modal } from '@/components/ui'
 import SectionHeading from '@/components/ui/SectionHeading'
 
 import { type TTask } from '@/types/tasks/task.types'
 
-interface Props {
+interface ITaskModalProps {
 	setIsOpen: (isOpen: boolean) => void
-	task: TTask
+	mode: 'create' | 'edit'
+	task?: TTask
 }
 
-export function EditTaskModal({ setIsOpen, task }: Props) {
-	const { form, isPending, onSubmit } = useEditTaskForm({
-		taskId: task.id,
+export function TaskModal({ setIsOpen, mode, task }: ITaskModalProps) {
+	const { form, isPending, onSubmit } = useTaskForm({
+		mode,
+		taskId: task?.id,
 		onClose: () => setIsOpen(false)
 	})
+
+	const getTitle = () => {
+		if (mode === 'create') {
+			return 'Create new task'
+		}
+		return `Edit task: '${task?.title}'`
+	}
+
+	const getButtonText = () => {
+		if (form.formState.isSubmitting) {
+			return mode === 'create' ? 'Creating...' : 'Updating...'
+		}
+		return mode === 'create' ? 'Create task' : 'Update task'
+	}
 
 	return (
 		<Modal onClose={() => setIsOpen(false)}>
 			<div className='flex flex-col gap-5'>
-				<SectionHeading title={`Edit task: '${task.title}'`} />
+				<SectionHeading title={getTitle()} />
 				<Form {...form}>
 					<form
 						onSubmit={form.handleSubmit(onSubmit)}
 						className='flex flex-col gap-8'
 					>
-						<EditTaskModalContent form={form} />
+						<TaskModalContent form={form} />
 
 						<EditTaskModalIconSelector control={form.control} />
 
@@ -38,7 +54,7 @@ export function EditTaskModal({ setIsOpen, task }: Props) {
 							disabled={isPending}
 							className='w-max'
 						>
-							{form.formState.isSubmitting ? 'Updating...' : 'Update task'}
+							{getButtonText()}
 						</Button>
 					</form>
 				</Form>

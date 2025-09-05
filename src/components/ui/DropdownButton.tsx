@@ -2,8 +2,7 @@
 
 import { ChevronDown } from 'lucide-react'
 import { AnimatePresence, m } from 'motion/react'
-import { useEffect, useRef, useState } from 'react'
-import { memo } from 'react'
+import { memo, useEffect, useRef, useState } from 'react'
 
 import { arrowAnimations, dropdownAnimations } from '@/components/animations/DropdownAnimations'
 
@@ -29,9 +28,11 @@ function DropdownButton({ placeholder, items, onSelect }: IDropdownButton) {
 			}
 		}
 
-		document.addEventListener('mousedown', handleClickOutside)
-		return () => {
-			document.removeEventListener('mousedown', handleClickOutside)
+		if (typeof document !== 'undefined') {
+			document.addEventListener('mousedown', handleClickOutside)
+			return () => {
+				document.removeEventListener('mousedown', handleClickOutside)
+			}
 		}
 	}, [])
 
@@ -42,22 +43,39 @@ function DropdownButton({ placeholder, items, onSelect }: IDropdownButton) {
 		item.onClick?.()
 	}
 
+	const handleKeyDown = (e: React.KeyboardEvent) => {
+		if (e.key === 'Escape') {
+			setIsOpen(false)
+		} else if (e.key === 'Enter' || e.key === ' ') {
+			e.preventDefault()
+			setIsOpen(!isOpen)
+		}
+	}
+
+	const handleItemKeyDown = (e: React.KeyboardEvent, item: IDropdownItem) => {
+		if (e.key === 'Enter' || e.key === ' ') {
+			e.preventDefault()
+			handleItemClick(item)
+		}
+	}
+
 	const displayText = selectedItem?.label || placeholder
 
 	return (
 		<div
 			className='text-foreground relative select-none'
 			ref={dropdownRef}
+			onKeyDown={handleKeyDown}
 		>
 			<button
 				onClick={() => setIsOpen(!isOpen)}
 				className={cn(
-					'border-secondary hover:bg-primary dark:hover:bg-primary flex cursor-pointer items-center gap-2 rounded-full border-2 bg-white px-3 py-1 transition-all duration-300 hover:border-transparent hover:text-white hover:shadow-sm dark:bg-neutral-800',
+					'border-secondary hover:bg-primary dark:hover:bg-primary flex cursor-pointer items-center gap-2 rounded-2xl border-2 bg-white px-3 py-1 transition-all duration-300 hover:border-transparent hover:text-white hover:shadow-sm dark:bg-neutral-800',
 					isOpen && 'dark:bg-primary border-transparent bg-white shadow-sm dark:border-transparent'
 				)}
-				aria-haspopup={true}
+				aria-haspopup='listbox'
 				aria-expanded={isOpen}
-				aria-label='Choose project chart display mode'
+				aria-label={placeholder || 'Choose an option'}
 			>
 				<span className='font-medium sm:text-sm'>{displayText}</span>
 
@@ -81,12 +99,17 @@ function DropdownButton({ placeholder, items, onSelect }: IDropdownButton) {
 						exit={dropdownAnimations.exit}
 						transition={dropdownAnimations.transition}
 						style={dropdownAnimations.style}
+						role='listbox'
+						aria-label='Options'
 					>
 						{items.map((item, index) => (
 							<button
-								key={index}
+								key={item.value || index}
 								onClick={() => handleItemClick(item)}
+								onKeyDown={e => handleItemKeyDown(e, item)}
 								className='hover:border-primary/85 hover:bg-primary/16 w-full cursor-pointer rounded-2xl border-2 border-transparent px-4 py-1.5 text-left text-lg font-medium transition-colors duration-300 md:text-base'
+								role='option'
+								aria-selected={selectedItem?.value === item.value}
 								aria-label={`Choose ${item.label}`}
 							>
 								{item.label}

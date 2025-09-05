@@ -21,16 +21,24 @@ export async function clientTaskUpdate(id: string, task: TTaskUpdate) {
 	return data
 }
 
-export async function clientCreateTask(id: string, task: TTaskCreate) {
+export async function clientCreateTask(task: TTaskCreate) {
 	const client = createClient()
+
+	const {
+		data: { user },
+		error: authError
+	} = await client.auth.getUser()
+	if (authError || !user) {
+		throw new Error(authError?.message || 'User not authenticated')
+	}
+
 	const { data, error } = await client
 		.from('task')
-		.insert(task)
-		.eq('id', id)
+		.insert({ ...task, owner_id: user.id })
 		.select(`*, sub_task(*)`)
 		.single()
 
-	if (error || !data) throw new Error(error?.message || 'Task not found')
+	if (error || !data) throw new Error(error?.message || 'Failed to create task')
 	return data
 }
 

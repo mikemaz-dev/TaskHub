@@ -4,7 +4,7 @@ import { Pencil } from 'lucide-react'
 import { useState } from 'react'
 
 import { AddSubtaskModal } from '@/components/modals/subtask/AddSubtaskModal'
-import { EditTaskModal } from '@/components/modals/task/EditTaskModal'
+import { TaskModal } from '@/components/modals/task/TaskModal'
 import { Button } from '@/components/ui'
 import { PlusIcon } from '@/components/ui/icons/plus'
 
@@ -17,9 +17,10 @@ export function TaskCardActions({ task }: { task: TTask }) {
 	return (
 		<div className='relative flex items-center gap-2.5'>
 			{isEditTaskModalOpen && (
-				<EditTaskModal
-					task={task}
+				<TaskModal
 					setIsOpen={setIsEditTaskModalOpen}
+					mode='edit'
+					task={task}
 				/>
 			)}
 			{isAddSubtaskModalOpen && (
@@ -34,6 +35,7 @@ export function TaskCardActions({ task }: { task: TTask }) {
 				className='text-foreground rounded-full'
 				onClick={() => setIsAddSubtaskModalOpen(true)}
 				aria-label={`Add subtask to ${task.title} task`}
+				title={`Add subtask to ${task.title} task`}
 			>
 				<PlusIcon className='text-foreground' />
 			</Button>
@@ -43,6 +45,7 @@ export function TaskCardActions({ task }: { task: TTask }) {
 				className='border-primary rounded-full p-2'
 				onClick={() => setIsEditTaskModalOpen(true)}
 				aria-label={`Edit ${task.title} task`}
+				title={`Edit ${task.title} task`}
 			>
 				<Pencil className='text-foreground' />
 			</Button>

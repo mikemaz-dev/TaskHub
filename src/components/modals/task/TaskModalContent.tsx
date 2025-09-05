@@ -19,7 +19,7 @@ import {
 
 import type { TTaskFormData } from '@/zod-schemes/task.zod'
 
-export function EditTaskModalContent({ form }: { form: UseFormReturn<TTaskFormData> }) {
+export function TaskModalContent({ form }: { form: UseFormReturn<TTaskFormData> }) {
 	const parseDate = (dateString: string): Date | undefined => {
 		if (!dateString) return undefined
 
