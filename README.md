@@ -2,7 +2,6 @@
 
 > **A sleek, fast, and intuitive task management application built during the RED Summer 2025 marathon**
 
-<<<<<<< HEAD
 [![Next.js](https://img.shields.io/badge/Next.js-15.0-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![Supabase](https://img.shields.io/badge/Supabase-3.0-green?style=for-the-badge&logo=supabase)](https://supabase.com/)
@@ -36,7 +35,6 @@
 | ---------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------- |
 | ![Dashboard Light](public/screenshots/dashboard_light.png) | ![Dashboard Dark](public/screenshots/dashboard_dark.png) | ![Timeline](public/screenshots/timeline.png) |
 
-<<<<<<< HEAD
 =======
 | Task Management                                       | Project Statistics                                      | Mobile View                                                   |
 | ----------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------- |
@@ -203,7 +201,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 If TaskHub has been helpful to you, please consider giving it a star! ⭐
 
-<<<<<<< HEAD
 [![GitHub stars](https://img.shields.io/github/stars/mikemaz-dev/taskhub?style=social)](https://github.com/mikemaz-dev/taskhub)
 =======
 [![GitHub stars](https://img.shields.io/github/stars/yourusername/taskhub?style=social)](https://github.com/yourusername/taskhub)
@@ -218,19 +215,6 @@ If TaskHub has been helpful to you, please consider giving it a star! ⭐
 - Thanks to all contributors and the open-source community
 
 ---
-
-<<<<<<< HEAD
-=======
-## 📞 Support
-
-- 📧 Email: [your-email@example.com](mailto:your-email@example.com)
-- 💬 Discord: [Join our server](https://discord.gg/your-invite)
-- 🐦 Twitter: [@yourusername](https://twitter.com/yourusername)
-
----
-
->>>>>>> ed6712b (feature: add task creating)
-<div align="center">
 
 **Made with ❤️ during RED Summer 2025**
 
