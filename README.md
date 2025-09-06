@@ -25,30 +25,11 @@
 
 ---
 
-## 🖼️ Screenshots
-
-| Dashboard (Light)                                          | Dashboard (Dark)                                         | Timeline View                                |
-| ---------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------- |
-| ![Dashboard Light](public/screenshots/dashboard_light.png) | ![Dashboard Dark](public/screenshots/dashboard_dark.png) | ![Timeline](public/screenshots/timeline.png) |
-
-<<<<<<< HEAD
-=======
-| Task Management                                       | Project Statistics                                      | Mobile View                                                   |
-| ----------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------- |
-| ![Task Modal](public/screenshots/edit_task-modal.png) | ![Project Stats](public/screenshots/working-filter.png) | ![Mobile](public/screenshots/working-sorting-with-filter.png)
-=======
-| Task Management                                       | Project Statistics                                      | Mobile View                                                   |
-| ----------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------- |
-| ![Task Modal](public/screenshots/edit_task-modal.png) | ![Project Stats](public/screenshots/working-filter.png) | ![Mobile](public/screenshots/working-sorting-with-filter.png) |
-
->>>>>>> 44b2200 (ui: upgrade task progress display)
----
-
 ## 🛠️ Tech Stack
 
 ### Frontend
 
-- **Framework**: [Next.js 14](https://nextjs.org/) with App Router
+- **Framework**: [Next.js 15](https://nextjs.org/)
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/) + [shadcn/ui](https://ui.shadcn.com/)
 - **State Management**: Zustand
@@ -146,26 +127,18 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 If TaskHub has been helpful to you, please consider giving it a star! ⭐
 
 [![GitHub stars](https://img.shields.io/github/stars/mikemaz-dev/taskhub?style=social)](https://github.com/mikemaz-dev/taskhub)
-=======
-[![GitHub stars](https://img.shields.io/github/stars/yourusername/taskhub?style=social)](https://github.com/yourusername/taskhub)
-
-> > > > > > > ed6712b (feature: add task creating)
 
 ---
 
 ## 🙏 Acknowledgments
 
 - Built during the **RED Summer 2025** marathon
-- Inspired by modern task management tools
-- Thanks to all contributors and the open-source community
+- Inspired by [Task Management Web App – UI Design](https://dribbble.com/shots/25947726-Task-Management-Web-App-UI-Design)
 
 ---
 
-<<<<<<< HEAD
-=======
 <div align="center">
 
->>>>>>> 44b2200 (ui: upgrade task progress display)
 **Made with ❤️ during RED Summer 2025**
 
 [![RED Summer 2025](https://img.shields.io/badge/RED_Summer_2025-Marathon-red?style=for-the-badge)](https://red-summer-2025.com)
