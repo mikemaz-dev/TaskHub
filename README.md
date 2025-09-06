@@ -38,9 +38,7 @@
 =======
 | Task Management                                       | Project Statistics                                      | Mobile View                                                   |
 | ----------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------- |
-| ![Task Modal](public/screenshots/edit_task-modal.png) | ![Project Stats](public/screenshots/working-filter.png) | ![Mobile](public/screenshots/working-sorting-with-filter.png) |
-
->>>>>>> ed6712b (feature: add task creating)
+| ![Task Modal](public/screenshots/edit_task-modal.png) | ![Project Stats](public/screenshots/working-filter.png) | ![Mobile](public/screenshots/working-sorting-with-filter.png)
 ---
 
 ## 🛠️ Tech Stack
