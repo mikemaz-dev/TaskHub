@@ -63,7 +63,7 @@ export function LastTasks({ tasks }: { tasks: TTask[] }) {
 					/>
 				</div>
 			</div>
-			<div className='grid grid-cols-3 gap-4 md:grid-cols-1 xl:grid-cols-3'>
+			<div className='grid grid-cols-3 gap-5 md:grid-cols-1 xl:grid-cols-3'>
 				<AnimatePresence mode='wait'>
 					{filteredTasks.length > 1 ? (
 						filteredTasks.map((task, index) => (

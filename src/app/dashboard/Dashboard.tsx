@@ -46,7 +46,7 @@ export function Dashboard({
 						<ProjectStats projectStats={projectStats} />
 						<ProjectStatistic chartData={projectChartData} />
 					</div>
-					<div className='flex flex-col gap-8'>
+					<div className='flex flex-col gap-8.5'>
 						<LastTasks tasks={tasks} />
 						<TodayTasks
 							tasks={todayTasks}

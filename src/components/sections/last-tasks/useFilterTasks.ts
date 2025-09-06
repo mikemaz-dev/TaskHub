@@ -24,7 +24,7 @@ export const useFilterTasks = ({ tasks }: { tasks: TTask[] }) => {
 			filtered = filtered.filter(task => {
 				switch (activeFilter) {
 					case 'done':
-						return task.sub_task.every(subTask => subTask.is_completed)
+						return task.sub_task.every(subTask => subTask.is_completed) && task.sub_task.length
 					case 'in-progress':
 						return task.sub_task?.length > 0 && task.sub_task.some(subTask => !subTask.is_completed)
 					case 'upcoming': {

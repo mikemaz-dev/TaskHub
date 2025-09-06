@@ -1,10 +1,9 @@
 'use client'
 
-import { Check } from 'lucide-react'
 import { m } from 'motion/react'
-import { useMemo } from 'react'
 
 import { cn } from '@/utils/cn.util'
+import { ProgressText, getProgressColor } from '@/utils/task-card-progress-text.util'
 
 import type { TTask } from '@/types/tasks/task.types'
 
@@ -15,47 +14,30 @@ export function TaskCardProgress({ task }: { task: TTask }) {
 	const progressPercentage =
 		totalSubtasks > 0 ? Math.round((completedSubtasks / totalSubtasks) * 100) : 0
 
-	const progressText = useMemo(() => {
-		if (progressPercentage === 100) {
-			return (
-				<div className='flex items-center gap-1.5'>
-					<div className='flex h-4 w-4 items-center justify-center rounded-full bg-white text-white select-none'>
-						<Check
-							size={10}
-							absoluteStrokeWidth
-							className='text-teal-500'
-						/>
-					</div>
-					<span className='text-sm font-semibold select-none'>Done</span>
-				</div>
-			)
-		}
-		return <span className='text-sm font-semibold select-none'>{progressPercentage}%</span>
-	}, [progressPercentage])
-
-	const displayWidth = progressPercentage === 0 ? 18 : progressPercentage
+	if (progressPercentage === 0) {
+		return (
+			<div className='flex h-12 w-full items-center justify-center rounded-full border border-dashed border-neutral-300 dark:border-neutral-700'>
+				<ProgressText progress={progressPercentage} />
+			</div>
+		)
+	}
 
 	return (
-		<div className='relative h-12 w-full rounded-full bg-gray-400/18 dark:bg-neutral-200/20'>
+		<div className='relative h-12 w-full rounded-full border-neutral-200 bg-gray-400/18 dark:border dark:border-neutral-200/9 dark:bg-neutral-200/6'>
 			<m.div
 				className={cn(
 					'relative flex h-12 items-center justify-center overflow-hidden rounded-full text-neutral-100',
-					{
-						'bg-gray-400 dark:bg-neutral-400': progressPercentage === 0,
-						'bg-indigo-500': progressPercentage > 0 && progressPercentage <= 50,
-						'bg-amber-500': progressPercentage > 50 && progressPercentage < 100,
-						'bg-teal-500': progressPercentage === 100
-					}
+					getProgressColor(progressPercentage)
 				)}
 				initial={{ width: 0, opacity: 0 }}
-				animate={{ width: `${displayWidth}%`, opacity: 1 }}
+				animate={{ width: `${progressPercentage}%`, opacity: 1 }}
 				transition={{
 					duration: 1.5,
 					ease: 'easeInOut'
 				}}
-				style={{ width: `${displayWidth}%` }}
+				style={{ width: `${progressPercentage}%` }}
 			>
-				{progressPercentage > 0 && (
+				{progressPercentage > 0 && progressPercentage < 100 && (
 					<m.div
 						className='absolute inset-0 opacity-15'
 						initial={{ scale: 1.5, x: '-10%' }}
@@ -65,27 +47,24 @@ export function TaskCardProgress({ task }: { task: TTask }) {
 							ease: 'easeInOut'
 						}}
 					>
-						<div
-							className='h-full w-full rounded-full'
-							style={{
-								backgroundImage:
-									'repeating-linear-gradient(-45deg, transparent, transparent 8px, white 8px, white 16px)'
-							}}
+						<m.div
+							className='absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-neutral-100/90 to-neutral-100/10'
+							animate={{ x: ['-100%', '100%'] }}
+							transition={{ repeat: Infinity, duration: 2, ease: 'linear' }}
 						/>
 					</m.div>
 				)}
 
-				<m.div
+				<m.span
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					transition={{
 						duration: 1.5,
 						ease: 'easeInOut'
 					}}
-					className='relative z-20'
 				>
-					{progressText}
-				</m.div>
+					<ProgressText progress={progressPercentage} />
+				</m.span>
 			</m.div>
 		</div>
 	)

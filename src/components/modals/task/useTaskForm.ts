@@ -16,11 +16,10 @@ import { type TTaskFormData, TaskSchema } from '@/zod-schemes/task.zod'
 interface UseTaskFormProps {
 	mode: 'create' | 'edit'
 	taskId?: string
-	projectId?: string
 	onClose: () => void
 }
 
-export const useTaskForm = ({ mode, taskId, projectId, onClose }: UseTaskFormProps) => {
+export const useTaskForm = ({ mode, taskId, onClose }: UseTaskFormProps) => {
 	const form = useForm<TTaskFormData>({
 		resolver: zodResolver(TaskSchema),
 		defaultValues: {

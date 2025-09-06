@@ -6,14 +6,10 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![Supabase](https://img.shields.io/badge/Supabase-3.0-green?style=for-the-badge&logo=supabase)](https://supabase.com/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
-=======
 [![Next.js](https://img.shields.io/badge/Next.js-14.0-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 [![Supabase](https://img.shields.io/badge/Supabase-3.0-green?style=for-the-badge&logo=supabase)](https://supabase.com/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.0-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
->>>>>>> ed6712b (feature: add task creating)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
-[![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge)](https://github.com/yourusername/taskhub)
 
 ---
 
@@ -35,10 +31,17 @@
 | ---------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------- |
 | ![Dashboard Light](public/screenshots/dashboard_light.png) | ![Dashboard Dark](public/screenshots/dashboard_dark.png) | ![Timeline](public/screenshots/timeline.png) |
 
+<<<<<<< HEAD
 =======
 | Task Management                                       | Project Statistics                                      | Mobile View                                                   |
 | ----------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------- |
 | ![Task Modal](public/screenshots/edit_task-modal.png) | ![Project Stats](public/screenshots/working-filter.png) | ![Mobile](public/screenshots/working-sorting-with-filter.png)
+=======
+| Task Management                                       | Project Statistics                                      | Mobile View                                                   |
+| ----------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------- |
+| ![Task Modal](public/screenshots/edit_task-modal.png) | ![Project Stats](public/screenshots/working-filter.png) | ![Mobile](public/screenshots/working-sorting-with-filter.png) |
+
+>>>>>>> 44b2200 (ui: upgrade task progress display)
 ---
 
 ## 🛠️ Tech Stack
@@ -113,9 +116,6 @@
    npm run dev
    ```
 
-5. **Open your browser**
-   Navigate to [http://localhost:3000](http://localhost:3000)
-
 ---
 
 ## 📁 Project Structure
@@ -135,60 +135,6 @@ taskhub/
 └── components.json          # shadcn/ui configuration
 ```
 
----
-
-## 🗺️ Roadmap
-
-| Feature                   | Status         | Priority | ETA     |
-| ------------------------- | -------------- | -------- | ------- |
-| 🔐 User Authentication    | ✅ Complete    | High     | -       |
-| 📋 Basic Task Management  | ✅ Complete    | High     | -       |
-| 🎯 Project Organization   | ✅ Complete    | High     | -       |
-| 📊 Task Statistics        | ✅ Complete    | Medium   | -       |
-| 💬 Team Chat              | 🚧 In Progress | Medium   | Q2 2025 |
-| 📱 Mobile App             | 📋 Planned     | Low      | Q3 2025 |
-| 🔔 Push Notifications     | 📋 Planned     | Medium   | Q2 2025 |
-| 📈 Advanced Analytics     | 📋 Planned     | Low      | Q4 2025 |
-| 🔗 API Integration        | 📋 Planned     | Medium   | Q3 2025 |
-| 🌍 Multi-language Support | 📋 Planned     | Low      | Q4 2025 |
-
----
-
-## 🤝 Contributing
-
-We welcome contributions from the community! Here's how you can help:
-
-### 🐛 Reporting Bugs
-
-- Use the [GitHub Issues](https://github.com/yourusername/taskhub/issues) page
-- Include detailed steps to reproduce the bug
-- Add screenshots if applicable
-
-### 💡 Suggesting Features
-
-- Open a [Feature Request](https://github.com/yourusername/taskhub/issues/new?template=feature_request.md)
-- Describe the feature and its benefits
-- Consider implementation complexity
-
-### 🔧 Contributing Code
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes
-4. Add tests if applicable
-5. Commit your changes (`git commit -m 'Add amazing feature'`)
-6. Push to the branch (`git push origin feature/amazing-feature`)
-7. Open a Pull Request
-
-### 📝 Code Style
-
-- Follow the existing code style
-- Use TypeScript for all new code
-- Add proper JSDoc comments
-- Ensure all tests pass
-
----
-
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -202,7 +148,8 @@ If TaskHub has been helpful to you, please consider giving it a star! ⭐
 [![GitHub stars](https://img.shields.io/github/stars/mikemaz-dev/taskhub?style=social)](https://github.com/mikemaz-dev/taskhub)
 =======
 [![GitHub stars](https://img.shields.io/github/stars/yourusername/taskhub?style=social)](https://github.com/yourusername/taskhub)
->>>>>>> ed6712b (feature: add task creating)
+
+> > > > > > > ed6712b (feature: add task creating)
 
 ---
 
@@ -214,6 +161,11 @@ If TaskHub has been helpful to you, please consider giving it a star! ⭐
 
 ---
 
+<<<<<<< HEAD
+=======
+<div align="center">
+
+>>>>>>> 44b2200 (ui: upgrade task progress display)
 **Made with ❤️ during RED Summer 2025**
 
 [![RED Summer 2025](https://img.shields.io/badge/RED_Summer_2025-Marathon-red?style=for-the-badge)](https://red-summer-2025.com)

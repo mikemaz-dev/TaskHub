@@ -10,11 +10,11 @@ import type { TTask } from '@/types/tasks/task.types'
 export function TaskCardHeader({ task }: { task: TTask }) {
 	return (
 		<div className='flex items-start justify-between gap-2 md:flex 2xl:flex-col'>
-			<div className='flex items-start gap-2.5'>
+			<div className='flex items-center gap-2.5'>
 				<div className='rounded-full bg-blue-50 p-2.5 text-blue-500 dark:bg-neutral-700 dark:text-blue-300'>
 					<DynamicIcon
 						name={task.icon as IconName}
-						size={27}
+						size={25}
 					/>
 				</div>
 				<div className='flex flex-col gap-0.5'>
