@@ -1,3 +1,5 @@
+import { IProject } from '../project/project.types'
+
 import { type getServerTasks } from '@/services/tasks/task-server.service'
 import type { Database } from '@/types/db.types'
 
@@ -11,6 +13,7 @@ export type TSubTask = Database['public']['Tables']['sub_task']['Row']
 
 export type TTask = Database['public']['Tables']['task']['Row'] & {
 	sub_task: TSubTask[]
+	project: IProject
 	task_participants: TGetTasksResponse[0]['task_participants']
 }
 

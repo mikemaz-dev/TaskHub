@@ -13,5 +13,10 @@ export async function getServerTodayTasks() {
 export async function getServerTasks() {
 	const client = await createClientFromServer()
 
-	return client.from('task').select(`*, sub_task(*), task_participants(profile(*))`)
+	return client.from('task').select(`
+    *,
+    project:project_id(name, color),
+    sub_task(*),
+    task_participants(profile(*))
+  `)
 }

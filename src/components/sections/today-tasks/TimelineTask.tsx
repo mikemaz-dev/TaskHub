@@ -2,7 +2,7 @@ import { getMinutes } from 'date-fns'
 import { DynamicIcon, type IconName } from 'lucide-react/dynamic'
 import { memo } from 'react'
 
-import { TaskCardUsers } from '@/components/ui/task-card/TaskCardUsers'
+import { Users } from '@/components/ui/Users'
 
 import { formatTime } from '@/utils/date/date.utl'
 import { calculateTaskPosition } from '@/utils/timeline/timeline.util'
@@ -41,7 +41,7 @@ function TimelineTask({ task }: Props) {
 				</div>
 			</div>
 
-			<TaskCardUsers task={task} />
+			<Users users={task.task_participants} />
 		</div>
 	)
 }

@@ -7,7 +7,7 @@ export type Json =
   | Json[]
 
 export type Database = {
-  // Allows to automatically instanciate createClient with right options
+  // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
     PostgrestVersion: "12.2.3 (519615d)"
@@ -70,6 +70,36 @@ export type Database = {
         }
         Relationships: []
       }
+      project: {
+        Row: {
+          color: string | null
+          created_at: string
+          deadline: string | null
+          id: string
+          name: string | null
+          owner_id: string | null
+          slug: string | null
+        }
+        Insert: {
+          color?: string | null
+          created_at?: string
+          deadline?: string | null
+          id?: string
+          name?: string | null
+          owner_id?: string | null
+          slug?: string | null
+        }
+        Update: {
+          color?: string | null
+          created_at?: string
+          deadline?: string | null
+          id?: string
+          name?: string | null
+          owner_id?: string | null
+          slug?: string | null
+        }
+        Relationships: []
+      }
       project_chart_point: {
         Row: {
           id: string
@@ -90,6 +120,36 @@ export type Database = {
           value?: number
         }
         Relationships: []
+      }
+      project_participants: {
+        Row: {
+          profile_id: string
+          project_id: string
+        }
+        Insert: {
+          profile_id?: string
+          project_id?: string
+        }
+        Update: {
+          profile_id?: string
+          project_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_participants_profile_id_fkey"
+            columns: ["profile_id"]
+            isOneToOne: false
+            referencedRelation: "profile"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "project_participants_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "project"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       project_stat: {
         Row: {
@@ -151,6 +211,7 @@ export type Database = {
           icon: string | null
           id: string
           owner_id: string | null
+          project_id: string | null
           start_time: string | null
           title: string
         }
@@ -160,6 +221,7 @@ export type Database = {
           icon?: string | null
           id?: string
           owner_id?: string | null
+          project_id?: string | null
           start_time?: string | null
           title: string
         }
@@ -169,10 +231,19 @@ export type Database = {
           icon?: string | null
           id?: string
           owner_id?: string | null
+          project_id?: string | null
           start_time?: string | null
           title?: string
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "task_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "project"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       task_participants: {
         Row: {

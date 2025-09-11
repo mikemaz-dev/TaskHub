@@ -104,13 +104,13 @@ body {
 	--primary: #725cee;
 	--primary-foreground: #ffffff;
 
-	--secondary: #e5e5e5;
-	--secondary-foreground: #4c4c4c;
+	--secondary: #d1d5db;
+	--secondary-foreground: #e0f2fe;
 
 	--muted: #f8f7ff;
 	--muted-foreground: #6b7280;
 
-	--accent: #e8e5ff;
+	--accent: #e5e7eb;
 	--accent-foreground: #4c4c4c;
 
 	--destructive: #ef4444;
