@@ -35,7 +35,7 @@ export function ProjectStatistic({ chartData }: Props) {
 	})
 
 	return (
-		<div className='flex flex-col gap-4 rounded-3xl bg-white p-5 shadow-sm dark:bg-neutral-800'>
+		<div className='flex flex-col gap-4 base-round bg-white p-5 shadow-sm dark:bg-secondary/30'>
 			<div className='flex items-center justify-between'>
 				<SectionHeading title='Project Statistic' />
 				<DropdownButton

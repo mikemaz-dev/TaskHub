@@ -1,3 +1,5 @@
+import { Event } from 'react-big-calendar'
+
 import { IProject } from '../project/project.types'
 
 import { type getServerTasks } from '@/services/tasks/task-server.service'
@@ -14,6 +16,17 @@ export type TSubTask = Database['public']['Tables']['sub_task']['Row']
 export type TTask = Database['public']['Tables']['task']['Row'] & {
 	sub_task: TSubTask[]
 	project: IProject
+	task_participants: TGetTasksResponse[0]['task_participants']
+}
+
+export type TTaskCalendar = {
+	id: string
+	title: string
+	due_date: Date
+	start_time: Date
+	end_time: Date
+	project: IProject | null
+	sub_task: TSubTask[]
 	task_participants: TGetTasksResponse[0]['task_participants']
 }
 

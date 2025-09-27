@@ -91,99 +91,99 @@ body {
 :root {
 	--radius: 0.75rem;
 
-	/* 🎨 Beautiful Purple Theme - Light Mode */
-	--background: #f6f6f6;
-	--foreground: #262626;
+	/* 🎨 Beautiful Blue Theme - Light Mode */
+	--background: #f4f6f8;
+	--foreground: #0f172a;
 
 	--card: #ffffff;
-	--card-foreground: #1a1a1a;
+	--card-foreground: #1e293b;
 
 	--popover: #ffffff;
-	--popover-foreground: #1a1a1a;
+	--popover-foreground: #1e293b;
 
-	--primary: #725cee;
+	--primary: #2563eb; /* основной синий */
 	--primary-foreground: #ffffff;
 
-	--secondary: #d1d5db;
+	--secondary: #f1f5f9;
 	--secondary-foreground: #e0f2fe;
 
-	--muted: #f8f7ff;
-	--muted-foreground: #6b7280;
+	--muted: #f8fafc;
+	--muted-foreground: #64748b;
 
-	--accent: #e5e7eb;
-	--accent-foreground: #4c4c4c;
+	--accent: #e2e8f0;
+	--accent-foreground: #334155;
 
 	--destructive: #ef4444;
 	--destructive-foreground: #ffffff;
 
-	--border: #e5e7eb;
-	--input: #f3f4f6;
-	--ring: #725cee;
+	--border: #e2e8f0;
+	--input: #f1f5f9;
+	--ring: #2563eb;
 
-	/* 📊 Chart Colors - Purple Palette */
-	--chart-1: #725cee;
-	--chart-2: #a78bfa;
-	--chart-3: #c4b5fd;
-	--chart-4: #ddd6fe;
-	--chart-5: #ede9fe;
+	/* 📊 Chart Colors - Blue Palette */
+	--chart-1: #2563eb;
+	--chart-2: #3b82f6;
+	--chart-3: #60a5fa;
+	--chart-4: #93c5fd;
+	--chart-5: #bfdbfe;
 
 	/* 🔧 Sidebar Colors */
 	--sidebar: #ffffff;
-	--sidebar-foreground: #1a1a1a;
-	--sidebar-primary: #725cee;
+	--sidebar-foreground: #1e293b;
+	--sidebar-primary: #2563eb;
 	--sidebar-primary-foreground: #ffffff;
-	--sidebar-accent: #f1f0ff;
-	--sidebar-accent-foreground: #4c4c4c;
-	--sidebar-border: #e5e7eb;
-	--sidebar-ring: #725cee;
+	--sidebar-accent: #f0f9ff;
+	--sidebar-accent-foreground: #334155;
+	--sidebar-border: #e2e8f0;
+	--sidebar-ring: #2563eb;
 }
 
 .dark {
-	/* 🌙 Neutral Dark Theme with Purple Accents */
-	--background: #0a0a0a;
-	--foreground: #fafafa;
+	/* 🌙 Neutral Dark Theme with Blue Accents */
+	--background: #0a0f1c;
+	--foreground: #f1f5f9;
 
-	--card: #171717;
-	--card-foreground: #fafafa;
+	--card: #111827;
+	--card-foreground: #f1f5f9;
 
-	--popover: #171717;
-	--popover-foreground: #fafafa;
+	--popover: #111827;
+	--popover-foreground: #f1f5f9;
 
-	--primary: #725cee;
+	--primary: #3b82f6; /* мягче и светлее */
 	--primary-foreground: #ffffff;
 
-	--secondary: #444444;
-	--secondary-foreground: #d4d4d8;
+	--secondary: #1e293b;
+	--secondary-foreground: #cbd5e1;
 
-	--muted: #171717;
-	--muted-foreground: #a1a1aa;
+	--muted: #111827;
+	--muted-foreground: #94a3b8;
 
-	--accent: #262626;
-	--accent-foreground: #d4d4d8;
+	--accent: #1e293b;
+	--accent-foreground: #cbd5e1;
 
 	--destructive: #ef4444;
 	--destructive-foreground: #ffffff;
 
-	--border: #262626;
-	--input: #474747;
-	--ring: #725cee;
+	--border: #1e293b;
+	--input: #334155;
+	--ring: #2563eb;
 
-	/* 📊 Chart Colors - Neutral with Purple */
-	--chart-1: #725cee;
-	--chart-2: #8b7cf8;
-	--chart-3: #a78bfa;
-	--chart-4: #737373;
-	--chart-5: #525252;
+	/* 📊 Chart Colors - Neutral with Blue */
+	--chart-1: #2563eb;
+	--chart-2: #3b82f6;
+	--chart-3: #60a5fa;
+	--chart-4: #475569;
+	--chart-5: #334155;
 
 	/* 🔧 Sidebar Colors - Neutral Dark */
-	--sidebar: #171717;
-	--sidebar-foreground: #fafafa;
-	--sidebar-primary: #725cee;
+	--sidebar: #111827;
+	--sidebar-foreground: #f1f5f9;
+	--sidebar-primary: #2563eb;
 	--sidebar-primary-foreground: #ffffff;
-	--sidebar-accent: #262626;
-	--sidebar-accent-foreground: #d4d4d8;
-	--sidebar-border: #262626;
-	--sidebar-ring: #725cee;
+	--sidebar-accent: #1e293b;
+	--sidebar-accent-foreground: #cbd5e1;
+	--sidebar-border: #1e293b;
+	--sidebar-ring: #2563eb;
 }
 
 @layer base {
@@ -196,6 +196,10 @@ body {
 		font-feature-settings:
 			'rlig' 1,
 			'calt' 1;
+	}
+
+	.base-round {
+		@apply rounded-md;
 	}
 
 	/* 🎨 Custom Scrollbar */
@@ -226,24 +230,81 @@ body {
 		@apply outline-ring outline-2 outline-offset-2;
 	}
 }
+.rbc-calendar {
+	background: var(--background);
+	color: var(--foreground);
+	border-radius: var(--radius);
+}
 
-/* 🎨 Custom Utility Classes */
-@layer utilities {
-	.text-gradient {
-		@apply from-primary bg-gradient-to-r to-purple-600 bg-clip-text text-transparent;
-	}
+/* Заголовки дней */
+.rbc-header {
+	background: var(--card);
+	color: var(--card-foreground);
+	border-color: var(--border);
+	padding: 6px 0;
+	font-weight: 500;
+}
 
-	.bg-gradient-primary {
-		@apply from-primary bg-gradient-to-r to-purple-600;
-	}
+/* Линии сетки */
+.rbc-month-view,
+.rbc-time-view,
+.rbc-agenda-view {
+	border-color: var(--border);
+}
 
-	.shadow-primary {
-		box-shadow: 0 4px 14px 0 rgb(114 92 238 / 0.15);
-	}
+/* Дни вне месяца */
+.rbc-off-range-bg {
+	background: var(--muted);
+	color: var(--muted-foreground);
+}
 
-	.shadow-primary-lg {
-		box-shadow:
-			0 10px 25px -3px rgb(114 92 238 / 0.2),
-			0 4px 6px -2px rgb(114 92 238 / 0.1);
-	}
+/* Сегодня */
+.rbc-today {
+	background: color-mix(in srgb, var(--primary) 12%, transparent);
+}
+
+/* События */
+.rbc-event {
+	background: var(--primary);
+	color: var(--primary-foreground);
+	border-radius: calc(var(--radius) - 2px);
+	border: none;
+	padding: 2px 6px;
+	font-size: 0.85rem;
+	font-weight: 500;
+	transition: background 0.2s;
+}
+
+.rbc-event:hover {
+	background: var(--chart-2);
+}
+
+/* Линия текущего времени */
+.rbc-current-time-indicator {
+	background: var(--destructive);
+}
+
+/* Тулбар (Month / Week / Day) */
+.rbc-toolbar {
+	margin-bottom: 8px;
+}
+
+.rbc-toolbar button {
+	background: var(--secondary);
+	color: var(--secondary-foreground);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	padding: 4px 10px;
+	margin: 0 2px;
+	transition: background 0.2s;
+}
+
+.rbc-toolbar button:hover {
+	background: var(--accent);
+	color: var(--accent-foreground);
+}
+
+.rbc-toolbar button.rbc-active {
+	background: var(--primary);
+	color: var(--primary-foreground);
 }

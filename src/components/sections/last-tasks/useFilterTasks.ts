@@ -49,10 +49,9 @@ export const useFilterTasks = ({ tasks }: { tasks: TTask[] }) => {
 
 	const getFilterButtonClass = (filterType: TFilterTasks) => {
 		const baseClass =
-			'px-2.5 py-1 flex items-center justify-center xs:justify-start font-medium gap-1.5 rounded-lg cursor-pointer transition-colors duration-300'
+			'px-2.5 py-1 flex items-center justify-center xs:justify-start font-medium gap-1.5 base-round cursor-pointer transition-colors duration-300'
 		const activeClass = 'pointer-events-none bg-primary text-white'
-		const inactiveClass =
-			'dark:hover:bg-secondary hover:bg-violet-600/20 dark:hover:text-white hover:text-base dark:hover:bg-neutral-750'
+		const inactiveClass = 'hover:bg-secondary'
 		return `${baseClass} ${activeFilter === filterType ? activeClass : inactiveClass}`
 	}
 

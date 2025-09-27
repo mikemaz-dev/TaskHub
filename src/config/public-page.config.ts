@@ -10,7 +10,15 @@ export class Pages {
 	static TEAM = `${Pages.BASE}/team`
 	static SCHEDULE = `${Pages.BASE}/schedule`
 	static REPORT = `${Pages.BASE}/report`
-	static SETTINGS = `${Pages.BASE}/settings`
+
+	static ACCOUNT = `${Pages.BASE}/account`
+	static PROFILE = `${Pages.BASE}/account/profile`
+	static PROFILE_SETTINGS = `${Pages.BASE}/account/profile`
+	static PROFILE_APPEARANCE = `${Pages.BASE}/account/appearance`
+	static PROFILE_SECURITY = `${Pages.BASE}/account/security`
+	static PROFILE_NOTIFICATIONS = `${Pages.BASE}/account/notifications`
+	static PROFILE_ADVANCED = `${Pages.BASE}/account/advanced`
+
 
 	static PROJECTS = `${this.DASHBOARD}/projects/`
 }

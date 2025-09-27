@@ -1,6 +1,5 @@
 'use client'
 
-import { SquareArrowOutUpRight } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { match } from 'path-to-regexp'
@@ -24,9 +23,9 @@ export function ProjectItem({ name, slug, color, className }: ProjectItemProps) 
 	return (
 		<li
 			className={cn(
-				'group flex cursor-pointer items-center justify-between rounded-lg px-3 py-2 select-none',
+				'hover:bg-secondary flex cursor-pointer items-center justify-between rounded-lg px-3 py-2 duration-150 select-none',
 				className,
-				isActive && 'bg-neutral-900'
+				isActive && 'bg-secondary pointer-events-none'
 			)}
 		>
 			<Link
@@ -49,14 +48,6 @@ export function ProjectItem({ name, slug, color, className }: ProjectItemProps) 
 						{name}
 					</span>
 				</div>
-				<SquareArrowOutUpRight
-					size={17}
-					className={cn(
-						'text-gray-500 opacity-0 transition-opacity duration-200 group-hover:opacity-100 dark:text-neutral-500',
-						isActive && 'opacity-100'
-					)}
-					absoluteStrokeWidth={true}
-				/>
 			</Link>
 		</li>
 	)

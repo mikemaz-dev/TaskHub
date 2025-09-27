@@ -54,7 +54,7 @@ export function Modal({ children, onClose, isOpen = true }: IModal) {
 		>
 			{shouldRender && (
 				<m.div
-					className='fixed inset-0 z-50 flex items-center justify-center bg-neutral-800/80 dark:bg-neutral-900/80'
+					className='fixed inset-0 z-50 flex items-center justify-center bg-neutral-800/80 dark:bg-secondary/30'
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					exit={{ opacity: 0 }}
@@ -62,7 +62,7 @@ export function Modal({ children, onClose, isOpen = true }: IModal) {
 					onClick={handleClose}
 				>
 					<m.div
-						className='relative w-[90%] max-w-lg rounded-3xl bg-white p-6 shadow-lg dark:bg-neutral-800'
+						className='relative w-[90%] max-w-lg rounded-3xl bg-white p-6 shadow-lg dark:bg-secondary'
 						initial={{ opacity: 0, scale: 0.95, y: -20 }}
 						animate={{ opacity: 1, scale: 1, y: 0 }}
 						exit={{ opacity: 0, scale: 0.95, y: -20 }}

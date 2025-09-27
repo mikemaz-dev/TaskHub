@@ -32,17 +32,17 @@ export function TaskCardActions({ task }: { task: TTask }) {
 			<Button
 				variant='default'
 				size='icon'
-				className='text-foreground rounded-full'
+				className='rounded-full'
 				onClick={() => setIsAddSubtaskModalOpen(true)}
 				aria-label={`Add subtask to ${task.title} task`}
 				title={`Add subtask to ${task.title} task`}
 			>
-				<PlusIcon className='text-foreground' />
+				<PlusIcon className='text-white' />
 			</Button>
 			<Button
 				variant='outline'
 				size='icon'
-				className='border-primary rounded-full p-2'
+				className='border-primary bg-transparent rounded-full p-2'
 				onClick={() => setIsEditTaskModalOpen(true)}
 				aria-label={`Edit ${task.title} task`}
 				title={`Edit ${task.title} task`}

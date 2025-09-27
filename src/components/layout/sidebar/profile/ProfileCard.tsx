@@ -1,10 +1,34 @@
-import { Loader2 } from 'lucide-react'
+'use client'
+
+import { ChevronLeft, Loader2, Settings } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname, useRouter } from 'next/navigation'
+import { match } from 'path-to-regexp'
+
+import { Button } from '@/components/ui'
+
+import { Pages } from '@/config/public-page.config'
 
 import { useProfile } from '@/hooks/useProfile'
 
+import { cn } from '@/utils/cn.util'
+
 export function ProfileCard() {
 	const { data, isPending } = useProfile()
+
+	const pathName = usePathname()
+	const router = useRouter()
+
+	const matcher = match([
+		Pages.ACCOUNT,
+		Pages.PROFILE,
+		Pages.PROFILE_APPEARANCE,
+		Pages.PROFILE_NOTIFICATIONS,
+		Pages.PROFILE_SECURITY,
+		Pages.PROFILE_ADVANCED
+	])
+	const isActive = pathName ? !!matcher(pathName) : false
 
 	if (isPending) {
 		return (
@@ -23,26 +47,50 @@ export function ProfileCard() {
 		)
 	}
 
+	if (isActive)
+		return (
+			<Button
+				variant='ghost'
+				className='w-max'
+				size='sm'
+				onClick={() => router.push(Pages.DASHBOARD)}
+			>
+				<ChevronLeft />
+				<span>Back to app</span>
+			</Button>
+		)
+
 	return (
-		<div className='bg-background text-foreground flex items-center gap-2 rounded-2xl px-4 py-1.5'>
-			{data.avatar_path ? (
-				<Image
-					src={data.avatar_path || '/images/default-avatar.png'}
-					alt={`${data.name} || ''`}
-					width={36}
-					height={36}
-					className='rounded-full'
-				/>
-			) : (
-				<div
-					className='size-9 rounded-full bg-blue-500'
-					aria-hidden='true'
-				/>
+		<Link
+			href={Pages.PROFILE}
+			className={cn(
+				'text-foreground border-secondary hover:bg-background/50 group base-round hover:border-secondary/60 mb-3 flex cursor-pointer items-center justify-between border px-3 py-1.5 transition-colors duration-150',
+				{
+					'bg-background pointer-events-none border-none': isActive
+				}
 			)}
-			<div className='flex flex-col'>
+		>
+			<div className='flex items-center gap-2'>
+				{data.avatar_path ? (
+					<Image
+						src={data.avatar_path || '/images/default-avatar.png'}
+						alt={`${data.name} || ''`}
+						width={30}
+						height={30}
+						className='rounded-full'
+					/>
+				) : (
+					<div
+						className='size-9 rounded-full bg-blue-500'
+						aria-hidden='true'
+					/>
+				)}
 				<p className='font-bold'>{data.name}</p>
-				<p className='max-w-[150px] truncate text-sm font-medium opacity-60'>{data.email}</p>
 			</div>
-		</div>
+			<Settings
+				size={20}
+				className={cn('opacity-80', isActive && 'opacity-90')}
+			/>
+		</Link>
 	)
 }

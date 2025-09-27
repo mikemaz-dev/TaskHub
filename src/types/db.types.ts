@@ -43,6 +43,67 @@ export type Database = {
           },
         ]
       }
+      invite: {
+        Row: {
+          code: string
+          created_at: string | null
+          created_by: string | null
+          expires_at: string | null
+          id: string
+          max_uses: number | null
+          project_id: string | null
+          task_id: string | null
+          type: string
+          used_count: number | null
+        }
+        Insert: {
+          code: string
+          created_at?: string | null
+          created_by?: string | null
+          expires_at?: string | null
+          id?: string
+          max_uses?: number | null
+          project_id?: string | null
+          task_id?: string | null
+          type: string
+          used_count?: number | null
+        }
+        Update: {
+          code?: string
+          created_at?: string | null
+          created_by?: string | null
+          expires_at?: string | null
+          id?: string
+          max_uses?: number | null
+          project_id?: string | null
+          task_id?: string | null
+          type?: string
+          used_count?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "invite_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profile"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "invite_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "project"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "invite_task_id_fkey"
+            columns: ["task_id"]
+            isOneToOne: false
+            referencedRelation: "task"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       profile: {
         Row: {
           avatar_path: string | null
@@ -280,7 +341,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      use_invite_code: {
+        Args: { code_input: string; user_input: string }
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never

@@ -11,7 +11,7 @@ interface Props {
 
 export function TodayTasks({ tasks, usersData }: Props) {
 	return (
-		<div className='flex h-full flex-col gap-6 rounded-3xl bg-white p-5 shadow-sm dark:bg-neutral-800'>
+		<div className='flex h-full flex-col gap-6 rounded-3xl bg-white p-5 shadow-sm dark:bg-secondary/30	'>
 			<TodayTasksHeader usersData={usersData} />
 			<TodayTasksTimeline tasks={tasks} />
 		</div>

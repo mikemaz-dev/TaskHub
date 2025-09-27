@@ -6,7 +6,6 @@ import {
 	CalendarDaysIcon,
 	ChartColumnDecreasingIcon,
 	MessageCircleMoreIcon,
-	SettingsGearIcon,
 	UsersIcon
 } from '@/components/ui/icons'
 
@@ -41,11 +40,6 @@ export const MAIN_MENU_DATA: IMenu[] = [
 	{
 		icon: BookTextIcon,
 		name: 'Report',
-		href: Pages.REPORT
-	},
-	{
-		icon: SettingsGearIcon,
-		name: 'Settings',
 		href: Pages.REPORT
 	}
 ]

@@ -70,7 +70,7 @@ function DropdownButton({ placeholder, items, onSelect }: IDropdownButton) {
 			<button
 				onClick={() => setIsOpen(!isOpen)}
 				className={cn(
-					'border-secondary dark:hover:bg-secondary dark:bg-secondary/50 flex cursor-pointer items-center gap-2 rounded-full border-2 bg-white px-3 py-1 transition-all duration-300 hover:border-transparent hover:bg-violet-600/20 hover:text-white hover:shadow-sm',
+					'border-secondary dark:hover:bg-secondary dark:bg-secondary/50 hover:bg-secondary flex cursor-pointer items-center gap-2 base-round border-2 bg-white px-3 py-1 transition-all duration-300 hover:border-transparent hover:shadow-sm',
 					isOpen && 'dark:bg-primary border-transparent bg-white shadow-sm dark:border-transparent'
 				)}
 				aria-haspopup='listbox'
@@ -93,7 +93,7 @@ function DropdownButton({ placeholder, items, onSelect }: IDropdownButton) {
 			<AnimatePresence>
 				{isOpen && (
 					<m.div
-						className='absolute top-full right-0 z-50 mt-2 w-full min-w-[200px] rounded-xl border border-gray-200 bg-white shadow-lg sm:left-0 sm:min-w-[150px] dark:border-neutral-700 dark:bg-neutral-800'
+						className='absolute top-full right-0 z-50 mt-2 w-full min-w-[200px] base-round border border-gray-200 bg-white shadow-lg sm:left-0 sm:min-w-[150px] dark:border-neutral-700 dark:bg-neutral-800'
 						initial={dropdownAnimations.initial}
 						animate={dropdownAnimations.animate}
 						exit={dropdownAnimations.exit}
@@ -108,7 +108,7 @@ function DropdownButton({ placeholder, items, onSelect }: IDropdownButton) {
 									key={item.value || index}
 									onClick={() => handleItemClick(item)}
 									onKeyDown={e => handleItemKeyDown(e, item)}
-									className='hover:border-primary/85 w-full cursor-pointer rounded-xl border-2 border-transparent px-3 py-1 text-left text-lg font-medium transition-colors duration-300 md:text-base'
+									className='hover:border-primary/85 w-full cursor-pointer base-round border-2 border-transparent px-3 py-1 text-left text-lg font-medium transition-colors duration-300 md:text-base'
 									role='option'
 									aria-selected={selectedItem?.value === item.value}
 									aria-label={`Choose ${item.label}`}

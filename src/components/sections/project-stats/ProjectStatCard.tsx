@@ -12,7 +12,7 @@ interface IProjectStatCard {
 export function ProjectStatCard({ projectStat, isLast }: IProjectStatCard) {
 	return (
 		<div
-			className='flex items-center justify-between gap-4 overflow-hidden rounded-3xl p-7 dark:text-neutral-800'
+			className='flex items-center justify-between gap-4 overflow-hidden base-round p-7 dark:text-neutral-800'
 			style={{
 				backgroundColor: `${projectStat.bg_color}`
 			}}

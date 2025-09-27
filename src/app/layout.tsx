@@ -19,8 +19,8 @@ export const metadata: Metadata = {
 		shortcut: '/images/favicon.svg'
 	},
 	title: {
-		absolute: `${SITE_NAME}`,
-		template: `%s - ${SITE_NAME}`
+		absolute: SITE_NAME,
+		template: `%s | ${SITE_NAME}`
 	},
 	description:
 		'TaskHub is a modern task management platform that transforms team productivity through intuitive workflow organization and efficient task handling.'
