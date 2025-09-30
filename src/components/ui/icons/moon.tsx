@@ -1,7 +1,8 @@
 'use client'
 
 import type { Transition, Variants } from 'motion/react'
-import { motion, useAnimation } from 'motion/react'
+import { useAnimation } from 'framer-motion'
+import * as m from 'motion/react-m'
 import React, { type HTMLAttributes } from 'react'
 import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react'
 
@@ -72,7 +73,7 @@ const MoonIcon = forwardRef<MoonIconHandle, MoonIconProps>(
 				onMouseLeave={handleMouseLeave}
 				{...props}
 			>
-				<motion.svg
+				<m.svg
 					xmlns='http://www.w3.org/2000/svg'
 					width={size}
 					height={size}
@@ -87,7 +88,7 @@ const MoonIcon = forwardRef<MoonIconHandle, MoonIconProps>(
 					transition={svgTransition}
 				>
 					<path d='M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z' />
-				</motion.svg>
+				</m.svg>
 			</div>
 		)
 	}

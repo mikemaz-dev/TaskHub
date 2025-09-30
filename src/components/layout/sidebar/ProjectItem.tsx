@@ -23,7 +23,7 @@ export function ProjectItem({ name, slug, color, className }: ProjectItemProps) 
 	return (
 		<li
 			className={cn(
-				'hover:bg-secondary flex cursor-pointer items-center justify-between rounded-lg px-3 py-2 duration-150 select-none',
+				'hover:bg-secondary group/project flex cursor-pointer items-center justify-between rounded-lg px-3 py-2 duration-150 select-none',
 				className,
 				isActive && 'bg-secondary pointer-events-none'
 			)}
@@ -39,9 +39,8 @@ export function ProjectItem({ name, slug, color, className }: ProjectItemProps) 
 					/>
 					<span
 						className={cn(
-							'font-medium text-gray-500 dark:text-neutral-200',
-							'group-hover:text-gray-700 dark:group-hover:text-white',
-							'transition-all duration-200',
+							'font-medium opacity-75 group-hover/project:opacity-100',
+							'transition-colors duration-200',
 							isActive && 'group-hover:text-neutral-200'
 						)}
 					>

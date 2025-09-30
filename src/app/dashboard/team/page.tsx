@@ -1,136 +1,102 @@
-import { BarChart3, CheckCircle, Users } from 'lucide-react'
+import { format } from 'date-fns'
+import { ChevronLeft, UserRoundPlus } from 'lucide-react'
 import type { Metadata } from 'next'
+import Image from 'next/image'
+import Link from 'next/link'
 
 import { Header } from '@/components/layout/header/Header'
+import { Button } from '@/components/ui'
+import SectionHeading from '@/components/ui/SectionHeading'
+import { Users } from '@/components/ui/Users'
 
-import { cn } from '@/utils/cn.util'
+import { NO_INDEX_PAGE } from '@/constants/seo.constants'
+
+import { Pages } from '@/config/public-page.config'
 
 export const metadata: Metadata = {
 	title: 'Team',
-	robots: {
-		index: false,
-		follow: false
-	}
+	...NO_INDEX_PAGE
+}
+
+// Моковые данные команды
+const team = {
+	name: 'Alpha Team',
+	description: 'Команда, которая делает TaskHub лучше каждый день!',
+	avatarUrl: 'https://avatars2.githubusercontent.com/u/9919?v=4',
+	members: [
+		{
+			id: '1',
+			name: 'Alice Johnson',
+			role: 'OWNER',
+			avatar: 'https://avatars2.githubusercontent.com/u/1?v=4'
+		},
+		{
+			id: '2',
+			name: 'Bob Smith',
+			role: 'ADMIN',
+			avatar: 'https://avatars2.githubusercontent.com/u/2?v=4'
+		},
+		{
+			id: '3',
+			name: 'Charlie Brown',
+			role: 'MEMBER',
+			avatar: 'https://avatars2.githubusercontent.com/u/3?v=4'
+		},
+		{
+			id: '4',
+			name: 'Diana Prince',
+			role: 'MEMBER',
+			avatar: 'https://avatars2.githubusercontent.com/u/4?v=4'
+		}
+	],
+	projects: [
+		{ id: 'p1', name: 'TaskHub Redesign', deadline: '2025-10-10' },
+		{ id: 'p2', name: 'API Improvements', deadline: '2025-11-05' }
+	]
 }
 
 export default function Page() {
 	return (
-		<div className='bg-background min-h-screen px-4 md:px-6 lg:px-8'>
-			<Header title='Team' />
+		<section className='bg-background flex min-h-screen flex-col gap-10 pr-6 pl-6 md:p-6 md:pt-0 lg:p-6 lg:pt-0 xl:w-screen xl:p-6 xl:pt-0'>
+			<Header title='Team details' />
 
-			<div className='mt-8 flex gap-6'>
-				<div className='bg-card group relative overflow-hidden rounded-xl border p-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md'>
-					<div className='from-primary/5 to-secondary/5 absolute inset-0 bg-gradient-to-br opacity-0 transition-opacity duration-200 group-hover:opacity-100' />
-
-					<div className='relative mb-3 flex items-start justify-between'>
-						<div>
-							<h3 className='text-foreground font-semibold'>Frontend Team</h3>
-							<div className='mt-1 flex items-center gap-1'>
-								<div className='h-2 w-2 rounded-full bg-green-500' />
-								<span className='text-muted-foreground text-xs'>Active</span>
-							</div>
-						</div>
-						<div className='bg-primary/10 text-primary flex h-10 w-10 items-center justify-center rounded-lg'>
-							<Users className='h-5 w-5' />
-						</div>
-					</div>
-
-					<div className='flex items-center justify-between text-sm'>
-						<div className='flex items-center gap-3'>
-							<div className='flex items-center gap-1'>
-								<CheckCircle className='text-muted-foreground h-4 w-4' />
-								<span className='text-muted-foreground'>12 tasks</span>
-							</div>
-							<div className='flex items-center gap-1'>
-								<Users className='text-muted-foreground h-4 w-4' />
-								<span className='text-muted-foreground'>4 members</span>
-							</div>
-						</div>
-						<div className='flex items-center gap-1'>
-							<BarChart3 className='h-4 w-4 text-green-500' />
-							<span className='text-xs font-medium text-green-600'>85%</span>
-						</div>
+			<div className='bg-secondary/20 flex w-full items-center justify-between rounded-2xl border px-6 py-4'>
+				<div className='flex items-center gap-6'>
+					<Image
+						src={team.avatarUrl}
+						width={80}
+						height={80}
+						className='rounded-full border-2 border-blue-500'
+						alt='Team avatar'
+					/>
+					<div className='flex flex-col gap-1'>
+						<p className='text-2xl font-bold'>{team.name}</p>
+						<p className='text-sm  opacity-60'>{team.description}</p>
 					</div>
 				</div>
-
-				{/* Backend Team Card */}
-				<div
-					className={cn(
-						'bg-card group relative overflow-hidden rounded-xl border p-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md'
-					)}
-				>
-					<div className='from-secondary/5 to-primary/5 absolute inset-0 bg-gradient-to-br opacity-0 transition-opacity duration-200 group-hover:opacity-100' />
-
-					<div className='relative mb-3 flex items-start justify-between'>
-						<div>
-							<h3 className='text-foreground font-semibold'>Backend Team</h3>
-							<div className='mt-1 flex items-center gap-1'>
-								<div className='h-2 w-2 rounded-full bg-yellow-500' />
-								<span className='text-muted-foreground text-xs'>In Progress</span>
-							</div>
-						</div>
-						<div className='bg-secondary/10 text-secondary flex h-10 w-10 items-center justify-center rounded-lg'>
-							<BarChart3 className='h-5 w-5' />
-						</div>
-					</div>
-
-					<div className='flex items-center justify-between text-sm'>
-						<div className='flex items-center gap-3'>
-							<div className='flex items-center gap-1'>
-								<CheckCircle className='text-muted-foreground h-4 w-4' />
-								<span className='text-muted-foreground'>8 tasks</span>
-							</div>
-							<div className='flex items-center gap-1'>
-								<Users className='text-muted-foreground h-4 w-4' />
-								<span className='text-muted-foreground'>3 members</span>
-							</div>
-						</div>
-						<div className='flex items-center gap-1'>
-							<BarChart3 className='h-4 w-4 text-yellow-500' />
-							<span className='text-xs font-medium text-yellow-600'>62%</span>
-						</div>
-					</div>
-				</div>
-
-				{/* Design Team Card */}
-				<div
-					className={cn(
-						'bg-card group relative overflow-hidden rounded-xl border p-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md'
-					)}
-				>
-					<div className='from-primary/5 to-secondary/5 absolute inset-0 bg-gradient-to-br opacity-0 transition-opacity duration-200 group-hover:opacity-100' />
-
-					<div className='relative mb-3 flex items-start justify-between'>
-						<div>
-							<h3 className='text-foreground font-semibold'>Design Team</h3>
-							<div className='mt-1 flex items-center gap-1'>
-								<div className='h-2 w-2 rounded-full bg-green-500' />
-								<span className='text-muted-foreground text-xs'>Active</span>
-							</div>
-						</div>
-						<div className='bg-primary/10 text-primary flex h-10 w-10 items-center justify-center rounded-lg'>
-							<CheckCircle className='h-5 w-5' />
-						</div>
-					</div>
-
-					<div className='flex items-center justify-between text-sm'>
-						<div className='flex items-center gap-3'>
-							<div className='flex items-center gap-1'>
-								<CheckCircle className='text-muted-foreground h-4 w-4' />
-								<span className='text-muted-foreground'>15 tasks</span>
-							</div>
-							<div className='flex items-center gap-1'>
-								<Users className='text-muted-foreground h-4 w-4' />
-								<span className='text-muted-foreground'>2 members</span>
-							</div>
-						</div>
-						<div className='flex items-center gap-1'>
-							<BarChart3 className='h-4 w-4 text-green-500' />
-							<span className='text-xs font-medium text-green-600'>92%</span>
-						</div>
-					</div>
+				<div>
+					<Button size='lg'>
+						<UserRoundPlus />
+						Add people
+					</Button>
 				</div>
 			</div>
-		</div>
+			<div className='flex flex-col gap-5.5 rounded-2xl'>
+				<SectionHeading title='Projects' />
+				<div className='grid grid-cols-3 gap-5 md:grid-cols-1 xl:grid-cols-3'>
+					{team.projects.map(project => (
+						<div
+							key={project.id}
+							className='bg-secondary flex flex-col justify-between base-round p-4'
+						>
+							<p className='text-lg font-semibold'>{project.name}</p>
+							<p className='text-xs text-gray-500'>
+								Deadline: {format(new Date(project.deadline), 'd MMM yyyy')}
+							</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
 	)
 }

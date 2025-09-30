@@ -22,7 +22,7 @@ export function Chat({ userId }: { userId: string }) {
 	}
 
 	return (
-		<div className='flex flex-col bg-white shadow-sm dark:bg-neutral-800'>
+		<div className='flex flex-col bg-secondary shadow-sm '>
 			<div className='from-secondary flex flex-col gap-20 bg-gradient-to-b from-91% to-white p-5 pb-2 dark:from-neutral-900 dark:via-neutral-900 dark:to-neutral-800'>
 				<ChatHeader />
 				<ChatTop user={currentUser} />

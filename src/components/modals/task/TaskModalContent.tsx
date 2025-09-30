@@ -44,7 +44,7 @@ export function TaskModalContent({ form }: { form: UseFormReturn<TTaskFormData> 
 						<FormControl>
 							<Input
 								placeholder='Enter task name'
-								className='text-foreground'
+								autoFocus={false}
 								{...field}
 							/>
 						</FormControl>
@@ -95,7 +95,6 @@ export function TaskModalContent({ form }: { form: UseFormReturn<TTaskFormData> 
 										step='1'
 										value={value || ''}
 										onChange={event => onChange(event.target.value)}
-										className='bg-background text-foreground appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none'
 									/>
 								</FormControl>
 								<FormMessage />
@@ -116,7 +115,6 @@ export function TaskModalContent({ form }: { form: UseFormReturn<TTaskFormData> 
 										step='1'
 										value={field.value || ''}
 										onChange={field.onChange}
-										className='bg-background text-foreground appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none'
 									/>
 								</FormControl>
 								<FormMessage />

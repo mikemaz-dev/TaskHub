@@ -1,7 +1,8 @@
 'use client'
 
 import type { Variants } from 'motion/react'
-import { motion, useAnimation } from 'motion/react'
+import { useAnimation } from 'framer-motion'
+import * as m from 'motion/react-m'
 import React, { type HTMLAttributes } from 'react'
 import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react'
 
@@ -95,19 +96,19 @@ const MessageCircleMoreIcon = forwardRef<MessageCircleMoreIconHandle, MessageCir
 					strokeLinejoin='round'
 				>
 					<path d='M7.9 20A9 9 0 1 0 4 16.1L2 22Z' />
-					<motion.path
+					<m.path
 						d='M8 12h.01'
 						variants={dotVariants}
 						animate={controls}
 						custom={0}
 					/>
-					<motion.path
+					<m.path
 						d='M12 12h.01'
 						variants={dotVariants}
 						animate={controls}
 						custom={1}
 					/>
-					<motion.path
+					<m.path
 						d='M16 12h.01'
 						variants={dotVariants}
 						animate={controls}

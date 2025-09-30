@@ -1,61 +1,74 @@
 'use client'
 
-import { EditTaskModalIconSelector } from '@/components/modals/task/EditTaskModalIconSelector'
-import { TaskModalContent } from '@/components/modals/task/TaskModalContent'
-import { useTaskForm } from '@/components/modals/task/useTaskForm'
 import { Button, Form, Modal } from '@/components/ui'
+import DropdownButton from '@/components/ui/DropdownButton'
 import SectionHeading from '@/components/ui/SectionHeading'
 
-import { type TTask } from '@/types/tasks/task.types'
+import { TaskModalIconSelector } from './EditTaskModalIconSelector'
+import { TaskModalContent } from './TaskModalContent'
+import { useProjects } from './useProjects'
+import { useTaskForm } from './useTaskForm'
+import { TTask } from '@/types/tasks/task.types'
 
 interface ITaskModalProps {
+	isOpen: boolean
 	setIsOpen: (isOpen: boolean) => void
 	mode: 'create' | 'edit'
 	task?: TTask
 }
 
-export function TaskModal({ setIsOpen, mode, task }: ITaskModalProps) {
+export function TaskModal({ isOpen, setIsOpen, mode, task }: ITaskModalProps) {
 	const { form, isPending, onSubmit } = useTaskForm({
 		mode,
 		taskId: task?.id,
 		onClose: () => setIsOpen(false)
 	})
 
-	const getTitle = () => {
-		if (mode === 'create') {
-			return 'Create new task'
-		}
-		return `Edit task: '${task?.title}'`
-	}
+	const { data } = useProjects()
 
-	const getButtonText = () => {
-		if (form.formState.isSubmitting) {
-			return mode === 'create' ? 'Creating...' : 'Updating...'
-		}
-		return mode === 'create' ? 'Create task' : 'Update task'
-	}
+	if (!data) return []
+
+	const getTitle = () => (mode === 'create' ? 'Create new task' : `Edit task: '${task?.title}'`)
+	const getButtonText = () =>
+		form.formState.isSubmitting
+			? mode === 'create'
+				? 'Creating...'
+				: 'Updating...'
+			: mode === 'create'
+				? 'Create task'
+				: 'Update task'
 
 	return (
-		<Modal onClose={() => setIsOpen(false)}>
+		<Modal
+			isOpen={isOpen}
+			onClose={() => setIsOpen(false)}
+		>
 			<div className='flex flex-col gap-5'>
 				<SectionHeading title={getTitle()} />
+
 				<Form {...form}>
 					<form
 						onSubmit={form.handleSubmit(onSubmit)}
 						className='flex flex-col gap-8'
 					>
 						<TaskModalContent form={form} />
+						<TaskModalIconSelector control={form.control} />
 
-						<EditTaskModalIconSelector control={form.control} />
+						<div className='flex items-center justify-between gap-4'>
+							<DropdownButton
+								placeholder={isPending ? 'Loading...' : 'Select project'}
+								items={data}
+								onSelect={() => console.log('Project selected')}
+							/>
 
-						<Button
-							variant='default'
-							type='submit'
-							disabled={isPending}
-							className='w-max'
-						>
-							{getButtonText()}
-						</Button>
+							<Button
+								variant='default'
+								type='submit'
+								disabled={isPending}
+							>
+								{getButtonText()}
+							</Button>
+						</div>
 					</form>
 				</Form>
 			</div>

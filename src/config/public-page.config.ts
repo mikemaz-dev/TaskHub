@@ -20,5 +20,5 @@ export class Pages {
 	static PROFILE_ADVANCED = `${Pages.BASE}/account/advanced`
 
 
-	static PROJECTS = `${this.DASHBOARD}/projects/`
+	static PROJECTS = `${this.DASHBOARD}/projects`
 }

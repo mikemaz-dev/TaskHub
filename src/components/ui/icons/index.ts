@@ -1,6 +1,8 @@
 export { BookTextIcon } from './book-text'
 export { CalendarDaysIcon } from './calendar-days'
 export { ChartColumnDecreasingIcon } from './chart-column-decreasing'
+export { FoldersIcon } from './folders'
 export { MessageCircleMoreIcon } from './message-circle-more'
 export { SettingsGearIcon } from './settings-gear'
 export { UsersIcon } from './users'
+

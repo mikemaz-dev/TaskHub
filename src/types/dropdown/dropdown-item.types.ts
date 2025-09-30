@@ -1,5 +1,5 @@
 export interface IDropdownItem {
-	label: string
-	value?: string
+	label: string | null
+	value?: string | null
 	onClick?: () => void
 }

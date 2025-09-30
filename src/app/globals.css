@@ -91,99 +91,93 @@ body {
 :root {
 	--radius: 0.75rem;
 
-	/* 🎨 Beautiful Blue Theme - Light Mode */
-	--background: #f4f6f8;
-	--foreground: #0f172a;
+	--background: #fafafa;
+	--foreground: #2f2f2f;
 
 	--card: #ffffff;
-	--card-foreground: #1e293b;
+	--card-foreground: #2f2f2f;
 
 	--popover: #ffffff;
-	--popover-foreground: #1e293b;
+	--popover-foreground: #2f2f2f;
 
-	--primary: #2563eb; /* основной синий */
+	--primary: #5b8def;
 	--primary-foreground: #ffffff;
 
-	--secondary: #f1f5f9;
-	--secondary-foreground: #e0f2fe;
+	--secondary: #f1f3f5;
+	--secondary-foreground: #2f2f2f;
 
-	--muted: #f8fafc;
-	--muted-foreground: #64748b;
+	--muted: #f5f6f7;
+	--muted-foreground: #6b7280;
 
-	--accent: #e2e8f0;
-	--accent-foreground: #334155;
+	--accent: #e4e6eb;
+	--accent-foreground: #2f2f2f;
 
-	--destructive: #ef4444;
+	--destructive: #f87171;
 	--destructive-foreground: #ffffff;
 
-	--border: #e2e8f0;
-	--input: #f1f5f9;
-	--ring: #2563eb;
+	--border: #dcdcdc;
+	--input: #f6f7f9;
+	--ring: #5b8def;
 
-	/* 📊 Chart Colors - Blue Palette */
-	--chart-1: #2563eb;
-	--chart-2: #3b82f6;
-	--chart-3: #60a5fa;
-	--chart-4: #93c5fd;
-	--chart-5: #bfdbfe;
+	--chart-1: #a78bfa;
+	--chart-2: #f9a8d4;
+	--chart-3: #fcd34d;
+	--chart-4: #6ee7b7;
+	--chart-5: #93c5fd;
 
-	/* 🔧 Sidebar Colors */
-	--sidebar: #ffffff;
-	--sidebar-foreground: #1e293b;
-	--sidebar-primary: #2563eb;
+	--sidebar: #f5f6f7;
+	--sidebar-foreground: #2f2f2f;
+	--sidebar-primary: #5b8def;
 	--sidebar-primary-foreground: #ffffff;
-	--sidebar-accent: #f0f9ff;
-	--sidebar-accent-foreground: #334155;
-	--sidebar-border: #e2e8f0;
-	--sidebar-ring: #2563eb;
+	--sidebar-accent: #e9ecef;
+	--sidebar-accent-foreground: #374151;
+	--sidebar-border: #dcdcdc;
+	--sidebar-ring: #5b8def;
 }
 
 .dark {
-	/* 🌙 Neutral Dark Theme with Blue Accents */
-	--background: #0a0f1c;
-	--foreground: #f1f5f9;
+	--background: #1c1c1e;
+	--foreground: #f3f4f6;
 
-	--card: #111827;
-	--card-foreground: #f1f5f9;
+	--card: #262626;
+	--card-foreground: #f3f4f6;
 
-	--popover: #111827;
-	--popover-foreground: #f1f5f9;
+	--popover: #262626;
+	--popover-foreground: #f3f4f6;
 
-	--primary: #3b82f6; /* мягче и светлее */
-	--primary-foreground: #ffffff;
+	--primary: #5b8def;
+	--primary-foreground: #1c1c1e;
 
-	--secondary: #1e293b;
-	--secondary-foreground: #cbd5e1;
+	--secondary: #2d2d2f;
+	--secondary-foreground: #e5e7eb;
 
-	--muted: #111827;
-	--muted-foreground: #94a3b8;
+	--muted: #262626;
+	--muted-foreground: #9ca3af;
 
-	--accent: #1e293b;
-	--accent-foreground: #cbd5e1;
+	--accent: #2d2d2f;
+	--accent-foreground: #e5e7eb;
 
-	--destructive: #ef4444;
-	--destructive-foreground: #ffffff;
+	--destructive: #f87171;
+	--destructive-foreground: #1c1c1e;
 
-	--border: #1e293b;
-	--input: #334155;
-	--ring: #2563eb;
+	--border: #2d2d2f;
+	--input: #3a3a3c;
+	--ring: #c4b5fd;
 
-	/* 📊 Chart Colors - Neutral with Blue */
-	--chart-1: #2563eb;
-	--chart-2: #3b82f6;
-	--chart-3: #60a5fa;
-	--chart-4: #475569;
-	--chart-5: #334155;
+	--chart-1: #c4b5fd;
+	--chart-2: #f9a8d4;
+	--chart-3: #fde68a;
+	--chart-4: #6ee7b7;
+	--chart-5: #93c5fd;
 
-	/* 🔧 Sidebar Colors - Neutral Dark */
-	--sidebar: #111827;
-	--sidebar-foreground: #f1f5f9;
-	--sidebar-primary: #2563eb;
-	--sidebar-primary-foreground: #ffffff;
-	--sidebar-accent: #1e293b;
-	--sidebar-accent-foreground: #cbd5e1;
-	--sidebar-border: #1e293b;
-	--sidebar-ring: #2563eb;
+	--sidebar: #262626;
+	--sidebar-foreground: #f3f4f6;
+	--sidebar-primary: #c4b5fd;
+	--sidebar-primary-foreground: #1c1c1e;
+	--sidebar-accent: #2d2d2f;
+	--sidebar-accent-foreground: #e5e7eb;
+	--sidebar-border: #2d2d2f;
+	--sidebar-ring: #c4b5fd;
 }
 
 @layer base {
@@ -220,12 +214,10 @@ body {
 		@apply bg-primary/50;
 	}
 
-	/* 🌟 Selection Colors */
 	::selection {
 		@apply bg-primary/20 text-primary-foreground;
 	}
 
-	/* 🎯 Focus Styles */
 	:focus-visible {
 		@apply outline-ring outline-2 outline-offset-2;
 	}
@@ -236,7 +228,6 @@ body {
 	border-radius: var(--radius);
 }
 
-/* Заголовки дней */
 .rbc-header {
 	background: var(--card);
 	color: var(--card-foreground);
@@ -245,25 +236,21 @@ body {
 	font-weight: 500;
 }
 
-/* Линии сетки */
 .rbc-month-view,
 .rbc-time-view,
 .rbc-agenda-view {
 	border-color: var(--border);
 }
 
-/* Дни вне месяца */
 .rbc-off-range-bg {
 	background: var(--muted);
 	color: var(--muted-foreground);
 }
 
-/* Сегодня */
 .rbc-today {
 	background: color-mix(in srgb, var(--primary) 12%, transparent);
 }
 
-/* События */
 .rbc-event {
 	background: var(--primary);
 	color: var(--primary-foreground);
@@ -279,12 +266,10 @@ body {
 	background: var(--chart-2);
 }
 
-/* Линия текущего времени */
 .rbc-current-time-indicator {
 	background: var(--destructive);
 }
 
-/* Тулбар (Month / Week / Day) */
 .rbc-toolbar {
 	margin-bottom: 8px;
 }

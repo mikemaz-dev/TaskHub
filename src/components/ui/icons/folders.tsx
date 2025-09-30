@@ -2,21 +2,21 @@
 
 import { useAnimation } from 'framer-motion'
 import * as m from 'motion/react-m'
-import React, { type HTMLAttributes } from 'react'
+import type { HTMLAttributes } from 'react'
 import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react'
 
-import { cn } from '@/utils/cn.util'
+import { cn } from '@/utils/index'
 
-export interface SearchIconHandle {
+export interface FoldersIconHandle {
 	startAnimation: () => void
 	stopAnimation: () => void
 }
 
-interface SearchIconProps extends HTMLAttributes<HTMLDivElement> {
+interface FoldersIconProps extends HTMLAttributes<HTMLDivElement> {
 	size?: number
 }
 
-const SearchIcon = forwardRef<SearchIconHandle, SearchIconProps>(
+const FoldersIcon = forwardRef<FoldersIconHandle, FoldersIconProps>(
 	({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
 		const controls = useAnimation()
 		const isControlledRef = useRef(false)
@@ -59,7 +59,7 @@ const SearchIcon = forwardRef<SearchIconHandle, SearchIconProps>(
 				onMouseLeave={handleMouseLeave}
 				{...props}
 			>
-				<m.svg
+				<svg
 					xmlns='http://www.w3.org/2000/svg'
 					width={size}
 					height={size}
@@ -69,31 +69,55 @@ const SearchIcon = forwardRef<SearchIconHandle, SearchIconProps>(
 					strokeWidth='2'
 					strokeLinecap='round'
 					strokeLinejoin='round'
-					variants={{
-						normal: { x: 0, y: 0 },
-						animate: {
-							x: [0, 0, -3, 0],
-							y: [0, -4, 0, 0]
-						}
-					}}
-					transition={{
-						duration: 1,
-						bounce: 0.3
-					}}
-					animate={controls}
 				>
-					<circle
-						cx='11'
-						cy='11'
-						r='8'
+					<m.path
+						animate={controls}
+						variants={{
+							normal: {
+								translateX: 0,
+								translateY: 0
+							},
+							animate: {
+								translateX: -2,
+								translateY: 2
+							}
+						}}
+						transition={{
+							type: 'spring',
+							stiffness: 250,
+							damping: 25
+						}}
+						d='M20 17a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3.9a2 2 0 0 1-1.69-.9l-.81-1.2a2 2 0 0 0-1.67-.9H8a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2Z'
 					/>
-					<path d='m21 21-4.3-4.3' />
-				</m.svg>
+					<m.path
+						d='M2 8v11a2 2 0 0 0 2 2h14'
+						animate={controls}
+						variants={{
+							normal: {
+								translateX: 0,
+								translateY: 0,
+								opacity: 1,
+								scale: 1
+							},
+							animate: {
+								translateX: 2,
+								translateY: -2,
+								opacity: 0,
+								scale: 0.9
+							}
+						}}
+						transition={{
+							type: 'spring',
+							stiffness: 250,
+							damping: 25
+						}}
+					/>
+				</svg>
 			</div>
 		)
 	}
 )
 
-SearchIcon.displayName = 'SearchIcon'
+FoldersIcon.displayName = 'FoldersIcon'
 
-export { SearchIcon }
+export { FoldersIcon }

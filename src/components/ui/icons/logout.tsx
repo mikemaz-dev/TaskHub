@@ -1,9 +1,15 @@
 'use client'
 
+import { useAnimation } from 'framer-motion'
 import type { Variants } from 'motion/react'
-import { motion, useAnimation } from 'motion/react'
-import React, { type HTMLAttributes } from 'react'
-import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react'
+import * as m from 'motion/react-m'
+import React, {
+	type HTMLAttributes,
+	forwardRef,
+	useCallback,
+	useImperativeHandle,
+	useRef
+} from 'react'
 
 import { cn } from '@/utils/cn.util'
 
@@ -81,12 +87,12 @@ const LogoutIcon = forwardRef<LogoutIconHandle, LogoutIconProps>(
 					strokeLinejoin='round'
 				>
 					<path d='M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4' />
-					<motion.polyline
+					<m.polyline
 						points='16 17 21 12 16 7'
 						variants={pathVariants}
 						animate={controls}
 					/>
-					<motion.line
+					<m.line
 						x1='21'
 						x2='9'
 						y1='12'

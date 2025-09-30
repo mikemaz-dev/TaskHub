@@ -33,6 +33,7 @@ export function LastTasks({ tasks }: { tasks: TTask[] }) {
 		<div className='flex flex-col gap-5.5'>
 			{isCreateTaskModalOpen && (
 				<TaskModal
+					isOpen={isCreateTaskModalOpen}
 					mode='create'
 					setIsOpen={setIsCreateTaskModalOpen}
 				/>

@@ -1,7 +1,8 @@
 'use client'
 
 import type { Variants } from 'motion/react'
-import { motion, useAnimation } from 'motion/react'
+import { useAnimation } from 'framer-motion'
+import * as m from 'motion/react-m'
 import React, { type HTMLAttributes } from 'react'
 import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react'
 
@@ -96,12 +97,12 @@ const UsersIcon = forwardRef<UsersIconHandle, UsersIconProps>(
 						cy='7'
 						r='4'
 					/>
-					<motion.path
+					<m.path
 						d='M22 21v-2a4 4 0 0 0-3-3.87'
 						variants={pathVariants}
 						animate={controls}
 					/>
-					<motion.path
+					<m.path
 						d='M16 3.13a4 4 0 0 1 0 7.75'
 						variants={pathVariants}
 						animate={controls}

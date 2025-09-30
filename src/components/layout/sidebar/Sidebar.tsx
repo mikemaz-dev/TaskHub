@@ -37,12 +37,12 @@ export function Sidebar({ projects }: { projects: TGetProjectsResponse }) {
 	if (pathName === Pages.LOGIN || pathName === Pages.SIGNUP || pathName === Pages.HOME) return null
 
 	return (
-		<aside className='border-border/55 dark:bg-secondary/25 overflow-hidden border-r bg-white/80 px-3.5 py-6 text-base whitespace-nowrap shadow-sm md:hidden lg:hidden xl:hidden'>
+		<aside className='border-border/55 bg-sidebar/40 overflow-hidden border-r px-3.5 py-6 text-base whitespace-nowrap shadow-sm md:hidden lg:hidden xl:hidden'>
 			<div className='flex flex-col gap-2'>
 				<ProfileCard />
 
 				<SidebarTopic title={isSettingsPage ? '' : 'Main Menu'}>
-					<ul className='flex flex-col gap-1'>
+					<ul className='flex flex-col gap-1.5'>
 						{isSettingsPage
 							? SETTINGS_MENU_DATA.map(item => (
 									<SidebarItem
@@ -64,16 +64,17 @@ export function Sidebar({ projects }: { projects: TGetProjectsResponse }) {
 				{!isSettingsPage && (
 					<SidebarTopic
 						title='Projects'
+						link={Pages.PROJECTS}
 						rightSide={
 							<Button
-								size='icon'
+								size='sm'
 								variant='ghost'
 							>
 								<Plus />
 							</Button>
 						}
 					>
-						<ul className='flex flex-col'>
+						<ul className='flex flex-col gap-1.5'>
 							{projects.map(project => {
 								if (!project) return null
 								return (

@@ -16,17 +16,17 @@ export function SidebarItem({
 			<Link
 				href={item.href}
 				className={cn(
-					'group hover:bg-secondary base-round flex cursor-pointer items-center px-2.5 py-1.5 transition-colors duration-150 select-none dark:text-neutral-100',
+					'group/sidebar hover:bg-secondary base-round flex cursor-pointer items-center px-2.5 py-1.5 transition-colors duration-150 select-none dark:text-neutral-100',
 					{
 						'flex justify-between': item.name === 'Messages',
-						'bg-primary/30 text-foreground pointer-events-none font-semibold': isActive
+						'bg-primary/10 text-foreground pointer-events-none font-medium': isActive
 					}
 				)}
 			>
 				<div className='flex items-center gap-2'>
 					<item.icon
 						size={20}
-						className={cn('opacity-75 group-hover:opacity-90', isActive && 'opacity-95')}
+						className={cn('opacity-75 group-hover/sidebar:opacity-90', isActive && 'opacity-95')}
 					/>
 					<span>{item.name}</span>
 				</div>

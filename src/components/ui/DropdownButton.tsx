@@ -1,10 +1,8 @@
 'use client'
 
 import { ChevronDown } from 'lucide-react'
-import { AnimatePresence, m } from 'motion/react'
-import { memo, useEffect, useRef, useState } from 'react'
-
-import { arrowAnimations, dropdownAnimations } from '@/components/animations/DropdownAnimations'
+import { memo, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 
 import { cn } from '@/utils/cn.util'
 
@@ -21,21 +19,6 @@ function DropdownButton({ placeholder, items, onSelect }: IDropdownButton) {
 	const [selectedItem, setSelectedItem] = useState<IDropdownItem | null>(null)
 	const dropdownRef = useRef<HTMLDivElement>(null)
 
-	useEffect(() => {
-		const handleClickOutside = (e: MouseEvent) => {
-			if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-				setIsOpen(false)
-			}
-		}
-
-		if (typeof document !== 'undefined') {
-			document.addEventListener('mousedown', handleClickOutside)
-			return () => {
-				document.removeEventListener('mousedown', handleClickOutside)
-			}
-		}
-	}, [])
-
 	const handleItemClick = (item: IDropdownItem) => {
 		setSelectedItem(item)
 		setIsOpen(false)
@@ -43,83 +26,66 @@ function DropdownButton({ placeholder, items, onSelect }: IDropdownButton) {
 		item.onClick?.()
 	}
 
-	const handleKeyDown = (e: React.KeyboardEvent) => {
-		if (e.key === 'Escape') {
-			setIsOpen(false)
-		} else if (e.key === 'Enter' || e.key === ' ') {
-			e.preventDefault()
-			setIsOpen(!isOpen)
-		}
-	}
-
-	const handleItemKeyDown = (e: React.KeyboardEvent, item: IDropdownItem) => {
-		if (e.key === 'Enter' || e.key === ' ') {
-			e.preventDefault()
-			handleItemClick(item)
-		}
-	}
-
 	const displayText = selectedItem?.label || placeholder
 
 	return (
 		<div
-			className='text-foreground relative select-none'
+			className='relative max-w-xs select-none'
 			ref={dropdownRef}
-			onKeyDown={handleKeyDown}
 		>
 			<button
-				onClick={() => setIsOpen(!isOpen)}
+				type='button'
+				onClick={() => setIsOpen(prev => !prev)}
+				onMouseDown={e => e.preventDefault()}
 				className={cn(
-					'border-secondary dark:hover:bg-secondary dark:bg-secondary/50 hover:bg-secondary flex cursor-pointer items-center gap-2 base-round border-2 bg-white px-3 py-1 transition-all duration-300 hover:border-transparent hover:shadow-sm',
-					isOpen && 'dark:bg-primary border-transparent bg-white shadow-sm dark:border-transparent'
+					'border-border text-foreground base-round flex w-max items-center justify-between gap-2 border px-3 py-2 text-sm font-medium shadow-sm transition-colors',
+					isOpen && 'border-primary/60 dark:border-primary/60'
 				)}
 				aria-haspopup='listbox'
 				aria-expanded={isOpen}
 				aria-label={placeholder || 'Choose an option'}
 			>
-				<span className='font-medium sm:text-sm'>{displayText}</span>
-
-				<m.div
-					animate={{ rotate: isOpen ? 180 : 0 }}
-					transition={arrowAnimations.transition}
-				>
-					<ChevronDown
-						size={20}
-						className='dark:text-neutral-300'
-					/>
-				</m.div>
+				<span>{displayText}</span>
+				<ChevronDown
+					size={18}
+					className={cn('transition-transform', isOpen && 'rotate-180')}
+				/>
 			</button>
 
-			<AnimatePresence>
-				{isOpen && (
-					<m.div
-						className='absolute top-full right-0 z-50 mt-2 w-full min-w-[200px] base-round border border-gray-200 bg-white shadow-lg sm:left-0 sm:min-w-[150px] dark:border-neutral-700 dark:bg-neutral-800'
-						initial={dropdownAnimations.initial}
-						animate={dropdownAnimations.animate}
-						exit={dropdownAnimations.exit}
-						transition={dropdownAnimations.transition}
-						style={dropdownAnimations.style}
-						role='listbox'
-						aria-label='Options'
-					>
-						<div className='flex flex-col gap-1'>
+			{isOpen &&
+				createPortal(
+					<>
+						<div
+							className='fixed inset-0 z-40'
+							onClick={() => setIsOpen(false)}
+							tabIndex={-1}
+						/>
+
+						<div
+							className='base-round border-border bg-background mt-2 absolute z-50 border shadow-lg'
+							role='listbox'
+							style={{
+								top: dropdownRef.current?.getBoundingClientRect().bottom ?? 0,
+								left: dropdownRef.current?.getBoundingClientRect().left ?? 0,
+								width: dropdownRef.current?.getBoundingClientRect().width ?? 'auto'
+							}}
+						>
 							{items.map((item, index) => (
 								<button
 									key={item.value || index}
+									type='button'
 									onClick={() => handleItemClick(item)}
-									onKeyDown={e => handleItemKeyDown(e, item)}
-									className='hover:border-primary/85 w-full cursor-pointer base-round border-2 border-transparent px-3 py-1 text-left text-lg font-medium transition-colors duration-300 md:text-base'
+									className='text-foreground hover:bg-secondary w-full px-3 py-1.5 text-left'
 									role='option'
 									aria-selected={selectedItem?.value === item.value}
-									aria-label={`Choose ${item.label}`}
 								>
 									{item.label}
 								</button>
 							))}
 						</div>
-					</m.div>
+					</>,
+					document.body
 				)}
-			</AnimatePresence>
 		</div>
 	)
 }

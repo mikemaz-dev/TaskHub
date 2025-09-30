@@ -35,17 +35,17 @@ export default async function Page(params: Props) {
 	if (tasks.length === 0) return <div>Tasks not found</div>
 
 	return (
-		<div className='bg-background flex flex-col gap-10 pr-6 pl-6 md:p-6 md:pt-0 lg:p-6 lg:pt-0 xl:w-screen xl:p-6 xl:pt-0'>
+		<section className='bg-background flex flex-col gap-10 pr-6 pl-6 md:p-6 md:pt-0 lg:p-6 lg:pt-0 xl:w-screen xl:p-6 xl:pt-0'>
 			<Header title='Project details' />
 			<div className='bg-secondary/20 flex w-full items-center justify-between rounded-2xl border px-6 py-4'>
 				<div className='flex items-center gap-15'>
 					<div className='flex flex-col items-start gap-0.5'>
 						<Link
-							href={Pages.DASHBOARD}
+							href={Pages.PROJECTS}
 							className='text-foreground my-1 flex items-center justify-center gap-1 p-0! text-xs uppercase opacity-60 hover:underline'
 						>
 							<ChevronLeft size={20} />
-							Back to dashboard
+							Back to projects
 						</Link>
 						<p className='text-2xl font-bold'>{project.data && project.data[0].name}</p>
 					</div>
@@ -58,9 +58,7 @@ export default async function Page(params: Props) {
 						</p>
 					</div>
 					<div className='flex flex-col items-start justify-between gap-0.5'>
-						<span className='text-foreground my-2 text-xs uppercase opacity-60'>
-							members
-						</span>
+						<span className='text-foreground my-2 text-xs uppercase opacity-60'>members</span>
 						<Users users={project.data && project.data[0].project_participants} />
 					</div>
 				</div>
@@ -82,6 +80,6 @@ export default async function Page(params: Props) {
 					))}
 				</div>
 			</div>
-		</div>
+		</section>
 	)
 }

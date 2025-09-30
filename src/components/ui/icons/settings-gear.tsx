@@ -1,6 +1,7 @@
 'use client'
 
-import { motion, useAnimation } from 'motion/react'
+import { useAnimation } from 'framer-motion'
+import * as m from 'motion/react-m'
 import type { HTMLAttributes } from 'react'
 import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react'
 
@@ -58,7 +59,7 @@ const SettingsGearIcon = forwardRef<SettingsGearIconHandle, SettingsGearIconProp
 				onMouseLeave={handleMouseLeave}
 				{...props}
 			>
-				<motion.svg
+				<m.svg
 					xmlns='http://www.w3.org/2000/svg'
 					width={size}
 					height={size}
@@ -85,7 +86,7 @@ const SettingsGearIcon = forwardRef<SettingsGearIconHandle, SettingsGearIconProp
 						cy='12'
 						r='3'
 					/>
-				</motion.svg>
+				</m.svg>
 			</div>
 		)
 	}

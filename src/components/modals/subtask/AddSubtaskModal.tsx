@@ -15,15 +15,19 @@ import {
 import SectionHeading from '@/components/ui/SectionHeading'
 
 interface IAddSubtaskModal {
-	setIsOpen: Dispatch<SetStateAction<boolean>>
+	isOpen: boolean
+	setIsOpen: (isOpen: boolean) => void
 	taskId: string
 }
 
-export function AddSubtaskModal({ setIsOpen, taskId }: IAddSubtaskModal) {
+export function AddSubtaskModal({ isOpen, setIsOpen, taskId }: IAddSubtaskModal) {
 	const { form, isPending, onSubmit } = useAddSubtask({ taskId, setIsOpen })
 
 	return (
-		<Modal onClose={() => setIsOpen(false)}>
+		<Modal
+			isOpen={isOpen}
+			onClose={() => setIsOpen(false)}
+		>
 			<div className='flex flex-col gap-5'>
 				<SectionHeading title='Add Subtask' />
 				<Form {...form}>

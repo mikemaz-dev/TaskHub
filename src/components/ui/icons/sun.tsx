@@ -1,7 +1,8 @@
 'use client'
 
 import type { Variants } from 'motion/react'
-import { motion, useAnimation } from 'motion/react'
+import { useAnimation } from 'framer-motion'
+import * as m from 'motion/react-m'
 import React, { type HTMLAttributes } from 'react'
 import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react'
 
@@ -92,7 +93,7 @@ const SunIcon = forwardRef<SunIconHandle, SunIconProps>(
 						'M2 12h2',
 						'm4.93 4.93 1.41 1.41'
 					].map((d, index) => (
-						<motion.path
+						<m.path
 							key={d}
 							d={d}
 							animate={controls}

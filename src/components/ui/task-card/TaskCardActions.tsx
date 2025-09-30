@@ -18,6 +18,7 @@ export function TaskCardActions({ task }: { task: TTask }) {
 		<div className='relative flex items-center gap-2.5'>
 			{isEditTaskModalOpen && (
 				<TaskModal
+					isOpen={isEditTaskModalOpen}
 					setIsOpen={setIsEditTaskModalOpen}
 					mode='edit'
 					task={task}
@@ -25,6 +26,7 @@ export function TaskCardActions({ task }: { task: TTask }) {
 			)}
 			{isAddSubtaskModalOpen && (
 				<AddSubtaskModal
+					isOpen={isAddSubtaskModalOpen}
 					setIsOpen={setIsAddSubtaskModalOpen}
 					taskId={task.id}
 				/>
@@ -42,7 +44,7 @@ export function TaskCardActions({ task }: { task: TTask }) {
 			<Button
 				variant='outline'
 				size='icon'
-				className='border-primary bg-transparent rounded-full p-2'
+				className='border-primary rounded-full bg-transparent p-2'
 				onClick={() => setIsEditTaskModalOpen(true)}
 				aria-label={`Edit ${task.title} task`}
 				title={`Edit ${task.title} task`}

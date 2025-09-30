@@ -1,6 +1,7 @@
 'use client'
 
-import { type Variants, motion, useAnimation } from 'motion/react'
+import { Variants, useAnimation } from 'framer-motion'
+import * as m from 'motion/react-m'
 import type { HTMLAttributes } from 'react'
 import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react'
 
@@ -96,14 +97,14 @@ const ChartColumnDecreasingIcon = forwardRef<
 				strokeLinecap='round'
 				strokeLinejoin='round'
 			>
-				<motion.path
+				<m.path
 					variants={lineVariants}
 					initial='visible'
 					animate={controls}
 					custom={1}
 					d='M13 17V9'
 				/>
-				<motion.path
+				<m.path
 					variants={lineVariants}
 					initial='visible'
 					animate={controls}
@@ -111,7 +112,7 @@ const ChartColumnDecreasingIcon = forwardRef<
 					d='M18 17v-3'
 				/>
 				<path d='M3 3v16a2 2 0 0 0 2 2h16' />
-				<motion.path
+				<m.path
 					variants={lineVariants}
 					initial='visible'
 					animate={controls}
