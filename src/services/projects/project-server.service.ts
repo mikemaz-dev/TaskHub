@@ -2,13 +2,13 @@
 
 import { createClientFromServer } from '@/utils/supabase/server'
 
-export async function getProjectsServer() {
+export async function getServerProjects() {
 	const client = await createClientFromServer()
 
 	return client.from('project').select('*')
 }
 
-export async function getProjectServerBySlug(slug: string) {
+export async function getServerProjectBySlug(slug: string) {
 	const client = await createClientFromServer()
 
 	return await client

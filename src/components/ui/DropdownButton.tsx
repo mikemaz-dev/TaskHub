@@ -38,8 +38,8 @@ function DropdownButton({ placeholder, items, onSelect }: IDropdownButton) {
 				onClick={() => setIsOpen(prev => !prev)}
 				onMouseDown={e => e.preventDefault()}
 				className={cn(
-					'border-border text-foreground base-round flex w-max items-center justify-between gap-2 border px-3 py-2 text-sm font-medium shadow-sm transition-colors',
-					isOpen && 'border-primary/60 dark:border-primary/60'
+					'border-border text-foreground base-round bg-secondary/40 flex w-max items-center justify-between gap-2 border-2 px-3 py-1.5 text-sm font-medium shadow-sm transition-colors',
+					isOpen && 'border-primary/70'
 				)}
 				aria-haspopup='listbox'
 				aria-expanded={isOpen}
@@ -62,7 +62,7 @@ function DropdownButton({ placeholder, items, onSelect }: IDropdownButton) {
 						/>
 
 						<div
-							className='base-round border-border bg-background mt-2 absolute z-50 border shadow-lg'
+							className='base-round border-border bg-background absolute z-50 mt-2 border shadow-lg'
 							role='listbox'
 							style={{
 								top: dropdownRef.current?.getBoundingClientRect().bottom ?? 0,
@@ -79,7 +79,7 @@ function DropdownButton({ placeholder, items, onSelect }: IDropdownButton) {
 									role='option'
 									aria-selected={selectedItem?.value === item.value}
 								>
-									{item.label}
+									{item.children || item.label}
 								</button>
 							))}
 						</div>

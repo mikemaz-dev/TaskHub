@@ -1,5 +1,7 @@
+import { useQuery } from '@tanstack/react-query'
 import { format } from 'date-fns'
-import { Calendar as CalendarIcon } from 'lucide-react'
+import { Calendar as CalendarIcon, Check } from 'lucide-react'
+import Image from 'next/image'
 import { Controller, type UseFormReturn } from 'react-hook-form'
 
 import {
@@ -16,10 +18,17 @@ import {
 	PopoverContent,
 	PopoverTrigger
 } from '@/components/ui'
+import DropdownButton from '@/components/ui/DropdownButton'
 
+import { getClientAllProfiles } from '@/services/profile/profile-client.service'
 import type { TTaskFormData } from '@/zod-schemes/task.zod'
 
 export function TaskModalContent({ form }: { form: UseFormReturn<TTaskFormData> }) {
+	const { data: profiles = [] } = useQuery({
+		queryKey: ['profiles'],
+		queryFn: getClientAllProfiles
+	})
+
 	const parseDate = (dateString: string): Date | undefined => {
 		if (!dateString) return undefined
 
@@ -57,8 +66,8 @@ export function TaskModalContent({ form }: { form: UseFormReturn<TTaskFormData> 
 					control={form.control}
 					name='due_date'
 					render={({ field: { onChange, value } }) => (
-						<div className='flex flex-col gap-2'>
-							<Label htmlFor='dueDate'>Due Date</Label>
+						<FormItem>
+							<FormLabel>Due Date</FormLabel>
 							<Popover>
 								<PopoverTrigger asChild>
 									<Button
@@ -78,9 +87,10 @@ export function TaskModalContent({ form }: { form: UseFormReturn<TTaskFormData> 
 									/>
 								</PopoverContent>
 							</Popover>
-						</div>
+						</FormItem>
 					)}
 				/>
+
 				<div className='flex items-center justify-between gap-5'>
 					<FormField
 						control={form.control}
@@ -122,6 +132,51 @@ export function TaskModalContent({ form }: { form: UseFormReturn<TTaskFormData> 
 						)}
 					/>
 				</div>
+				<Controller
+					control={form.control}
+					name='participants'
+					render={({ field: { value = [], onChange } }) => (
+						<FormItem>
+							<Label>Participants</Label>
+							<DropdownButton
+								placeholder={
+									value.length > 0 ? `${value.length} participants` : 'Select participants'
+								}
+								items={profiles.map(profile => ({
+									value: profile.id,
+									label: profile.name,
+									children: (
+										<div className='flex items-center justify-between gap-2'>
+											<div className='flex items-center gap-2'>
+												<Image
+													src={profile.avatar_path ?? './images/default-avatar.png'}
+													alt={profile.name ?? 'Name'}
+													width={24}
+													height={24}
+													className='rounded-full'
+												/>
+												<span>{profile.name}</span>
+											</div>
+											{value.includes(profile.id) && (
+												<Check
+													size={16}
+													className='text-primary'
+												/>
+											)}
+										</div>
+									),
+									onClick: () => {
+										if (value.includes(profile.id)) {
+											onChange(value.filter((id: string) => id !== profile.id))
+										} else {
+											onChange([...value, profile.id])
+										}
+									}
+								}))}
+							/>
+						</FormItem>
+					)}
+				/>
 			</div>
 		</div>
 	)

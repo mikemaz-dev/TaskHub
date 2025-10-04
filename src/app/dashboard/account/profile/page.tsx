@@ -1,16 +1,13 @@
-import { ProfilePage } from './ProfilePage'
 import { getServerProfile } from '@/services'
+import { TProfile } from '@/types/user/profile.types'
+import { ProfilePage } from './ProfilePage'
 
 export default async function Page() {
-	try {
-		const profile = await getServerProfile()
-		return <ProfilePage profile={profile} />
-	} catch (error) {
-		return (
-			<ProfilePage
-				profile={null}
-				error={error as Error}
-			/>
-		)
-	}
+	const profile = await getServerProfile()
+	return (
+		<ProfilePage
+			profile={profile ? (profile as TProfile) : null}
+			error={undefined}
+		/>
+	)
 }

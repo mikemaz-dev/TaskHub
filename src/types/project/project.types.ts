@@ -1,4 +1,4 @@
-import { getProjectsServer } from '@/services/projects/project-server.service'
+import { getServerProjects } from '@/services/projects/project-server.service'
 
 export interface IProject {
 	id: string
@@ -7,5 +7,5 @@ export interface IProject {
 }
 
 export type TGetProjectsResponse = NonNullable<
-	Awaited<ReturnType<typeof getProjectsServer>>['data']
+	Awaited<ReturnType<typeof getServerProjects>>['data']
 >

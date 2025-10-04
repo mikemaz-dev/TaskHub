@@ -14,14 +14,17 @@ import { formatCount } from '@/utils/formatCount'
 
 import LastTasksFilters from './LastTasksFilters'
 import { TaskSortingOptions } from '@/data/tasks/task-sorting-options.data'
+import { TGetProjectsResponse } from '@/types/project/project.types'
 import type { TTask } from '@/types/tasks/task.types'
 
-export function LastTasks({ tasks }: { tasks: TTask[] }) {
+export function LastTasks({ tasks, projects }: { tasks: TTask[]; projects: TGetProjectsResponse }) {
 	const {
 		filteredTasks,
 		activeFilter,
 		sortOrder,
+		activeProjectId,
 		setActiveFilter,
+		setActiveProjectId,
 		setSortOrder,
 		getFilterButtonClass,
 		getSortLabel
@@ -61,6 +64,21 @@ export function LastTasks({ tasks }: { tasks: TTask[] }) {
 					<DropdownButton
 						items={TaskSortingOptions(setSortOrder)}
 						placeholder={getSortLabel()}
+					/>
+					<DropdownButton
+						items={[
+							{ label: 'All Projects', value: 'all', onClick: () => setActiveProjectId(null) },
+							...projects.map(project => ({
+								label: project.name,
+								value: project.id,
+								onClick: () => setActiveProjectId(project.id)
+							}))
+						]}
+						placeholder={
+							activeProjectId
+								? projects.find(project => project.id === activeProjectId)?.name || 'Select project'
+								: 'All Projects'
+						}
 					/>
 				</div>
 			</div>

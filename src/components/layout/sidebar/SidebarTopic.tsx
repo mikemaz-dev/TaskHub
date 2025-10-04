@@ -22,10 +22,14 @@ export function SidebarTopic({ title, children, rightSide, link, className }: Si
 			onClick={() => link && router.push(link)}
 		>
 			<div className='flex items-center justify-between'>
-				<span className={cn('text-foreground opacity-60', link && 'hover:underline cursor-pointer')}>{title}</span>
+				<span
+					className={cn('text-foreground opacity-60', link && 'cursor-pointer hover:underline')}
+				>
+					{title}
+				</span>
 				{rightSide}
 			</div>
-			{children}
+			<ul className='flex flex-col gap-1.5'>{children}</ul>
 		</div>
 	)
 }

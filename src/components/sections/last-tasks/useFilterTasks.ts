@@ -9,6 +9,7 @@ type SortOrder = TSortingTasks
 export const useFilterTasks = ({ tasks }: { tasks: TTask[] }) => {
 	const [activeFilter, setActiveFilter] = useState<TFilterTasks>('all')
 	const [sortOrder, setSortOrder] = useState<SortOrder | null>(null)
+	const [activeProjectId, setActiveProjectId] = useState<string | null>(null)
 
 	const filteredTasks = useMemo(() => {
 		if (!tasks?.length) {
@@ -16,6 +17,11 @@ export const useFilterTasks = ({ tasks }: { tasks: TTask[] }) => {
 		}
 
 		let filtered = [...tasks]
+
+		if (activeProjectId) {
+			filtered = filtered.filter(task => task.project_id === activeProjectId)
+		}
+
 
 		if (activeFilter !== 'all') {
 			const today = new Date()
@@ -70,7 +76,9 @@ export const useFilterTasks = ({ tasks }: { tasks: TTask[] }) => {
 		activeFilter,
 		filteredTasks,
 		sortOrder,
+		activeProjectId,
 		setActiveFilter,
+		setActiveProjectId,
 		getFilterButtonClass,
 		setSortOrder,
 		getSortLabel

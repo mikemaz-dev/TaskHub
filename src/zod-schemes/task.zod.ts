@@ -9,7 +9,8 @@ export const TaskSchema = z.object({
 	start_time: z.string(),
 	end_time: z.string(),
 	icon: z.string().min(1, 'Icon is required'),
-	project_id: z.string().min(1)
+	project_id: z.string().min(1),
+	participants: z.array(z.string().uuid()).optional()
 })
 
 export type TTaskFormData = z.infer<typeof TaskSchema>

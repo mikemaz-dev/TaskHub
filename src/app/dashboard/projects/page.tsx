@@ -1,4 +1,4 @@
-import { Calendar, Hash } from 'lucide-react'
+import { Calendar } from 'lucide-react'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 
@@ -10,7 +10,7 @@ import { Pages } from '@/config/public-page.config'
 
 import { formatDueDate } from '@/utils/date/date.utl'
 
-import { getProjectsServer } from '@/services/projects/project-server.service'
+import { getServerProjects } from '@/services/projects/project-server.service'
 import { format } from 'date-fns'
 
 export const metadata: Metadata = {
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 }
 
 export default async function Page() {
-	const projects = await getProjectsServer()
+	const projects = await getServerProjects()
 
 	return (
 		<div className='px-6 md:p-6 md:pt-0 lg:p-6 lg:pt-0 xl:w-screen xl:p-6 xl:pt-0'>

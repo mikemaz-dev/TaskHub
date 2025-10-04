@@ -12,7 +12,7 @@ export function SearchField({
 	value
 }: ISearchField) {
 	return (
-		<div className='focus-within:ring-primary focus-within:ring-offset-1.5 base-round dark:bg-secondary/80 dark:focus-within:ring-offset-secondary flex max-w-md items-center gap-2 bg-white p-2.5 shadow-sm transition-all duration-300 focus-within:text-neutral-200 focus-within:ring-2 focus-within:ring-offset-white md:w-full md:justify-start'>
+		<div className='focus-within:ring-primary focus-within:ring-offset-1.5 base-round bg-secondary dark:focus-within:ring-offset-secondary flex max-w-md items-center gap-2 p-2.5 shadow-sm transition-all duration-300 focus-within:text-neutral-200 focus-within:ring-2 focus-within:ring-offset-white'>
 			<SearchIcon
 				size={22}
 				className='text-gray-500 dark:text-white/70'

@@ -13,7 +13,7 @@ import { NO_INDEX_PAGE } from '@/constants/seo.constants'
 
 import { Pages } from '@/config/public-page.config'
 
-import { getProjectServerBySlug } from '@/services/projects/project-server.service'
+import { getServerProjectBySlug } from '@/services/projects/project-server.service'
 
 export const metadata: Metadata = {
 	title: 'Projects',
@@ -27,7 +27,7 @@ interface Props {
 export default async function Page(params: Props) {
 	const { slug } = await params.params
 
-	const project = await getProjectServerBySlug(slug)
+	const project = await getServerProjectBySlug(slug)
 	const tasks = (project.data && project.data[0].task) || []
 
 	if (!project?.data || project.data.length === 0) return <div>Project not found</div>

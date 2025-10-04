@@ -1,5 +1,3 @@
-import { Event } from 'react-big-calendar'
-
 import { IProject } from '../project/project.types'
 
 import { type getServerTasks } from '@/services/tasks/task-server.service'
@@ -7,8 +5,12 @@ import type { Database } from '@/types/db.types'
 
 export type TGetTasksResponse = NonNullable<Awaited<ReturnType<typeof getServerTasks>>['data']>
 
-export type TTaskUpdate = Database['public']['Tables']['task']['Update']
-export type TTaskCreate = Database['public']['Tables']['task']['Insert']
+export type TTaskUpdate = Database['public']['Tables']['task']['Update'] & {
+	participants?: string[]
+}
+export type TTaskCreate = Database['public']['Tables']['task']['Insert'] & {
+	participants?: string[]
+}
 export type TSubTaskCreate = Database['public']['Tables']['sub_task']['Insert']
 
 export type TSubTask = Database['public']['Tables']['sub_task']['Row']

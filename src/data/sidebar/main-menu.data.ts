@@ -5,7 +5,6 @@ import {
 	BookTextIcon,
 	CalendarDaysIcon,
 	ChartColumnDecreasingIcon,
-	FoldersIcon,
 	MessageCircleMoreIcon,
 	UsersIcon
 } from '@/components/ui/icons'
@@ -27,11 +26,6 @@ export const MAIN_MENU_DATA: IMenu[] = [
 		icon: ChartColumnDecreasingIcon,
 		name: 'Insight',
 		href: Pages.MESSAGES
-	},
-	{
-		icon: FoldersIcon,
-		name: 'Projects',
-		href: Pages.PROJECTS
 	},
 	{
 		icon: UsersIcon,

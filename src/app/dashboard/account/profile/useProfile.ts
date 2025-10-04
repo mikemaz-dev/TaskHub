@@ -1,6 +1,7 @@
 'use client'
 
 import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { FormEvent } from 'react'
 
 import { updateClientProfile } from '@/services/profile/profile-client.service'
 
@@ -19,9 +20,23 @@ export function useProfile() {
 		}
 	})
 
+	function handleSubmit(e: FormEvent<HTMLFormElement>) {
+		e.preventDefault()
+		const formData = new FormData(e.currentTarget)
+		updateProfile(
+			{
+				name: formData.get('name') as string,
+				nick: formData.get('nick') as string,
+				profession: formData.get('profession') as string,
+				description: formData.get('description') as string
+			},
+			{ onSuccess: () => queryClient.invalidateQueries({ queryKey: PROFILE_QUERY_KEY }) }
+		)
+	}
+
 	return {
 		updateProfile,
 		isUpdating,
-		refetch: () => queryClient.invalidateQueries({ queryKey: PROFILE_QUERY_KEY })
+		handleSubmit
 	}
 }

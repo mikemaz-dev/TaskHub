@@ -27,7 +27,8 @@ export const useTaskForm = ({ mode, taskId, onClose }: UseTaskFormProps) => {
 			due_date: '',
 			start_time: '',
 			end_time: '',
-			icon: ''
+			icon: '',
+			participants: []
 		}
 	})
 
@@ -53,7 +54,8 @@ export const useTaskForm = ({ mode, taskId, onClose }: UseTaskFormProps) => {
 				due_date: data.due_date,
 				start_time: data.start_time ?? '',
 				end_time: data.end_time ?? '',
-				icon: data.icon ?? ''
+				icon: data.icon ?? '',
+				participants: data.task_participants.map(p => p.profile.id)
 			})
 		}
 	}, [isSuccess, isLoading, data, form, error, mode])
@@ -101,18 +103,20 @@ export const useTaskForm = ({ mode, taskId, onClose }: UseTaskFormProps) => {
 	const isPending = isCreating || isUpdating
 
 	const onSubmit: SubmitHandler<TTaskFormData> = data => {
+		console.log('Form submitted!', data)
 		const formattedData = {
 			title: data.title,
 			due_date: format(data.due_date, 'y-MM-d'),
 			start_time: data.start_time,
 			end_time: data.end_time,
-			icon: data.icon
+			icon: data.icon,
+			participants: data.participants
 		}
 
 		if (mode === 'create') {
-			createTask(formattedData as TTaskCreate)
+			createTask(formattedData as TTaskCreate & { participants: string[] })
 		} else {
-			updateTask(formattedData as TTaskUpdate)
+			updateTask(formattedData as TTaskUpdate & { participants: string[] })
 		}
 	}
 

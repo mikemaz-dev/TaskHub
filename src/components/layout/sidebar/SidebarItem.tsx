@@ -19,7 +19,7 @@ export function SidebarItem({
 					'group/sidebar hover:bg-secondary base-round flex cursor-pointer items-center px-2.5 py-1.5 transition-colors duration-150 select-none dark:text-neutral-100',
 					{
 						'flex justify-between': item.name === 'Messages',
-						'bg-primary/10 text-foreground pointer-events-none font-medium': isActive
+						'bg-secondary text-foreground pointer-events-none font-medium': isActive
 					}
 				)}
 			>

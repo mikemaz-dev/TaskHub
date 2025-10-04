@@ -7,6 +7,7 @@ import { Chat, LastTasks, ProjectStatistic, ProjectStats, TodayTasks } from '@/c
 
 import { useTaskStore } from '@/store/task.store'
 
+import { TGetProjectsResponse } from '@/types/project/project.types'
 import type {
 	TGetProjectChartResponse,
 	TGetProjectStatsResponse
@@ -17,6 +18,7 @@ import type { TGetUsersResponse } from '@/types/user/user.types'
 interface Props {
 	tasks: TGetTasksResponse
 	todayTasks: TGetTasksResponse
+	projects: TGetProjectsResponse
 	projectStats: TGetProjectStatsResponse
 	projectChartData: TGetProjectChartResponse
 	usersData: TGetUsersResponse
@@ -26,6 +28,7 @@ interface Props {
 export function Dashboard({
 	tasks,
 	todayTasks,
+	projects,
 	projectStats,
 	projectChartData,
 	usersData,
@@ -47,7 +50,10 @@ export function Dashboard({
 						<ProjectStatistic chartData={projectChartData} />
 					</div>
 					<div className='flex flex-col gap-8.5'>
-						<LastTasks tasks={tasks} />
+						<LastTasks
+							tasks={tasks}
+							projects={projects}
+						/>
 						<TodayTasks
 							tasks={todayTasks}
 							usersData={usersData}
