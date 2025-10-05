@@ -17,6 +17,7 @@ export function ChangeEmail({ email }: Props) {
 				<Button
 					variant='outline'
 					size='sm'
+					type='button'
 				>
 					<Pencil size={22} />
 				</Button>

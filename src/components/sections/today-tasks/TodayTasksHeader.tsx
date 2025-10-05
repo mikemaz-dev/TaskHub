@@ -5,6 +5,8 @@ import Image from 'next/image'
 
 import SectionHeading from '@/components/ui/SectionHeading'
 
+import { getAvatarUrl } from '@/utils/getAvatarUrl'
+
 import { getClientUsers } from '@/services/users/get-users-client'
 import type { TGetClientUsersResponse } from '@/types/user/user.types'
 
@@ -30,7 +32,7 @@ export function TodayTasksHeader({ usersData }: Props) {
 				{data.slice(0, 4).map((user, index) => (
 					<Image
 						key={user.id}
-						src={user.avatar_path ? user.avatar_path : '/images/default-avatar.png'}
+						src={getAvatarUrl(user.avatar_path ?? '')}
 						alt={user.name || 'User avatar'}
 						title={user.name || 'User avatar'}
 						width={50}

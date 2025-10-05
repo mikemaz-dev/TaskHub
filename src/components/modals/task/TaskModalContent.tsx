@@ -20,6 +20,8 @@ import {
 } from '@/components/ui'
 import DropdownButton from '@/components/ui/DropdownButton'
 
+import { getAvatarUrl } from '@/utils/getAvatarUrl'
+
 import { getClientAllProfiles } from '@/services/profile/profile-client.service'
 import type { TTaskFormData } from '@/zod-schemes/task.zod'
 
@@ -149,7 +151,7 @@ export function TaskModalContent({ form }: { form: UseFormReturn<TTaskFormData> 
 										<div className='flex items-center justify-between gap-2'>
 											<div className='flex items-center gap-2'>
 												<Image
-													src={profile.avatar_path ?? './images/default-avatar.png'}
+													src={getAvatarUrl(profile.avatar_path ?? '')}
 													alt={profile.name ?? 'Name'}
 													width={24}
 													height={24}

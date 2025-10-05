@@ -1,21 +1,11 @@
 import Image from 'next/image'
 
+import { getAvatarUrl } from '@/utils/getAvatarUrl'
+
 import { Tooltip, TooltipContent, TooltipTrigger } from './tooltip'
+import { TGetTasksResponse } from '@/types/tasks/task.types'
 
-type Profile = {
-	id: string
-	avatar_path: string | null
-	description: string | null
-	name: string | null
-	nick: string | null
-	profession: string | null
-}
-
-type UsersResponse = {
-	users: { profile: Profile }[] | null
-}
-
-export function Users({ users }: UsersResponse) {
+export function Users({ users }: { users: TGetTasksResponse[0]['task_participants'] }) {
 	if (!users) return null
 
 	return (
@@ -25,11 +15,12 @@ export function Users({ users }: UsersResponse) {
 					<TooltipTrigger>
 						<Image
 							alt={user.profile.name || 'User avatar'}
-							src={user.profile.avatar_path ?? '/images/default-avatar.png'}
+							src={getAvatarUrl(user.profile.avatar_path ?? '')}
 							width={32}
 							height={32}
 							className='rounded-full border border-white shadow-sm dark:border-neutral-600'
 							style={{ zIndex: 10 - index }}
+							unoptimized
 						/>
 					</TooltipTrigger>
 					<TooltipContent>{user.profile.name}</TooltipContent>

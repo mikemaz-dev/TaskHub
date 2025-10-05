@@ -4,6 +4,7 @@ import { memo } from 'react'
 import { Button } from '@/components/ui'
 
 import type { Database } from '@/types/db.types'
+import { getAvatarUrl } from '@/utils/getAvatarUrl'
 
 type TProfile = Database['public']['Tables']['profile']['Row']
 
@@ -13,7 +14,7 @@ function ChatTop({ user }: { user?: TProfile }) {
 			<div className='flex flex-col items-center gap-3.5 self-center'>
 				<div>
 					<Image
-						src={user?.avatar_path || '/images/default-avatar.png'}
+						src={getAvatarUrl(user?.avatar_path ?? '')}
 						alt='User avatar'
 						width={110}
 						height={110}

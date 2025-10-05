@@ -6,11 +6,13 @@ import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { match } from 'path-to-regexp'
 
+import { BaseProfileAvatar } from '@/components/sections/profile/BaseProfileAvatar'
 import { Button } from '@/components/ui'
 
 import { Pages } from '@/config/public-page.config'
 
 import { cn } from '@/utils/cn.util'
+import { getAvatarUrl } from '@/utils/getAvatarUrl'
 
 import { TProfile } from '@/types/user/profile.types'
 
@@ -54,17 +56,15 @@ export function ProfileCard({ profile }: { profile: TProfile }) {
 			<div className='flex items-center gap-2'>
 				{profile.avatar_path ? (
 					<Image
-						src={profile.avatar_path || '/images/default-avatar.png'}
-						alt={`${profile.name} || ''`}
+						src={getAvatarUrl(profile.avatar_path)}
+						alt={profile.name || ''}
 						width={30}
 						height={30}
 						className='rounded-full'
+						unoptimized
 					/>
 				) : (
-					<div
-						className='size-9 rounded-full bg-blue-500'
-						aria-hidden='true'
-					/>
+					<BaseProfileAvatar profile={{ name: profile.name }} isSidebar />
 				)}
 				<p className='font-bold'>{profile.name}</p>
 			</div>
