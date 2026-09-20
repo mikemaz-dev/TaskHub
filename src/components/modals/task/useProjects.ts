@@ -11,7 +11,7 @@ export function useProjects() {
 		select: data =>
 			data.map(project => ({
 				value: project.id,
-				label: project.name
+				label: project.name || 'Untitled project'
 			})),
 		staleTime: 1000 * 60 * 5
 	})

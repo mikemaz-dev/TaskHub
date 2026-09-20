@@ -1,3 +1,4 @@
+import { scheduleError } from '@/utils/task-schedule'
 import { createClient } from '@/utils/supabase/client'
 
 import type { TSubTaskCreate, TTaskCreate, TTaskUpdate } from '@/types/tasks/task.types'
@@ -14,60 +15,22 @@ export async function clientGetTaskById(id: string) {
 }
 
 export async function clientTaskUpdate(id: string, task: TTaskUpdate) {
-	const client = createClient()
-
-	const { data: taskData, error } = await client
-		.from('task')
-		.update(task)
-		.eq('id', id)
-		.select(`*, sub_task(*)`)
-		.single()
-
-	if (error || !taskData) throw new Error(error?.message || 'Task not found')
-
-	if (task.participants) {
-		await client.from('task_participants').delete().eq('task_id', id)
-
-		if (task.participants.length) {
-			const inserts = task.participants.map(profileId => ({
-				task_id: id,
-				profile_id: profileId
-			}))
-			const { error: participantsError } = await client.from('task_participants').insert(inserts)
-			if (participantsError) throw new Error(participantsError.message)
-		}
-	}
-
-	return taskData
+	const { data, error } = await createClient().rpc('taskhub_save_task', {
+		task_input: id,
+		payload: task
+	})
+	if (error) throw new Error(error.message)
+	return clientGetTaskById(data)
 }
-
 export async function clientCreateTask(task: TTaskCreate) {
-	const client = createClient()
-
-	const {
-		data: { user },
-		error: authError
-	} = await client.auth.getUser()
-	if (authError || !user) throw new Error(authError?.message || 'User not authenticated')
-
-	const { data: taskData, error } = await client
-		.from('task')
-		.insert({ ...task, owner_id: user.id })
-		.select(`*, sub_task(*)`)
-		.single()
-
-	if (error || !taskData) throw new Error(error?.message || 'Failed to create task')
-
-	if (task.participants && task.participants.length) {
-		const inserts = task.participants.map(profileId => ({
-			task_id: taskData.id,
-			profile_id: profileId
-		}))
-		const { error: participantsError } = await client.from('task_participants').insert(inserts)
-		if (participantsError) throw new Error(participantsError.message)
-	}
-
-	return taskData
+	const issue = scheduleError(task.due_date, task.start_time)
+	if (issue) throw new Error(issue.message)
+	const { data, error } = await createClient().rpc('taskhub_save_task', {
+		task_input: null,
+		payload: task
+	})
+	if (error) throw new Error(error.message)
+	return clientGetTaskById(data)
 }
 
 export async function clientDeleteTask(id: string) {
