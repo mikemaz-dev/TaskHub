@@ -1,0 +1,19 @@
+.th-roles { margin-top: 18px; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+.th-roles summary { display: flex; align-items: center; gap: 10px; padding: 14px 16px; cursor: pointer; list-style: none; font-size: 13px; }
+.th-roles summary::-webkit-details-marker { display: none; }
+.th-roles summary > svg:first-child { color: var(--primary); }
+.th-roles summary > svg:last-child { margin-left: auto; transition: transform .2s; }
+.th-roles[open] summary > svg:last-child { transform: rotate(180deg); }
+.th-roles summary small { display: block; color: var(--muted-foreground); font-size: 11px; margin-top: 3px; }
+.th-roles-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; padding: 0 14px 14px; }
+.th-roles-grid article { padding: 16px; border-radius: 11px; background: var(--surface); border: 1px solid var(--border); }
+.th-roles-grid header { display: flex; align-items: center; gap: 10px; }
+.th-role-icon { display: grid; place-items: center; padding: 9px; border-radius: 10px; color: var(--primary); background: var(--accent-soft); }
+.th-roles-grid strong { font-size: 13px; }
+.th-roles-grid header p { font-size: 11px; color: var(--muted-foreground); margin-top: 4px; }
+.th-roles-grid ul { display: flex; flex-direction: column; gap: 10px; margin: 18px 0; padding: 0; list-style: none; }
+.th-roles-grid li { display: flex; align-items: start; gap: 7px; font-size: 12px; line-height: 1.5; }
+.th-roles-grid li svg { flex-shrink: 0; color: var(--primary); margin-top: 3px; }
+.th-roles-grid footer { border-top: 1px solid var(--border); padding-top: 12px; font-size: 11px; color: var(--muted-foreground); }
+.th-roles-note { padding: 0 16px 16px; font-size: 11px; color: var(--muted-foreground); line-height: 1.6; }
+@media (max-width: 900px) { .th-roles-grid { grid-template-columns: 1fr; } }

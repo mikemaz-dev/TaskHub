@@ -1,0 +1,90 @@
+.th-back-projects {
+	align-self: flex-start;
+	width: max-content;
+}
+
+.th-project-summary {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	border-top: 1px solid var(--border);
+	margin-top: 24px;
+	padding-top: 24px;
+	gap: 16px;
+}
+
+.th-project-summary > span {
+	font-size: 12px;
+	color: var(--muted-foreground);
+}
+
+.th-project-summary strong {
+	display: block;
+	font: 600 25px var(--font-outfit);
+	color: var(--foreground);
+	margin-bottom: 5px;
+}
+
+/* Fixed workspaces: lists own their overflow instead of the document. */
+
+body:has(.th-dashboard),
+body:has(.th-schedule) {
+	overflow: hidden;
+}
+
+.th-shell:has(.th-dashboard),
+.th-shell:has(.th-schedule) {
+	height: 100dvh;
+	min-height: 0;
+	overflow: hidden;
+}
+
+.th-content:has(.th-dashboard),
+.th-content:has(.th-schedule) {
+	min-height: 0;
+	height: 100%;
+}
+
+.th-dashboard {
+	height: 100%;
+	min-height: 0;
+	gap: 20px;
+}
+
+.th-dashboard-main {
+	height: 100%;
+	min-height: 0;
+	gap: 16px;
+}
+
+.th-dashboard .th-header {
+	min-height: 52px;
+	flex-shrink: 0;
+}
+
+.th-dashboard .th-metrics {
+	flex-shrink: 0;
+}
+
+.th-dashboard .th-metric {
+	padding: 16px;
+}
+
+.th-dashboard .th-metric strong {
+	font-size: 25px;
+}
+
+.th-dashboard .th-metric small {
+	margin-top: 10px;
+}
+
+.th-dashboard-middle {
+	min-height: 0;
+	flex: 0 1 25%;
+	max-height: 230px;
+}
+
+.th-dashboard-middle .th-card {
+	padding: 16px;
+	min-height: 0;
+	overflow: hidden;
+}

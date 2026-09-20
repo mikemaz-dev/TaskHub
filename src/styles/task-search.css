@@ -1,0 +1,93 @@
+.th-task-editor .th-form > form {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.th-task-editor .th-form .th-error {
+	color: #f87171;
+}
+
+.th-search {
+	border: 1px solid var(--border);
+	border-radius: 12px;
+	min-height: 42px;
+	width: 280px;
+	padding: 0 12px;
+	gap: 10px;
+}
+
+.th-search.is-open {
+	border-color: var(--accent);
+	box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.th-search kbd {
+	font: 10px var(--font-geist);
+	padding: 3px 5px;
+	border: 1px solid var(--border);
+	border-radius: 5px;
+	color: var(--muted-foreground);
+	white-space: nowrap;
+}
+
+.th-search-results {
+	padding: 8px;
+	top: calc(100% + 10px);
+	right: 0;
+	left: auto;
+	width: 380px;
+	max-width: calc(100vw - 32px);
+	background: var(--background);
+	z-index: 45;
+	box-shadow: 0 16px 60px #0003;
+	max-height: 420px;
+	overflow: auto;
+}
+
+.th-search-caption {
+	display: flex;
+	align-items: center;
+	gap: 7px;
+	padding: 8px;
+	font-size: 11px;
+	color: var(--muted-foreground);
+	border-bottom: 1px solid var(--border);
+}
+
+.th-search-results a {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 12px 8px;
+	margin-top: 8px;
+	border-radius: 15px;
+}
+
+.th-search-results a:hover,
+.th-search-results a:focus {
+	background: var(--accent-soft);
+}
+
+.th-search-results a > span:nth-child(2) {
+	flex: 1;
+	min-width: 0;
+}
+
+.th-search-results strong {
+	font-size: 12px;
+	font-weight: 500;
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.th-search-results small {
+	display: flex;
+	justify-content: space-between;
+	gap: 8px;
+	font-size: 10px;
+	color: var(--muted-foreground);
+	margin-top: 5px;
+}

@@ -1,0 +1,82 @@
+:root[data-accent] {
+	--primary: var(--accent-ink);
+	--ring: var(--accent);
+	--sidebar-primary: var(--accent-ink);
+}
+
+:root.dark[data-accent] {
+	--primary: var(--accent);
+	--sidebar-primary: var(--accent);
+}
+
+.th-button:not(.th-button-subtle),
+.th-logo-icon {
+	background: linear-gradient(120deg, var(--accent-ink), var(--accent-end));
+	color: #fff;
+}
+
+.th-nav-link.is-active {
+	background: var(--accent-soft);
+	border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.th-nav-link.is-active svg,
+.th-search-icon,
+.th-avatar {
+	color: var(--primary);
+}
+
+.th-avatar {
+	background: var(--accent-soft);
+	overflow: hidden;
+	flex-shrink: 0;
+}
+
+.th-avatar img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: inherit;
+}
+
+.th-accent-picker {
+	padding-top: 26px;
+	margin-top: 24px;
+	border-top: 1px solid var(--border);
+}
+
+.th-accent-picker h3 {
+	font-size: 14px;
+	font-weight: 600;
+	margin-bottom: 6px;
+}
+
+.th-accent-picker > div,
+.th-color-options {
+	display: flex;
+	gap: 12px;
+	margin-top: 16px;
+}
+
+.th-accent-picker button,
+.th-color-options button {
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	color: white;
+	font-size: 17px;
+	outline: 2px solid transparent;
+	outline-offset: 4px;
+	flex-shrink: 0;
+}
+
+.th-accent-picker button[aria-pressed='true'],
+.th-color-options button[aria-pressed='true'] {
+	outline-color: var(--foreground);
+}
+
+.th-picker {
+	position: relative;
+	min-width: 0;
+	width: 100%;
+}

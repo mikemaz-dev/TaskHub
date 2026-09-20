@@ -1,0 +1,85 @@
+@media (max-width: 800px) {
+	.th-all-tasks {
+		padding: 10px;
+	}
+	.th-search {
+		width: 170px;
+		min-height: 36px;
+	}
+	.th-search kbd {
+		display: none;
+	}
+	.th-search-results {
+		right: -46px;
+	}
+	.th-header-actions {
+		gap: 8px;
+	}
+	.th-header {
+		padding: 0;
+	}
+	.th-header h1 {
+		font-size: 20px;
+	}
+	.th-header p {
+		font-size: 10px;
+	}
+	.th-planner-layout {
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+	}
+	.th-planner-aside,
+	.th-upcoming {
+		display: none;
+	}
+	.th-planner {
+		flex: 1;
+		padding: 12px;
+		gap: 10px;
+	}
+	.th-week-grid {
+		gap: 4px;
+		grid-template-rows: 40px 28px repeat(8, minmax(40px, 1fr));
+	}
+	.th-schedule {
+		gap: 12px;
+	}
+	.th-planner-nav {
+		font-size: 10px;
+	}
+	.th-period-options {
+		justify-content: center;
+	}
+	.th-calendar-event {
+		padding: 5px 2px;
+		border-left-width: 2px;
+	}
+	.th-calendar-event strong {
+		font-size: 9px;
+	}
+	.th-calendar-event small {
+		font-size: 7px;
+	}
+	.th-project-summary {
+		gap: 8px;
+	}
+	.th-project-summary strong {
+		font-size: 20px;
+	}
+	.th-project-create .th-form-columns {
+		grid-template-columns: 1fr;
+	}
+	.th-picker-panel {
+		width: 270px;
+	}
+	.th-project-create .th-color-options {
+		margin: 8px 0 14px;
+	}
+	.th-heatmap {
+		gap: 4px;
+	}
+	.th-heatmap > div {
+		aspect-ratio: 1;
+	}
+}

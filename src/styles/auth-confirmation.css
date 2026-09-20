@@ -1,0 +1,11 @@
+.th-confirmation-card { width: min(100%, 460px); padding: 36px; display: flex; flex-direction: column; align-items: flex-start; gap: 26px; }
+.th-confirmation-symbol { display: grid; place-items: center; width: 68px; height: 68px; border-radius: 22px; color: var(--primary); background: var(--accent-soft); border: 1px solid var(--border); margin-top: 10px; }
+.th-confirmation-symbol.success { color: #10b981; background: #10b98115; }
+.th-confirmation-symbol.verifying svg { animation: th-confirm-spin 1.6s linear infinite; }
+.th-confirmation-card h1 { font-family: var(--font-outfit), sans-serif; font-size: clamp(26px, 5vw, 34px); line-height: 1.15; letter-spacing: -.7px; font-weight: 600; }
+.th-confirmation-card p { font-size: 14px; color: var(--muted-foreground); line-height: 1.75; margin-top: 14px; }
+.th-confirmation-card > .th-button { width: 100%; justify-content: center; }
+.th-confirmation-card footer { display: flex; align-items: center; gap: 7px; font-size: 11px; color: var(--muted-foreground); padding-top: 20px; border-top: 1px solid var(--border); width: 100%; }
+@keyframes th-confirm-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .th-confirmation-symbol.verifying svg { animation: none; } }
+@media (max-width: 480px) { .th-confirmation-card { padding: 26px; } }

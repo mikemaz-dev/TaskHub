@@ -1,0 +1,94 @@
+.th-control {
+	width: 100%;
+	min-height: 44px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 10px 13px;
+	border: 1px solid var(--border);
+	background: var(--surface);
+	border-radius: 12px;
+	font-size: 13px;
+	text-align: left;
+	color: var(--foreground);
+}
+
+.th-control > span {
+	flex: 1;
+}
+
+.th-control svg {
+	color: var(--muted-foreground);
+	flex-shrink: 0;
+}
+
+.th-control:hover {
+	border-color: var(--primary);
+}
+
+.th-control[aria-expanded='true'] {
+	border-color: var(--accent);
+	box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.th-picker-panel,
+.th-option-list {
+	position: absolute;
+	z-index: 70;
+	left: 0;
+	top: calc(100% + 8px);
+	width: 290px;
+	max-width: calc(100vw - 64px);
+	border: 1px solid var(--border);
+	border-radius: 18px;
+	padding: 16px;
+	background: var(--background);
+	box-shadow: 0 20px 60px #0003;
+	animation: th-pop-in 0.12s ease-out;
+}
+
+.th-option-list {
+	width: 100%;
+	max-height: 210px;
+	overflow: auto;
+	padding: 6px;
+	border-radius: 12px;
+}
+
+.th-option-list > button {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	text-align: left;
+	padding: 11px;
+	border-radius: 8px;
+	font-size: 13px;
+}
+
+.th-option-list > button:hover,
+.th-option-list > button[aria-pressed='true'] {
+	background: var(--accent-soft);
+	color: var(--primary);
+}
+
+.th-month-heading {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 16px;
+	font-size: 13px;
+}
+
+.th-month-heading strong {
+	flex: 1;
+}
+
+.th-month-heading button {
+	padding: 4px;
+	border-radius: 6px;
+}
+
+.th-month-heading button:hover {
+	background: var(--surface);
+}

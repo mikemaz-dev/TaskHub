@@ -1,0 +1,93 @@
+.th-auth h1 {
+	font-size: 30px;
+	font-weight: 600;
+	line-height: 1.2;
+	margin-bottom: 14px;
+}
+
+.th-auth p {
+	font-size: 13px;
+	line-height: 1.7;
+}
+
+.th-landing {
+	max-width: 1248px;
+	padding: 0 32px;
+	margin: auto;
+}
+
+.th-landing-nav {
+	height: 104px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 24px;
+}
+
+.th-landing-nav nav {
+	display: flex;
+	align-items: center;
+	gap: 32px;
+	font-size: 13px;
+}
+
+.th-landing-nav nav a {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.th-hero {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 40px;
+	align-items: center;
+	min-height: 650px;
+	padding: 36px 0 70px;
+}
+
+.th-eyebrow {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 12px !important;
+	color: var(--primary) !important;
+}
+
+.th-eyebrow span {
+	width: 6px;
+	height: 6px;
+	background: var(--primary);
+	border-radius: 50%;
+}
+
+.th-hero h1 {
+	font-size: clamp(48px, 5.8vw, 78px);
+	line-height: 1.02;
+	font-weight: 600;
+	letter-spacing: -3px;
+	margin: 24px 0;
+}
+
+.th-hero-copy > p {
+	font-size: 16px;
+	color: var(--muted-foreground);
+	line-height: 1.8;
+}
+
+.th-hero-copy > .th-small {
+	font-size: 12px;
+}
+
+.th-hero-actions {
+	display: flex;
+	align-items: center;
+	gap: 22px;
+	margin: 30px 0 16px;
+}
+
+.th-hero-art {
+	position: relative;
+	padding: 65px 20px;
+	isolation: isolate;
+}

@@ -1,0 +1,93 @@
+@media print {
+	body {
+		background: white !important;
+		color: black !important;
+	}
+	.th-sidebar,
+	.th-mobile-bar,
+	.th-header-actions,
+	.th-report-toolbar button,
+	.th-search,
+	.th-footer {
+		display: none !important;
+	}
+	.th-shell {
+		display: block;
+		padding: 0;
+	}
+	.th-panel {
+		box-shadow: none;
+		backdrop-filter: none;
+		background: white;
+		border: 1px solid #ddd;
+		break-inside: avoid;
+	}
+	.th-report {
+		gap: 16px;
+	}
+	.th-report .th-header p {
+		color: #555;
+	}
+	.th-table {
+		white-space: normal;
+	}
+	.th-insights-grid {
+		display: none;
+	}
+	.th-metric p,
+	.th-muted {
+		color: #555 !important;
+	}
+	.th-metric strong {
+		color: black;
+	}
+}
+
+.th-team-heading {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+}
+
+.th-team-heading h2 {
+	font-size: 25px;
+	margin-bottom: 5px;
+}
+
+.th-team-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+	gap: 20px;
+}
+
+.th-team-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 28px 20px;
+	text-align: center;
+}
+
+.th-avatar-large {
+	width: 72px;
+	height: 72px;
+	font-size: 23px;
+	box-shadow: 0 0 0 7px var(--surface);
+}
+
+.th-team-card h2 {
+	font-size: 18px;
+	font-weight: 600;
+	margin: 22px 0 5px;
+}
+
+.th-team-card h2 small {
+	font-size: 12px;
+	font-weight: 400;
+}
+
+.th-team-card > p {
+	font-size: 12px;
+	color: var(--muted-foreground);
+}

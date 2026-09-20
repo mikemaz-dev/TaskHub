@@ -1,0 +1,92 @@
+.th-search-results small > span {
+	display: flex;
+	gap: 3px;
+	align-items: center;
+}
+
+.th-search-icon {
+	background: var(--accent-soft);
+	padding: 8px;
+	border-radius: 9px;
+}
+
+.th-heatmap {
+	overflow: visible;
+	gap: 6px;
+}
+
+.th-heatmap > div {
+	position: relative;
+	aspect-ratio: 2.6;
+	max-height: 30px;
+	cursor: default;
+}
+
+.th-heatmap > div:hover,
+.th-heatmap > div:focus {
+	outline: 2px solid var(--accent);
+	outline-offset: 2px;
+	z-index: 3;
+}
+
+.th-heatmap > div:after {
+	content: attr(data-tooltip);
+	position: absolute;
+	left: 50%;
+	bottom: calc(100% + 10px);
+	transform: translateX(-50%);
+	white-space: nowrap;
+	padding: 9px 12px;
+	background: var(--foreground);
+	color: var(--background);
+	border-radius: 9px;
+	box-shadow: 0 8px 24px #0002;
+	font-size: 11px;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.12s;
+}
+
+.th-heatmap > div:hover:after,
+.th-heatmap > div:focus:after {
+	opacity: 1;
+}
+
+.th-heatmap > div:nth-last-child(-n + 7):after {
+	left: auto;
+	right: 0;
+	transform: none;
+}
+
+.th-heatmap > div:nth-child(-n + 7):after {
+	left: 0;
+	transform: none;
+}
+
+.th-project-create {
+	max-width: 700px;
+	margin: 0 auto;
+}
+
+.th-project-create .th-section-title p {
+	margin-top: 8px;
+	line-height: 1.7;
+	max-width: 48ch;
+}
+
+.th-project-create .th-form > button {
+	width: max-content;
+	align-self: flex-end;
+	min-width: 160px;
+}
+
+.th-project-create .th-color-options {
+	margin: 5px 0 0;
+	gap: 10px;
+}
+
+.th-project-create .th-color-options button {
+	width: 25px;
+	height: 25px;
+	font-size: 13px;
+}

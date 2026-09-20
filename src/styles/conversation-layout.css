@@ -1,0 +1,68 @@
+.th-upcoming-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 16px;
+	margin-top: 20px;
+}
+
+@media (max-width: 1250px) {
+	.th-calendar-layout {
+		grid-template-columns: 1fr;
+	}
+	.th-calendar-aside {
+		display: grid;
+		grid-template-columns: 280px minmax(0, 1fr);
+	}
+}
+
+@media (max-width: 650px) {
+	.th-calendar-aside {
+		display: flex;
+	}
+	.th-upcoming-grid {
+		grid-template-columns: 1fr;
+	}
+	.th-calendar-panel {
+		padding: 12px;
+	}
+	.th-insights-grid {
+		grid-template-columns: 1fr;
+	}
+	.th-team-heading h2 {
+		font-size: 22px;
+	}
+}
+
+.th-messages {
+	display: grid;
+	grid-template-columns: 290px minmax(0, 1fr);
+	overflow: hidden;
+	min-height: 650px;
+	height: calc(100dvh - 136px);
+}
+
+.th-contacts {
+	border-right: 1px solid var(--border);
+	padding: 20px 12px;
+	overflow-y: auto;
+}
+
+.th-contact-search {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 10px;
+	background: var(--surface);
+	border-radius: 12px;
+	margin-bottom: 20px;
+	color: var(--muted-foreground);
+}
+
+.th-contact-search input {
+	background: transparent;
+	border: 0;
+	outline: none;
+	width: 100%;
+	font-size: 12px;
+	min-width: 0;
+}

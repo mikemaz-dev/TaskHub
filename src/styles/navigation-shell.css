@@ -1,0 +1,94 @@
+.th-shell {
+	display: grid;
+	grid-template-columns: 260px minmax(0, 1fr);
+	gap: 24px;
+	padding: 24px;
+	min-height: 100vh;
+	max-width: 1920px;
+	margin: auto;
+}
+
+.th-sidebar {
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 28px;
+	position: sticky;
+	top: 24px;
+	height: calc(100dvh - 48px);
+	overflow-y: auto;
+	border-radius: 24px;
+}
+
+.th-profile-link {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 8px;
+	border-radius: 12px;
+	background: var(--surface);
+	margin-top: -12px;
+}
+
+.th-profile-link strong {
+	font-size: 14px;
+	display: block;
+}
+
+.th-profile-link small {
+	font-size: 11px;
+	color: var(--muted-foreground);
+	display: block;
+	margin-top: 2px;
+}
+
+.th-avatar {
+	display: grid;
+	place-items: center;
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	background: color-mix(in srgb, var(--primary) 17%, var(--background));
+	color: var(--primary);
+	font-size: 12px;
+	font-weight: 600;
+	flex-shrink: 0;
+}
+
+.th-nav-label {
+	font-size: 11px;
+	color: var(--muted-foreground);
+	font-weight: 600;
+	text-transform: uppercase;
+	display: block;
+}
+
+.th-nav-link {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 10px 12px;
+	border-radius: 12px;
+	color: var(--muted-foreground);
+	font-size: 14px;
+	margin: 4px 0;
+	border: 1px solid transparent;
+	width: 100%;
+	text-align: left;
+}
+
+.th-nav-link:hover {
+	background: var(--surface);
+	color: var(--foreground);
+}
+
+.th-nav-link.is-active {
+	background: color-mix(in srgb, var(--primary) 8%, var(--surface));
+	border-color: color-mix(in srgb, var(--primary) 19%, transparent);
+	color: var(--foreground);
+	font-weight: 600;
+}
+
+.th-nav-link.is-active svg {
+	color: var(--primary);
+}

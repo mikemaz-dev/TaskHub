@@ -1,0 +1,93 @@
+.th-theme-option strong {
+	display: block;
+	font-size: 11px;
+	font-weight: 500;
+	margin: 10px 2px;
+}
+
+.th-profile-banner {
+	overflow: hidden;
+}
+
+.th-profile-cover {
+	height: 150px;
+	position: relative;
+	overflow: hidden;
+	background:
+		radial-gradient(ellipse at 20% 20%, #9d8cff55, transparent 65%),
+		linear-gradient(125deg, #25203b, #6252a4 70%, #b0a4de);
+	isolation: isolate;
+}
+
+.th-cover-orbit {
+	position: absolute;
+	width: 540px;
+	height: 540px;
+	border: 1px solid #fff3;
+	border-radius: 50%;
+	right: 10%;
+	top: -230px;
+	box-shadow:
+		0 0 0 35px #ffffff08,
+		0 0 0 70px #ffffff06,
+		0 0 0 105px #ffffff04;
+}
+
+.th-profile-body {
+	padding: 28px;
+}
+
+.th-profile-heading {
+	display: flex;
+	align-items: center;
+	gap: 22px;
+}
+
+.th-profile-heading h2 {
+	font-size: 28px;
+	font-weight: 600;
+}
+
+.th-profile-heading p {
+	font-size: 13px;
+	color: var(--muted-foreground);
+	margin: 4px 0 12px;
+}
+
+.th-profile-heading > .th-button {
+	margin-left: auto;
+}
+
+.th-profile-image {
+	width: 80px;
+	height: 80px;
+	object-fit: cover;
+	border-radius: 20px;
+}
+
+.th-profile-bio {
+	font-size: 13px;
+	color: var(--muted-foreground);
+	line-height: 1.8;
+	margin-top: 26px;
+	max-width: 75ch;
+}
+
+.th-profile-grid {
+	display: grid;
+	grid-template-columns: 360px minmax(0, 1fr);
+	gap: 24px;
+}
+
+.th-profile-metric {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-size: 13px;
+	padding: 16px 0;
+	border-bottom: 1px solid var(--border);
+}
+
+.th-profile-metric:first-of-type {
+	margin-top: 14px;
+}

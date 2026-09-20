@@ -1,0 +1,84 @@
+.th-signout {
+	margin-top: auto;
+}
+
+.th-project-link {
+	display: flex;
+	gap: 12px;
+	align-items: center;
+	font-size: 13px;
+	color: var(--muted-foreground);
+	padding: 8px 0;
+	overflow-wrap: anywhere;
+}
+
+.th-project-link:hover {
+	color: var(--foreground);
+}
+
+.th-project-link i {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	flex-shrink: 0;
+}
+
+.th-section-title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	margin-bottom: 4px;
+}
+
+.th-section-title h2 {
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.th-content {
+	min-width: 0;
+}
+
+.th-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+	min-height: 64px;
+	margin-bottom: 24px;
+	padding: 0 10px;
+}
+
+.th-header h1 {
+	font-size: 24px;
+	font-weight: 700;
+	line-height: 1.25;
+}
+
+.th-header p {
+	font-size: 12px;
+	color: var(--muted-foreground);
+	margin-top: 4px;
+}
+
+.th-header-actions {
+	display: flex;
+	gap: 16px;
+	align-items: center;
+}
+
+.th-icon-button {
+	display: grid;
+	place-items: center;
+	width: 40px;
+	height: 40px;
+	border: 1px solid var(--border);
+	border-radius: 12px;
+	background: var(--surface);
+	flex-shrink: 0;
+}
+
+.th-icon-button:hover {
+	background: var(--muted);
+}

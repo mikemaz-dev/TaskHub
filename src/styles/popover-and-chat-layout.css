@@ -1,0 +1,90 @@
+.th-picker-panel[popover] {
+	position: fixed;
+	inset: auto;
+	margin: 0;
+	max-height: calc(100dvh - 24px);
+	overflow-y: auto;
+	color: var(--foreground);
+}
+
+.th-picker-panel[popover]::backdrop {
+	background: transparent;
+}
+
+.th-project-create:has(.th-control[aria-expanded='true']) {
+	position: relative;
+	z-index: 5;
+}
+
+.th-dashboard-middle {
+	flex: 1;
+	max-height: none;
+	min-height: 170px;
+}
+
+.th-dashboard-middle .th-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+.th-dashboard-middle .th-progress-task {
+	margin-top: clamp(12px, 2.5vh, 28px);
+}
+
+.th-today-section {
+	flex: 1;
+	max-height: none;
+	min-height: 100px;
+	overflow: auto;
+	overscroll-behavior: contain;
+}
+
+.th-today-section .th-empty {
+	padding: 30px;
+}
+
+.th-dashboard .th-welcome {
+	flex: 0 0 auto;
+}
+
+body:has(.th-chat-page) {
+	overflow: hidden;
+}
+
+.th-shell:has(.th-chat-page) {
+	height: 100dvh;
+	min-height: 0;
+	overflow: hidden;
+}
+
+.th-content:has(.th-chat-page) {
+	height: 100%;
+	min-height: 0;
+}
+
+.th-chat-page {
+	height: 100%;
+	min-height: 0;
+	gap: 18px;
+}
+
+.th-chat-page > .th-header,
+.th-chat-page > .th-section-title {
+	flex-shrink: 0;
+}
+
+.th-chat-page > .th-messages {
+	height: auto;
+	min-height: 0;
+	flex: 1;
+	overflow: hidden;
+}
+
+.th-chat-page .th-conversation {
+	height: 100%;
+	min-height: 0;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}

@@ -1,0 +1,15 @@
+[data-scroll-edges='top'] {
+	mask-image: linear-gradient(to bottom, transparent, #000 18px);
+}
+[data-scroll-edges='bottom'] {
+	mask-image: linear-gradient(to top, transparent, #000 18px);
+}
+[data-scroll-edges='both'] {
+	mask-image: linear-gradient(to bottom, transparent, #000 18px, #000 calc(100% - 18px), transparent);
+}
+.th-notification-list {
+	max-height: calc(100dvh - 240px);
+	overflow-y: auto;
+	padding-right: 10px;
+	overscroll-behavior: contain;
+}

@@ -1,283 +1,59 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
-
-@custom-variant dark (&:where(.dark, .dark *));
-
-@theme {
-	--color-primary: #725cee;
-}
-
-body {
-	@apply text-foreground dark:bg-background dark:text-white;
-	color: #272727;
-	background-color: #f8f7ff;
-	min-width: 320px;
-	min-height: 100vh;
-	box-sizing: border-box;
-}
-
-@theme inline {
-	--breakpoint-*: initial;
-	--animate-aurora: aurora 60s linear infinite;
-	@keyframes aurora {
-		from {
-			background-position:
-				50% 50%,
-				50% 50%;
-		}
-		to {
-			background-position:
-				350% 50%,
-				350% 50%;
-		}
-	}
-}
-
-@custom-variant 2xl (@media (max-width: 1650px));
-@custom-variant xl (@media (max-width: 1399px));
-@custom-variant lg (@media (max-width: 1200px));
-@custom-variant md (@media (max-width: 992px));
-@custom-variant sm (@media (max-width: 768px));
-@custom-variant xs (@media (max-width: 480px));
-@custom-variant xxs (@media (max-width: 360px));
-
-.hide-scrollbar {
-	scrollbar-width: none;
-	-ms-overflow-style: none;
-}
-
-.hide-scrollbar::-webkit-scrollbar {
-	display: none;
-}
-
-@theme inline {
-	--radius-sm: calc(var(--radius) - 4px);
-	--radius-md: calc(var(--radius) - 2px);
-	--radius-lg: var(--radius);
-	--radius-xl: calc(var(--radius) + 4px);
-	--color-background: var(--background);
-	--color-foreground: var(--foreground);
-	--color-card: var(--card);
-	--color-card-foreground: var(--card-foreground);
-	--color-popover: var(--popover);
-	--color-popover-foreground: var(--popover-foreground);
-	--color-primary: var(--primary);
-	--color-primary-foreground: var(--primary-foreground);
-	--color-secondary: var(--secondary);
-	--color-secondary-foreground: var(--secondary-foreground);
-	--color-muted: var(--muted);
-	--color-muted-foreground: var(--muted-foreground);
-	--color-accent: var(--accent);
-	--color-accent-foreground: var(--accent-foreground);
-	--color-destructive: var(--destructive);
-	--color-border: var(--border);
-	--color-input: var(--input);
-	--color-ring: var(--ring);
-	--color-chart-1: var(--chart-1);
-	--color-chart-2: var(--chart-2);
-	--color-chart-3: var(--chart-3);
-	--color-chart-4: var(--chart-4);
-	--color-chart-5: var(--chart-5);
-	--color-sidebar: var(--sidebar);
-	--color-sidebar-foreground: var(--sidebar-foreground);
-	--color-sidebar-primary: var(--sidebar-primary);
-	--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-	--color-sidebar-accent: var(--sidebar-accent);
-	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-	--color-sidebar-border: var(--sidebar-border);
-	--color-sidebar-ring: var(--sidebar-ring);
-}
-
-:root {
-	--radius: 0.75rem;
-
-	--background: #f9fafb;
-	--foreground: #1e1e1e;
-
-	--card: #ffffff;
-	--card-foreground: #1e1e1e;
-
-	--popover: #ffffff;
-	--popover-foreground: #1e1e1e;
-
-	--primary: #3b82f6; /* мягкий, чистый синий — акцент */
-	--primary-foreground: #ffffff;
-
-	--secondary: #f3f4f6;
-	--secondary-foreground: #1e1e1e;
-
-	--muted: #f5f6f7;
-	--muted-foreground: #6b7280;
-
-	--accent: #eef1f6;
-	--accent-foreground: #1f2937;
-
-	--destructive: #ef4444;
-	--destructive-foreground: #ffffff;
-
-	--border: #e5e7eb;
-	--input: #f9fafb;
-	--ring: #3b82f6;
-
-	--sidebar: #f7f8fa;
-	--sidebar-foreground: #1e1e1e;
-	--sidebar-primary: #3b82f6;
-	--sidebar-primary-foreground: #ffffff;
-	--sidebar-accent: #edf1f7;
-	--sidebar-accent-foreground: #111827;
-	--sidebar-border: #e5e7eb;
-	--sidebar-ring: #3b82f6;
-}
-
-.dark {
-	--background: #161416;
-	--foreground: #f3f4f6;
-
-	--card: #262626;
-	--card-foreground: #f3f4f6;
-
-	--popover: #262626;
-	--popover-foreground: #f3f4f6;
-
-	--primary: #5b8def;
-	--primary-foreground: #1c1c1e;
-
-	--secondary: #2d2d2f;
-	--secondary-foreground: #e5e7eb;
-
-	--muted: #262626;
-	--muted-foreground: #9ca3af;
-
-	--accent: #2d2d2f;
-	--accent-foreground: #e5e7eb;
-
-	--destructive: #f87171;
-	--destructive-foreground: #1c1c1e;
-
-	--border: #2d2d2f;
-	--input: #3a3a3c;
-	--ring: #c4b5fd;
-
-	--sidebar: #262626;
-	--sidebar-foreground: #f3f4f6;
-	--sidebar-primary: #c4b5fd;
-	--sidebar-primary-foreground: #1c1c1e;
-	--sidebar-accent: #2d2d2f;
-	--sidebar-accent-foreground: #e5e7eb;
-	--sidebar-border: #2d2d2f;
-	--sidebar-ring: #c4b5fd;
-}
-
-@layer base {
-	* {
-		@apply border-border outline-ring/50;
-	}
-
-	body {
-		@apply bg-background text-foreground;
-		font-feature-settings:
-			'rlig' 1,
-			'calt' 1;
-	}
-
-	.base-round {
-		@apply rounded-md;
-	}
-
-	/* 🎨 Custom Scrollbar */
-	::-webkit-scrollbar {
-		width: 8px;
-		height: 8px;
-	}
-
-	::-webkit-scrollbar-track {
-		@apply bg-muted;
-	}
-
-	::-webkit-scrollbar-thumb {
-		@apply bg-primary/30 rounded-full;
-	}
-
-	::-webkit-scrollbar-thumb:hover {
-		@apply bg-primary/50;
-	}
-
-	::selection {
-		@apply bg-primary/20 text-primary-foreground;
-	}
-
-	:focus-visible {
-		@apply outline-ring outline-2 outline-offset-2;
-	}
-}
-.rbc-calendar {
-	background: var(--background);
-	color: var(--foreground);
-	border-radius: var(--radius);
-}
-
-.rbc-header {
-	background: var(--card);
-	color: var(--card-foreground);
-	border-color: var(--border);
-	padding: 6px 0;
-	font-weight: 500;
-}
-
-.rbc-month-view,
-.rbc-time-view,
-.rbc-agenda-view {
-	border-color: var(--border);
-}
-
-.rbc-off-range-bg {
-	background: var(--muted);
-	color: var(--muted-foreground);
-}
-
-.rbc-today {
-	background: color-mix(in srgb, var(--primary) 12%, transparent);
-}
-
-.rbc-event {
-	background: var(--primary);
-	color: var(--primary-foreground);
-	border-radius: calc(var(--radius) - 2px);
-	border: none;
-	padding: 2px 6px;
-	font-size: 0.85rem;
-	font-weight: 500;
-	transition: background 0.2s;
-}
-
-.rbc-event:hover {
-	background: var(--chart-2);
-}
-
-.rbc-current-time-indicator {
-	background: var(--destructive);
-}
-
-.rbc-toolbar {
-	margin-bottom: 8px;
-}
-
-.rbc-toolbar button {
-	background: var(--secondary);
-	color: var(--secondary-foreground);
-	border: 1px solid var(--border);
-	border-radius: var(--radius);
-	padding: 4px 10px;
-	margin: 0 2px;
-	transition: background 0.2s;
-}
-
-.rbc-toolbar button:hover {
-	background: var(--accent);
-	color: var(--accent-foreground);
-}
-
-.rbc-toolbar button.rbc-active {
-	background: var(--primary);
-	color: var(--primary-foreground);
-}
+/* Ordered style modules: preserve cascade order when adding rules. */
+@import '../styles/foundations.css';
+@import '../styles/theme-tokens.css';
+@import '../styles/base-elements.css';
+@import '../styles/workspace-tokens.css';
+@import '../styles/workspace-surfaces.css';
+@import '../styles/navigation-shell.css';
+@import '../styles/navigation-actions.css';
+@import '../styles/buttons-and-search.css';
+@import '../styles/auth-layout.css';
+@import '../styles/landing-hero.css';
+@import '../styles/landing-artwork.css';
+@import '../styles/landing-sections.css';
+@import '../styles/layout-tablet.css';
+@import '../styles/navigation-mobile.css';
+@import '../styles/dashboard-metrics.css';
+@import '../styles/dashboard-progress.css';
+@import '../styles/dashboard-activity.css';
+@import '../styles/dashboard-lists.css';
+@import '../styles/forms-and-analytics.css';
+@import '../styles/analytics-visuals.css';
+@import '../styles/report-tables.css';
+@import '../styles/print-and-team.css';
+@import '../styles/team-and-invitations.css';
+@import '../styles/conversation-layout.css';
+@import '../styles/conversation-messages.css';
+@import '../styles/conversation-composer.css';
+@import '../styles/settings-appearance.css';
+@import '../styles/profile-layout.css';
+@import '../styles/profile-and-accents.css';
+@import '../styles/accent-controls.css';
+@import '../styles/picker-controls.css';
+@import '../styles/calendar-dates.css';
+@import '../styles/task-editor.css';
+@import '../styles/task-editor-fields.css';
+@import '../styles/task-search.css';
+@import '../styles/project-creation.css';
+@import '../styles/project-summary.css';
+@import '../styles/dashboard-sizing.css';
+@import '../styles/planner-layout.css';
+@import '../styles/planner-grid.css';
+@import '../styles/planner-events.css';
+@import '../styles/planner-responsive.css';
+@import '../styles/workspace-mobile.css';
+@import '../styles/workspace-compact.css';
+@import '../styles/accent-buttons.css';
+@import '../styles/popover-and-chat-layout.css';
+@import '../styles/chat-and-notifications.css';
+@import '../styles/project-members.css';
+@import '../styles/workspace-interactions.css';
+@import '../styles/popovers.css';
+@import '../styles/help.css';
+@import '../styles/planner-scrolling.css';
+@import '../styles/workspace-refinements.css';
+@import '../styles/conversation-projects.css';
+@import '../styles/planner-readability.css';
+@import '../styles/scroll-edges.css';
+@import '../styles/report-print.css';
+@import '../styles/project-identity.css';

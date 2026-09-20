@@ -1,0 +1,89 @@
+.th-orbit {
+	position: absolute;
+	inset: 0;
+	border: 1px solid color-mix(in srgb, var(--primary) 15%, transparent);
+	border-radius: 50%;
+	transform: rotate(-25deg);
+	z-index: -1;
+	background: radial-gradient(
+		ellipse,
+		color-mix(in srgb, var(--primary) 14%, transparent),
+		transparent 70%
+	);
+}
+
+.th-hero-project {
+	padding: 28px;
+	transform: rotate(-3deg);
+	margin: 0 20px;
+	background: color-mix(in srgb, var(--background) 88%, var(--primary));
+	box-shadow: 0 25px 65px #0002;
+}
+
+.th-hero-project h2 {
+	font-size: 29px;
+	line-height: 1.2;
+	margin: 26px 0;
+}
+
+.th-workflow {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-size: 12px;
+	color: var(--muted-foreground);
+	padding: 18px 0;
+}
+
+.th-workflow i {
+	flex: 1;
+	height: 1px;
+	background: var(--border);
+}
+
+.th-workflow span:last-child {
+	color: var(--primary);
+}
+
+.th-hero-project-footer {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	border-top: 1px solid var(--border);
+	padding-top: 18px;
+	font-size: 12px;
+	color: var(--muted-foreground);
+}
+
+.th-hero-project-footer svg {
+	color: #10b981;
+}
+
+.th-hero-note {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 15px 20px;
+	position: relative;
+	z-index: 1;
+	max-width: 330px;
+	margin-left: auto;
+	margin-bottom: -12px;
+	transform: rotate(3deg);
+	background: color-mix(in srgb, var(--background) 95%, var(--foreground));
+}
+
+.th-hero-note strong {
+	font-size: 13px;
+}
+
+.th-hero-note p {
+	font-size: 11px;
+	color: var(--muted-foreground);
+	margin-top: 5px;
+}
+
+.th-hero-note-last {
+	margin: 0 auto -20px 0;
+	transform: rotate(2deg);
+}

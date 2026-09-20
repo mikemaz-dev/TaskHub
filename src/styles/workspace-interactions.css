@@ -1,0 +1,25 @@
+.th-notification-list article > a:hover strong {
+	text-decoration: underline;
+}
+
+.th-messages .th-composer > div {
+	min-width: 0;
+}
+
+.th-messages .th-composer textarea {
+	min-width: 0;
+}
+
+@media (max-width: 640px) {
+	.th-invite-result {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	.th-state-actions {
+		gap: 7px;
+	}
+	.th-notification-list article {
+		padding: 12px 8px;
+		gap: 9px;
+	}
+}

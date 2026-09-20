@@ -1,0 +1,22 @@
+/* TaskHub design foundations: Figma dashboard light/dark. */
+
+:root {
+	--background: #f2f3f8;
+	--foreground: #18181b;
+	--primary: #6366f1;
+	--primary-foreground: #fff;
+	--card: rgba(255, 255, 255, 0.64);
+	--muted: #e9eaf2;
+	--muted-foreground: #71717a;
+	--border: rgba(99, 102, 141, 0.14);
+	--ring: #8b5cf6;
+	--sidebar: rgba(255, 255, 255, 0.44);
+	--surface: rgba(0, 0, 0, 0.025);
+	--panel-shadow: 0 12px 24px rgba(30, 31, 48, 0.06);
+	--page-glow: #e0e5ff;
+	--chart-1: #6366f1;
+	--chart-2: #10b981;
+	--chart-3: #f59e0b;
+	--chart-4: #8b5cf6;
+	--chart-5: #ec4899;
+}

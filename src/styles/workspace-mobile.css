@@ -1,0 +1,84 @@
+@media (max-width: 800px) {
+	.th-shell:has(.th-dashboard),
+	.th-shell:has(.th-schedule) {
+		padding: 12px;
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
+	.th-content:has(.th-dashboard),
+	.th-content:has(.th-schedule) {
+		height: auto;
+		flex: 1;
+	}
+	.th-dashboard > .th-activity {
+		display: none;
+	}
+	.th-dashboard {
+		display: flex;
+		flex-direction: column;
+	}
+	.th-dashboard-main {
+		gap: 10px;
+		flex: 1;
+	}
+	.th-dashboard .th-header {
+		min-height: 42px;
+		padding: 0;
+	}
+	.th-dashboard .th-header h1 {
+		font-size: 20px;
+	}
+	.th-dashboard .th-header p {
+		display: none;
+	}
+	.th-dashboard .th-metrics {
+		gap: 8px;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+	.th-dashboard .th-metric {
+		padding: 10px;
+	}
+	.th-dashboard .th-metric .th-icon-tile {
+		display: none;
+	}
+	.th-dashboard .th-metric strong {
+		font-size: 20px;
+	}
+	.th-dashboard .th-metric p {
+		font-size: 10px;
+	}
+	.th-dashboard .th-metric small {
+		font-size: 9px;
+		line-height: 1.3;
+	}
+	.th-dashboard-middle {
+		grid-template-columns: 1fr 1fr;
+		gap: 8px;
+		flex-basis: 23%;
+		min-height: 125px;
+	}
+	.th-dashboard-middle .th-card {
+		padding: 10px;
+	}
+	.th-dashboard-middle .th-section-title h2 {
+		font-size: 11px;
+	}
+	.th-dashboard-middle .th-chart .th-section-title {
+		display: block;
+	}
+	.th-dashboard-middle .th-segmented {
+		width: max-content;
+		margin-top: 5px;
+	}
+	.th-dashboard-middle .th-progress-task {
+		margin-top: 10px;
+	}
+	.th-dashboard-middle .th-progress-task:nth-last-child(-n + 2) {
+		display: none;
+	}
+	.th-today-section {
+		max-height: 90px;
+		padding: 10px;
+	}
+}

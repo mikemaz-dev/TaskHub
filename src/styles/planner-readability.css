@@ -1,0 +1,37 @@
+.th-hours-scroll { padding-right: 12px; }
+.th-week-heading { padding-right: 12px; }
+.th-hour-label, .th-period-options, .th-planner-nav { font-size: 12px; }
+.th-week-day span { font-size: 12px; }
+.th-week-day strong { font-size: 16px; }
+.th-calendar-event strong { font-size: 12px; }
+.th-calendar-event small { font-size: 11px; line-height: 1.4; }
+.th-calendar-event { padding: 10px 8px; }
+.th-empty-slot:not(:disabled) {
+	border-color: color-mix(in srgb, var(--foreground) 24%, transparent);
+	background: color-mix(in srgb, var(--foreground) 3%, transparent);
+	color: var(--muted-foreground);
+}
+.th-empty-slot:not(:disabled):hover {
+	background: var(--accent-soft);
+	color: var(--primary);
+	border-color: var(--accent);
+}
+.th-past-slot {
+	flex: 1;
+	border-radius: 10px;
+	background: color-mix(in srgb, var(--foreground) 2%, transparent);
+}
+
+/* Past cells retain the grid rhythm but never present a creation control. */
+.th-past-slot {
+	border: 1px dashed color-mix(in srgb, var(--foreground) 12%, transparent);
+	background: color-mix(in srgb, var(--foreground) 4%, transparent);
+}
+.th-empty-slot:not(:disabled) {
+	border-color: color-mix(in srgb, var(--accent) 65%, var(--border));
+	background: color-mix(in srgb, var(--accent) 12%, transparent);
+	color: var(--primary);
+}
+.th-empty-slot:not(:disabled):hover {
+	background: color-mix(in srgb, var(--accent) 22%, transparent);
+}

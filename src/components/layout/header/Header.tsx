@@ -1,44 +1,99 @@
 'use client'
 
-import { MessageCircleMore } from 'lucide-react'
+import { Search, X } from 'lucide-react'
 import dynamic from 'next/dynamic'
+import { useEffect, useRef, useState } from 'react'
 
-import { SkeletonLoader } from '@/components/ui'
-import Heading from '@/components/ui/Heading'
-import { SearchField } from '@/components/ui/search-field/SearchField'
+import { SearchResults } from './SearchResults'
+import { useTaskSearch } from './useTaskSearch'
 
-const DynamicThemeToggle = dynamic(
-	() => import('@/components/ui/ThemeToggle').then(mod => mod.ThemeToggle),
-	{
-		ssr: false,
-		loading: () => <SkeletonLoader className='size-9' />
-	}
-)
-
+const ThemeToggle = dynamic(() => import('@/components/ui/ThemeToggle').then(m => m.ThemeToggle), {
+	ssr: false
+})
 export function Header({ title }: { title: string }) {
+	const [query, setQuery] = useState('')
+	const { results, status } = useTaskSearch(query)
+	const [open, setOpen] = useState(false)
+	const ref = useRef<HTMLDivElement>(null)
+	const input = useRef<HTMLInputElement>(null)
+	useEffect(() => {
+		const handler = (e: KeyboardEvent) => {
+			if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+				e.preventDefault()
+				input.current?.focus()
+				setOpen(true)
+			}
+		}
+		const close = (e: PointerEvent) => {
+			if (!ref.current?.contains(e.target as Node)) setOpen(false)
+		}
+		document.addEventListener('keydown', handler)
+		document.addEventListener('pointerdown', close)
+		return () => {
+			document.removeEventListener('keydown', handler)
+			document.removeEventListener('pointerdown', close)
+		}
+	}, [])
+
 	return (
-		<div className='mt-6 flex items-center justify-between md:flex-col md:items-start md:gap-4'>
-			<div className='flex w-full items-center justify-between'>
-				<Heading>{title}</Heading>
-				<div className='hidden items-center gap-3 md:flex'>
-					<button className='cursor-pointer rounded-full bg-white p-2 shadow-sm transition-colors duration-200 hover:bg-neutral-300 xl:block dark:bg-neutral-800 dark:hover:bg-neutral-700'>
-						<MessageCircleMore size={20} />
-					</button>
-					<DynamicThemeToggle />
-				</div>
+		<header className='th-header'>
+			<div>
+				<h1>{title}</h1>
+				<p>Your workspace / TaskHub</p>
 			</div>
-			<div className='flex items-center justify-center gap-2 md:w-full md:justify-between'>
-				<SearchField
-					value=''
-					onChange={() => {}}
-				/>
-				<div className='flex items-center justify-center gap-2 md:hidden'>
-					<button className='hidden cursor-pointer rounded-full bg-white p-2 shadow-sm transition-colors duration-200 hover:bg-neutral-300 xl:block dark:bg-neutral-800 dark:hover:bg-neutral-700'>
-						<MessageCircleMore size={20} />
-					</button>
-					<DynamicThemeToggle />
+			<div className='th-header-actions'>
+				<div
+					ref={ref}
+					className={`th-search ${open ? 'is-open' : ''}`}
+					onKeyDown={e => {
+						if (e.key === 'Escape') {
+							setOpen(false)
+							input.current?.focus()
+						}
+						if (e.key === 'ArrowDown' && e.target === input.current) {
+							e.preventDefault()
+							ref.current?.querySelector<HTMLAnchorElement>('.th-search-results a')?.focus()
+						}
+					}}
+				>
+					<Search size={17} />
+					<input
+						ref={input}
+						aria-label='Search tasks'
+						aria-controls='task-search-results'
+						placeholder='Find a task…'
+						value={query}
+						onFocus={() => setOpen(true)}
+						onChange={e => {
+							setQuery(e.target.value)
+							setOpen(true)
+						}}
+					/>
+					{query ? (
+						<button
+							aria-label='Clear search'
+							onClick={() => {
+								setQuery('')
+								input.current?.focus()
+							}}
+						>
+							<X size={14} />
+						</button>
+					) : (
+						<kbd>⌘ K</kbd>
+					)}
+					{open && (
+						<SearchResults
+							query={query}
+							results={results}
+							status={status}
+							setQuery={setQuery}
+							setOpen={setOpen}
+						/>
+					)}
 				</div>
+				<ThemeToggle />
 			</div>
-		</div>
+		</header>
 	)
 }

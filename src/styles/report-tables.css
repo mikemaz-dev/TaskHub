@@ -1,0 +1,71 @@
+.th-table th {
+	text-align: left;
+	font-weight: 500;
+	color: var(--muted-foreground);
+	padding: 14px 16px;
+	background: var(--surface);
+}
+
+.th-table td {
+	padding: 20px 16px;
+	border-bottom: 1px solid var(--border);
+}
+
+.th-table-project {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.th-rate {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.th-rate > i {
+	display: block;
+	width: 70px;
+	height: 5px;
+	background: var(--surface);
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+.th-rate > i > i {
+	display: block;
+	height: 100%;
+	background: #8170f2;
+	border-radius: 5px;
+}
+
+@media (max-width: 1000px) {
+	.th-analytics-metrics {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+	.th-insights-grid {
+		grid-template-columns: 1fr;
+	}
+	.th-heatmap {
+		gap: 5px;
+	}
+}
+
+@media (max-width: 480px) {
+	.th-analytics-metrics {
+		gap: 12px;
+	}
+	.th-date-range {
+		width: 100%;
+	}
+	.th-date-range label {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	.th-report-toolbar .th-header-actions {
+		flex-wrap: wrap;
+	}
+	.th-heatmap > div {
+		aspect-ratio: 1;
+	}
+}
