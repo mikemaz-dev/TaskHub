@@ -7,5 +7,5 @@ export async function getClientProjects() {
 	})
 
 	if (error || !data) throw new Error(error?.message || 'Project not found')
-	return data
+	return data.filter(p => !p.archived_at && !p.completed_at)
 }
