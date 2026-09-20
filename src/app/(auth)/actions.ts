@@ -6,7 +6,8 @@ export async function signInWithEmail({ email }: { email: string }) {
 	return await supabase.auth.signInWithOtp({
 		email,
 		options: {
-			shouldCreateUser: true
+			shouldCreateUser: true,
+			emailRedirectTo: `${window.location.origin}/auth/callback`
 		}
 	})
 }
