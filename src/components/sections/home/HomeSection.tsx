@@ -1,81 +1,108 @@
-'use client'
+import { ArrowUpRight, CalendarDays, CheckCircle2, MessageSquare, ShieldCheck } from 'lucide-react'
+import Link from 'next/link'
 
-import { LogIn, Play } from 'lucide-react'
-import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+import { Logo } from '@/components/ui/Logo'
 
-import { NavItem } from '@/components/sections/home/NavItem'
-import { Button, Logo } from '@/components/ui'
-
-import { Pages } from '@/config/public-page.config'
-
-import { HEADER_DATA } from '@/data/header/header.data'
+import { HomeArtwork } from './HomeArtwork'
 
 export function HomeSection() {
-	const router = useRouter()
-
 	return (
-		<div className='mx-auto flex h-full max-w-[1500px] flex-col gap-15'>
-			<header className='flex w-full justify-between pt-10'>
-				<div className='flex items-center gap-15'>
-					<Logo />
-					<ul className='flex items-center gap-5'>
-						{HEADER_DATA.map(data => (
-							<NavItem
-								key={data.title}
-								title={data.title}
-							/>
-						))}
-					</ul>
-				</div>
-				<Button
-					className='text-lg font-medium'
-					size='lg'
-					onClick={() => router.push(Pages.LOGIN)}
-				>
-					Sign in
-					<LogIn />
-				</Button>
+		<div className='th-landing'>
+			<header className='th-landing-nav'>
+				<Logo />
+				<nav aria-label='Website'>
+					<a href='#workspace'>The workspace</a>
+					<a href='https://github.com/mikemaz-dev/TaskHub' target='_blank' rel='noreferrer'>
+						GitHub <ArrowUpRight size={14} />
+					</a>
+					<Link className='th-button th-button-subtle' href='/sign-in'>
+						Sign in
+					</Link>
+				</nav>
 			</header>
-
-			<div className='flex h-full items-center justify-between px-6'>
-				<div className='flex flex-col gap-8'>
-					<h1 className='max-w-2xl text-8xl leading-28 font-extrabold text-neutral-700'>
-						Transform your tasks into <span className='text-primary'>success.</span>
-					</h1>
-					<p className='max-w-md text-lg font-semibold text-neutral-500'>
-						Unlock your full productivity potential with our intuitive task management system
+			<section className='th-hero'>
+				<div className='th-hero-copy'>
+					<p className='th-eyebrow'>
+						<span />
+						Space to do your best work
 					</p>
-					<div className='flex items-center gap-6'>
-						<Button
-							size='lg'
-							className='max-w-max rounded-full px-10 py-8 text-lg font-medium'
-							onClick={() => router.push(Pages.LOGIN)}
-						>
-							Get started
-						</Button>
-						<button className='group flex cursor-pointer items-center gap-3'>
-							<div className='bg-primary/30 flex items-center justify-center rounded-full p-2'>
-								<Play
-									size={18}
-									fill='#725cee'
-									color='#725cee'
-								/>
-							</div>
-							<span className='text-lg transition-all duration-300 group-hover:font-semibold'>
-								Watch how
-							</span>
-						</button>
+					<h1>
+						Bring your work
+						<br />
+						into focus.
+					</h1>
+					<p>
+						Projects, people, and the next thing to do.
+						<br />
+						One thoughtful workspace to move it all forward.
+					</p>
+					<div className='th-hero-actions'>
+						<Link href='/sign-in' className='th-button'>
+							Create your workspace <ArrowUpRight size={18} />
+						</Link>
+						<a href='#workspace' className='th-text-link'>
+							Take a closer look
+						</a>
 					</div>
+					<p className='th-small th-muted'>Free to get started. Built in the open.</p>
 				</div>
-				<Image
-					src='/images/manager.jpg'
-					alt='Manager image'
-					width={568}
-					height={853}
-					className='rounded-lg'
-				/>
-			</div>
+				<HomeArtwork />
+			</section>
+			<section id='workspace' className='th-features'>
+				<div className='th-features-intro'>
+					<h2>
+						Less scattered.
+						<br />
+						More connected.
+					</h2>
+					<p className='th-muted'>A calm home for everything your team is working on.</p>
+				</div>
+				{[
+					{
+						Icon: CheckCircle2,
+						title: 'Know what comes next',
+						text: 'Turn projects into clear tasks, set due dates, and follow your progress.'
+					},
+					{
+						Icon: MessageSquare,
+						title: 'Keep everyone in the loop',
+						text: 'Bring your team together around shared projects and conversations.'
+					},
+					{
+						Icon: CalendarDays,
+						title: 'See the bigger picture',
+						text: 'Connect your daily schedule with the work that moves your projects forward.'
+					}
+				].map(({ Icon, title, text }) => (
+					<article key={title}>
+						<Icon size={24} />
+						<h3>{title}</h3>
+						<p>{text}</p>
+					</article>
+				))}
+			</section>
+			<section className='th-landing-cta th-panel'>
+				<div>
+					<ShieldCheck size={26} />
+					<h2>Your next project starts here.</h2>
+					<p>Make a workspace of your own.</p>
+				</div>
+				<Link href='/sign-in' className='th-button'>
+					Get started <ArrowUpRight size={18} />
+				</Link>
+			</section>
+			<footer className='th-footer'>
+				<Logo />
+				<span>
+					Designed and built by{' '}
+					<a href='https://mikemaz-portfolio.vercel.app/ru' target='_blank' rel='noreferrer'>
+						Mike Mazurkevich
+					</a>
+				</span>
+				<a href='https://github.com/mikemaz-dev/TaskHub' target='_blank' rel='noreferrer'>
+					Explore the source <ArrowUpRight size={14} />
+				</a>
+			</footer>
 		</div>
 	)
 }

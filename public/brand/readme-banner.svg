@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="480" viewBox="0 0 1200 480">
+<rect width="1200" height="480" rx="28" fill="#0c0b13"/>
+<rect x="62" y="55" width="54" height="54" rx="16" fill="#7860ed"/>
+<path d="M72 83h9l5-14 8 28 5-14h8" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<g font-family="Arial, sans-serif" fill="#faf9ff"><text x="132" y="92" font-size="30" font-weight="700">TaskHub</text>
+<text x="62" y="226" font-size="72" font-weight="700" letter-spacing="-3">Bring your work</text>
+<text x="62" y="309" font-size="72" font-weight="700" letter-spacing="-3" fill="#ad9cff">into focus.</text>
+<path d="M62 370h1076" stroke="#35303f"/>
+<text x="62" y="420" fill="#bcb7cd" font-size="21">Projects. People. Progress.</text>
+<text x="840" y="420" fill="#bcb7cd" font-size="18">Built by Mike Mazurkevich</text></g></svg>
