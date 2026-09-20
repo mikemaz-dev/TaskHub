@@ -1,6 +1,7 @@
 'use client'
 
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { toast } from 'sonner'
 
@@ -10,6 +11,8 @@ import { clientAvatarRemove, clientAvatarUpload } from '@/services/profile/profi
 import { TProfile } from '@/types/user/profile.types'
 
 export function useAvatarHandler({ profile }: { profile: TProfile }) {
+	const router = useRouter()
+	const queryClient = useQueryClient()
 	const [preview, setPreview] = useState(getAvatarUrl(profile.avatar_path ?? ''))
 
 	const uploadMutation = useMutation({
@@ -17,6 +20,8 @@ export function useAvatarHandler({ profile }: { profile: TProfile }) {
 		onSuccess: data => {
 			setPreview(getAvatarUrl(data.filePath))
 			toast.success('Avatar updated successfully!')
+			void queryClient.invalidateQueries({ queryKey: ['profile'] })
+			router.refresh()
 		},
 		onError: error => {
 			console.error(error)
@@ -29,6 +34,8 @@ export function useAvatarHandler({ profile }: { profile: TProfile }) {
 		onSuccess: () => {
 			setPreview('')
 			toast.success('Avatar removed')
+			void queryClient.invalidateQueries({ queryKey: ['profile'] })
+			router.refresh()
 		},
 		onError: error => {
 			console.error(error)

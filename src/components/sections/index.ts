@@ -1,8 +1,0 @@
-export { LastTasks } from './last-tasks'
-export { ProjectStatistic } from './project-statistic'
-export { ProjectStats } from './project-stats'
-export { TodayTasks } from './today-tasks'
-export { TodayTasksTimeline } from './today-tasks/TodayTasksTimeline'
-export { Chat } from './chat/Chat'
-export { AvatarUpload } from './profile/AvatarUpload'
-export { ChangeEmail } from './profile/ChangeEmail'

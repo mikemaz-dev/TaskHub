@@ -1,5 +1,7 @@
 'use server'
 
+import { redirect } from 'next/navigation'
+
 import { createClientFromServer } from '@/utils/supabase/server'
 
 export async function getServerProfile() {
@@ -14,9 +16,10 @@ export async function getServerProfile() {
 		throw new Error(authError?.message || 'User not found')
 	}
 
-	const { data, error } = await client.from('profile').select('*').eq('id', user.id).single()
+	const { data, error } = await client.from('profile').select('*').eq('id', user.id).maybeSingle()
 
-	if (error || !data) throw new Error(error?.message || 'Profile not found')
+	if (error) throw new Error('Could not load your profile')
+	if (!data) return redirect('/onboarding')
 
-	return { ...user, ...data }
+	return { ...user, ...data, email: user.email ?? '' }
 }

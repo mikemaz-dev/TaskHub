@@ -19,6 +19,5 @@ export class Pages {
 	static PROFILE_NOTIFICATIONS = `${Pages.BASE}/account/notifications`
 	static PROFILE_ADVANCED = `${Pages.BASE}/account/advanced`
 
-
 	static PROJECTS = `${this.DASHBOARD}/projects`
 }
