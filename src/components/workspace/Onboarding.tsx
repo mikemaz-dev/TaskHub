@@ -28,8 +28,20 @@ export function Onboarding() {
 				throw new Error('Enter a name between 2 and 50 characters.')
 			const { error: saveError } = await client
 				.from('profile')
-				.upsert({ id: user.id, name, nick: `user_${user.id.slice(0, 8)}` })
+				.upsert(
+					{ id: user.id, name, nick: `user_${user.id.slice(0, 8)}` },
+					{ onConflict: 'id', ignoreDuplicates: true }
+				)
 			if (saveError) throw new Error('Could not create your profile. Please try again.')
+			// A trigger or an earlier attempt may already have created the profile.
+			// Never include id in UPDATE: only editable columns are granted by RLS migrations.
+			const { error: updateError } = await client
+				.from('profile')
+				.update({ name })
+				.eq('id', user.id)
+				.select('id')
+				.single()
+			if (updateError) throw new Error('Could not save your profile name. Please try again.')
 			router.replace('/dashboard/projects?create=1')
 			router.refresh()
 		} catch (e) {
@@ -64,7 +76,7 @@ export function Onboarding() {
 							{error}
 						</p>
 					)}
-					<button disabled={busy} className='th-button'>
+					<button disabled={busy} aria-busy={busy} className='th-button'>
 						{busy ? 'Saving…' : 'Continue'}
 					</button>
 				</form>
