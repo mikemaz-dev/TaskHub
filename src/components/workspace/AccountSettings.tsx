@@ -7,6 +7,7 @@ import { type FormEvent, useState } from 'react'
 import { Header } from '@/components/layout/header/Header'
 import { AvatarUpload } from '@/components/sections/profile/AvatarUpload'
 
+import { DemoWorkspace } from './DemoWorkspace'
 import { WorkingHours } from './availability/WorkingHours'
 import { AccountAppearance } from './AccountAppearance'
 import { ProfileIdentityFields } from './ProfileIdentityFields'
@@ -88,12 +89,12 @@ export function AccountSettings({ profile }: { profile: TProfile }) {
 								Profile saved.
 							</p>
 						)}
-						<button className='th-button' disabled={busy}>
+						<button className='th-button' disabled={busy} aria-busy={busy}>
 							{busy ? 'Saving…' : 'Save changes'}
 						</button>
 					</form>
 				</section>
-				<div className='th-settings-aside'><AccountAppearance /><WorkingHours userId={profile.id} value={profile.work_schedule} /></div>
+				<div className='th-settings-aside'><AccountAppearance /><WorkingHours userId={profile.id} value={profile.work_schedule} /><DemoWorkspace userId={profile.id} /></div>
 			</div>
 		</div>
 	)

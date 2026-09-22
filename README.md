@@ -24,7 +24,9 @@
 - Read activity notifications and restore completed or archived projects.
 - Personalize your profile, avatar, theme, and accent color.
 
-TaskHub uses real accounts and project data. There is no demo mode.
+TaskHub uses real accounts. Settings offers an optional personal sample workspace
+with removable demo projects, tasks and checklist steps. Apply the demo migration
+first; see [sample data](docs/DEMO-WORKSPACE.md).
 
 ## Project story
 

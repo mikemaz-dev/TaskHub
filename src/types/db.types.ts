@@ -8,6 +8,12 @@ export type Database = {
 	}
 	public: {
 		Tables: {
+            taskhub_demo_workspace: {
+                Row: { owner_id: string; project_ids: string[]; task_ids: string[] }
+                Insert: { owner_id: string; project_ids?: string[]; task_ids?: string[] }
+                Update: { project_ids?: string[]; task_ids?: string[] }
+                Relationships: []
+            }
 			taskhub_notification: {
 				Row: {
 					id: string
@@ -399,6 +405,7 @@ export type Database = {
 			[_ in never]: never
 		}
 		Functions: {
+            taskhub_demo_data: { Args: { action_input: string; day_input?: string }; Returns: undefined }
 			taskhub_edit_task: { Args: { task_input: string }; Returns: boolean }
 			taskhub_save_task: { Args: { task_input?: string | null; payload: Json }; Returns: string }
 			taskhub_role: { Args: { project_input: string }; Returns: string }
