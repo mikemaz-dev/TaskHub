@@ -39,3 +39,26 @@ workspace and authentication pages are noindex. `/opengraph-image` produces a
 1200×630 PNG without authentication. Check the preview with a public deployed URL;
 localhost cannot be fetched by social networks. The SVG icon and Apple touch icon
 use the TaskHub pulse mark.
+
+
+## Vercel setup
+
+Select the Next.js preset. Use `bun install --frozen-lockfile` for installation
+and `bun run build` for the build; leave the output directory at the framework default.
+Set these variables before building in Production (and Preview if testing a branch):
+
+| Variable | Value |
+| --- | --- |
+| `NEXT_PUBLIC_SUPABASE_URL` | Your Supabase project URL |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Your project's public anon key; never the service-role key |
+| `SITE_URL` | `https://taskhub-green.vercel.app` (or the final production origin) |
+
+Copy Supabase values from your local `.env.local` or Supabase dashboard; do not commit
+that file. After changing public variables, redeploy to rebuild the browser bundle.
+In Supabase Auth URL Configuration, use the production origin as Site URL and add
+`https://taskhub-green.vercel.app/auth/callback` to allowed redirect URLs. Add the
+exact preview callback too if you need sign-in on a preview deployment.
+
+The update is on `feat/taskhub-redesign`. If Vercel's Production Branch is `main`,
+pushing this feature branch creates a preview rather than updating production.
+Merge the reviewed branch or explicitly configure the desired Production Branch.
