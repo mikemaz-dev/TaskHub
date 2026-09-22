@@ -1,0 +1,25 @@
+.th-not-found {
+ min-height: 100svh;
+ display: grid;
+ place-items: center;
+ padding: 24px;
+ background: var(--background);
+ color: var(--foreground);
+}
+.th-not-found-card {
+ width: min(100%, 620px);
+ padding: clamp(28px, 5vw, 56px);
+}
+.th-not-found-code {
+ font-family: var(--font-outfit), sans-serif;
+ font-size: clamp(88px, 18vw, 144px);
+ font-weight: 600;
+ line-height: 1;
+ letter-spacing: -.06em;
+ color: var(--primary);
+ margin: 36px 0 20px;
+}
+.th-not-found h1 { font-size: clamp(24px, 4vw, 32px); line-height: 1.2; }
+.th-not-found h1 + p { color: var(--muted-foreground); line-height: 1.8; margin-top: 16px; max-width: 48ch; }
+.th-not-found-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+@media (max-width: 420px) { .th-not-found-actions > a { width: 100%; } }

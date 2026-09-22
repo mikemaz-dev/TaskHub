@@ -37,7 +37,7 @@ export function AuthForm() {
 							</FormItem>
 						)}
 					/>
-					<Button type='submit' disabled={form.formState.isSubmitting} className='w-full'>
+					<Button type='submit' disabled={form.formState.isSubmitting} aria-busy={form.formState.isSubmitting} className='w-full'>
 						{form.formState.isSubmitting ? 'Sending…' : 'Continue with email'}
 					</Button>
 				</form>

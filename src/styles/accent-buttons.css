@@ -58,7 +58,7 @@
 
 .dark .th-button:not(.th-button-subtle) {
 	background: var(--accent);
-	color: #101014;
+	color: #fff;
 }
 
 .th-button:not(.th-button-subtle):hover {

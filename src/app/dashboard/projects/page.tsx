@@ -17,10 +17,10 @@ export default async function Page({
 	const [projects, params, user] = await Promise.all([getServerProjects(), searchParams, getServerAuth(true)])
 	if (projects.error) throw new Error('Could not load projects.')
 	return (
-		<div className='th-page'>
+		<div className={`th-page ${!projects.data?.length ? 'th-projects-first' : ''}`}>
 			<Header title='Projects' />
-			<ProjectForm initialOpen={params.create === '1'} />
-			<div className='th-project-grid'>
+			<ProjectForm initialOpen={params.create === '1' || !projects.data?.length} />
+			{!!projects.data?.length && <div className='th-project-grid'>
 				{projects.data?.map(project => (
 					<Link
 						key={project.id}
@@ -36,13 +36,8 @@ export default async function Page({
 						<span className='th-small th-muted'>Open project</span>
 					</Link>
 				))}
-			</div>
-			{!projects.data?.length && (
-				<section className='th-panel th-empty'>
-					<h3>Great work starts with a project.</h3>
-					<p>Create one to bring your tasks and team together.</p>
-				</section>
-			)}
+			</div>}
+
 		</div>
 	)
 }

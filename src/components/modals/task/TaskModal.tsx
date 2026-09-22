@@ -104,7 +104,7 @@ export function TaskModal({
 							</button>
 							<button
 								className='th-button'
-								disabled={isPending || isLoading || !projects.length || readOnly}
+								disabled={isPending || isLoading || !projects.length || readOnly} aria-busy={isPending}
 							>
 								{isPending ? 'Saving…' : mode === 'create' ? 'Create task' : 'Save changes'}
 							</button>

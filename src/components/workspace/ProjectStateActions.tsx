@@ -39,7 +39,7 @@ export function ProjectStateActions({
 				role === 'owner' && (
 					<button
 						className='th-button th-button-subtle'
-						disabled={busy}
+						disabled={busy} aria-busy={busy}
 						onClick={() => void action('restore')}
 					>
 						<RotateCcw size={15} />
@@ -50,7 +50,7 @@ export function ProjectStateActions({
 				<>
 					<button
 						className='th-button th-button-subtle'
-						disabled={busy}
+						disabled={busy} aria-busy={busy}
 						onClick={() => void action(completed ? 'reopen' : 'complete')}
 					>
 						<CheckCircle2 size={15} />
@@ -59,7 +59,7 @@ export function ProjectStateActions({
 					{role === 'owner' && (
 						<button
 							className='th-button th-button-subtle'
-							disabled={busy}
+							disabled={busy} aria-busy={busy}
 							onClick={() => void action('archive')}
 						>
 							<Archive size={15} />

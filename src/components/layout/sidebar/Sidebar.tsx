@@ -1,6 +1,6 @@
 'use client'
 
-import { LogOut, Menu, Plus, X } from 'lucide-react'
+import { ArrowRight, LogOut, Menu, Plus, X } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { useState } from 'react'
@@ -74,8 +74,8 @@ export function Sidebar({
 				<SidebarNavigation pathname={pathname} inbox={inbox} setOpen={setOpen} />
 				<div className='th-sidebar-projects'>
 					<div className='th-section-title'>
-						<Link href='/dashboard/projects' className='th-nav-label'>
-							Projects
+						<Link href='/dashboard/projects' className='th-projects-index-link' style={{ display: 'inline-flex', alignItems: 'center', gap: 8, whiteSpace: 'nowrap' }} onClick={() => setOpen(false)}>
+							All projects <ArrowRight size={14} />
 						</Link>
 						<Link href='/dashboard/projects?create=1' aria-label='Create project'>
 							<Plus size={16} />

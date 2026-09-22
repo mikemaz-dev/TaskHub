@@ -57,7 +57,7 @@ export function ProjectForm({ initialOpen = false }: { initialOpen?: boolean }) 
 						</label>
 						<div className='th-form-columns'>
 							<label>
-								Deadline <span className='th-small th-muted'>Optional</span>
+								<span>Deadline <small className='th-muted'>Optional</small></span>
 								<DatePicker
 									value={deadline}
 									onChange={setDeadline}
@@ -88,7 +88,7 @@ export function ProjectForm({ initialOpen = false }: { initialOpen?: boolean }) 
 								{error}
 							</p>
 						)}
-						<button disabled={busy} className='th-button'>
+						<button disabled={busy} aria-busy={busy} className='th-button'>
 							{busy ? 'Creating…' : 'Create project'}
 						</button>
 					</form>

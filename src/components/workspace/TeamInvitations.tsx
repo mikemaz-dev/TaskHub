@@ -67,7 +67,7 @@ export function TeamInvitations({
 								))}
 						</select>
 					</label>
-					<button disabled={busy || !projectId} className='th-button' onClick={createInvite}>
+					<button disabled={busy || !projectId} aria-busy={busy} className='th-button' onClick={createInvite}>
 						<Link2 size={16} />
 						{busy ? 'Working…' : 'Create invitation'}
 					</button>
@@ -103,7 +103,7 @@ export function TeamInvitations({
 						Invitation code
 						<input name='code' required maxLength={128} placeholder='Paste your invitation code' />
 					</label>
-					<button disabled={busy} className='th-button th-button-subtle'>
+					<button disabled={busy} aria-busy={busy} className='th-button th-button-subtle'>
 						Join project
 					</button>
 				</form>
