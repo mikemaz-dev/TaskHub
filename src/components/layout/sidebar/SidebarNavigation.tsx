@@ -1,6 +1,7 @@
 'use client'
 
 import {
+	Info,
 	Archive,
 	BarChart3,
 	Bell,
@@ -24,7 +25,8 @@ const menu = [
 	['Report', '/dashboard/report', FileText],
 	['Notifications', '/dashboard/notifications', Bell],
 	['Archive', '/dashboard/archive', Archive],
-	['Settings', '/dashboard/account', Settings]
+	['Settings', '/dashboard/account', Settings],
+	['About TaskHub', '/dashboard/about', Info]
 ] as const
 export function SidebarNavigation({
 	pathname,
