@@ -10,7 +10,7 @@ export async function getClientAllProfiles() {
 
 	const { data, error } = await client.from('profile').select('*')
 
-	if (error || !data) throw new Error(error.message || 'Profiles not found')
+	if (error || !data) throw new Error(error?.message || 'Profiles not found')
 
 	return data
 }
@@ -65,61 +65,27 @@ export async function updateClientProfile(profile: Partial<Omit<TProfile, 'email
 	return { ...user, ...data }
 }
 
-export async function clientAvatarUpload(file: File, oldPath?: string) {
+export { clientAvatarRemove, clientAvatarUpload } from './avatar-client.service'
+
+export async function getClientProjectProfiles(projectId: string) {
 	const client = createClient()
-
-	const {
-		data: { user },
-		error: authError
-	} = await client.auth.getUser()
-	if (authError || !user) throw new Error(authError?.message || 'User not authenticated')
-	if (!file) throw new Error('No file provided')
-
-	if (oldPath) {
-		await client.storage.from('avatars').remove([oldPath])
+	const { data: project, error } = await client
+		.from('project')
+		.select('owner_id,project_participants(profile(*))')
+		.eq('id', projectId)
+		.single()
+	if (error) throw error
+	const profiles = project.project_participants.flatMap(member =>
+		member.profile ? [member.profile] : []
+	)
+	if (project.owner_id) {
+		const { data: owner, error } = await client
+			.from('profile')
+			.select('*')
+			.eq('id', project.owner_id)
+			.single()
+		if (error) throw error
+		if (owner && !profiles.some(p => p.id === owner.id)) profiles.push(owner)
 	}
-
-	const fileExt = file.name.split('.').pop()
-	const fileName = `${user.id}-${Date.now()}.${fileExt}`
-	const filePath = `${user.id}/${fileName}`
-
-	const { error: uploadError } = await client.storage
-		.from('avatars')
-		.upload(filePath, file, { upsert: true })
-	if (uploadError) throw new Error(uploadError.message)
-
-	const { data: publicData } = client.storage.from('avatars').getPublicUrl(filePath)
-	const url = publicData.publicUrl
-	if (!url) throw new Error('Failed to get public URL')
-
-	const { error: updateProfileError } = await client
-		.from('profile')
-		.update({ avatar_path: filePath })
-		.eq('id', user.id)
-	if (updateProfileError) throw new Error(updateProfileError.message)
-
-	return { filePath, url }
-}
-
-export async function clientAvatarRemove(oldPath: string) {
-	if (!oldPath) return
-	const client = createClient()
-
-	const {
-		data: { user },
-		error: authError
-	} = await client.auth.getUser()
-	if (authError || !user) throw new Error(authError?.message || 'User not authenticated')
-
-	const { error: removeError } = await client.storage.from('avatars').remove([oldPath])
-	if (removeError) throw new Error(removeError.message)
-
-	const { error: updateProfileError } = await client
-		.from('profile')
-		.update({ avatar_path: null })
-		.eq('id', user.id)
-
-	if (updateProfileError) throw new Error(updateProfileError.message)
-
-	return true
+	return profiles
 }

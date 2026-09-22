@@ -4,6 +4,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
+import { signInError } from './sign-in-error'
+
 import { signInWithEmail } from '@/app/(auth)/actions'
 import { AuthSchema, type TAuthFormData } from '@/zod-schemes/auth.zod'
 
@@ -16,20 +18,14 @@ export const useAuthForm = () => {
 		mode: 'onChange'
 	})
 
-	const onSubmit = (data: TAuthFormData) => {
-		signInWithEmail({ email: data.email })
-			.then(() => {
-				toast.success('Please check your email for verify token', {
-					position: 'bottom-right',
-					duration: 3500
-				})
-			})
-			.catch(error => {
-				toast.error(`Failed to send sign-in link. Please try again later. Error: ${error.message}`)
-			})
-			.finally(() => {
-				form.reset()
-			})
+	const onSubmit = async (data: TAuthFormData) => {
+		try {
+			const { error } = await signInWithEmail({ email: data.email })
+			if (error) throw error
+			toast.success('Check your inbox for your sign-in link.')
+		} catch (error) {
+			toast.error(signInError(error), { duration: 10000 })
+		}
 	}
 
 	return {

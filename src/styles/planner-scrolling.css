@@ -1,0 +1,65 @@
+.th-week-heading {
+	grid-template-rows: 44px minmax(28px, auto);
+	flex: 0 0 auto;
+	max-height: 150px;
+}
+
+.th-hours-scroll {
+	position: relative;
+	flex: 1;
+	min-height: 0;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	scrollbar-gutter: stable;
+}
+
+.th-hours-grid {
+	display: grid;
+	gap: 7px;
+	grid-auto-rows: 60px;
+}
+
+.th-hour-anchor {
+	grid-column: 1 / -1;
+	height: 0;
+	margin-bottom: -7px;
+}
+
+.th-hours-grid:has(.th-hour-anchor) {
+	grid-auto-rows: auto;
+}
+
+.th-hours-grid .th-slot {
+	height: 60px;
+}
+
+.th-days-grid .is-past:not(.is-selected),
+.th-week-day.is-past:not(.is-selected),
+.th-month-view .is-past {
+	color: var(--muted-foreground);
+	opacity: .48;
+}
+
+.th-empty-slot:disabled {
+	opacity: .35;
+	color: transparent;
+	background: transparent;
+	border-color: var(--border);
+	cursor: not-allowed;
+}
+
+.th-planner {
+	overflow: hidden;
+}
+.th-planner > :not(.th-hours-scroll):not(.th-month-view) {
+	flex-shrink: 0;
+}
+.th-week-heading {
+	scrollbar-gutter: stable;
+	overflow-y: auto;
+}
+
+@media (max-width: 800px) {
+	.th-hours-grid { gap: 4px; }
+	.th-hour-anchor { margin-bottom: -4px; }
+}

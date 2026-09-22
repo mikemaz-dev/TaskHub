@@ -1,0 +1,15 @@
+.th-option-list[popover] {
+	position: fixed;
+	inset: auto;
+	margin: 0;
+	overflow-y: auto;
+	box-sizing: border-box;
+	color: var(--foreground);
+}
+.th-option-list[popover]::backdrop {
+	background: transparent;
+}
+
+.th-option-list > button + button {
+	margin-top: 4px;
+}

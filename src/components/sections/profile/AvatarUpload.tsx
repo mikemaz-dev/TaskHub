@@ -27,7 +27,7 @@ export function AvatarUpload({ profile }: Props) {
 		<div className='mb-8 flex flex-col gap-4'>
 			<Label className='text-sm font-medium'>Profile picture</Label>
 			<div className='flex items-center gap-6'>
-				{profile.avatar_path ? (
+				{preview ? (
 					<Image
 						src={preview}
 						alt='Avatar preview'
@@ -45,7 +45,7 @@ export function AvatarUpload({ profile }: Props) {
 						<input
 							ref={fileInputRef}
 							type='file'
-							accept='image/*'
+							accept='image/jpeg,image/png,image/webp'
 							className='hidden'
 							onChange={handleFileChange}
 						/>
@@ -58,7 +58,7 @@ export function AvatarUpload({ profile }: Props) {
 						>
 							{uploadMutation.isPending ? 'Uploading...' : 'Upload picture'}
 						</Button>
-						{profile.avatar_path && (
+						{preview && (
 							<Button
 								variant='destructive'
 								size='sm'
@@ -69,7 +69,7 @@ export function AvatarUpload({ profile }: Props) {
 							</Button>
 						)}
 					</div>
-					<p className='text-muted-foreground text-sm'>Supported formats: JPG, PNG, SVG, GIF</p>
+					<p className='text-muted-foreground text-sm'>JPG, PNG or WebP, up to 5 MB</p>
 				</div>
 			</div>
 		</div>

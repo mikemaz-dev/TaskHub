@@ -1,0 +1,94 @@
+@media (max-width: 650px) {
+	.th-messages {
+		grid-template-columns: 1fr;
+		height: auto;
+		min-height: 650px;
+	}
+	.th-contacts {
+		border-right: 0;
+		border-bottom: 1px solid var(--border);
+		max-height: 210px;
+	}
+	.th-contact {
+		padding: 10px;
+	}
+	.th-contact-search {
+		margin-bottom: 8px;
+	}
+	.th-message-history {
+		min-height: 260px;
+		max-height: 480px;
+	}
+	.th-conversation-header {
+		padding: 16px;
+	}
+	.th-composer {
+		padding: 16px;
+	}
+	.th-message {
+		max-width: 90%;
+	}
+}
+
+.th-settings-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+	gap: 24px;
+}
+
+.th-settings-side {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.th-theme-options {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 12px;
+}
+
+.th-theme-option {
+	padding: 8px;
+	border: 1px solid var(--border);
+	border-radius: 14px;
+	text-align: left;
+	min-width: 0;
+}
+
+.th-theme-option[aria-pressed='true'] {
+	border-color: #8b77fb;
+	box-shadow: 0 0 0 2px #8b77fb20;
+}
+
+.th-theme-option > div {
+	height: 94px;
+	border-radius: 8px;
+	padding: 12px;
+	display: flex;
+	flex-direction: column;
+	gap: 9px;
+	background: #15121f;
+	color: #c5baff;
+}
+
+.th-theme-light > div {
+	background: #edeef6;
+	color: #6366f1;
+}
+
+.th-theme-system > div {
+	background: linear-gradient(115deg, #15121f 50%, #edeef6 50%);
+}
+
+.th-theme-option span {
+	display: block;
+	height: 5px;
+	width: 80%;
+	background: #8170f233;
+	border-radius: 4px;
+}
+
+.th-theme-option span:last-child {
+	width: 55%;
+}

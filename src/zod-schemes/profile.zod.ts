@@ -11,16 +11,13 @@ export const ProfileSchema = z.object({
 		.max(20, 'Username must be at most 20 characters')
 		.regex(/^[a-zA-Z0-9_]+$/, 'Username can contain only letters, numbers, and underscores'),
 
-	profession: z
-		.string()
-		.min(2, 'Profession must be at least 2 characters')
-		.max(50, 'Profession must be at most 50 characters'),
+	profession: z.string().max(50, 'Profession must be at most 50 characters'),
 	description: z
 		.string()
 		.max(500, 'Description must be at most 500 characters')
 		.optional()
 		.nullable(),
-	avatar_path: z.string().url('Invalid avatar URL').optional().nullable(),
+	avatar_path: z.string().max(300).optional().nullable(),
 	email: z.string().email('Invalid email')
 })
 

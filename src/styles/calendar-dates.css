@@ -1,0 +1,89 @@
+.th-days-grid {
+	display: grid;
+	grid-template-columns: repeat(7, minmax(0, 1fr));
+	gap: 4px;
+	text-align: center;
+}
+
+.th-days-grid > span {
+	font-size: 10px;
+	color: var(--muted-foreground);
+	padding-bottom: 7px;
+}
+
+.th-days-grid > button {
+	aspect-ratio: 1;
+	font-size: 12px;
+	border-radius: 9px;
+	min-width: 0;
+}
+
+.th-days-grid > button:hover {
+	background: var(--accent-soft);
+}
+
+.th-days-grid > button.is-selected {
+	background: var(--accent);
+	color: white;
+}
+
+.th-days-grid > button[aria-current='date']:not(.is-selected) {
+	box-shadow: inset 0 0 0 1px var(--accent);
+	color: var(--primary);
+}
+
+.is-outside {
+	opacity: 0.4;
+}
+
+.th-days-grid > button:disabled {
+	opacity: 0.2;
+	cursor: not-allowed;
+}
+
+.th-date-shortcuts {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	padding-top: 12px;
+	margin-top: 12px;
+	border-top: 1px solid var(--border);
+}
+
+.th-date-shortcuts button {
+	padding: 6px 9px;
+	background: var(--surface);
+	border-radius: 7px;
+	font-size: 11px;
+}
+
+.th-date-shortcuts button:disabled {
+	opacity: 0.3;
+}
+
+.th-time-control {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	border: 1px solid var(--border);
+	border-radius: 12px;
+	padding: 0 12px;
+	background: var(--surface);
+	min-width: 0;
+	height: 44px;
+}
+
+.th-time-control:focus-within {
+	border-color: var(--accent);
+	box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.th-time-control svg,
+.th-time-control > span {
+	color: var(--muted-foreground);
+	flex-shrink: 0;
+}
+
+.th-time-control > span {
+	font-size: 10px;
+}

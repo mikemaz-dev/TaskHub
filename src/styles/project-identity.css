@@ -1,0 +1,33 @@
+.th-project-identity, .th-project-team-actions {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+.th-project-identity { margin: 10px 0; }
+.th-project-origin {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 11px;
+	line-height: 1.4;
+	white-space: nowrap;
+	color: var(--muted-foreground);
+	padding: 5px 8px;
+	border: 1px solid var(--border);
+	border-radius: 7px;
+	background: var(--surface);
+	width: fit-content;
+}
+.th-project-origin svg { color: var(--primary); flex-shrink: 0; }
+.th-project-origin.is-compact {
+	margin-left: auto;
+	font-size: 9px;
+	padding: 3px 5px;
+	gap: 4px;
+	flex-shrink: 0;
+}
+.th-project-link { display: flex; align-items: center; gap: 9px; }
+.th-sidebar-project-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.th-project-card > .th-project-origin { margin: 0 0 10px; }
+#project-members { scroll-margin-top: 24px; }

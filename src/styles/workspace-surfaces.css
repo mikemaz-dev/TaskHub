@@ -1,0 +1,86 @@
+.dark {
+	--background: #0b0a11;
+	--foreground: #fafafa;
+	--primary: #8b77fb;
+	--primary-foreground: #fff;
+	--card: rgba(255, 255, 255, 0.04);
+	--muted: #201d2c;
+	--muted-foreground: #a1a1aa;
+	--border: rgba(255, 255, 255, 0.08);
+	--popover: #1b1826;
+	--sidebar: rgba(255, 255, 255, 0.04);
+	--surface: rgba(255, 255, 255, 0.03);
+	--panel-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+	--page-glow: #16122c;
+}
+
+body {
+	background: radial-gradient(ellipse at 52% 45%, var(--page-glow), var(--background) 66%) fixed;
+	color: var(--foreground);
+}
+
+h1,
+h2,
+h3,
+.th-logo {
+	font-family: var(--font-outfit), sans-serif;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+	-webkit-tap-highlight-color: transparent;
+}
+
+button:not(:disabled),
+select {
+	cursor: pointer;
+}
+
+button:disabled {
+	opacity: 0.55;
+	cursor: wait;
+}
+
+a,
+button {
+	touch-action: manipulation;
+}
+
+.th-muted {
+	color: var(--muted-foreground);
+}
+
+.th-small {
+	font-size: 12px;
+	line-height: 1.6;
+}
+
+.th-panel {
+	background: var(--card);
+	border: 1px solid var(--border);
+	border-radius: 20px;
+	box-shadow: var(--panel-shadow);
+	backdrop-filter: blur(15px);
+}
+
+.th-logo {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	font-size: 20px;
+	font-weight: 700;
+	white-space: nowrap;
+}
+
+.th-logo > span {
+	display: grid;
+	place-items: center;
+	width: 32px;
+	height: 32px;
+	border-radius: 10px;
+	background: linear-gradient(120deg, #6366f1, #8b5cf6);
+	color: white;
+}

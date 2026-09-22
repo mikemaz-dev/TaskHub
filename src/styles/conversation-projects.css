@@ -1,0 +1,44 @@
+.th-conversation-projects {
+	padding: 12px 22px;
+	border-bottom: 1px solid var(--border);
+	flex-shrink: 0;
+	min-width: 0;
+}
+.th-conversation-projects > span {
+	display: flex;
+	align-items: center;
+	gap: 7px;
+	font-size: 11px;
+	color: var(--muted-foreground);
+	margin-bottom: 10px;
+}
+.th-conversation-projects > div {
+	display: flex;
+	gap: 8px;
+	overflow-x: auto;
+}
+.th-conversation-projects button {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	white-space: nowrap;
+	padding: 8px 12px;
+	border: 1px solid var(--border);
+	border-radius: 10px;
+	font-size: 12px;
+}
+.th-conversation-projects button[aria-pressed='true'] {
+	background: var(--accent-soft);
+	border-color: var(--accent);
+}
+.th-conversation-projects i {
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+}
+.th-compose-context {
+	font-size: 11px;
+	color: var(--muted-foreground);
+	margin-bottom: 10px;
+}
+.th-compose-context strong { color: var(--foreground); }

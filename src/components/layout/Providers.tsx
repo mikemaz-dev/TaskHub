@@ -1,25 +1,27 @@
 'use client'
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { LazyMotion, domAnimation } from 'framer-motion'
+import { LazyMotion, domAnimation } from 'motion/react'
 import { ThemeProvider } from 'next-themes'
-import { type PropsWithChildren } from 'react'
+import { type PropsWithChildren, useState } from 'react'
 import { Toaster } from 'sonner'
 
+import { ScrollEdges } from '@/components/workspace/ScrollEdges'
+import { AccentProvider } from '@/components/workspace/AccentProvider'
+
 export function Providers({ children }: PropsWithChildren) {
-	const queryClient = new QueryClient()
+	const [queryClient] = useState(() => new QueryClient())
 
 	return (
 		<QueryClientProvider client={queryClient}>
-			<ThemeProvider
-				attribute='class'
-				defaultTheme='system'
-				enableSystem
-			>
-				<LazyMotion features={domAnimation}>
-					{children}
-					<Toaster />
-				</LazyMotion>
+			<ThemeProvider attribute='class' defaultTheme='system' enableSystem>
+				<AccentProvider>
+					<LazyMotion features={domAnimation}>
+						{children}
+						<Toaster />
+						<ScrollEdges />
+					</LazyMotion>
+				</AccentProvider>
 			</ThemeProvider>
 		</QueryClientProvider>
 	)

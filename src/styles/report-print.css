@@ -1,0 +1,14 @@
+.th-print-date { display: none; }
+
+@media print {
+	.th-print-date { display: inline-block; white-space: nowrap; flex-shrink: 0; color: #111; font-weight: 600; }
+	.th-date-range .th-picker { display: none !important; }
+	.th-report-toolbar .th-date-range { display: flex; align-items: center; flex-wrap: nowrap; width: auto; gap: 24px; }
+	.th-report-toolbar .th-date-range label { display: inline-flex; align-items: baseline; flex-direction: row; flex: 0 0 auto; width: auto; min-width: max-content; white-space: nowrap; gap: 8px; }
+	[data-scroll-edges] { mask-image: none !important; }
+	.th-content:has(.th-report), .th-report {
+		height: auto !important;
+		max-height: none !important;
+		overflow: visible !important;
+	}
+}

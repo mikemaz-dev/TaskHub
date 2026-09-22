@@ -1,0 +1,11 @@
+.th-online-status { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted-foreground); margin-top: 5px; }
+.th-online-status i { width: 7px; height: 7px; border-radius: 50%; background: var(--muted-foreground); }
+.th-online-status[data-status='online'] i { background: #10b981; box-shadow: 0 0 0 3px #10b98118; }
+.th-online-status[data-status='unknown'] i { background: transparent; border: 1px solid var(--muted-foreground); }
+.th-typing-status { min-height: 26px; padding: 0 22px; display: flex; align-items: center; gap: 9px; flex-shrink: 0; font-size: 11px; color: var(--muted-foreground); }
+.th-typing-status > span { display: flex; gap: 3px; }
+.th-typing-status i { width: 4px; height: 4px; border-radius: 50%; background: var(--primary); animation: th-typing 1.2s ease-in-out infinite; }
+.th-typing-status i:nth-child(2) { animation-delay: .15s; }
+.th-typing-status i:nth-child(3) { animation-delay: .3s; }
+@keyframes th-typing { 50% { opacity: .35; transform: translateY(-3px); } }
+@media (prefers-reduced-motion: reduce) { .th-typing-status i { animation: none; } }

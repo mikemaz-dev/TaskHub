@@ -15,18 +15,10 @@ export function Field({ id, name, label, placeholder, defaultValue, textarea }: 
 	const Comp = textarea ? Textarea : Input
 	return (
 		<div className='flex flex-col gap-1'>
-			<Label
-				htmlFor={id}
-				className='text-sm font-medium'
-			>
+			<Label htmlFor={id} className='text-sm font-medium'>
 				{label}
 			</Label>
-			<Comp
-				id={id}
-				name={name}
-				defaultValue={defaultValue}
-				placeholder={placeholder}
-			/>
+			<Comp id={id} name={name} defaultValue={defaultValue} placeholder={placeholder} />
 		</div>
 	)
 }

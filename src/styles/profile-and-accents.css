@@ -1,0 +1,90 @@
+.th-profile-metric svg {
+	color: var(--muted-foreground);
+}
+
+.th-profile-metric strong {
+	margin-left: auto;
+}
+
+.th-profile-project {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 16px 0;
+	border-bottom: 1px solid var(--border);
+}
+
+.th-profile-project strong {
+	font-size: 13px;
+}
+
+.th-profile-project small {
+	display: block;
+	margin-top: 5px;
+	font-size: 11px;
+	color: var(--muted-foreground);
+}
+
+@media (max-width: 1100px) {
+	.th-settings-grid,
+	.th-profile-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 550px) {
+	.th-profile-heading {
+		flex-wrap: wrap;
+	}
+	.th-profile-heading > .th-button {
+		margin: 0;
+	}
+	.th-profile-heading h2 {
+		font-size: 24px;
+	}
+	.th-profile-body {
+		padding: 20px;
+	}
+	.th-form-columns {
+		grid-template-columns: 1fr;
+	}
+	.th-theme-options {
+		gap: 8px;
+	}
+	.th-theme-option {
+		padding: 5px;
+	}
+}
+
+/* TaskHub controls: one visual language for planning and editing. */
+
+:root {
+	--accent: #8170f2;
+	--accent-end: #8b5cf6;
+	--accent-ink: #6250cb;
+	--accent-soft: color-mix(in srgb, var(--accent) 14%, transparent);
+}
+
+:root[data-accent='indigo'] {
+	--accent: #6366f1;
+	--accent-end: #818cf8;
+	--accent-ink: #4f46e5;
+}
+
+:root[data-accent='emerald'] {
+	--accent: #10b981;
+	--accent-end: #14b8a6;
+	--accent-ink: #047857;
+}
+
+:root[data-accent='amber'] {
+	--accent: #f59e0b;
+	--accent-end: #fbbf24;
+	--accent-ink: #92400e;
+}
+
+:root[data-accent='pink'] {
+	--accent: #ec4899;
+	--accent-end: #f472b6;
+	--accent-ink: #be185d;
+}

@@ -1,0 +1,43 @@
+.th-projects-first .th-project-create {
+  margin: 0;
+  width: 100%;
+  padding: 28px;
+}
+.th-project-create .th-section-title { align-items: flex-start; gap: 24px; }
+.th-project-create .th-form { gap: 24px; }
+.th-project-create .th-form-columns { align-items: start; gap: 24px; }
+.th-project-create .th-form-columns > label { gap: 12px; }
+.th-project-create .th-form-columns small { margin-left: 6px; font-weight: 400; }
+.th-project-create .th-color-options { min-height: 42px; margin: 0; align-items: center; }
+.th-projects-index-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--foreground);
+}
+.th-projects-index-link:hover { color: var(--primary); }
+.dark { --primary-foreground: #fff; }
+.dark :is(.th-button, [data-slot='button']) { transition: opacity .15s, background .15s; }
+.dark :is(.th-button, [data-slot='button']):disabled { opacity: .5; filter: none; box-shadow: none; }
+.dark button[aria-busy='true'] { cursor: wait; }
+.dark button[aria-busy='true']::before {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: th-action-spin .8s linear infinite;
+}
+@keyframes th-action-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .dark button[aria-busy='true']::before { animation: none; }
+}
+@media (max-width: 600px) {
+  .th-projects-first .th-project-create { padding: 20px; }
+}

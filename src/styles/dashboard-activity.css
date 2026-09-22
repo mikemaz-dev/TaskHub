@@ -1,0 +1,92 @@
+.th-today-task > span {
+	font-size: 12px;
+	color: var(--muted-foreground);
+}
+
+.th-today-task > span:last-child {
+	margin-left: auto;
+}
+
+.th-today-task strong {
+	font-size: 13px;
+	font-weight: 500;
+	background: linear-gradient(120deg, #6366f1, #8b5cf6);
+	color: white;
+	padding: 10px 16px;
+	border-radius: 10px;
+}
+
+.th-activity {
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	min-width: 0;
+}
+
+.th-activity > h2 {
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.th-workspace-summary {
+	padding: 20px;
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: 16px;
+}
+
+.th-workspace-summary h3 {
+	font-size: 15px;
+	font-weight: 600;
+	margin: 16px 0 6px;
+}
+
+.th-workspace-summary p {
+	font-size: 12px;
+	line-height: 1.7;
+	color: var(--muted-foreground);
+}
+
+.th-feed-item {
+	padding: 14px;
+	background: var(--surface);
+	border-radius: 12px;
+	text-align: left;
+}
+
+.th-feed-item strong {
+	display: block;
+	font-size: 12px;
+	font-weight: 500;
+}
+
+.th-feed-item small {
+	display: block;
+	margin-top: 8px;
+	font-size: 11px;
+	color: var(--muted-foreground);
+}
+
+.th-activity > .th-button {
+	margin-top: auto;
+}
+
+.th-welcome {
+	padding: 24px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+}
+
+.th-welcome h2 {
+	font-size: 23px;
+	margin: 7px 0;
+}
+
+.th-welcome p {
+	font-size: 12px;
+	color: var(--muted-foreground);
+	line-height: 1.7;
+}

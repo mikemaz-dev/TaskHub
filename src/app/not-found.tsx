@@ -1,28 +1,23 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-
+import { FolderOpen, Home } from 'lucide-react'
+import { Logo } from '@/components/ui/Logo'
 import { NO_INDEX_PAGE } from '@/constants/seo.constants'
+import '@/styles/not-found.css'
 
-import { Pages } from '@/config/public-page.config'
+export const metadata: Metadata = { title: 'Page not found', ...NO_INDEX_PAGE }
 
-export const metadata: Metadata = {
-	title: '404',
-	...NO_INDEX_PAGE
-}
-
-export default function Page() {
-	return (
-		<div className='flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-blue-100/80 to-purple-50/20'>
-			<p className='text-3xl text-purple-500'>Oh no! Something went wrong</p>
-			<h1 className='text-[13.5rem] leading-tight font-semibold text-shadow-lg text-shadow-neutral-700'>
-				404
-			</h1>
-			<Link
-				href={Pages.DASHBOARD}
-				className='text-primary hover:border-b-primary border-b text-xl font-semibold transition-colors duration-300'
-			>
-				Go to dashboard page
-			</Link>
-		</div>
-	)
+export default function NotFound() {
+ return <div className='th-not-found'>
+  <section className='th-panel th-not-found-card' aria-labelledby='not-found-title'>
+   <Logo />
+   <p className='th-not-found-code' aria-hidden='true'>404</p>
+   <h1 id='not-found-title'>This page is off the map.</h1>
+   <p>The link may have changed, or this page no longer exists. Your workspace is a good place to start again.</p>
+   <div className='th-not-found-actions'>
+    <Link href='/dashboard/projects' className='th-button'><FolderOpen size={17} />Go to projects</Link>
+    <Link href='/' className='th-button th-button-subtle'><Home size={17} />Back to home</Link>
+   </div>
+  </section>
+ </div>
 }

@@ -1,0 +1,13 @@
+.th-settings-aside { display: flex; flex-direction: column; gap: 24px; }
+.th-working-hours h2 { display: flex; align-items: center; gap: 10px; font-weight: 600; }
+.th-working-hours > p { font-size: 12px; line-height: 1.7; color: var(--muted-foreground); margin: 12px 0 20px; }
+.th-working-hours fieldset { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+.th-work-days { display: flex; gap: 6px; flex-wrap: wrap; }
+.th-work-days button { padding: 9px 11px; border: 1px solid var(--border); border-radius: 9px; font-size: 12px; }
+.th-work-days button[aria-pressed='true'] { background: var(--accent-soft); border-color: var(--accent); color: var(--primary); }
+.th-work-status { display: flex; flex-direction: column; gap: 5px; font-size: 11px; font-weight: 400; margin-top: 10px; color: var(--muted-foreground); }
+.th-work-status > span { display: flex; align-items: center; gap: 6px; }
+.th-work-status i { width: 6px; height: 6px; border-radius: 50%; background: #d9a441; }
+.th-work-status[data-working='true'] i { background: #10b981; }
+.th-work-status small { font-size: 10px; overflow-wrap: anywhere; }
+.th-work-status.is-unset { flex-direction: row; align-items: center; }

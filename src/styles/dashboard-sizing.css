@@ -1,0 +1,90 @@
+.th-dashboard-middle .th-chart {
+	display: flex;
+	flex-direction: column;
+}
+
+.th-dashboard-middle .th-chart-canvas {
+	flex: 1;
+	min-height: 50px;
+	height: auto;
+}
+
+.th-dashboard-middle .th-progress-task {
+	margin-top: 12px;
+}
+
+.th-dashboard-middle .th-progress-task > span {
+	font-size: 11px;
+}
+
+.th-today-section {
+	padding: 14px 16px;
+	flex: 0 0 auto;
+	max-height: 112px;
+	overflow: hidden;
+}
+
+.th-today-section .th-empty {
+	padding: 10px;
+}
+
+.th-today-section .th-empty svg {
+	display: none;
+}
+
+.th-today-task {
+	padding: 5px;
+	margin-top: 6px;
+}
+
+.th-today-task strong {
+	padding: 6px 10px;
+}
+
+.th-all-tasks {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	min-height: 80px;
+	padding: 16px;
+}
+
+.th-all-tasks > .th-section-title {
+	flex-shrink: 0;
+}
+
+.th-all-tasks .th-task-list {
+	overflow-y: auto;
+	min-height: 0;
+	overscroll-behavior: contain;
+	padding-right: 8px;
+}
+
+.th-activity {
+	height: 100%;
+	overflow: auto;
+}
+
+.th-dashboard .th-welcome {
+	padding: 14px;
+	flex-shrink: 0;
+}
+
+.th-dashboard .th-welcome h2 {
+	font-size: 17px;
+}
+
+.th-dashboard .th-welcome p {
+	display: none;
+}
+
+.th-schedule {
+	height: 100%;
+	min-height: 0;
+	gap: 20px;
+}
+
+.th-schedule > .th-header {
+	flex-shrink: 0;
+	margin: 0;
+}

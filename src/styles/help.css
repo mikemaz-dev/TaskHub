@@ -1,0 +1,42 @@
+.th-help {
+	display: inline-flex;
+	vertical-align: middle;
+	margin-left: 6px;
+}
+.th-help > button {
+	display: inline-flex;
+	color: var(--muted-foreground);
+	cursor: help;
+	border-radius: 50%;
+}
+.th-help > button:hover,
+.th-help > button:focus-visible {
+	color: var(--accent);
+}
+.th-help-panel[popover] {
+	position: fixed;
+	inset: auto;
+	margin: 0;
+	width: min(280px, calc(100vw - 24px));
+	padding: 14px;
+	border: 1px solid var(--border);
+	border-radius: 12px;
+	background: var(--popover);
+	color: var(--foreground);
+	box-shadow: 0 8px 28px #0002;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 1.6;
+}
+.th-help-panel strong {
+	display: block;
+	margin-bottom: 4px;
+	font-size: 13px;
+}
+.th-help-panel p {
+	margin: 0;
+	color: var(--muted-foreground);
+}
+.th-help-panel::backdrop {
+	background: transparent;
+}

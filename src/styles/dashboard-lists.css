@@ -1,0 +1,75 @@
+.th-task-list {
+	margin-top: 16px;
+}
+
+.th-task-list > button {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	text-align: left;
+	width: 100%;
+	padding: 14px 0;
+	border-top: 1px solid var(--border);
+	font-size: 13px;
+}
+
+.th-task-list > button > span {
+	flex: 1;
+}
+
+.th-task-list small {
+	display: block;
+	color: var(--muted-foreground);
+	font-size: 11px;
+	margin-top: 5px;
+}
+
+.th-task-list time {
+	color: var(--muted-foreground);
+	font-size: 12px;
+}
+
+@media (max-width: 1350px) {
+	.th-dashboard {
+		grid-template-columns: minmax(0, 1fr);
+	}
+	.th-activity {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+	.th-activity > h2 {
+		grid-column: 1/-1;
+	}
+	.th-activity > h3 {
+		display: none;
+	}
+	.th-metrics {
+		gap: 14px;
+	}
+}
+
+@media (max-width: 900px) {
+	.th-dashboard-middle {
+		grid-template-columns: 1fr;
+	}
+	.th-metric .th-icon-tile {
+		width: 32px;
+		height: 32px;
+	}
+	.th-metric .th-icon-tile svg {
+		width: 17px;
+	}
+	.th-metric strong {
+		font-size: 23px;
+	}
+	.th-metrics {
+		gap: 10px;
+	}
+	.th-metric {
+		padding: 14px;
+	}
+	.th-welcome {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+}

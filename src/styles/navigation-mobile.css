@@ -1,0 +1,83 @@
+@media (max-width: 760px) {
+	.th-shell {
+		display: block;
+		padding: 16px;
+	}
+	.th-mobile-bar {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 24px;
+	}
+	.th-sidebar {
+		display: none;
+		position: fixed;
+		z-index: 60;
+		top: 76px;
+		left: 16px;
+		width: 260px;
+		height: calc(100dvh - 92px);
+		background: var(--background);
+	}
+	.th-sidebar.is-open {
+		display: flex;
+	}
+	.th-nav-backdrop {
+		display: block;
+		position: fixed;
+		inset: 70px 0 0;
+		z-index: 50;
+		background: #0006;
+	}
+	.th-header {
+		flex-wrap: wrap;
+		gap: 14px;
+	}
+	.th-header-actions {
+		gap: 10px;
+	}
+	.th-search {
+		width: 180px;
+	}
+	.th-search-results {
+		width: min(300px, calc(100vw - 32px));
+	}
+	.th-hero {
+		grid-template-columns: 1fr;
+		padding-top: 40px;
+		gap: 15px;
+	}
+	.th-hero h1 {
+		font-size: 60px;
+	}
+	.th-hero-art {
+		max-width: 520px;
+		width: 100%;
+		margin: auto;
+		padding: 40px 0;
+	}
+	.th-landing {
+		padding: 0 22px;
+	}
+	.th-landing-nav {
+		height: 80px;
+	}
+	.th-landing-nav nav {
+		gap: 16px;
+	}
+	.th-landing-nav nav > a:first-child {
+		display: none;
+	}
+	.th-hero-actions {
+		flex-wrap: wrap;
+	}
+	.th-features {
+		gap: 28px;
+		padding: 40px 0;
+	}
+	.th-landing-cta {
+		padding: 24px;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+}

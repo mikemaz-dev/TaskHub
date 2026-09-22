@@ -1,0 +1,90 @@
+.th-dashboard-middle {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+	gap: 20px;
+}
+
+.th-chart {
+	min-width: 0;
+}
+
+.th-chart-canvas {
+	height: 158px;
+	margin-top: 8px;
+}
+
+.th-segmented {
+	display: flex;
+	padding: 3px;
+	background: var(--surface);
+	border-radius: 8px;
+	gap: 3px;
+}
+
+.th-segmented button {
+	padding: 4px 6px;
+	border-radius: 5px;
+	font-size: 10px;
+	color: var(--muted-foreground);
+	text-transform: capitalize;
+}
+
+.th-segmented button[aria-pressed='true'] {
+	background: var(--muted);
+	color: var(--foreground);
+}
+
+.th-progress-task {
+	display: block;
+	width: 100%;
+	margin-top: 20px;
+	text-align: left;
+}
+
+.th-progress-task > span {
+	display: flex;
+	justify-content: space-between;
+	gap: 12px;
+	font-size: 13px;
+}
+
+.th-progress-task small {
+	color: var(--muted-foreground);
+	font-size: 12px;
+}
+
+.th-progress-task > i {
+	display: block;
+	height: 6px;
+	background: var(--surface);
+	border-radius: 3px;
+	margin-top: 10px;
+	overflow: hidden;
+}
+
+.th-progress-task > i > i {
+	display: block;
+	height: 100%;
+	background: #8170f2;
+	border-radius: 3px;
+}
+
+.th-progress-task:nth-child(3) > i > i {
+	background: #10b981;
+}
+
+.th-progress-task:nth-child(4) > i > i {
+	background: #f59e0b;
+}
+
+.th-today-task {
+	display: flex;
+	gap: 20px;
+	align-items: center;
+	background: var(--surface);
+	padding: 12px;
+	border-radius: 16px;
+	width: 100%;
+	margin-top: 16px;
+	text-align: left;
+}

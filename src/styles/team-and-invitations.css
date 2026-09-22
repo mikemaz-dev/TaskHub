@@ -1,0 +1,58 @@
+.th-team-card-projects {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 6px;
+	margin: 24px 0;
+}
+
+.th-team-card > .th-button {
+	margin-top: auto;
+	width: 100%;
+}
+
+.th-invite-code {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.th-invite-code code {
+	font-size: 12px;
+	overflow-wrap: anywhere;
+}
+
+.th-calendar-layout {
+	display: grid;
+	grid-template-columns: 280px minmax(0, 1fr);
+	gap: 24px;
+}
+
+.th-calendar-aside {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.th-calendar-aside > .th-card:first-child {
+	padding: 10px;
+}
+
+.th-calendar-panel {
+	min-width: 0;
+}
+
+.th-date-picker {
+	margin: auto;
+	width: 100%;
+}
+
+.th-focus-count {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-top: 20px;
+	font-size: 13px;
+	color: var(--muted-foreground);
+}

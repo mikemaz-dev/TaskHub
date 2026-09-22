@@ -18,10 +18,7 @@ export function AuthForm() {
 	return (
 		<div className='flex flex-col gap-8'>
 			<Form {...form}>
-				<form
-					onSubmit={form.handleSubmit(onSubmit)}
-					className='flex flex-col gap-6'
-				>
+				<form onSubmit={form.handleSubmit(onSubmit)} className='flex flex-col gap-6'>
 					<FormField
 						control={form.control}
 						name='email'
@@ -40,11 +37,8 @@ export function AuthForm() {
 							</FormItem>
 						)}
 					/>
-					<Button
-						type='submit'
-						className='w-full'
-					>
-						Send link
+					<Button type='submit' disabled={form.formState.isSubmitting} aria-busy={form.formState.isSubmitting} className='w-full'>
+						{form.formState.isSubmitting ? 'Sending…' : 'Continue with email'}
 					</Button>
 				</form>
 			</Form>

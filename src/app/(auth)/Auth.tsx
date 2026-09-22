@@ -1,27 +1,29 @@
 'use client'
 
-import { Info } from 'lucide-react'
+import Link from 'next/link'
 
 import { AuthForm } from '@/components/sections/auth-form/AuthForm'
 import { Logo } from '@/components/ui/Logo'
 
 export function Auth() {
 	return (
-		<div className='flex min-h-screen items-center justify-center bg-gradient-to-br from-blue-600 to-purple-600'>
-			<div className='bg-card text-foreground relative flex min-w-sm flex-col gap-6 rounded-2xl p-6 shadow-sm'>
-				<div className='flex flex-col gap-5'>
-					<div className='flex items-center justify-between'>
-						<Logo />
-					</div>
-					<div className='ml-1.5 flex items-center gap-1.5 opacity-65'>
-						<Info
-							size={18}
-							absoluteStrokeWidth
-						/>
-						<p className='font-medium'>Sign in with magic link</p>
-					</div>
+		<div className='th-auth'>
+			<div className='th-auth-card th-panel'>
+				<Logo />
+				<div>
+					<h1>
+						A little more focus.
+						<br />A lot more progress.
+					</h1>
+					<p className='th-muted'>
+						Sign in or create your account with a secure email link. No password to remember.
+					</p>
 				</div>
 				<AuthForm />
+				<p className='th-small th-muted'>Your projects and conversations stay in your workspace.</p>
+				<Link href='/' className='th-text-link'>
+					Back to TaskHub
+				</Link>
 			</div>
 		</div>
 	)

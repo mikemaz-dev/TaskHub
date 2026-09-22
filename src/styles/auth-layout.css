@@ -1,0 +1,93 @@
+.th-pill {
+	font-size: 11px;
+	padding: 5px 9px;
+	border-radius: 8px;
+	background: var(--surface);
+	color: var(--muted-foreground);
+}
+
+.th-mobile-bar,
+.th-nav-backdrop {
+	display: none;
+}
+
+.th-page {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.th-page > .th-header {
+	margin: 0;
+}
+
+.th-card {
+	padding: 20px;
+}
+
+.th-empty {
+	padding: 36px 20px;
+	text-align: center;
+	color: var(--muted-foreground);
+	font-size: 13px;
+	line-height: 1.7;
+}
+
+.th-empty h3 {
+	color: var(--foreground);
+	font-size: 17px;
+	margin-bottom: 6px;
+}
+
+.th-empty a,
+.th-empty button {
+	margin-top: 16px;
+}
+
+.th-form {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.th-form label {
+	display: flex;
+	flex-direction: column;
+	gap: 7px;
+	font-size: 13px;
+}
+
+.th-form input,
+.th-form select,
+.th-form textarea {
+	padding: 10px 12px;
+	border: 1px solid var(--border);
+	border-radius: 10px;
+	background: var(--surface);
+	color: var(--foreground);
+	min-width: 0;
+}
+
+.th-form select option {
+	background: var(--background);
+}
+
+.th-error {
+	color: #e15f70;
+	font-size: 13px;
+}
+
+.th-auth {
+	min-height: 100dvh;
+	display: grid;
+	place-items: center;
+	padding: 24px;
+}
+
+.th-auth-card {
+	width: min(100%, 440px);
+	padding: 36px;
+	display: flex;
+	flex-direction: column;
+	gap: 28px;
+}

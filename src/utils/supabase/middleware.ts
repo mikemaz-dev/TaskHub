@@ -5,6 +5,9 @@ import { type NextRequest, NextResponse } from 'next/server'
 import { type Database } from '@/types/db.types'
 
 export async function updateSession(request: NextRequest) {
+	const pathname = request.nextUrl.pathname
+	if (['/', '/sign-in', '/signup', '/robots.txt', '/sitemap.xml', '/opengraph-image', '/apple-icon'].includes(pathname))
+		return NextResponse.next()
 	let supabaseResponse = NextResponse.next({
 		request
 	})
@@ -48,7 +51,9 @@ export async function updateSession(request: NextRequest) {
 		// no user, potentially respond by redirecting the user to the sign-in page
 		const url = request.nextUrl.clone()
 		url.pathname = '/sign-in'
-		return NextResponse.redirect(url)
+		const response = NextResponse.redirect(url)
+		for (const cookie of supabaseResponse.cookies.getAll()) response.cookies.set(cookie)
+		return response
 	}
 
 	// IMPORTANT: You *must* return the supabaseResponse object as it is.

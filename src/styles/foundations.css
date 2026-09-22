@@ -1,0 +1,58 @@
+@import 'tailwindcss';
+
+@import 'tw-animate-css';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+	--color-primary: #725cee;
+}
+
+body {
+	@apply text-foreground dark:bg-background dark:text-white;
+	color: #272727;
+	background-color: #f8f7ff;
+	min-width: 320px;
+	min-height: 100vh;
+	box-sizing: border-box;
+}
+
+@theme inline {
+	--breakpoint-*: initial;
+	--animate-aurora: aurora 60s linear infinite;
+	@keyframes aurora {
+		from {
+			background-position:
+				50% 50%,
+				50% 50%;
+		}
+		to {
+			background-position:
+				350% 50%,
+				350% 50%;
+		}
+	}
+}
+
+@custom-variant 2xl (@media (max-width: 1650px));
+
+@custom-variant xl (@media (max-width: 1399px));
+
+@custom-variant lg (@media (max-width: 1200px));
+
+@custom-variant md (@media (max-width: 992px));
+
+@custom-variant sm (@media (max-width: 768px));
+
+@custom-variant xs (@media (max-width: 480px));
+
+@custom-variant xxs (@media (max-width: 360px));
+
+.hide-scrollbar {
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+	display: none;
+}

@@ -1,0 +1,93 @@
+.th-chat-page .th-message-history {
+	flex: 1;
+	min-height: 0;
+	height: auto;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+}
+
+.th-chat-page .th-conversation-header,
+.th-chat-page .th-composer {
+	flex-shrink: 0;
+}
+
+.th-chat-page .th-contacts {
+	height: 100%;
+	min-height: 0;
+	overflow-y: auto;
+}
+
+.th-chat-page .th-composer {
+	padding: 14px 22px;
+}
+
+.th-chat-page .th-composer textarea {
+	max-height: 100px;
+}
+
+.th-chat-page .th-message-history {
+	scrollbar-gutter: stable;
+}
+
+.th-unread-badge {
+	margin-left: auto;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 19px;
+	height: 19px;
+	padding: 0 5px;
+	border-radius: 10px;
+	background: var(--accent);
+	color: #111;
+	font-size: 10px;
+	font-weight: 700;
+}
+
+@media (max-width: 920px) {
+	.th-shell:has(.th-chat-page) {
+		display: flex;
+		flex-direction: column;
+		padding: 12px;
+		gap: 12px;
+	}
+	.th-content:has(.th-chat-page) {
+		height: auto;
+		flex: 1;
+		min-height: 0;
+	}
+	.th-chat-page {
+		gap: 10px;
+	}
+	.th-chat-page .th-composer {
+		padding: 10px;
+	}
+	.th-chat-page > .th-section-title p {
+		display: none;
+	}
+}
+
+.th-notification-list {
+	margin-top: 20px;
+}
+
+.th-notification-list article {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	padding: 18px 12px;
+	border-bottom: 1px solid var(--border);
+	border-radius: 12px;
+}
+
+.th-notification-list article.is-unread {
+	background: var(--accent-soft);
+}
+
+.th-notification-list article > a {
+	flex: 1;
+}
+
+.th-notification-list strong {
+	font-size: 14px;
+}
